@@ -1,6 +1,9 @@
 import { useState } from "react";
 import SectionHeading from "@/components/SectionHeading";
-import { Phone, Mail, MapPin, Send } from "lucide-react";
+import PageHero from "@/components/PageHero";
+import AnimatedSection from "@/components/AnimatedSection";
+import GlassCard from "@/components/GlassCard";
+import { Phone, Mail, MapPin, Send, Clock } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
 
@@ -10,6 +13,13 @@ const contactSchema = z.object({
   phone: z.string().trim().min(1, "Phone is required").max(20),
   message: z.string().trim().min(1, "Message is required").max(2000),
 });
+
+const contactInfo = [
+  { icon: MapPin, title: "Address", text: "B-56, Sector-64, Noida, Uttar Pradesh 201301, India" },
+  { icon: Phone, title: "Phone", text: "+91-9811134394" },
+  { icon: Mail, title: "Email", text: "info@drycoolchillers.com" },
+  { icon: Clock, title: "Working Hours", text: "Mon - Sat: 9:00 AM - 6:00 PM" },
+];
 
 const Contact = () => {
   const { toast } = useToast();
@@ -32,28 +42,22 @@ const Contact = () => {
       return;
     }
     setSubmitting(true);
-    // Mock API call
     await new Promise((r) => setTimeout(r, 1000));
     setSubmitting(false);
     setForm({ name: "", email: "", phone: "", message: "" });
     toast({ title: "Message sent!", description: "We'll get back to you shortly." });
   };
 
-  const inputClass = "w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/50";
+  const inputClass = "w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 transition-shadow";
 
   return (
     <>
-      <section className="bg-primary py-16">
-        <div className="container">
-          <h1 className="font-heading text-4xl md:text-5xl font-bold text-primary-foreground">Contact Us</h1>
-          <p className="mt-3 text-primary-foreground/70">Get in touch for a custom cooling solution</p>
-        </div>
-      </section>
+      <PageHero title="Contact Us" subtitle="Get in touch for a custom cooling solution" />
 
-      <section className="py-20">
+      <section id="enquiry" className="py-20">
         <div className="container grid lg:grid-cols-2 gap-12">
           {/* Form */}
-          <div>
+          <AnimatedSection>
             <SectionHeading title="Send an Inquiry" centered={false} />
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
@@ -75,40 +79,30 @@ const Contact = () => {
               <button
                 type="submit"
                 disabled={submitting}
-                className="inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3 font-semibold text-accent-foreground hover:opacity-90 transition-opacity disabled:opacity-50"
+                className="inline-flex items-center gap-2 rounded-lg bg-accent px-7 py-3.5 font-semibold text-accent-foreground hover:opacity-90 transition-opacity disabled:opacity-50 shadow-lg"
               >
                 {submitting ? "Sending..." : "Send Message"} <Send className="h-4 w-4" />
               </button>
             </form>
-          </div>
+          </AnimatedSection>
 
           {/* Contact Info */}
-          <div>
+          <AnimatedSection delay={0.2}>
             <SectionHeading title="Get in Touch" centered={false} />
-            <div className="space-y-6">
-              <div className="flex gap-4 p-6 rounded-lg bg-card industrial-shadow">
-                <MapPin className="h-6 w-6 text-accent shrink-0 mt-1" />
-                <div>
-                  <h3 className="font-heading text-lg font-bold text-foreground">Address</h3>
-                  <p className="text-sm text-muted-foreground">Noida, Uttar Pradesh, India</p>
-                </div>
-              </div>
-              <div className="flex gap-4 p-6 rounded-lg bg-card industrial-shadow">
-                <Phone className="h-6 w-6 text-accent shrink-0 mt-1" />
-                <div>
-                  <h3 className="font-heading text-lg font-bold text-foreground">Phone</h3>
-                  <p className="text-sm text-muted-foreground">+91-9811134394</p>
-                </div>
-              </div>
-              <div className="flex gap-4 p-6 rounded-lg bg-card industrial-shadow">
-                <Mail className="h-6 w-6 text-accent shrink-0 mt-1" />
-                <div>
-                  <h3 className="font-heading text-lg font-bold text-foreground">Email</h3>
-                  <p className="text-sm text-muted-foreground">info@drycoolchillers.com</p>
-                </div>
-              </div>
+            <div className="space-y-4">
+              {contactInfo.map((c) => (
+                <GlassCard key={c.title} className="flex gap-4 bg-card" hover={false}>
+                  <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-accent/10 shrink-0">
+                    <c.icon className="h-6 w-6 text-accent" />
+                  </div>
+                  <div>
+                    <h3 className="font-heading text-lg font-bold text-foreground">{c.title}</h3>
+                    <p className="text-sm text-muted-foreground">{c.text}</p>
+                  </div>
+                </GlassCard>
+              ))}
             </div>
-          </div>
+          </AnimatedSection>
         </div>
       </section>
     </>
