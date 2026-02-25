@@ -23,6 +23,7 @@ import OurTeam from "./pages/about/OurTeam";
 // Products submenu pages
 import CustomizedChiller from "./pages/products/CustomizedChiller";
 import GlobalFootprints from "./pages/products/GlobalFootprints";
+import ProductDetailPage from "./pages/products/ProductDetailPage";
 
 // Intelligence submenu pages
 import HVACContractor from "./pages/intelligence/HVACContractor";
@@ -71,9 +72,15 @@ const App = () => (
             <Route path="/about/clients" element={<Clients />} />
             <Route path="/about/our-team" element={<OurTeam />} />
 
-            {/* Products submenu */}
+            {/* Products submenu — main dropdown pages */}
             <Route path="/products/customized-chiller" element={<CustomizedChiller />} />
             <Route path="/products/global-footprints" element={<GlobalFootprints />} />
+
+            {/* Products submenu — dynamic detail pages */}
+            <Route path="/products/:slug" element={<ProductDetailPage />} />
+            <Route path="/application/:slug" element={<ProductDetailPage />} />
+            <Route path="/customized/:slug" element={<ProductDetailPage />} />
+            <Route path="/global/:slug" element={<ProductDetailPage />} />
 
             {/* Intelligence submenu */}
             <Route path="/intelligence/hvac-contractor" element={<HVACContractor />} />
