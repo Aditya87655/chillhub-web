@@ -7,10 +7,16 @@ interface NavChild {
   to: string;
 }
 
+interface NavSection {
+  heading?: string;
+  items: NavChild[];
+}
+
 interface NavItem {
   label: string;
   to: string;
   children?: NavChild[];
+  mega?: NavSection[];
 }
 
 const navItems: NavItem[] = [
@@ -29,11 +35,89 @@ const navItems: NavItem[] = [
   {
     label: "Products",
     to: "/products",
-    children: [
-      { label: "Application", to: "/industries" },
-      { label: "Customized Chiller", to: "/products/customized-chiller" },
-      { label: "Global Footprints", to: "/products/global-footprints" },
-      { label: "Drycool Intelligence", to: "/infrastructure" },
+    mega: [
+      {
+        heading: "SCREW CHILLERS",
+        items: [
+          { label: "Air Cooled Screw Chiller", to: "/products/air-cooled-screw-chiller" },
+          { label: "Water Cooled Screw Chiller", to: "/products/water-cooled-screw-chiller" },
+          { label: "Inverter Screw Chiller", to: "/products/inverter-screw-chiller" },
+          { label: "Air Cooled VFD Screw Chiller", to: "/products/air-cooled-vfd-screw-chiller" },
+        ],
+      },
+      {
+        heading: "SCROLL CHILLER",
+        items: [
+          { label: "Air Cooled Scroll Chillers", to: "/products/air-cooled-scroll-chiller" },
+          { label: "Water Cooled Scroll Chillers", to: "/products/water-cooled-scroll-chiller" },
+          { label: "Inverter Scroll Chiller", to: "/products/inverter-scroll-chiller" },
+        ],
+      },
+      {
+        heading: "AIR CHILLER",
+        items: [{ label: "Air Chiller", to: "/products/air-chiller" }],
+      },
+      {
+        heading: "RECIPROCATING CHILLERS",
+        items: [
+          { label: "Water-cooled Reciprocating Chillers", to: "/products/water-cooled-reciprocating-chiller" },
+          { label: "Air-cooled Reciprocating Chillers", to: "/products/air-cooled-reciprocating-chiller" },
+          { label: "Industrial Reciprocating Chillers", to: "/products/industrial-reciprocating-chiller" },
+        ],
+      },
+      {
+        heading: "MORE",
+        items: [
+          { label: "Cooling Tower Manufacturer", to: "/products/cooling-tower-manufacturer" },
+          { label: "Chiller Manufacturer in Kolkata", to: "/products/chiller-manufacturer-kolkata" },
+        ],
+      },
+      {
+        heading: "APPLICATION",
+        items: [
+          { label: "Chiller For Plastic Industry", to: "/application/chiller-for-plastic-industry" },
+          { label: "Chiller For Cement Industry", to: "/application/chiller-for-cement-industry" },
+          { label: "Chiller For Brewery & Fermentation", to: "/application/chiller-for-brewery-fermentation" },
+          { label: "Chiller For Food & Beverage Industry", to: "/application/chiller-for-food-beverage-industry" },
+          { label: "Chiller For Heavy Industrial Purpose", to: "/application/chiller-for-heavy-industrial-purpose" },
+          { label: "Chiller For Hydrogen Refueling Station", to: "/application/chiller-for-hydrogen-refueling-station" },
+          { label: "Chillers For Milk Industry", to: "/application/chillers-for-milk-industry" },
+          { label: "Chiller For Medical Device", to: "/application/chiller-for-medical-device" },
+          { label: "Chiller For CNC Cooling", to: "/application/chiller-for-cnc-cooling" },
+          { label: "Chiller For Printing & Packaging", to: "/application/chiller-for-printing-packaging" },
+          { label: "BESS Chillers", to: "/application/bess-chillers" },
+          { label: "Chillers for Eyewash & Safety Showers", to: "/application/chillers-for-eyewash-safety-showers" },
+        ],
+      },
+      {
+        heading: "CUSTOMIZED CHILLER",
+        items: [
+          { label: "HVAC Chiller", to: "/customized/hvac-chiller" },
+          { label: "Chemical & Pharma Industry", to: "/customized/chiller-for-chemical-pharmaceutical" },
+          { label: "Batching Plant Chiller", to: "/customized/batching-plant-chiller" },
+          { label: "Hazardous Area Chiller", to: "/customized/hazardous-area-chiller" },
+          { label: "Ammonia Chillers", to: "/customized/ammonia-chillers" },
+          { label: "Falling Film Chiller", to: "/customized/falling-film-chiller" },
+          { label: "Bio Gas Chillers", to: "/customized/bio-gas-chillers" },
+          { label: "Anodizing Chillers", to: "/customized/anodizing-chillers" },
+          { label: "Brine Chillers", to: "/customized/brine-chillers" },
+          { label: "Methanol Chillers", to: "/customized/methanol-chillers" },
+          { label: "Glycol Chillers", to: "/customized/glycol-chillers" },
+          { label: "Oil Chiller", to: "/customized/oil-chiller" },
+          { label: "Chiller for Soap Industry", to: "/customized/chiller-for-soap-industry" },
+          { label: "HDPE/CPVC/UPVC Pipe Chiller", to: "/customized/chiller-for-hdpe-cpvc-upvc-pipes" },
+        ],
+      },
+      {
+        heading: "GLOBAL FOOTPRINTS",
+        items: [
+          { label: "Industrial Chillers in UAE", to: "/global/industrial-chillers-in-uae" },
+          { label: "Industrial Chillers in Africa", to: "/global/industrial-chillers-in-africa" },
+          { label: "Industrial Chillers in Indonesia", to: "/global/industrial-chillers-in-indonesia" },
+          { label: "Industrial Chillers in Nepal", to: "/global/industrial-chillers-in-nepal" },
+          { label: "Industrial Chillers in Bangladesh", to: "/global/industrial-chillers-in-bangladesh" },
+        ],
+      },
     ],
   },
   {
@@ -81,32 +165,58 @@ const navItems: NavItem[] = [
   },
 ];
 
+/* ─── Desktop Mega Menu ─── */
+const DesktopMegaMenu = ({ sections, onClose }: { sections: NavSection[]; onClose: () => void }) => (
+  <div
+    className="absolute left-1/2 -translate-x-1/2 top-full z-50 mt-1 w-[90vw] max-w-[1200px] rounded-lg border bg-popover p-4 shadow-xl backdrop-blur-sm"
+    role="menu"
+  >
+    <div className="grid grid-cols-4 gap-x-6 gap-y-4">
+      {sections.map((sec) => (
+        <div key={sec.heading ?? sec.items[0]?.label}>
+          {sec.heading && (
+            <h4 className="mb-2 text-xs font-bold uppercase tracking-wider text-[hsl(var(--industrial-orange))]">
+              {sec.heading}
+            </h4>
+          )}
+          <ul className="space-y-0.5">
+            {sec.items.map((child) => (
+              <li key={child.to}>
+                <Link
+                  to={child.to}
+                  onClick={onClose}
+                  className="block rounded-md px-2 py-1.5 text-sm text-popover-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
+                  role="menuitem"
+                >
+                  {child.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
 /* ─── Desktop dropdown item ─── */
 const DesktopNavItem = ({ item }: { item: NavItem }) => {
   const [open, setOpen] = useState(false);
   const timeout = useRef<ReturnType<typeof setTimeout>>();
   const location = useLocation();
 
-  const isActive =
-    location.pathname === item.to.split("#")[0] ||
-    item.children?.some((c) => location.pathname === c.to.split("#")[0]);
+  const allLinks = item.children?.map((c) => c.to) ?? item.mega?.flatMap((s) => s.items.map((i) => i.to)) ?? [];
+  const isActive = location.pathname === item.to.split("#")[0] || allLinks.some((l) => location.pathname === l);
 
-  const handleEnter = () => {
-    clearTimeout(timeout.current);
-    setOpen(true);
-  };
-  const handleLeave = () => {
-    timeout.current = setTimeout(() => setOpen(false), 150);
-  };
+  const handleEnter = () => { clearTimeout(timeout.current); setOpen(true); };
+  const handleLeave = () => { timeout.current = setTimeout(() => setOpen(false), 200); };
 
-  if (!item.children) {
+  if (!item.children && !item.mega) {
     return (
       <Link
         to={item.to}
-        className={`px-4 py-2 rounded-md text-sm font-medium transition-colors whitespace-nowrap ${
-          isActive
-            ? "bg-primary text-primary-foreground"
-            : "text-foreground hover:bg-muted"
+        className={`px-3 py-2 rounded-md text-sm font-medium transition-colors whitespace-nowrap ${
+          isActive ? "bg-primary text-primary-foreground" : "text-foreground hover:bg-muted"
         }`}
       >
         {item.label}
@@ -115,18 +225,11 @@ const DesktopNavItem = ({ item }: { item: NavItem }) => {
   }
 
   return (
-    <div
-      className="relative"
-      onMouseEnter={handleEnter}
-      onMouseLeave={handleLeave}
-      role="navigation"
-    >
+    <div className="relative" onMouseEnter={handleEnter} onMouseLeave={handleLeave} role="navigation">
       <Link
         to={item.to}
-        className={`inline-flex items-center gap-1 px-4 py-2 rounded-md text-sm font-medium transition-colors whitespace-nowrap ${
-          isActive
-            ? "bg-primary text-primary-foreground"
-            : "text-foreground hover:bg-muted"
+        className={`inline-flex items-center gap-1 px-3 py-2 rounded-md text-sm font-medium transition-colors whitespace-nowrap ${
+          isActive ? "bg-primary text-primary-foreground" : "text-foreground hover:bg-muted"
         }`}
         aria-haspopup="true"
         aria-expanded={open}
@@ -135,11 +238,10 @@ const DesktopNavItem = ({ item }: { item: NavItem }) => {
         <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${open ? "rotate-180" : ""}`} />
       </Link>
 
-      {open && (
-        <div
-          className="absolute left-0 top-full z-50 mt-1 min-w-[240px] rounded-lg border bg-popover p-1.5 shadow-xl backdrop-blur-sm"
-          role="menu"
-        >
+      {open && item.mega && <DesktopMegaMenu sections={item.mega} onClose={() => setOpen(false)} />}
+
+      {open && item.children && !item.mega && (
+        <div className="absolute left-0 top-full z-50 mt-1 min-w-[240px] rounded-lg border bg-popover p-1.5 shadow-xl backdrop-blur-sm" role="menu">
           {item.children.map((child) => (
             <Link
               key={child.to}
@@ -158,25 +260,19 @@ const DesktopNavItem = ({ item }: { item: NavItem }) => {
 };
 
 /* ─── Mobile accordion item ─── */
-const MobileNavItem = ({
-  item,
-  onClose,
-}: {
-  item: NavItem;
-  onClose: () => void;
-}) => {
+const MobileNavItem = ({ item, onClose }: { item: NavItem; onClose: () => void }) => {
   const [expanded, setExpanded] = useState(false);
   const location = useLocation();
 
-  if (!item.children) {
+  const allChildren = item.children ?? item.mega?.flatMap((s) => s.items) ?? [];
+
+  if (allChildren.length === 0) {
     return (
       <Link
         to={item.to}
         onClick={onClose}
         className={`block px-6 py-3 text-sm font-medium transition-colors ${
-          location.pathname === item.to
-            ? "bg-primary text-primary-foreground"
-            : "text-foreground hover:bg-muted"
+          location.pathname === item.to ? "bg-primary text-primary-foreground" : "text-foreground hover:bg-muted"
         }`}
       >
         {item.label}
@@ -196,18 +292,39 @@ const MobileNavItem = ({
       </button>
 
       {expanded && (
-        <div className="bg-muted/50" role="menu">
-          {item.children.map((child) => (
-            <Link
-              key={child.to}
-              to={child.to}
-              onClick={onClose}
-              className="block px-10 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
-              role="menuitem"
-            >
-              {child.label}
-            </Link>
-          ))}
+        <div className="bg-muted/50 max-h-[60vh] overflow-y-auto" role="menu">
+          {item.mega
+            ? item.mega.map((sec) => (
+                <div key={sec.heading ?? "default"}>
+                  {sec.heading && (
+                    <div className="px-8 pt-3 pb-1 text-xs font-bold uppercase tracking-wider text-[hsl(var(--industrial-orange))]">
+                      {sec.heading}
+                    </div>
+                  )}
+                  {sec.items.map((child) => (
+                    <Link
+                      key={child.to}
+                      to={child.to}
+                      onClick={onClose}
+                      className="block px-10 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+                      role="menuitem"
+                    >
+                      {child.label}
+                    </Link>
+                  ))}
+                </div>
+              ))
+            : item.children?.map((child) => (
+                <Link
+                  key={child.to}
+                  to={child.to}
+                  onClick={onClose}
+                  className="block px-10 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+                  role="menuitem"
+                >
+                  {child.label}
+                </Link>
+              ))}
         </div>
       )}
     </div>
@@ -242,7 +359,7 @@ const Navbar = () => {
           <Link to="/" className="flex items-center gap-2">
             <div className="flex flex-col leading-tight">
               <span className="font-heading text-2xl font-bold text-primary">
-                DRY<span className="text-accent">COOL</span>
+                DRY<span className="text-[hsl(var(--industrial-orange))]">COOL</span>
               </span>
               <span className="text-[10px] tracking-widest text-muted-foreground uppercase">
                 Constructability | Sustainability
@@ -251,7 +368,7 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop nav */}
-          <div className="hidden lg:flex items-center gap-1">
+          <div className="hidden xl:flex items-center gap-0.5">
             {navItems.map((item) => (
               <DesktopNavItem key={item.label} item={item} />
             ))}
@@ -260,7 +377,7 @@ const Navbar = () => {
           {/* Mobile toggle */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden p-2 rounded-md hover:bg-muted"
+            className="xl:hidden p-2 rounded-md hover:bg-muted"
             aria-label="Toggle menu"
           >
             {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -269,11 +386,7 @@ const Navbar = () => {
 
         {/* Mobile menu */}
         {mobileOpen && (
-          <div
-            className="lg:hidden border-t bg-card pb-4 max-h-[80vh] overflow-y-auto"
-            role="navigation"
-            aria-label="Mobile navigation"
-          >
+          <div className="xl:hidden border-t bg-card pb-4 max-h-[80vh] overflow-y-auto" role="navigation" aria-label="Mobile navigation">
             {navItems.map((item) => (
               <MobileNavItem key={item.label} item={item} onClose={() => setMobileOpen(false)} />
             ))}
