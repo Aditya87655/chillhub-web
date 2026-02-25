@@ -1,5 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { ChevronRight, Home } from "lucide-react";
+import { getProductBySlug } from "@/data/productPages";
 
 const routeNames: Record<string, string> = {
   "/": "Home",
@@ -37,11 +38,25 @@ const routeNames: Record<string, string> = {
   "/downloads/hydrogen-chillers": "Hydrogen Chillers",
 };
 
+const categoryParents: Record<string, { label: string; to: string }> = {
+  "/products": { label: "Products", to: "/products" },
+  "/application": { label: "Application", to: "/industries" },
+  "/customized": { label: "Customized Chiller", to: "/products/customized-chiller" },
+  "/global": { label: "Global Footprints", to: "/products/global-footprints" },
+};
+
 const Breadcrumb = () => {
   const { pathname } = useLocation();
   if (pathname === "/") return null;
 
-  const name = routeNames[pathname] || pathname.replace("/", "");
+  // Check if it's a dynamic product page
+  const segments = pathname.split("/").filter(Boolean);
+  const prefix = "/" + segments[0];
+  const slug = segments[1];
+  const parent = categoryParents[prefix];
+  const product = slug ? getProductBySlug(slug) : undefined;
+
+  let staticName = routeNames[pathname];
 
   return (
     <nav aria-label="Breadcrumb" className="bg-muted/50 border-b border-border">
@@ -50,8 +65,19 @@ const Breadcrumb = () => {
           <Home className="h-3.5 w-3.5" />
           Home
         </Link>
-        <ChevronRight className="h-3.5 w-3.5" />
-        <span className="text-foreground font-medium">{name}</span>
+        {product && parent && !staticName ? (
+          <>
+            <ChevronRight className="h-3.5 w-3.5" />
+            <Link to={parent.to} className="hover:text-accent transition-colors">{parent.label}</Link>
+            <ChevronRight className="h-3.5 w-3.5" />
+            <span className="text-foreground font-medium">{product.title}</span>
+          </>
+        ) : (
+          <>
+            <ChevronRight className="h-3.5 w-3.5" />
+            <span className="text-foreground font-medium">{staticName || slug || pathname}</span>
+          </>
+        )}
       </div>
     </nav>
   );
