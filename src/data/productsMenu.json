@@ -1,0 +1,121 @@
+{
+  "sections": [
+    {
+      "title": "Products",
+      "slug": "products",
+      "summary": "Industrial process cooling equipment designed for reliability and tropical operating conditions.",
+      "groups": [
+        {
+          "title": "Screw Chillers",
+          "slug": "screw-chillers",
+          "items": [
+            { "title": "Air Cooled Screw Chiller", "slug": "air-cooled-screw-chiller" },
+            { "title": "Water Cooled Screw Chiller", "slug": "water-cooled-screw-chiller" },
+            { "title": "Inverter Screw Chiller", "slug": "inverter-screw-chiller" },
+            { "title": "Air Cooled VFD Screw Chiller", "slug": "air-cooled-vfd-screw-chiller" }
+          ]
+        },
+        {
+          "title": "Scroll Chiller",
+          "slug": "scroll-chiller",
+          "items": [
+            { "title": "Air Cooled Scroll Chillers", "slug": "air-cooled-scroll-chillers" },
+            { "title": "Water Cooled Scroll Chillers", "slug": "water-cooled-scroll-chillers" },
+            { "title": "Inverter Scroll Chiller", "slug": "inverter-scroll-chiller" }
+          ]
+        },
+        {
+          "title": "Air Chiller",
+          "slug": "air-chiller",
+          "items": []
+        },
+        {
+          "title": "Reciprocating Chillers",
+          "slug": "reciprocating-chillers",
+          "items": [
+            { "title": "Water-cooled Reciprocating Chillers", "slug": "water-cooled-reciprocating-chillers" },
+            { "title": "Air-cooled Reciprocating Chillers", "slug": "air-cooled-reciprocating-chillers" },
+            { "title": "Industrial Reciprocating Chillers", "slug": "industrial-reciprocating-chillers" }
+          ]
+        },
+        {
+          "title": "Cooling Tower Manufacturer",
+          "slug": "cooling-tower-manufacturer",
+          "items": [
+            { "title": "Chiller Manufacturer in Kolkata", "slug": "chiller-manufacturer-in-kolkata" }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Application",
+      "slug": "application",
+      "summary": "Use-case-specific chiller packages tuned for process consistency and uptime.",
+      "groups": [
+        {
+          "title": "Application",
+          "slug": "application-cases",
+          "items": [
+            { "title": "Chiller For Plastic Industry", "slug": "chiller-for-plastic-industry" },
+            { "title": "Chiller For Cement Industry", "slug": "chiller-for-cement-industry" },
+            { "title": "Chiller For Brewery & Fermentation", "slug": "chiller-for-brewery-and-fermentation" },
+            { "title": "Chiller For Food & Beverage Industry", "slug": "chiller-for-food-and-beverage-industry" },
+            { "title": "Chiller For Heavy Industrial Purpose", "slug": "chiller-for-heavy-industrial-purpose" },
+            { "title": "Chiller For Hydrogen Refueling Station", "slug": "chiller-for-hydrogen-refueling-station" },
+            { "title": "Chillers For Milk Industry", "slug": "chillers-for-milk-industry" },
+            { "title": "Chiller For Medical Device", "slug": "chiller-for-medical-device" },
+            { "title": "Chiller For CNC Cooling", "slug": "chiller-for-cnc-cooling" },
+            { "title": "Chiller For Printing & Packaging", "slug": "chiller-for-printing-and-packaging" },
+            { "title": "Battery Energy Storage Systems (BESS) Chillers", "slug": "battery-energy-storage-systems-bess-chillers" },
+            { "title": "Chillers for Eyewash and Safety Showers", "slug": "chillers-for-eyewash-and-safety-showers" }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Customized Chiller",
+      "slug": "customized-chiller",
+      "summary": "Specialized engineered chillers for unique fluids, safety zones, and process loads.",
+      "groups": [
+        {
+          "title": "Customized Chiller",
+          "slug": "customized-packages",
+          "items": [
+            { "title": "HVAC Chiller", "slug": "hvac-chiller" },
+            { "title": "Chiller For Chemical & Pharmaceutical Industry", "slug": "chiller-for-chemical-and-pharmaceutical-industry" },
+            { "title": "Batching Plant Chiller", "slug": "batching-plant-chiller" },
+            { "title": "Hazardous Area Chiller", "slug": "hazardous-area-chiller" },
+            { "title": "Ammonia chillers", "slug": "ammonia-chillers" },
+            { "title": "Falling Film Chiller", "slug": "falling-film-chiller" },
+            { "title": "Bio Gas Chillers", "slug": "bio-gas-chillers" },
+            { "title": "Anodizing Chillers", "slug": "anodizing-chillers" },
+            { "title": "Brine Chillers", "slug": "brine-chillers" },
+            { "title": "Methanol Chillers", "slug": "methanol-chillers" },
+            { "title": "Glycol Chillers", "slug": "glycol-chillers" },
+            { "title": "Oil chiller", "slug": "oil-chiller" },
+            { "title": "Chiller for Soap Industry", "slug": "chiller-for-soap-industry" },
+            { "title": "Chiller for HDPE Pipes CPVC Pipes UPVC Pipes", "slug": "chiller-for-hdpe-pipes-cpvc-pipes-upvc-pipes" }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Global Footprints",
+      "slug": "global-footprints",
+      "summary": "Regional delivery, commissioning, and service coverage for industrial chiller projects.",
+      "groups": [
+        {
+          "title": "Global Footprints",
+          "slug": "global-regions",
+          "items": [
+            { "title": "Industrial Chillers in UAE", "slug": "industrial-chillers-in-uae" },
+            { "title": "Industrial Chillers in Africa", "slug": "industrial-chillers-in-africa" },
+            { "title": "Industrial Chillers in Indonesia", "slug": "industrial-chillers-in-indonesia" },
+            { "title": "Industrial Chillers in Nepal", "slug": "industrial-chillers-in-nepal" },
+            { "title": "Industrial Chillers in Bangladesh", "slug": "industrial-chillers-in-bangladesh" }
+          ]
+        }
+      ]
+    }
+  ]
+}

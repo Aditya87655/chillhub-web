@@ -39,7 +39,7 @@ const routeNames: Record<string, string> = {
 
 const Breadcrumb = () => {
   const { pathname } = useLocation();
-  if (pathname === "/") return null;
+  if (pathname === "/" || pathname.startsWith("/products/")) return null;
 
   const name = routeNames[pathname] || pathname.replace("/", "");
 

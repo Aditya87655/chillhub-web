@@ -30,10 +30,10 @@ const navItems: NavItem[] = [
     label: "Products",
     to: "/products",
     children: [
-      { label: "Application", to: "/industries" },
+      { label: "Products", to: "/products/products" },
+      { label: "Application", to: "/products/application" },
       { label: "Customized Chiller", to: "/products/customized-chiller" },
       { label: "Global Footprints", to: "/products/global-footprints" },
-      { label: "Drycool Intelligence", to: "/infrastructure" },
     ],
   },
   {

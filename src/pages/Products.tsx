@@ -1,61 +1,66 @@
-import SectionHeading from "@/components/SectionHeading";
-import ProductCard from "@/components/ProductCard";
-import PageHero from "@/components/PageHero";
-import AnimatedSection from "@/components/AnimatedSection";
-import screwImg from "@/assets/product-screw-chiller.jpg";
-import scrollImg from "@/assets/product-scroll-chiller.jpg";
-import ammoniaImg from "@/assets/product-ammonia-chiller.jpg";
-import oilImg from "@/assets/product-oil-chiller.jpg";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
-
-const allProducts = [
-  { title: "Air Cooled Screw Chillers", description: "Multiple compressor configuration, fabricated in ISO 9001:2008 certified units with CFC-free refrigerants R-407C & R-134A, complete with in-built process pump.", image: screwImg },
-  { title: "Water Cooled Screw Chillers", description: "Specially designed to work in extreme weather while maintaining energy efficiency. Best-in-class chiller with superior standards.", image: screwImg },
-  { title: "Air Cooled Scroll Chillers", description: "Highly energy-efficient, designed for extreme tropical weather with European origin compressors and separate refrigeration circuits.", image: scrollImg },
-  { title: "Water Cooled Scroll Chillers", description: "State-of-the-art liquid chiller for comfort and process-cooling applications, factory-assembled with complete quality assurance.", image: scrollImg },
-  { title: "Ammonia Chillers", description: "Skid-mounted, compact ammonia chillers for medium to low temperature ranges — ideal for food processing, pharmaceutical, and cold storage.", image: ammoniaImg },
-  { title: "Oil Chillers", description: "Specially designed to cool oil directly via refrigerant-to-oil heat exchanging circuits. Available in air-cooled and water-cooled variants.", image: oilImg },
-  { title: "Inverter Screw Chillers", description: "Variable frequency drive technology for optimal compressor speed adjustment, delivering up to 50% energy savings.", image: screwImg },
-  { title: "VFD Chillers", description: "Advanced variable frequency drive chillers offering precise temperature control with significantly reduced power consumption.", image: scrollImg },
-];
+import PageHero from "@/components/PageHero";
+import SeoMeta from "@/components/SeoMeta";
+import AnimatedSection from "@/components/AnimatedSection";
+import { productSections } from "@/lib/productData";
 
 const Products = () => (
   <>
-    <PageHero title="Products & Solutions" subtitle="Complete range of industrial cooling systems engineered for performance" />
+    <SeoMeta
+      title="Products Mega Menu | ChillHub Web"
+      description="Browse every category and submenu page mapped from the Products mega menu hierarchy."
+    />
+    <PageHero
+      title="Products"
+      subtitle="Structured product navigation with dedicated pages for every category and submenu from the mega menu."
+    />
 
     <section className="py-20">
-      <div className="container">
-        <AnimatedSection>
-          <SectionHeading title="Our Product Range" subtitle="Engineered for performance, built for reliability" />
-        </AnimatedSection>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {allProducts.map((p, i) => (
-            <AnimatedSection key={p.title} delay={i * 0.08}>
-              <ProductCard {...p} />
-            </AnimatedSection>
-          ))}
-        </div>
-      </div>
-    </section>
+      <div className="container grid gap-8 lg:grid-cols-2">
+        {productSections.map((section, sectionIndex) => (
+          <AnimatedSection key={section.slug} delay={sectionIndex * 0.05}>
+            <article className="h-full rounded-xl border bg-card p-8 shadow-md">
+              <div className="flex items-center justify-between gap-4">
+                <h2 className="text-3xl font-bold text-primary">{section.title}</h2>
+                <Link
+                  to={`/products/${section.slug}`}
+                  className="rounded-lg bg-[#f97316] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#ea580c]"
+                >
+                  View Section
+                </Link>
+              </div>
 
-    {/* CTA */}
-    <section className="py-16 bg-hero-gradient">
-      <div className="container text-center">
-        <AnimatedSection>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-primary-foreground">
-            Need a Custom Chiller Solution?
-          </h2>
-          <p className="mt-3 text-primary-foreground/70 max-w-lg mx-auto">
-            Our engineering team can design a cooling system tailored to your specific requirements.
-          </p>
-          <Link
-            to="/contact"
-            className="inline-flex items-center gap-2 mt-6 rounded-lg bg-accent px-7 py-3.5 font-semibold text-accent-foreground hover:opacity-90 transition-opacity shadow-lg"
-          >
-            Request a Quote <ArrowRight className="h-4 w-4" />
-          </Link>
-        </AnimatedSection>
+              <div className="mt-8 space-y-8">
+                {section.groups.map((group) => (
+                  <div key={group.slug}>
+                    <Link
+                      to={`/products/${section.slug}/${group.slug}`}
+                      className="text-xl font-semibold text-foreground transition-colors hover:text-accent"
+                    >
+                      {group.title}
+                    </Link>
+                    {group.items.length > 0 ? (
+                      <ul className="mt-3 space-y-2" aria-label={`${group.title} links`}>
+                        {group.items.map((item) => (
+                          <li key={item.slug}>
+                            <Link
+                              to={`/products/${section.slug}/${group.slug}/${item.slug}`}
+                              className="inline-block text-muted-foreground transition-colors hover:text-accent"
+                            >
+                              {item.title}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p className="mt-3 text-sm text-muted-foreground">Dedicated category page available (no submenu links).</p>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </article>
+          </AnimatedSection>
+        ))}
       </div>
     </section>
   </>

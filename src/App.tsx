@@ -20,9 +20,10 @@ import Accreditations from "./pages/about/Accreditations";
 import Clients from "./pages/about/Clients";
 import OurTeam from "./pages/about/OurTeam";
 
-// Products submenu pages
-import CustomizedChiller from "./pages/products/CustomizedChiller";
-import GlobalFootprints from "./pages/products/GlobalFootprints";
+// Products dynamic pages
+import ProductNavigator from "./pages/products/ProductNavigator";
+import ProductCategoryPage from "./pages/products/ProductCategoryPage";
+import ProductSubmenuPage from "./pages/products/ProductSubmenuPage";
 
 // Intelligence submenu pages
 import HVACContractor from "./pages/intelligence/HVACContractor";
@@ -71,9 +72,10 @@ const App = () => (
             <Route path="/about/clients" element={<Clients />} />
             <Route path="/about/our-team" element={<OurTeam />} />
 
-            {/* Products submenu */}
-            <Route path="/products/customized-chiller" element={<CustomizedChiller />} />
-            <Route path="/products/global-footprints" element={<GlobalFootprints />} />
+            {/* Products dynamic routes */}
+            <Route path="/products/:sectionSlug" element={<ProductNavigator />} />
+            <Route path="/products/:sectionSlug/:categorySlug" element={<ProductCategoryPage />} />
+            <Route path="/products/:sectionSlug/:categorySlug/:itemSlug" element={<ProductSubmenuPage />} />
 
             {/* Intelligence submenu */}
             <Route path="/intelligence/hvac-contractor" element={<HVACContractor />} />
