@@ -4,6 +4,7 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import Breadcrumb from "./Breadcrumb";
 import StickyCTA from "./StickyCTA";
+import ScrollToTop from "./ScrollToTop";
 
 const Layout = () => {
   const location = useLocation();
@@ -27,6 +28,7 @@ const Layout = () => {
       </main>
       <Footer />
       <StickyCTA />
+      <ScrollToTop />
     </div>
   );
 };

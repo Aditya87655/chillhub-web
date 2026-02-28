@@ -12,6 +12,7 @@ import Infrastructure from "./pages/Infrastructure";
 import Certificate from "./pages/Certificate";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import Projects from "./pages/Projects";
 
 // About submenu pages
 import Profile from "./pages/about/Profile";
@@ -64,6 +65,7 @@ const App = () => (
             <Route path="/infrastructure" element={<Infrastructure />} />
             <Route path="/certificate" element={<Certificate />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/projects" element={<Projects />} />
 
             {/* About submenu */}
             <Route path="/about/profile" element={<Profile />} />
