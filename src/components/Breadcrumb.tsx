@@ -10,6 +10,7 @@ const routeNames: Record<string, string> = {
   "/infrastructure": "Drycool Intelligence",
   "/certificate": "Download",
   "/contact": "Contact Us",
+  "/projects": "Our Projects",
   "/about/profile": "Company Profile",
   "/about/quality-assurance": "Quality Assurance",
   "/about/accreditations": "Accreditations",
