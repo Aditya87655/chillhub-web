@@ -60,40 +60,40 @@ const navItems: NavItem[] = [
       {
         heading: "RECIPROCATING CHILLERS",
         items: [
-          { label: "Water-cooled Reciprocating Chillers", to: "/products/water-cooled-reciprocating-chiller" },
-          { label: "Air-cooled Reciprocating Chillers", to: "/products/air-cooled-reciprocating-chiller" },
-          { label: "Industrial Reciprocating Chillers", to: "/products/industrial-reciprocating-chiller" },
+          { label: "Water-cooled Reciprocating", to: "/products/water-cooled-reciprocating-chiller" },
+          { label: "Air-cooled Reciprocating", to: "/products/air-cooled-reciprocating-chiller" },
+          { label: "Industrial Reciprocating", to: "/products/industrial-reciprocating-chiller" },
         ],
       },
       {
         heading: "MORE",
         items: [
           { label: "Cooling Tower Manufacturer", to: "/products/cooling-tower-manufacturer" },
-          { label: "Chiller Manufacturer in Kolkata", to: "/products/chiller-manufacturer-kolkata" },
+          { label: "Chiller Manufacturer Kolkata", to: "/products/chiller-manufacturer-kolkata" },
         ],
       },
       {
         heading: "APPLICATION",
         items: [
-          { label: "Chiller For Plastic Industry", to: "/application/chiller-for-plastic-industry" },
-          { label: "Chiller For Cement Industry", to: "/application/chiller-for-cement-industry" },
-          { label: "Chiller For Brewery & Fermentation", to: "/application/chiller-for-brewery-fermentation" },
-          { label: "Chiller For Food & Beverage Industry", to: "/application/chiller-for-food-beverage-industry" },
-          { label: "Chiller For Heavy Industrial Purpose", to: "/application/chiller-for-heavy-industrial-purpose" },
-          { label: "Chiller For Hydrogen Refueling Station", to: "/application/chiller-for-hydrogen-refueling-station" },
-          { label: "Chillers For Milk Industry", to: "/application/chillers-for-milk-industry" },
-          { label: "Chiller For Medical Device", to: "/application/chiller-for-medical-device" },
-          { label: "Chiller For CNC Cooling", to: "/application/chiller-for-cnc-cooling" },
-          { label: "Chiller For Printing & Packaging", to: "/application/chiller-for-printing-packaging" },
+          { label: "Plastic Industry", to: "/application/chiller-for-plastic-industry" },
+          { label: "Cement Industry", to: "/application/chiller-for-cement-industry" },
+          { label: "Brewery & Fermentation", to: "/application/chiller-for-brewery-fermentation" },
+          { label: "Food & Beverage", to: "/application/chiller-for-food-beverage-industry" },
+          { label: "Heavy Industrial", to: "/application/chiller-for-heavy-industrial-purpose" },
+          { label: "Hydrogen Refueling", to: "/application/chiller-for-hydrogen-refueling-station" },
+          { label: "Milk Industry", to: "/application/chillers-for-milk-industry" },
+          { label: "Medical Device", to: "/application/chiller-for-medical-device" },
+          { label: "CNC Cooling", to: "/application/chiller-for-cnc-cooling" },
+          { label: "Printing & Packaging", to: "/application/chiller-for-printing-packaging" },
           { label: "BESS Chillers", to: "/application/bess-chillers" },
-          { label: "Chillers for Eyewash & Safety Showers", to: "/application/chillers-for-eyewash-safety-showers" },
+          { label: "Eyewash & Safety Showers", to: "/application/chillers-for-eyewash-safety-showers" },
         ],
       },
       {
         heading: "CUSTOMIZED CHILLER",
         items: [
           { label: "HVAC Chiller", to: "/customized/hvac-chiller" },
-          { label: "Chemical & Pharma Industry", to: "/customized/chiller-for-chemical-pharmaceutical" },
+          { label: "Chemical & Pharma", to: "/customized/chiller-for-chemical-pharmaceutical" },
           { label: "Batching Plant Chiller", to: "/customized/batching-plant-chiller" },
           { label: "Hazardous Area Chiller", to: "/customized/hazardous-area-chiller" },
           { label: "Ammonia Chillers", to: "/customized/ammonia-chillers" },
@@ -104,18 +104,18 @@ const navItems: NavItem[] = [
           { label: "Methanol Chillers", to: "/customized/methanol-chillers" },
           { label: "Glycol Chillers", to: "/customized/glycol-chillers" },
           { label: "Oil Chiller", to: "/customized/oil-chiller" },
-          { label: "Chiller for Soap Industry", to: "/customized/chiller-for-soap-industry" },
-          { label: "HDPE/CPVC/UPVC Pipe Chiller", to: "/customized/chiller-for-hdpe-cpvc-upvc-pipes" },
+          { label: "Soap Industry", to: "/customized/chiller-for-soap-industry" },
+          { label: "HDPE/CPVC/UPVC Pipe", to: "/customized/chiller-for-hdpe-cpvc-upvc-pipes" },
         ],
       },
       {
         heading: "GLOBAL FOOTPRINTS",
         items: [
-          { label: "Industrial Chillers in UAE", to: "/global/industrial-chillers-in-uae" },
-          { label: "Industrial Chillers in Africa", to: "/global/industrial-chillers-in-africa" },
-          { label: "Industrial Chillers in Indonesia", to: "/global/industrial-chillers-in-indonesia" },
-          { label: "Industrial Chillers in Nepal", to: "/global/industrial-chillers-in-nepal" },
-          { label: "Industrial Chillers in Bangladesh", to: "/global/industrial-chillers-in-bangladesh" },
+          { label: "Chillers in UAE", to: "/global/industrial-chillers-in-uae" },
+          { label: "Chillers in Africa", to: "/global/industrial-chillers-in-africa" },
+          { label: "Chillers in Indonesia", to: "/global/industrial-chillers-in-indonesia" },
+          { label: "Chillers in Nepal", to: "/global/industrial-chillers-in-nepal" },
+          { label: "Chillers in Bangladesh", to: "/global/industrial-chillers-in-bangladesh" },
         ],
       },
     ],
@@ -132,7 +132,7 @@ const navItems: NavItem[] = [
   },
   {
     label: "Our Projects",
-    to: "/projects/expertise",
+    to: "/projects",
     children: [
       { label: "Expertise", to: "/projects/expertise" },
       { label: "Turnkey Projects", to: "/projects/turnkey" },
@@ -165,39 +165,56 @@ const navItems: NavItem[] = [
   },
 ];
 
-/* ─── Desktop Mega Menu ─── */
-const DesktopMegaMenu = ({ sections, onClose }: { sections: NavSection[]; onClose: () => void }) => (
-  <div
-    className="absolute left-1/2 -translate-x-1/2 top-full z-50 mt-1 w-[90vw] max-w-[1200px] rounded-lg border bg-popover p-4 shadow-xl backdrop-blur-sm"
-    role="menu"
-  >
-    <div className="grid grid-cols-4 gap-x-6 gap-y-4">
-      {sections.map((sec) => (
-        <div key={sec.heading ?? sec.items[0]?.label}>
-          {sec.heading && (
-            <h4 className="mb-2 text-xs font-bold uppercase tracking-wider text-[hsl(var(--industrial-orange))]">
-              {sec.heading}
-            </h4>
-          )}
-          <ul className="space-y-0.5">
-            {sec.items.map((child) => (
-              <li key={child.to}>
-                <Link
-                  to={child.to}
-                  onClick={onClose}
-                  className="block rounded-md px-2 py-1.5 text-sm text-popover-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
-                  role="menuitem"
-                >
-                  {child.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+/* ─── Desktop Mega Menu (fixed overflow) ─── */
+const DesktopMegaMenu = ({ sections, onClose }: { sections: NavSection[]; onClose: () => void }) => {
+  const menuRef = useRef<HTMLDivElement>(null);
+  const [maxH, setMaxH] = useState("80vh");
+
+  useEffect(() => {
+    if (menuRef.current) {
+      const rect = menuRef.current.getBoundingClientRect();
+      const available = window.innerHeight - rect.top - 16;
+      setMaxH(`${Math.max(300, available)}px`);
+    }
+  }, []);
+
+  return (
+    <div
+      ref={menuRef}
+      className="absolute left-1/2 -translate-x-1/2 top-full z-50 mt-1 w-[95vw] max-w-[1200px] rounded-lg border bg-popover shadow-xl backdrop-blur-sm"
+      role="menu"
+      style={{ maxHeight: maxH }}
+    >
+      <div className="overflow-y-auto overscroll-contain p-4" style={{ maxHeight: `calc(${maxH} - 2px)` }}>
+        <div className="grid grid-cols-4 gap-x-5 gap-y-3">
+          {sections.map((sec) => (
+            <div key={sec.heading ?? sec.items[0]?.label}>
+              {sec.heading && (
+                <h4 className="mb-1.5 text-[11px] font-bold uppercase tracking-wider text-[hsl(var(--industrial-orange))]">
+                  {sec.heading}
+                </h4>
+              )}
+              <ul className="space-y-0">
+                {sec.items.map((child) => (
+                  <li key={child.to}>
+                    <Link
+                      to={child.to}
+                      onClick={onClose}
+                      className="block rounded-md px-2 py-1 text-[13px] leading-tight text-popover-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
+                      role="menuitem"
+                    >
+                      {child.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
-      ))}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 /* ─── Desktop dropdown item ─── */
 const DesktopNavItem = ({ item }: { item: NavItem }) => {

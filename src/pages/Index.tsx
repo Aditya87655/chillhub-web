@@ -4,7 +4,7 @@ import SectionHeading from "@/components/SectionHeading";
 import ProductCard from "@/components/ProductCard";
 import AnimatedSection from "@/components/AnimatedSection";
 import GlassCard from "@/components/GlassCard";
-import heroImage from "@/assets/hero-chiller.jpg";
+import HeroSlider from "@/components/HeroSlider";
 import screwImg from "@/assets/product-screw-chiller.jpg";
 import scrollImg from "@/assets/product-scroll-chiller.jpg";
 import ammoniaImg from "@/assets/product-ammonia-chiller.jpg";
@@ -42,47 +42,8 @@ const stats = [
 const Index = () => {
   return (
     <>
-      {/* Hero */}
-      <section className="relative min-h-[85vh] flex items-center overflow-hidden">
-        <div className="absolute inset-0">
-          <img src={heroImage} alt="Industrial Chiller" className="h-full w-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/80 to-primary/40" />
-        </div>
-        <div className="container relative z-10 py-20">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="max-w-2xl"
-          >
-            <span className="inline-block rounded-full border border-accent/30 bg-accent/10 backdrop-blur-sm px-5 py-2 text-sm font-semibold text-accent mb-6">
-              Leading Chiller Manufacturer in India
-            </span>
-            <h1 className="font-heading text-4xl sm:text-5xl lg:text-7xl font-bold text-primary-foreground leading-[1.1]">
-              Energy Efficient
-              <br />
-              <span className="text-accent">Smart Chillers</span>
-            </h1>
-            <p className="mt-6 text-lg text-primary-foreground/80 max-w-lg leading-relaxed">
-              Pioneer in manufacturing industrial chillers — screw, scroll, inverter, and ammonia chillers — with CFC-free, energy-saving technology.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Link
-                to="/products"
-                className="inline-flex items-center gap-2 rounded-lg bg-accent px-7 py-3.5 font-semibold text-accent-foreground hover:opacity-90 transition-opacity shadow-lg"
-              >
-                View Products <ArrowRight className="h-4 w-4" />
-              </Link>
-              <Link
-                to="/contact"
-                className="inline-flex items-center gap-2 rounded-lg border border-primary-foreground/30 bg-primary-foreground/5 backdrop-blur-sm px-7 py-3.5 font-semibold text-primary-foreground hover:bg-primary-foreground/10 transition-colors"
-              >
-                Get a Quote
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      {/* Hero Slider */}
+      <HeroSlider />
 
       {/* Stats */}
       <section className="relative -mt-16 z-10 pb-8">
@@ -91,7 +52,15 @@ const Index = () => {
             {stats.map((s, i) => (
               <AnimatedSection key={s.label} delay={i * 0.1}>
                 <GlassCard className="text-center py-8 bg-card">
-                  <div className="font-heading text-3xl md:text-4xl font-bold text-accent">{s.value}</div>
+                  <motion.div
+                    initial={{ scale: 0.5, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: i * 0.1 }}
+                    className="font-heading text-3xl md:text-4xl font-bold text-accent"
+                  >
+                    {s.value}
+                  </motion.div>
                   <div className="mt-1 text-sm text-muted-foreground font-medium">{s.label}</div>
                 </GlassCard>
               </AnimatedSection>
@@ -109,8 +78,8 @@ const Index = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {whyUsItems.map((item, i) => (
               <AnimatedSection key={item.title} delay={i * 0.08}>
-                <GlassCard className="flex gap-4 bg-card">
-                  <div className="shrink-0 flex items-center justify-center h-12 w-12 rounded-lg bg-accent/10">
+                <GlassCard className="flex gap-4 bg-card group">
+                  <div className="shrink-0 flex items-center justify-center h-12 w-12 rounded-lg bg-accent/10 group-hover:bg-accent/20 transition-colors">
                     <item.icon className="h-6 w-6 text-accent" />
                   </div>
                   <div>
@@ -162,7 +131,7 @@ const Index = () => {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             {industries.map((ind, i) => (
               <AnimatedSection key={ind} delay={i * 0.05}>
-                <div className="rounded-xl border border-primary-foreground/10 bg-primary-foreground/5 backdrop-blur-sm p-6 text-center hover:bg-primary-foreground/10 hover:border-accent/30 transition-all duration-300">
+                <div className="rounded-xl border border-primary-foreground/10 bg-primary-foreground/5 backdrop-blur-sm p-6 text-center hover:bg-primary-foreground/10 hover:border-accent/30 hover:scale-[1.03] transition-all duration-300">
                   <span className="font-heading text-base font-semibold text-primary-foreground">{ind}</span>
                 </div>
               </AnimatedSection>
@@ -183,7 +152,7 @@ const Index = () => {
             </p>
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 mt-8 rounded-lg bg-accent px-8 py-4 font-semibold text-accent-foreground hover:opacity-90 transition-opacity shadow-lg"
+              className="inline-flex items-center gap-2 mt-8 rounded-lg bg-[hsl(var(--industrial-orange))] px-8 py-4 font-semibold text-white hover:opacity-90 transition-opacity shadow-lg"
             >
               Contact Us <ArrowRight className="h-4 w-4" />
             </Link>
