@@ -1,97 +1,96 @@
 import SectionHeading from "@/components/SectionHeading";
 import PageHero from "@/components/PageHero";
 import AnimatedSection from "@/components/AnimatedSection";
-import GlassCard from "@/components/GlassCard";
-import factoryImg from "@/assets/factory-floor.jpg";
-import { CheckCircle, Award, Globe, Users, Wrench } from "lucide-react";
-
-const highlights = [
-  { icon: Award, text: "ISO 9001:2008 Certified Manufacturing" },
-  { icon: Globe, text: "Pan-India & Global Export Network" },
-  { icon: Users, text: "30+ Years of Industry Experience" },
-  { icon: Wrench, text: "Dedicated Engineering & After-Sales Support" },
-];
-
-const values = [
-  "CFC-Free & Energy Efficient Systems",
-  "European Origin Compressors (Bitzer, Frascold)",
-  "Advanced R&D and Quality Testing",
-  "Custom Solutions for Every Industry",
-];
-
-const clients = [
-  "Hero MotoCorp", "Delhi Metro", "Patanjali", "UltraTech Cement",
-  "Hindustan Unilever", "Dabur", "Mother Dairy", "Amul",
-];
 
 const About = () => (
   <>
-    <PageHero title="About Us" subtitle="Learn about our legacy in industrial cooling solutions" />
+    <PageHero 
+      title="About Our Industrial Chillers" 
+      subtitle="Excellence in Industrial Cooling Solutions Since 1989" 
+      backgroundImage="https://drycoolchillers.com/wp-content/uploads/2013/08/about2.jpg"
+    />
 
-    <section id="profile" className="py-20">
+    <section className="py-20">
       <div className="container grid lg:grid-cols-2 gap-12 items-center">
         <AnimatedSection>
-          <SectionHeading title="Our Story" centered={false} />
-          <p className="text-muted-foreground leading-relaxed mb-4">
-            Drycool Systems India Private Limited is one of the oldest and leading chiller manufacturers in India. We are pioneers in manufacturing industrial chillers including screw, scroll, ammonia, inverter, oil, water, and air chillers.
-          </p>
+          <SectionHeading title="About Us" centered={false} />
           <p className="text-muted-foreground leading-relaxed mb-6">
-            Our chillers are CFC-free with integrated energy-saving components, ensuring environmental conservation alongside superior performance. We serve industries across India and export globally to the UAE, Saudi Arabia, Qatar, and African nations.
+            Drycool Systems is one of the best chiller suppliers in India for commercial refrigeration and air conditioning companies. We are equipped with proper HVAC system integration, investment management, core integration air conditioning production, and contract energy Management. We are completely dedicated to properly using geothermal, thermal power generation, industrial waste heat recovery, and various other new energy fields. We will be completely dedicated to the production and system development of the central air conditioning systems, solutions, and services.
           </p>
-          <ul className="space-y-3">
-            {values.map((v) => (
-              <li key={v} className="flex items-center gap-3 text-sm font-medium text-foreground">
-                <CheckCircle className="h-5 w-5 text-accent shrink-0" />
-                {v}
-              </li>
-            ))}
-          </ul>
         </AnimatedSection>
         <AnimatedSection delay={0.2}>
-          <div className="rounded-xl overflow-hidden shadow-xl">
-            <img src={factoryImg} alt="Drycool manufacturing facility" className="w-full h-full object-cover" loading="lazy" />
+          <div className="rounded-xl overflow-hidden shadow-2xl border border-border/50">
+            <img 
+              src="https://drycoolchillers.com/wp-content/uploads/2013/08/about2.jpg" 
+              alt="About Our Industrial Chillers" 
+              className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700" 
+              loading="lazy" 
+            />
           </div>
         </AnimatedSection>
       </div>
     </section>
 
-    {/* Section Divider */}
     <div className="container"><div className="h-px bg-gradient-to-r from-transparent via-border to-transparent" /></div>
 
-    <section id="quality-assurance" className="py-20 bg-section-gradient">
-      <div className="container">
+    <section className="py-20 bg-section-gradient">
+      <div className="container space-y-16">
         <AnimatedSection>
-          <SectionHeading title="Why Drycool" subtitle="Industry-leading credentials and capabilities" />
+          <SectionHeading title="Our Approach" centered={false} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              Drycool Systems will not only follow the industry standards but we will define them for others.
+            </p>
+            <p>
+              Drycool Systems will improve the life of industry and building by collaborating with industry and building owners with the best industrial chillers. We will also contribute with the operators to the high-performance industry and building by contributing measurable conditions. We will offer over the year benefits along with proper support to the critical objective to fulfill the mission. We are determined to explore all the missions of the organization which includes industry and building itself by using financial and strategic objectives.
+            </p>
+            <p>
+              We will take various steps and take the challenges to improve the industry and building performance. We will ensure to determine the better ways to the industry and building environment which could impact the organization for a better cause. Drycool Systems is completely committed to delivering the best sustainable performance along with knowledge and innovation for increasing life and high performance in the industry and building the organization with chillers in India.
+            </p>
+          </div>
         </AnimatedSection>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {highlights.map((h, i) => (
-            <AnimatedSection key={h.text} delay={i * 0.1}>
-              <GlassCard className="text-center py-8 bg-card">
-                <div className="flex items-center justify-center h-14 w-14 rounded-full bg-accent/10 mx-auto mb-4">
-                  <h.icon className="h-7 w-7 text-accent" />
-                </div>
-                <p className="font-medium text-foreground text-sm">{h.text}</p>
-              </GlassCard>
-            </AnimatedSection>
-          ))}
-        </div>
-      </div>
-    </section>
 
-    <section id="clients" className="py-20">
-      <div className="container">
-        <AnimatedSection>
-          <SectionHeading title="Our Clients" subtitle="Trusted by leading brands across India and globally" />
+        <AnimatedSection delay={0.1}>
+          <SectionHeading title="Our Innovation" centered={false} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              Innovation is our objective and it is also our identity.
+            </p>
+            <p>
+              Drycool Systems completely believe in the beginning of innovation is with the customer’s requirement. Complete usage of cutting-edge concepts and aggressive designs completely innovates from the challenges which are existing in the marketplace. It will completely use the infrastructure and all the changing regulations to fuel the fluctuating cost along with innovation. Our location will help various organizations to achieve their objectives and machines by receiving unique environmental needs. Customized Chillers technology is completely improved and changed over the years and Drycool Systems is proud to be a part of it. The majority of the consumers trust Drycool Systems’ innovation and expertise solutions to achieve the organizational mission.
+            </p>
+          </div>
         </AnimatedSection>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-          {clients.map((c, i) => (
-            <AnimatedSection key={c} delay={i * 0.05}>
-              <GlassCard className="text-center py-6 bg-card" hover={false}>
-                <span className="font-heading text-lg font-bold text-foreground">{c}</span>
-              </GlassCard>
-            </AnimatedSection>
-          ))}
-        </div>
+        
+        <AnimatedSection delay={0.2}>
+          <SectionHeading title="Our Sustainability" centered={false} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              We are completely committed to sustainability. Drycool Systems being the best chiller manufacturers in India completely understand the requirement for sustainable business practices due to the changes in the environment that has grown rapidly. Every customer is expecting the company’s home they are engaging with the business is aggressively committed towards sustainability. This is not only a gesture towards being a responsible environment concerned company but it is one of the future concern approaches towards various businesses. Drycool Systems will not only help the organization to achieve the industry and building mission but it is also having the goal of having energy efficiency solutions for the generations to come.
+            </p>
+          </div>
+        </AnimatedSection>
+
+        <AnimatedSection delay={0.3}>
+          <SectionHeading title="Our Diversity" centered={false} />
+          <p className="text-muted-foreground leading-relaxed mb-6">
+            Drycool Systems are completely operational in various divisions which will ensure a better impact on the environmental and industrial aspects.
+          </p>
+          <ul className="grid md:grid-cols-2 gap-4 text-muted-foreground">
+            {[
+              "Manufacturing, planning, procurement, and R & D.",
+              "Administration and finance.",
+              "Sales and marketing strategy.",
+              "Parts and supplies.",
+              "HVAC maintenance along with rental chiller services."
+            ].map((item, i) => (
+              <li key={i} className="flex items-center gap-3 p-4 rounded-lg bg-card border border-border/50 shadow-sm">
+                <div className="h-2 w-2 rounded-full bg-[hsl(var(--industrial-orange))]" />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </AnimatedSection>
       </div>
     </section>
   </>

@@ -3,23 +3,32 @@ import SectionHeading from "@/components/SectionHeading";
 import PageHero from "@/components/PageHero";
 import AnimatedSection from "@/components/AnimatedSection";
 import GlassCard from "@/components/GlassCard";
-import { Send, Cog, CheckCircle } from "lucide-react";
+import { Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
-const spareCategories = [
-  "Compressor Parts & Assemblies",
-  "Evaporator & Condenser Coils",
-  "Expansion Valves & Filters",
-  "Electrical & Control Components",
-  "Pumps & Motors",
-  "Refrigerant & Lubricants",
-  "Sensors & Transducers",
-  "Gaskets & Seals",
+const spareParts = [
+  { title: "Shell & Tube Type Condenser", img: "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Shell-Tube-Condenser2-570x321.jpg" },
+  { title: "Shell & Tube Type Evaporator", img: "https://www.drycoolchillers.com/wp-content/uploads/2015/10/shell-and-tube-evaporator2-570x321.jpg" },
+  { title: "Filters", img: "https://www.drycoolchillers.com/wp-content/uploads/2015/10/FILTERS2-570x321.jpg" },
+  { title: "Rotary Sprinkler", img: "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Rotary-Sprinkler-11-570x321.jpg" },
+  { title: "Sprinkler Fan", img: "https://www.drycoolchillers.com/wp-content/uploads/2015/10/SPRINKLER-FAN2-570x321.jpg" },
+  { title: "Flange Motor", img: "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Flange-Motor1-570x321.jpg" },
+  { title: "PVC Fills", img: "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Rotary-Sprinkler-21-570x321.jpg" },
+  { title: "Screw Compressor", img: "https://www.drycoolchillers.com/wp-content/uploads/2022/09/bitzer-screw-compressors-500x500-570x321.png" },
+  { title: "Scroll Compressor", img: "https://www.drycoolchillers.com/wp-content/uploads/2022/09/Scroll-Compressor-2-570x321.jpg" },
+  { title: "Oil Separator", img: "https://www.drycoolchillers.com/wp-content/uploads/2022/09/New-Project-13-570x321.jpg" },
+  { title: "Non return valve", img: "https://www.drycoolchillers.com/wp-content/uploads/2022/09/New-Project-12-570x321.jpg" },
+  { title: "Expansion Valve", img: "https://www.drycoolchillers.com/wp-content/uploads/2022/09/New-Project-11-570x321.jpg" },
+  { title: "High Pressure Gauge", img: "https://www.drycoolchillers.com/wp-content/uploads/2022/09/New-Project-10-570x321.jpg" },
+  { title: "Ball valve", img: "https://www.drycoolchillers.com/wp-content/uploads/2022/09/New-Project-9-570x321.jpg" },
+  { title: "Water flow switch", img: "https://www.drycoolchillers.com/wp-content/uploads/2022/09/New-Project-7-570x321.jpg" },
+  { title: "Low Pressure Switch", img: "https://www.drycoolchillers.com/wp-content/uploads/2022/09/low-pressure-switch-STANDARD-1-570x321.jpg" },
+  { title: "High Pressure Switch", img: "https://www.drycoolchillers.com/wp-content/uploads/2022/09/Danfoss-HP-SWITCH-e1664181616623-570x321.jpg" },
 ];
 
 const SpareParts = () => {
   const { toast } = useToast();
-  const [form, setForm] = useState({ name: "", phone: "", model: "", part: "", message: "" });
+  const [form, setForm] = useState({ name: "", company: "", city: "", phone: "", email: "", subject: "", message: "" });
   const [submitting, setSubmitting] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -31,42 +40,61 @@ const SpareParts = () => {
     setSubmitting(true);
     await new Promise((r) => setTimeout(r, 1000));
     setSubmitting(false);
-    setForm({ name: "", phone: "", model: "", part: "", message: "" });
-    toast({ title: "Request Sent!", description: "Our spare parts team will contact you." });
+    setForm({ name: "", company: "", city: "", phone: "", email: "", subject: "", message: "" });
+    toast({ title: "Request Sent!", description: "Thank you for your request. We will contact you soon." });
   };
 
   const inputClass = "w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 transition-shadow";
 
   return (
     <>
-      <PageHero title="Spare Parts" subtitle="Genuine replacement parts for all Drycool chillers" />
+      <PageHero title="Spare parts of chillers" subtitle="Drycool Systems Genuine Chiller Components" />
 
       <section className="py-20">
-        <div className="container grid lg:grid-cols-2 gap-12">
+        <div className="container">
           <AnimatedSection>
-            <SectionHeading title="Available Spare Parts" centered={false} />
-            <div className="grid sm:grid-cols-2 gap-3">
-              {spareCategories.map((s) => (
-                <div key={s} className="flex items-center gap-2 text-sm text-foreground">
-                  <CheckCircle className="h-4 w-4 text-accent shrink-0" />
-                  {s}
-                </div>
-              ))}
-            </div>
+            <SectionHeading title="Spare parts of chillers" />
           </AnimatedSection>
 
-          <AnimatedSection delay={0.2}>
-            <SectionHeading title="Request Spare Parts" centered={false} />
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <input name="name" placeholder="Your Name" value={form.name} onChange={handleChange} className={inputClass} required />
-              <input name="phone" placeholder="Phone Number" value={form.phone} onChange={handleChange} className={inputClass} required />
-              <input name="model" placeholder="Chiller Model Number" value={form.model} onChange={handleChange} className={inputClass} />
-              <input name="part" placeholder="Part Name / Number" value={form.part} onChange={handleChange} className={inputClass} />
-              <textarea name="message" rows={3} placeholder="Additional Details" value={form.message} onChange={handleChange} className={inputClass} />
-              <button type="submit" disabled={submitting} className="inline-flex items-center gap-2 rounded-lg bg-accent px-7 py-3.5 font-semibold text-accent-foreground hover:opacity-90 transition-opacity disabled:opacity-50 shadow-lg">
-                {submitting ? "Sending..." : "Request Parts"} <Send className="h-4 w-4" />
-              </button>
-            </form>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+            {spareParts.map((part, i) => (
+              <AnimatedSection key={part.title} delay={i * 0.05}>
+                <div className="group overflow-hidden rounded-2xl bg-card border border-border transition-all hover:shadow-xl">
+                  <div className="aspect-[16/9] overflow-hidden">
+                    <img 
+                      src={part.img} 
+                      alt={part.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                  </div>
+                  <div className="p-4 text-center">
+                    <h3 className="font-heading text-lg font-bold text-foreground">{part.title}</h3>
+                  </div>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+
+          <AnimatedSection>
+            <div className="max-w-3xl mx-auto">
+              <SectionHeading title="ENQUIRY FORM" subtitle="Contact us for any spare parts requirement" />
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <input name="name" placeholder="Your Name:" value={form.name} onChange={handleChange} className={inputClass} required />
+                  <input name="company" placeholder="Company Name:" value={form.company} onChange={handleChange} className={inputClass} />
+                </div>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <input name="city" placeholder="City:" value={form.city} onChange={handleChange} className={inputClass} />
+                  <input name="phone" placeholder="Phone:" value={form.phone} onChange={handleChange} className={inputClass} required />
+                </div>
+                <input name="email" type="email" placeholder="Your Email:" value={form.email} onChange={handleChange} className={inputClass} required />
+                <input name="subject" placeholder="Subject:" value={form.subject} onChange={handleChange} className={inputClass} />
+                <textarea name="message" rows={5} placeholder="Your Message:" value={form.message} onChange={handleChange} className={inputClass} required />
+                <button type="submit" disabled={submitting} className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-7 py-3.5 font-semibold text-accent-foreground hover:opacity-90 transition-opacity disabled:opacity-50 shadow-lg">
+                  {submitting ? "Sending..." : "Submit Enquiry"} <Send className="h-4 w-4" />
+                </button>
+              </form>
+            </div>
           </AnimatedSection>
         </div>
       </section>

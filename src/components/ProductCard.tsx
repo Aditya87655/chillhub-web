@@ -5,9 +5,10 @@ interface ProductCardProps {
   title: string;
   description: string;
   image: string;
+  slug?: string;
 }
 
-const ProductCard = ({ title, description, image }: ProductCardProps) => (
+const ProductCard = ({ title, description, image, slug }: ProductCardProps) => (
   <div className="group bg-card rounded-lg overflow-hidden industrial-shadow hover:industrial-shadow-lg transition-all duration-300 hover:-translate-y-1">
     <div className="aspect-[4/3] overflow-hidden">
       <img
@@ -21,7 +22,7 @@ const ProductCard = ({ title, description, image }: ProductCardProps) => (
       <h3 className="font-heading text-xl font-bold text-foreground mb-2">{title}</h3>
       <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">{description}</p>
       <Link
-        to="/products"
+        to={slug ? `/products/${slug}` : "/products"}
         className="inline-flex items-center gap-1.5 mt-4 text-sm font-semibold text-accent hover:underline"
       >
         Learn More <ArrowRight className="h-4 w-4" />

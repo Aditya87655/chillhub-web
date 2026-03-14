@@ -17,86 +17,158 @@ const ProductDetailPage = () => {
 
   return (
     <>
-      <PageHero title={product.title} subtitle={product.subtitle} />
+      <PageHero
+        title={product.title.replace(/[:]$/, '')}
+        subtitle={product.category}
+        backgroundImage={product.heroImage}
+      />
 
-      {/* Description */}
+      {/* Hero Image / Section image & Primary Description */}
       <section className="py-20">
         <div className="container">
-          <AnimatedSection>
-            <div className="max-w-3xl mx-auto">
-              <p className="text-lg text-muted-foreground leading-relaxed text-center">
-                {product.description}
-              </p>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <AnimatedSection className="order-2 lg:order-1">
+              <div className="space-y-6">
+                {product.paragraphs.slice(0, 3).map((p, i) => (
+                  p !== "&nbsp;" && (
+                    <p key={i} className="text-lg text-muted-foreground leading-relaxed">
+                      {p.replace(/&amp;/g, '&').replace(/&#8211;/g, '-').replace(/&nbsp;/g, ' ')}
+                    </p>
+                  )
+                ))}
+              </div>
+            </AnimatedSection>
 
-      <div className="container"><div className="h-px bg-gradient-to-r from-transparent via-border to-transparent" /></div>
-
-      {/* Features */}
-      <section className="py-20 bg-section-gradient">
-        <div className="container">
-          <AnimatedSection>
-            <SectionHeading title="Key Features" subtitle="What makes our solution stand out" />
-          </AnimatedSection>
-          <FeatureGrid features={product.features} />
-        </div>
-      </section>
-
-      {/* Specifications */}
-      <section className="py-20">
-        <div className="container">
-          <AnimatedSection>
-            <SectionHeading title="Technical Specifications" subtitle="Engineering excellence in every detail" />
-          </AnimatedSection>
-          <SpecTable specs={product.specs} />
-        </div>
-      </section>
-
-      <div className="container"><div className="h-px bg-gradient-to-r from-transparent via-border to-transparent" /></div>
-
-      {/* Applications */}
-      <section className="py-20 bg-section-gradient">
-        <div className="container">
-          <AnimatedSection>
-            <SectionHeading title="Applications" subtitle="Industries and use cases we serve" />
-          </AnimatedSection>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
-            {product.applications.map((a, i) => (
-              <AnimatedSection key={a} delay={i * 0.05}>
-                <GlassCard className="flex items-center gap-3 py-4 bg-card" hover={false}>
-                  <CheckCircle className="h-5 w-5 text-[hsl(var(--industrial-orange))] shrink-0" />
-                  <span className="text-sm font-medium text-foreground">{a}</span>
+            <AnimatedSection delay={0.2} className="order-1 lg:order-2">
+              <div className="relative group">
+                <div className="absolute -inset-4 bg-gradient-to-tr from-[hsl(var(--industrial-orange)/0.2)] to-transparent rounded-3xl blur-2xl opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
+                <GlassCard className="relative overflow-hidden aspect-[4/3] flex items-center justify-center p-0 border-primary/20">
+                  {product.heroImage ? (
+                    <img
+                      src={product.heroImage}
+                      alt={product.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Multiple-Water-Cooled-Screw-Chiller-1-2.jpg"; // fallback
+                      }}
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-muted flex items-center justify-center">
+                      <span className="text-muted-foreground">Product Image</span>
+                    </div>
+                  )}
                 </GlassCard>
-              </AnimatedSection>
-            ))}
+              </div>
+            </AnimatedSection>
           </div>
         </div>
       </section>
 
-      {/* Advantages */}
-      <section className="py-20">
-        <div className="container">
-          <AnimatedSection>
-            <SectionHeading title="Why Choose Drycool" subtitle="Advantages that set us apart" />
-          </AnimatedSection>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
-            {product.advantages.map((adv, i) => (
-              <AnimatedSection key={adv} delay={i * 0.05}>
-                <div className="rounded-lg border border-border bg-card px-4 py-3 text-center text-sm font-medium text-foreground industrial-shadow">
-                  {adv}
-                </div>
-              </AnimatedSection>
-            ))}
+      {/* Specifications Table if present */}
+      {product.specificationText && product.specificationText.length > 0 && (
+        <section className="py-20 bg-muted/20">
+          <div className="container">
+            <AnimatedSection>
+              <SectionHeading
+                title="Technical Specifications"
+                subtitle="Detailed engineering parameters and performance metrics"
+              />
+            </AnimatedSection>
+
+            {/* If it's the simple label|value format */}
+            {product.specificationText[0].includes('|') ? (
+              <SpecTable specs={product.specificationText.map(line => {
+                const [label, value] = line.split('|').map(s => s.trim());
+                return { label, value: value || '' };
+              })} />
+            ) : (
+              /* If it's just a list of strings */
+              <div className="max-w-3xl mx-auto space-y-4">
+                {product.specificationText.map((spec, i) => (
+                  <GlassCard key={i} className="p-4 flex items-center gap-3">
+                    <div className="h-2 w-2 rounded-full bg-accent" />
+                    <span className="text-foreground">{spec}</span>
+                  </GlassCard>
+                ))}
+              </div>
+            )}
           </div>
-        </div>
-      </section>
+        </section>
+      )}
+
+      {/* Additional Description */}
+      {product.paragraphs.length > 3 && (
+        <section className="py-10 bg-muted/10">
+          <div className="container">
+            <AnimatedSection>
+              <div className="max-w-4xl mx-auto space-y-4">
+                {product.paragraphs.slice(3).map((p, i) => (
+                  p.length > 10 && p !== "&nbsp;" && !p.includes("Your Name:") && (
+                    <p key={i} className="text-muted-foreground leading-relaxed">
+                      {p.replace(/&amp;/g, '&').replace(/&#8211;/g, '-').replace(/&nbsp;/g, ' ')}
+                    </p>
+                  )
+                ))}
+              </div>
+            </AnimatedSection>
+          </div>
+        </section>
+      )}
+
+      {/* Features List */}
+      {product.featureList.length > 0 && (
+        <section className="py-20 bg-section-gradient">
+          <div className="container">
+            <AnimatedSection>
+              <SectionHeading title="Product Details & Features" subtitle="Technical capabilities and specifications" />
+            </AnimatedSection>
+
+            <div className="grid md:grid-cols-2 gap-4 max-w-5xl mx-auto">
+              {product.featureList.map((feature, i) => (
+                feature.length > 5 && (
+                  <AnimatedSection key={i} delay={i * 0.05}>
+                    <GlassCard className="flex items-start gap-3 p-5 h-full bg-card" hover={true}>
+                      <CheckCircle className="h-5 w-5 text-[hsl(var(--industrial-orange))] shrink-0 mt-0.5" />
+                      <span className="text-sm text-foreground leading-relaxed">
+                        {feature.replace(/&amp;/g, '&').replace(/&#8211;/g, '-').replace(/&nbsp;/g, ' ')}
+                      </span>
+                    </GlassCard>
+                  </AnimatedSection>
+                )
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Gallery / More Images if any */}
+      {product.galleryImages.length > 0 && (
+        <section className="py-20">
+          <div className="container">
+            <AnimatedSection>
+              <SectionHeading title="Product Gallery" subtitle="Visual overview of the system" />
+            </AnimatedSection>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {product.galleryImages.map((img, i) => (
+                <AnimatedSection key={i} delay={i * 0.1}>
+                  <div className="aspect-square rounded-xl overflow-hidden border border-border group">
+                    <img
+                      src={img}
+                      alt={`${product.title} gallery ${i}`}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                  </div>
+                </AnimatedSection>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* CTA */}
       <CTASection
-        title={`Get a Quote for ${product.title}`}
-        subtitle="Contact our engineering team for custom specifications and competitive pricing."
+        title={`Request for ${product.title.replace(/[:]$/, '')}`}
+        subtitle="Contact our engineering team for custom specifications and global delivery options."
         buttonText="Request Quote"
       />
     </>

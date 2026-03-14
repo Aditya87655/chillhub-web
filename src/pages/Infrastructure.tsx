@@ -26,24 +26,67 @@ const capabilities = [
 
 const Infrastructure = () => (
   <>
-    <PageHero title="Drycool Intelligence" subtitle="Smart infrastructure, commissioning, and building solutions" />
+    <PageHero
+      title="Building Management System (BMS) Company"
+      subtitle="The best Building Management System(bms) company for HVAC"
+      backgroundImage="https://www.drycoolchillers.com/wp-content/uploads/2015/10/Single-Air-Cooled-Screw-Chiller.jpg"
+    />
 
-    <section id="hvac-contractor" className="py-20">
+    {/* Introduction Section */}
+    <section className="py-20">
+      <div className="container grid lg:grid-cols-2 gap-12 items-center">
+        <AnimatedSection>
+          <SectionHeading title="Building Management System (BMS)" centered={false} />
+          <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+            We are the best Building Management System(bms) company for HVAC. Our building management system contractor allows small and medium-sized buildings to create a BMS network and access their equipment by removing technical complexity.
+          </p>
+          <p className="text-muted-foreground leading-relaxed mb-6">
+            Providing quick access to BMS data helps companies deliver higher technical staff efficiency, increase building occupancy comfort, and significantly decrease energy and carbon footprint.
+          </p>
+          <p className="text-muted-foreground leading-relaxed">
+            A BMS connects the HVAC and various construction equipment to work as an integrated unit. Ideally, they should centralize operations and make it easy to visualize data using a user interface or console.
+          </p>
+        </AnimatedSection>
+        <AnimatedSection delay={0.2}>
+          <div className="relative group">
+            <div className="absolute -inset-4 bg-gradient-to-tr from-accent/20 to-transparent rounded-3xl blur-2xl opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 aspect-video">
+              <img
+                src="https://www.drycoolchillers.com/wp-content/uploads/2022/10/WhatsApp-Image-2022-10-10-at-5.18.44-PM.jpeg"
+                alt="Building Management System"
+                className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </AnimatedSection>
+      </div>
+    </section>
+
+    {/* Essential Features */}
+    <section className="py-20 bg-section-gradient">
       <div className="container">
         <AnimatedSection>
-          <SectionHeading title="Our Services" subtitle="End-to-end HVAC and smart building solutions" />
+          <SectionHeading
+            title="Essential Features of BMS Software"
+            subtitle="Centralized management and intelligent control"
+          />
         </AnimatedSection>
-        <div className="grid sm:grid-cols-2 gap-6">
-          {services.map((s, i) => (
-            <AnimatedSection key={s.title} delay={i * 0.1}>
-              <GlassCard className="flex gap-5 bg-card">
-                <div className="shrink-0 flex items-center justify-center h-14 w-14 rounded-xl bg-accent/10">
-                  <s.icon className="h-7 w-7 text-accent" />
-                </div>
-                <div>
-                  <h3 className="font-heading text-xl font-bold text-foreground">{s.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
-                </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {[
+            "Energy and data monitoring",
+            "Better control of appliances",
+            "Safety Management",
+            "Integration of separate operations",
+            "Reducing management workload",
+            "Better tool life",
+            "Gain better control over buildings",
+            "Data acquisition & reporting"
+          ].map((feature, i) => (
+            <AnimatedSection key={i} delay={i * 0.05}>
+              <GlassCard className="flex items-center gap-3 py-4 bg-card" hover={true}>
+                <CheckCircle className="h-5 w-5 text-accent shrink-0" />
+                <span className="text-sm font-medium text-foreground">{feature}</span>
               </GlassCard>
             </AnimatedSection>
           ))}
@@ -51,36 +94,67 @@ const Infrastructure = () => (
       </div>
     </section>
 
-    {/* Section Divider */}
-    <div className="container"><div className="h-px bg-gradient-to-r from-transparent via-border to-transparent" /></div>
-
-    <section id="projects" className="py-20 bg-section-gradient">
+    {/* Business Benefits */}
+    <section className="py-20">
       <div className="container">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <AnimatedSection className="order-2 lg:order-1">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+              <img
+                src="https://www.drycoolchillers.com/wp-content/uploads/2022/10/WhatsApp-Image-2022-10-10-at-5.18.44-PM-1.jpeg"
+                alt="BMS Technical Illustration"
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+          </AnimatedSection>
+          <AnimatedSection className="order-1 lg:order-2">
+            <SectionHeading title="Primary business uses for BMS?" centered={false} />
+            <div className="space-y-4">
+              {[
+                "Increasing Productivity",
+                "Relevant response to complaints",
+                "Allocation of operating costs",
+                "Targeted resources for replacement",
+                "Early detection of problems",
+                "Reduction in operating costs",
+                "Better Tool Life",
+                "Better Security"
+              ].map((benefit, i) => (
+                <div key={i} className="flex items-center gap-3 group">
+                  <div className="h-2 w-2 rounded-full bg-accent group-hover:scale-150 transition-transform" />
+                  <span className="text-muted-foreground group-hover:text-foreground transition-colors">{benefit}</span>
+                </div>
+              ))}
+            </div>
+          </AnimatedSection>
+        </div>
+      </div>
+    </section>
+
+    {/* BMS Software Can Help You */}
+    <section className="py-20 bg-muted/30">
+      <div className="container text-center">
         <AnimatedSection>
-          <SectionHeading title="Manufacturing Excellence" subtitle="State-of-the-art facilities in Noida, India" />
+          <SectionHeading title="BMS Software Can Help You" centered={true} />
+          <p className="text-muted-foreground max-w-3xl mx-auto mb-12">
+            Our Building Management System contractor allows small and medium-sized buildings to create a BMS network and access their equipment by removing technical complexity.
+          </p>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="p-8 rounded-2xl bg-card border border-border shadow-lg">
+              <h4 className="text-xl font-bold mb-4">Technical Efficiency</h4>
+              <p className="text-sm text-muted-foreground">Deliver higher technical staff efficiency through centralized data access.</p>
+            </div>
+            <div className="p-8 rounded-2xl bg-card border border-border shadow-lg">
+              <h4 className="text-xl font-bold mb-4">Occupancy Comfort</h4>
+              <p className="text-sm text-muted-foreground">Increase building occupancy comfort by intelligent climate control.</p>
+            </div>
+            <div className="p-8 rounded-2xl bg-card border border-border shadow-lg">
+              <h4 className="text-xl font-bold mb-4">Energy Scaling</h4>
+              <p className="text-sm text-muted-foreground">Significantly decrease energy and carbon footprint across all equipment.</p>
+            </div>
+          </div>
         </AnimatedSection>
-        <div className="grid lg:grid-cols-2 gap-6 mb-12">
-          <AnimatedSection>
-            <div className="rounded-xl overflow-hidden shadow-xl h-72">
-              <img src={factoryImg} alt="Manufacturing facility" className="w-full h-full object-cover" loading="lazy" />
-            </div>
-          </AnimatedSection>
-          <AnimatedSection delay={0.15}>
-            <div className="rounded-xl overflow-hidden shadow-xl h-72">
-              <img src={heroImg} alt="Chiller production" className="w-full h-full object-cover" loading="lazy" />
-            </div>
-          </AnimatedSection>
-        </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {capabilities.map((c, i) => (
-            <AnimatedSection key={c} delay={i * 0.08}>
-              <GlassCard className="flex items-center gap-3 py-4 bg-card" hover={false}>
-                <CheckCircle className="h-5 w-5 text-accent shrink-0" />
-                <span className="text-sm font-medium text-foreground">{c}</span>
-              </GlassCard>
-            </AnimatedSection>
-          ))}
-        </div>
       </div>
     </section>
 

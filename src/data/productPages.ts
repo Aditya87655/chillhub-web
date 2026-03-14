@@ -1,1161 +1,978 @@
-import {
-  Wind, Droplets, Zap, Gauge, Thermometer, Settings, Shield, Factory,
-  Cpu, Beaker, Milk, Pill, Printer, Battery, ShowerHead, Wrench,
-  Globe, MapPin, Flame, Snowflake, Waves, FlaskConical, Pipette
-} from "lucide-react";
-
 export interface ProductPageData {
-  slug: string;
   title: string;
-  subtitle: string;
-  description: string;
-  features: { icon: any; title: string; desc: string }[];
-  specs: { label: string; value: string }[];
-  applications: string[];
-  advantages: string[];
-  category: "products" | "application" | "customized" | "global";
-  parentLabel: string;
-  parentPath: string;
+  category: string;
+  slug?: string;
+  heroImage: string;
+  paragraphs: string[];
+  featureList: string[];
+  advantagesList: string[];
+  specificationText: string[];
+  galleryImages: string[];
 }
 
-export const productPages: ProductPageData[] = [
-  // ═══════════════════════════════════════════
-  // PRODUCTS > SCREW CHILLERS
-  // ═══════════════════════════════════════════
-  {
-    slug: "air-cooled-screw-chiller",
-    title: "Air Cooled Screw Chiller",
-    subtitle: "High-performance air-cooled screw compressor chillers for industrial cooling",
-    description: "Drycool's Air Cooled Screw Chillers feature multiple compressor configuration, fabricated in ISO 9001:2008 certified units with CFC-free refrigerants R-407C & R-134A. Designed for extreme ambient conditions up to 52°C.",
-    features: [
-      { icon: Wind, title: "Air Cooled Design", desc: "No cooling tower required — reduces installation cost and water consumption." },
-      { icon: Gauge, title: "High COP", desc: "Energy-efficient screw compressors delivering superior coefficient of performance." },
-      { icon: Shield, title: "CFC-Free Refrigerants", desc: "Eco-friendly R-407C & R-134A refrigerants for sustainable operation." },
-      { icon: Settings, title: "Multiple Compressors", desc: "Independent refrigeration circuits for redundancy and part-load efficiency." },
+export const productPages: Record<string, ProductPageData> = {
+  "air-cooled-screw-chiller": {
+    "title": "Air Cooled Screw Chiller",
+    "slug": "air-cooled-screw-chiller",
+    "category": "SCREW CHILLERS",
+    "heroImage": "https://www.drycoolchillers.com/wp-content/uploads/2015/11/Slide011.jpg",
+    "paragraphs": [
+      "Advantages of Drycool Sysyem’s Air Cooled Screw Chiller:"
     ],
-    specs: [
-      { label: "Capacity Range", value: "20 TR – 500 TR" },
-      { label: "Refrigerant", value: "R-407C / R-134A" },
-      { label: "Compressor", value: "Twin Screw" },
-      { label: "Ambient Temp.", value: "Up to 52°C" },
-      { label: "Power Supply", value: "415V / 3Ph / 50Hz" },
-      { label: "Condenser", value: "Copper tube with aluminium fins" },
-    ],
-    applications: ["HVAC & Comfort Cooling", "Plastic Processing", "Chemical Plants", "Food & Beverage", "Pharmaceutical", "Data Centers"],
-    advantages: ["No water consumption", "Low maintenance", "Easy installation", "Compact footprint", "High ambient operation", "Energy efficient"],
-    category: "products",
-    parentLabel: "Products",
-    parentPath: "/products",
+    "featureList": [],
+    "advantagesList": [],
+    "specificationText": [],
+    "galleryImages": [
+      "https://www.drycoolchillers.com/wp-content/uploads/2015/11/Slide011.jpg"
+    ]
   },
-  {
-    slug: "water-cooled-screw-chiller",
-    title: "Water Cooled Screw Chiller",
-    subtitle: "Superior efficiency water-cooled screw chillers for demanding applications",
-    description: "Water Cooled Screw Chillers from Drycool deliver best-in-class efficiency with shell & tube condensers. Designed for large-scale industrial and commercial cooling with stable, precise temperature control.",
-    features: [
-      { icon: Droplets, title: "Water Cooled Condenser", desc: "Shell & tube design for maximum heat transfer and superior efficiency." },
-      { icon: Gauge, title: "Premium Efficiency", desc: "Best-in-class COP values for lowest lifecycle operating cost." },
-      { icon: Thermometer, title: "Precise Control", desc: "±0.5°C temperature stability for critical process applications." },
-      { icon: Settings, title: "Modular Design", desc: "Scalable configurations to match growing capacity requirements." },
+  "water-cooled-screw-chiller": {
+    "title": "Water Cooled Screw Chiller",
+    "slug": "water-cooled-screw-chiller",
+    "category": "SCREW CHILLERS",
+    "heroImage": "https://drycoolchillers.com/wp-content/uploads/2015/10/Single-Water-Cooled-Screw-Chiller.jpg",
+    "paragraphs": [
+      "We are offering various functionalities with water-cooled screw chillers which include easy operation, less maintenance, and hassle-free service life. Screw chillers are mostly used for cooling water in various industries including food processing, chemicals, etc."
     ],
-    specs: [
-      { label: "Capacity Range", value: "30 TR – 600 TR" },
-      { label: "Refrigerant", value: "R-134A / R-407C" },
-      { label: "Compressor", value: "Twin Screw" },
-      { label: "Evaporator", value: "Shell & Tube" },
-      { label: "Condenser", value: "Shell & Tube" },
-      { label: "Power Supply", value: "415V / 3Ph / 50Hz" },
+    "featureList": [],
+    "advantagesList": [],
+    "specificationText": [
+      "DCM-W-350 350 TR 2 210.0"
     ],
-    applications: ["Large Commercial HVAC", "Industrial Process Cooling", "Pharmaceutical Plants", "Textile Industry", "Chemical Processing", "District Cooling"],
-    advantages: ["Higher efficiency than air-cooled", "Quiet indoor operation", "Longer equipment life", "Consistent performance", "Lower power consumption", "Ideal for large loads"],
-    category: "products",
-    parentLabel: "Products",
-    parentPath: "/products",
+    "galleryImages": [
+      "https://www.drycoolchillers.com/wp-content/uploads/2013/07/Single-Compressor-Water-Cooled-Scroll-Shiller-570x321.jpg"
+    ]
   },
-  {
-    slug: "inverter-screw-chiller",
-    title: "Inverter Screw Chiller",
-    subtitle: "Variable speed screw chillers for optimal energy savings",
-    description: "Inverter Screw Chillers utilize variable frequency drive technology for intelligent compressor speed adjustment, delivering up to 50% energy savings at part-load conditions while maintaining precise temperature control.",
-    features: [
-      { icon: Zap, title: "VFD Technology", desc: "Variable frequency drive adjusts compressor speed to match actual cooling demand." },
-      { icon: Gauge, title: "50% Energy Savings", desc: "Dramatic reduction in power consumption at part-load operation." },
-      { icon: Cpu, title: "Smart Controls", desc: "Microprocessor-based controller with advanced diagnostics and remote monitoring." },
-      { icon: Thermometer, title: "Soft Start", desc: "Eliminates high inrush currents, reducing electrical infrastructure requirements." },
+  "inverter-screw-chiller": {
+    "title": "Inverter Screw Chiller",
+    "slug": "inverter-screw-chiller",
+    "category": "SCREW CHILLERS",
+    "heroImage": "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Multiple-Water-Cooled-Screw-Chiller-1-2.jpg",
+    "paragraphs": [
+      "These are the major effective features that will be offered with every inverter screw chillers."
     ],
-    specs: [
-      { label: "Capacity Range", value: "30 TR – 500 TR" },
-      { label: "Energy Savings", value: "Up to 50%" },
-      { label: "Refrigerant", value: "R-134A" },
-      { label: "Speed Range", value: "25% – 100%" },
-      { label: "Starting Current", value: "<2x FLA" },
-      { label: "Control", value: "PLC with HMI" },
-    ],
-    applications: ["Variable Load Applications", "Hotels & Hospitals", "IT Parks", "Shopping Malls", "Industrial Automation", "Green Buildings"],
-    advantages: ["Lowest lifecycle cost", "Soft start capability", "Reduced noise at part load", "Precise temperature control", "Low harmonic distortion", "IGBT-based inverter"],
-    category: "products",
-    parentLabel: "Products",
-    parentPath: "/products",
+    "featureList": [],
+    "advantagesList": [],
+    "specificationText": [],
+    "galleryImages": [
+      "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Multiple-Water-Cooled-Screw-Chiller-1-2.jpg"
+    ]
   },
-  {
-    slug: "air-cooled-vfd-screw-chiller",
-    title: "Air Cooled VFD Screw Chiller",
-    subtitle: "Air-cooled screw chillers with variable frequency drive for maximum efficiency",
-    description: "Combining the advantages of air-cooled installation with VFD energy savings, these chillers offer the best of both worlds — no cooling tower required and up to 40% energy reduction at part loads.",
-    features: [
-      { icon: Wind, title: "Air Cooled + VFD", desc: "Eliminates cooling tower while delivering VFD energy savings." },
-      { icon: Zap, title: "Smart Load Matching", desc: "Automatic speed adjustment based on real-time cooling demand." },
-      { icon: Shield, title: "Robust Construction", desc: "Designed for outdoor installation in harsh ambient conditions." },
-      { icon: Settings, title: "Integrated Controls", desc: "Touch-screen HMI with trend logging and BMS connectivity." },
+  "air-cooled-vfd-screw-chiller": {
+    "title": "Buy VFD Chiller",
+    "slug": "air-cooled-vfd-screw-chiller",
+    "category": "SCREW CHILLERS",
+    "heroImage": "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Multiple-Water-Cooled-Screw-Chiller-2-1.jpg",
+    "paragraphs": [
+      "Get high-quality products from our line of expert engineers to have the best high-end customer experience."
     ],
-    specs: [
-      { label: "Capacity Range", value: "20 TR – 400 TR" },
-      { label: "Energy Savings", value: "Up to 40%" },
-      { label: "Refrigerant", value: "R-134A / R-407C" },
-      { label: "Ambient Rating", value: "Up to 52°C" },
-      { label: "Compressor", value: "VFD Screw" },
-      { label: "Communication", value: "BACnet / Modbus" },
-    ],
-    applications: ["Outdoor Installations", "Process Cooling", "Comfort Cooling", "Data Centers", "Pharmaceutical", "Food Processing"],
-    advantages: ["No cooling tower needed", "Low water consumption", "VFD energy savings", "High ambient operation", "Compact design", "Remote monitoring"],
-    category: "products",
-    parentLabel: "Products",
-    parentPath: "/products",
+    "featureList": [],
+    "advantagesList": [],
+    "specificationText": [],
+    "galleryImages": [
+      "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Multiple-Water-Cooled-Screw-Chiller-1-2.jpg"
+    ]
   },
 
-  // ═══════════════════════════════════════════
-  // PRODUCTS > SCROLL CHILLERS
-  // ═══════════════════════════════════════════
-  {
-    slug: "air-cooled-scroll-chiller",
-    title: "Air Cooled Scroll Chillers",
-    subtitle: "Compact and efficient air-cooled scroll compressor chillers",
-    description: "Highly energy-efficient scroll chillers designed for extreme tropical weather. European origin compressors with separate refrigeration circuits ensure reliability and redundancy.",
-    features: [
-      { icon: Wind, title: "Scroll Compressor", desc: "European origin scroll compressors for quiet, vibration-free operation." },
-      { icon: Shield, title: "Separate Circuits", desc: "Independent refrigeration circuits for built-in redundancy." },
-      { icon: Gauge, title: "Tropical Rating", desc: "Optimized for high ambient temperatures in tropical climates." },
-      { icon: Settings, title: "Plug & Play", desc: "Factory-assembled, tested, and charged — ready for quick installation." },
+  "air-cooled-scroll-chiller": {
+    "title": "Air Cooled Scroll Chillers",
+    "slug": "air-cooled-scroll-chiller",
+    "category": "SCROLL CHILLER",
+    "heroImage": "https://drycoolchillers.com/wp-content/uploads/2015/10/Multiple-Air-Cooled-Scroll-Chiller.jpg",
+    "paragraphs": [
+      "Within a multiple compressor configuration, each compressor is supported by an individual and separate refrigeration circuit. The separate refrigeration circuit makes the servicing of under-maintenance modules easy, simultaneous to working module being on duty. The equipment is compact and contains fluid pump as well as storage tank on skid."
     ],
-    specs: [
-      { label: "Capacity Range", value: "3 TR – 60 TR" },
-      { label: "Refrigerant", value: "R-407C / R-410A" },
-      { label: "Compressor", value: "Hermetic Scroll" },
-      { label: "Circuits", value: "2 Independent" },
-      { label: "Ambient Temp.", value: "Up to 50°C" },
-      { label: "Noise Level", value: "< 75 dB(A)" },
+    "featureList": [],
+    "advantagesList": [],
+    "specificationText": [
+      "DCM-A-40 | 40 TR | 2 | 24"
     ],
-    applications: ["Small Commercial HVAC", "Laboratories", "Telecom Shelters", "Small Industry", "Retail Stores", "Office Buildings"],
-    advantages: ["Low noise", "Compact size", "Easy maintenance", "High reliability", "Low vibration", "Quick installation"],
-    category: "products",
-    parentLabel: "Products",
-    parentPath: "/products",
+    "galleryImages": [
+      "https://drycoolchillers.com/wp-content/uploads/2015/10/Multiple-Air-Cooled-Scroll-Chiller.jpg"
+    ]
   },
-  {
-    slug: "water-cooled-scroll-chiller",
-    title: "Water Cooled Scroll Chillers",
-    subtitle: "State-of-the-art liquid chillers for comfort and process cooling",
-    description: "Factory-assembled water-cooled scroll chillers for comfort and process-cooling applications. Complete quality assurance with brazed plate or shell & tube heat exchangers.",
-    features: [
-      { icon: Droplets, title: "Water Cooled", desc: "Efficient water-cooled condenser for indoor or basement installation." },
-      { icon: Gauge, title: "High EER", desc: "Superior energy efficiency ratio for reduced operational costs." },
-      { icon: Thermometer, title: "Dual Purpose", desc: "Suitable for both comfort cooling and industrial process applications." },
-      { icon: Shield, title: "Factory Tested", desc: "100% factory-tested and quality-assured before dispatch." },
+  "water-cooled-scroll-chiller": {
+    "title": "Water Cooled Scroll Chillers",
+    "slug": "water-cooled-scroll-chiller",
+    "category": "SCROLL CHILLER",
+    "heroImage": "https://drycoolchillers.com/wp-content/uploads/2015/10/Multiple-Water-Cooled-Scroll-Chiller-3-1.jpg",
+    "paragraphs": [
+      "Drycool Scroll chillers are state-of-the-art liquid chiller for a wide range of comfort and process-cooling applications. These scroll chillers are complete, factory-assembled liquid chiller that offers ease of installation with wiring and controllers providing maximum operating efficiency. Our compact liquid scroll chillers can be easily installed."
     ],
-    specs: [
-      { label: "Capacity Range", value: "5 TR – 80 TR" },
-      { label: "Refrigerant", value: "R-407C / R-410A" },
-      { label: "Evaporator", value: "Brazed Plate / Shell & Tube" },
-      { label: "Condenser", value: "Shell & Tube" },
-      { label: "Power Supply", value: "415V / 3Ph / 50Hz" },
-      { label: "Control", value: "Microprocessor" },
+    "featureList": [],
+    "advantagesList": [],
+    "specificationText": [
+      "DCM-W-40 | 40 TR | 2 | 24.0"
     ],
-    applications: ["Hotels & Restaurants", "Hospitals", "Process Cooling", "Injection Molding", "Printing Industry", "Pharmaceutical"],
-    advantages: ["Indoor installation", "Low noise", "Compact footprint", "High efficiency", "Reliable operation", "Easy servicing"],
-    category: "products",
-    parentLabel: "Products",
-    parentPath: "/products",
+    "galleryImages": [
+      "https://drycoolchillers.com/wp-content/uploads/2015/10/Multiple-Water-Cooled-Scroll-Chiller-3-1.jpg"
+    ]
   },
-  {
-    slug: "inverter-scroll-chiller",
-    title: "Inverter Scroll Chiller",
-    subtitle: "Energy-efficient inverter-driven scroll chillers for variable loads",
-    description: "Inverter scroll chillers with DC inverter compressor technology for seamless capacity modulation. Ideal for applications with fluctuating cooling demands.",
-    features: [
-      { icon: Zap, title: "DC Inverter", desc: "Continuous capacity modulation from 25% to 100% for optimal efficiency." },
-      { icon: Gauge, title: "IPLV Optimized", desc: "Best-in-class integrated part load value for real-world efficiency." },
-      { icon: Cpu, title: "Digital Control", desc: "Advanced microprocessor with self-diagnostics and BMS integration." },
-      { icon: Thermometer, title: "Precise Control", desc: "±0.3°C temperature stability for sensitive applications." },
+  "inverter-scroll-chiller": {
+    "title": "Inverter Scroll Chiller",
+    "slug": "inverter-scroll-chiller",
+    "category": "SCROLL CHILLER",
+    "heroImage": "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Multiple-Water-Cooled-Scroll-Chiller-3-1.jpg",
+    "paragraphs": [
+      "Inverters called chillers are available in two different varieties which include water-cooled inverter scroll chiller and air-cooled inverter scroll chiller. They are having two different ranges of capacities including 12 TR to 72 TR for the air-cooled version and 13 TR to 78 TR for the water-cooled version. It is having an installed scroll compressor that will ensure the high reliability and efficiency to have advanced technology innovative by our expert team of engineers."
     ],
-    specs: [
-      { label: "Capacity Range", value: "5 TR – 50 TR" },
-      { label: "Modulation", value: "25% – 100%" },
-      { label: "Refrigerant", value: "R-410A" },
-      { label: "IPLV", value: "Up to 9.0" },
-      { label: "Compressor", value: "DC Inverter Scroll" },
-      { label: "Communication", value: "Modbus RTU" },
+    "featureList": [],
+    "advantagesList": [
+      "Easy maintenance without downtime"
     ],
-    applications: ["Precision Cooling", "Server Rooms", "Laboratories", "Clean Rooms", "Medical Facilities", "Wine Cellars"],
-    advantages: ["Ultra-precise temperature", "Energy savings up to 45%", "Low starting current", "Quiet operation", "Long compressor life", "Stepless modulation"],
-    category: "products",
-    parentLabel: "Products",
-    parentPath: "/products",
+    "specificationText": [
+      "Water-Cooled Version Capacity: 13 TR to 78 TR"
+    ],
+    "galleryImages": [
+      "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Multiple-Water-Cooled-Scroll-Chiller-3-1.jpg"
+    ]
   },
+  "air-chiller": {
+    "title": "Air Chiller",
+    "slug": "air-chiller",
+    "category": "AIR CHILLER",
+    "heroImage": "https://www.drycoolchillers.com/wp-content/uploads/2023/01/Air-cooled-Air-chiller.jpg",
+    "paragraphs": [
+      "Air chillers also have a lower cost of operation and maintenance than other types of HVAC equipment. Because they use a fluid, such as water or refrigerant, to transfer heat away from the air, they do not require the same level of maintenance as other types of equipment, such as boilers or electric heaters. In terms of energy efficiency, air chillers use less energy than traditional cooling methods, such as window air conditioners and portable air conditioners. They also have a longer lifespan and are more durable, which means less need for replacement and repair."
+    ],
+    "featureList": [],
+    "advantagesList": [
+      "Longer lifespan and high durability"
+    ],
+    "specificationText": [
+      "Ambient air temperature: Up to 40°C"
+    ],
+    "galleryImages": [
+      "https://www.drycoolchillers.com/wp-content/uploads/2023/01/Air-cooled-Air-chiller.jpg"
+    ]
+  },
+  "water-cooled-reciprocating-chillers": {
+    "title": "Water-cooled Reciprocating Chillers",
+    "slug": "water-cooled-reciprocating-chillers",
+    "category": "RECIPROCATING CHILLERS",
+    "heroImage": "https://www.drycoolchillers.com/wp-content/uploads/2015/11/Slide02.jpg",
+    "paragraphs": [
+      "Drycool’s water cooled reciprocating chillers come in different capacities ranging from 1 TR – 100 TR and are affordable, installation-friendly, energy efficient, and designed by an expert engineering team with 25 years of experience."
+    ],
+    "featureList": [],
+    "advantagesList": [],
+    "specificationText": [
+      "Compressor Origin | Europe (Denmark, Germany, Italy)"
+    ],
+    "galleryImages": [
+      "https://www.drycoolchillers.com/wp-content/uploads/2022/09/6-1.jpg"
+    ]
+  },
+  "air-cooled-reciprocating-chillers": {
+    "title": "Air-cooled Reciprocating Chillers",
+    "slug": "air-cooled-reciprocating-chillers",
+    "category": "RECIPROCATING CHILLERS",
+    "heroImage": "https://www.drycoolchillers.com/wp-content/uploads/2015/11/Slide01.jpg",
+    "paragraphs": [
+      "Drycool’s air cooled reciprocating chillers come in different capacities ranging from 1 TR – 50 TR and are affordable, installation friendly, energy efficient and designed by an expert engineering team with 25 years of experience."
+    ],
+    "featureList": [],
+    "advantagesList": [],
+    "specificationText": [
+      "Compressor Origin | Europe (Denmark, Germany, Italy)"
+    ],
+    "galleryImages": [
+      "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Single-Air-Cooled-Screw-Chiller.jpg"
+    ]
+  },
+  "industrial-reciprocating-chillers": {
+    "title": "Industrial Reciprocating Chillers",
+    "slug": "industrial-reciprocating-chillers",
+    "category": "RECIPROCATING CHILLERS",
+    "heroImage": "https://www.drycoolchillers.com/wp-content/uploads/2015/11/Slide03.jpg",
+    "paragraphs": [
+      "Industrial Reciprocating chillers are manufactured using unique materials which are chosen based on the process fluids used in an industrial process requirement. Drycool’s expert engineering team does a complete study of the process to understand the uniqueness of the requirement."
+    ],
+    "featureList": [],
+    "advantagesList": [],
+    "specificationText": [
+      "Compliance | ATEX / PESO Certified options"
+    ],
+    "galleryImages": [
+      "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Multiple-Water-Cooled-Screw-Chiller-1-2.jpg"
+    ]
+  },
+  "cooling-tower-manufacturer": {
+    "title": "Buy Cooling Tower",
+    "slug": "buy-cooling-tower",
+    "category": "MORE",
+    "heroImage": "https://www.drycoolchillers.com/wp-content/uploads/2015/11/Slide05.jpg",
+    "paragraphs": [
+      "In summary, while FRP cooling towers are a cost-effective and lightweight option, stainless steel cooling towers are generally preferred for their superior corrosion resistance, durability, and long-term performance, particularly in harsh industrial and marine environments."
+    ],
+    "featureList": [],
+    "advantagesList": [],
+    "specificationText": [
+      "Installation | Rooftop, Compact, Modular"
+    ],
+    "galleryImages": [
+      "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Rectangular-Cooling-Tower1-1.jpg"
+    ]
+  },
+  "chiller-manufacturer-kolkata": {
+    "title": "Chiller Manufacturer in Kolkata",
+    "slug": "chiller-manufacturer-kolkata",
+    "category": "MORE",
+    "heroImage": "https://www.drycoolchillers.com/wp-content/uploads/2022/09/New-Project-1.jpg",
+    "paragraphs": [
+      "If you are searching for a dependable chiller manufacturer in Kolkata, Drycool Systems should be on top of your list – a partner you can trust for consistent cooling, lower operating costs, and long-term reliability."
+    ],
+    "featureList": [],
+    "advantagesList": [],
+    "specificationText": [
+      "Features | IoT-Enabled, Eco-Friendly, Modular"
+    ],
+    "galleryImages": [
+      "https://www.drycoolchillers.com/wp-content/uploads/2023/01/turnkey-project-for-chiller-1024x791.png"
+    ]
+  },
+  "chiller-for-plastic-industry": {
+    "title": "Chiller for Plastic Industry",
+    "slug": "chiller-for-plastic-industry",
+    "category": "APPLICATION",
+    "heroImage": "https://www.drycoolchillers.com/wp-content/uploads/2021/08/plastic-industry-banner.jpg",
+    "paragraphs": [
+      "We manufacture chiller for Plastic Industry. This efficient equipment is completely energy efficient due to the compressors being installed in the chiller. It is also having a recirculation pump which is completely working based on the compassion principle by proper regulation of the temperature.",
+      "Whether it is extrusion, injection molding, blow molding, thermoforming, vacuum forming, lamination plants, tape plant or non-woven fabric plants – the plastic industry in India and all over the world is vast, high paced, and always requiring more and more chilled water.",
+      "Drycool chillers have been the product of choice for many plastics molding companies because of the ability to move the chiller from press to press. Drycool also manufactures FRP Cooling Towers and keeps them in stock from 10 TR – 1000 TR at all times."
+    ],
+    "featureList": [
+      "Ideal for various industries including injection molding giving proper instant cooling.",
+      "Instantly release the internal stress of the plastic along with the grain mark.",
+      "Provides proper drying, cooling production, humidity removal, and temperature control."
+    ],
+    "advantagesList": [],
+    "specificationText": [
+      "INJECTION MOLDING | 1 KG/TON",
+      "EXTRUSION | 1 KG/TON"
+    ],
+    "galleryImages": [
+      "https://www.drycoolchillers.com/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-29-at-11.18.34-AM-1024x684.jpeg"
+    ]
+  },
+  "batching-plant-chiller": {
+    "title": "Batching Plant Chiller",
+    "slug": "batching-plant-chiller",
+    "category": "CUSTOMIZED CHILLER",
+    "heroImage": "https://www.drycoolchillers.com/wp-content/uploads/2015/11/Slide011.jpg",
+    "paragraphs": [
+      "We manufacture batching plant chillers for concrete plant which provide customized operation of concrete mixing along with the cooling application. Our RMC chiller (Cement chiller) also called batching plant chiller is environment friendly and can be easily installed (and reused at different sites after completion of the job) in any requirement according to the client. All the equipment is properly tested in international parameters to offer the best possible functionalities. Our RMC chiller specifically design with simplicity to reduce the cost. It will ensure to have 4 degree Celsius and chilled water temperature along with the proper process requirement.",
+      "Batching plant chiller for concrete plants are specifically designed to operate in a dusty batching site even within extreme weather conditions. It can properly work under the sun and rain and in all the harshest environments possible. All the major components in the refrigeration circuit are selected in design according to the condition and utilization of the available site. The complete study for the batching process requirement is needed to process the choice of equipment and accessories. The engineering team will have the specific expertise in the batching plant chillers which will offer the best possible option for the industry. The clients can procure Batching Plant Chiller specifically made for extreme tropical weather conditions which will maintain the operation and energy efficiency at a very affordable price.",
+      "This is the main reason for the Batching Plant Chiller to have a low cost of ownership with proper and high design standards. We are having unique optimized compressor parts which are specifically designed for chilled water applications which will optimize the part-load efficiency and full load efficiency. The integrated microprocessor will offer high reliability by providing a proactive control strategy, easy interface, safety functions, simple diagnostics, etc."
+    ],
+    "featureList": [
+      "Equipped with environment-friendly refrigerants R-404A and R-134A",
+      "It is completely energy-efficient and reliable and equipped with a scroll compressor of European origin.",
+      "It is equipped with a large-sized ice water storage assembly along with powerful water pumps.",
+      "The electronic expansion valve is for large capacities, precise temperature control, and energy efficiency.",
+      "High energy efficiency.",
+      "Also get high condensing and low FPI count, which will offer coated fins. This will ensure easy maintenance and long life.",
+      "Solution energy-saving equipment.",
+      "Superior reliability.",
+      "A fully automatic PLC-based unit is added for data login and remote operation facilities.",
+      "Long equipment life.",
+      "Specially designed for the lowest possible temperatures of water even without or with a reservoir.",
+      "Adaptive frequency drive option available.",
+      "Clean energy and intelligent management.",
+      "Highly durable design with the best class cop.",
+      "Efficient lubrication even during the power failure.",
+      "Easy interface with BMS through protocols.",
+      "Ozone friendly refrigerant HFC407c & HFC134a.",
+      "The complete body is made out of galvanized steel.",
+      "Polyurethane paint and powder coated.",
+      "It is having a monocoque skid-mounted design for high reliability and extra ruggedness for proper mobile operation.",
+      "Factory manufacture and tested tube in tube system along with shell and tube evaporators. It will offer a high flow high-pressure design along with various specific process applications. It is specially designed for handling suspended particles and fluid debris properly.",
+      "Specially designed to produce ice water within the extreme conditions of 52 degrees Celsius."
+    ],
+    "advantagesList": [
+      "Superior Reliability",
+      "Energy Efficiency",
+      "Intelligent Management",
+      "Environment Friendly"
+    ],
+    "specificationText": [
+      "Operating Conditions|Up to 52°C",
+      "Refrigerant|R-404A / R-134A",
+      "Control|Fully Automatic PLC"
+    ],
+    "galleryImages": [
+      "https://www.drycoolchillers.com/wp-content/uploads/2015/11/Slide011.jpg"
+    ]
+  },
+  "chiller-for-brewery-and-fermentation": {
+    "title": "Chiller For Brewery and Fermentation",
+    "slug": "chiller-for-brewery-and-fermentation",
+    "category": "APPLICATION",
+    "heroImage": "https://www.drycoolchillers.com/wp-content/uploads/2022/10/Brewery-Banner.jpg",
+    "paragraphs": [
+      "The process of making wine or maintaining a typical brewery, distillery, fermentation, or winery plant is a very sophisticated process that involves intricate, precise temperature management of glycol or water.",
+      "In the beer production process, the raw grains in brewing need to be quickly cooled to the set temperature after boiling to ensure the taste and shorten processing time.",
+      "Every step towards craft beer manufacturing is fundamental and particular to every product. Yet, iced water plays a role in a number of stages, so Chillers’ use is commonplace in this industry."
+    ],
+    "featureList": [
+      "Cleanup requirements",
+      "Acceptable pressure drops",
+      "Fluid properties",
+      "Temperatures and flows"
+    ],
+    "advantagesList": [],
+    "specificationText": [],
+    "galleryImages": [
+      "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Multiple-Water-Cooled-Screw-Chiller-1-2.jpg"
+    ]
+  },
+  "chiller-for-food-beverage-industry": {
+    "title": "Chiller For Food & Beverage Industry",
+    "slug": "chiller-for-food-beverage-industry",
+    "category": "APPLICATION",
+    "heroImage": "https://www.drycoolchillers.com/wp-content/uploads/2022/10/Food-Beverage-Banner.jpg",
+    "paragraphs": [
+      "We manufacture chiller for food and Beverage Industry, we supplied in Coca Cola, Parle, Dabur, Haldiram, Frooti and so on.",
+      "Industrial chillers help in getting various temperature control along with the production of different types of products like bakery processing, beverage carbonation, vegetable processing, and dairy processing.",
+      "Many food applications require a food mix to be heated up to a warm temperature and then brought back down quickly to be handled by employees and packaged. Jacketed tanks are frequently used in food applications. Within these jacketed chiller water or chiller glycol is required for food processing to maintain the freshness. Drycool’s wide range of chillers for bakery, ice creak and dough can help in providing the chilled water to preserve the freshness of these food items."
+    ],
+    "featureList": [
+      "Food freezing",
+      "Food refrigeration",
+      "Freeze-drying",
+      "Food vacuum cooling",
+      "Ice making"
+    ],
+    "advantagesList": [],
+    "specificationText": [],
+    "galleryImages": [
+      "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Multiple-Water-Cooled-Screw-Chiller-1-2.jpg"
+    ]
+  },
+  "chiller-for-heavy-industrial-purpose": {
+    "title": "Chiller For Heavy Industrial Purpose",
+    "slug": "chiller-for-heavy-industrial-purpose",
+    "category": "APPLICATION",
+    "heroImage": "https://www.drycoolchillers.com/wp-content/uploads/2022/10/Heavy-Industrial-Banner.jpg",
+    "paragraphs": [
+      "Large scale industrial complexes and processes like heavy manufacturing units are very much crucial in terms of temperature for getting high maintenance along with the proper machinery.",
+      "Our heavy industrial chillers will give you the best performance in all extreme conditions like high heat or temperature.",
+      "Drycool’S world class HVAC chillers are designed using R-134a and R-407c refrigerants and provide 7 deg C for ar handling units, fan coil units, chilled beams at a very high COP and EER. The HVAC chillers come in Water cooled VFD Screw Chiller Series, Air Cooled VFD cooled chiller series, Water cooled inverter screw chiller series and air-cooled inverter screw chiller series."
+    ],
+    "featureList": [
+      "Biodiesel Chiller",
+      "Oil Chiller",
+      "Die casting Chiller",
+      "Hydraulic Cooling"
+    ],
+    "advantagesList": [],
+    "specificationText": [],
+    "galleryImages": [
+      "https://www.drycoolchillers.com/wp-content/themes/envision/includes/modules/module.shadow/shadows/shadow-8.png"
+    ]
+  },
+  "chiller-for-hydrogen-refueling-station": {
+    "title": "Chiller for Hydrogen Refueling Station",
+    "slug": "chiller-for-hydrogen-refueling-station",
+    "category": "APPLICATION",
+    "heroImage": "https://www.drycoolchillers.com/wp-content/uploads/2023/06/Hydrogen-Chiller-Banner.jpg",
+    "paragraphs": [
+      "As the world is talking about net zero and making a transition from fossil fuels to renewable sources such as hydrogen fuel cells, there exists a significant opportunity to develop remarkable new technologies in the generation of electricity. Utilizing hydrogen to power fuel cells that generate electricity is a sustainable alternative to fossil fuels since the byproduct is water.",
+      "The refueling process of hydrogen follows the SAE J2601 protocol. Within this process, the hydrogen needs to be pre-cooled to -40 degree Celsius.",
+      "Multiple circuit hydrogen chillers designed and manufactured by drycool can provide 10 TR – 100 TR cooling capacity at -40°C. However, there are certain challenges, such as temperature maintenance for hydrogen filling stations."
+    ],
+    "featureList": [
+      "Attain brine, glycol and methanol temperatures upto -50 deg C.",
+      "Energy efficient reciprocating compressors from Danfoss, Bitzer, and Dorin.",
+      "Flame proof motors customization available."
+    ],
+    "advantagesList": [],
+    "specificationText": [],
+    "galleryImages": [
+      "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Multiple-Water-Cooled-Screw-Chiller-2.jpg"
+    ]
+  },
+  "chillers-for-milk-industry": {
+    "title": "Chillers for Milk Industry",
+    "slug": "chillers-for-milk-industry",
+    "category": "APPLICATION",
+    "heroImage": "https://www.drycoolchillers.com/wp-content/uploads/2021/08/Milk-Industry-Banner.jpg",
+    "paragraphs": [
+      "Instant milk cooling is required to prevent the growth of bacteria and maintain the freshness of the milk.",
+      "It is a very well-known fact that maintaining milk at a cool temperature preserves it. Whether you have a new startup who wants to sell ghee, paneer, khoa, lassi, curd etc or a reputed manufacturer, Drycool’s milk chilling plants and pasteurization plants are one stop solution. Drycool’s state of the art infrastructure allows it to design, engineer and manufacture sophisticated milk chilling plants and chillers for milk collection center and milk pasteurization."
+    ],
+    "featureList": [],
+    "advantagesList": [],
+    "specificationText": [],
+    "galleryImages": [
+      "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Multiple-Water-Cooled-Screw-Chiller-1-2.jpg"
+    ]
+  },
+  "chiller-for-medical-device": {
+    "title": "Chiller for Medical Device",
+    "slug": "chiller-for-medical-device",
+    "category": "APPLICATION",
+    "heroImage": "https://www.drycoolchillers.com/wp-content/uploads/2021/08/Medical-Chiller-Banner.jpg",
+    "paragraphs": [
+      "At the heart of a medical machine is a helium-based cooling system that maintains required low temperatures of the magnet which is the main component of the energy and IOT scanning device. The helium cooling system generates substantial heat while in operation. If this heat is not removed equally efficiently the helium being a very low-density gas starts to leak into the atmosphere and this can cause two major problems – one raise in temperature of the magnet and two loss of helium which is a rare and scarcely available gas. This can cause not only stoppage in scanning but also a major breakdown of the medical scanner.",
+      "In addition to the helium system the medical machines also have a lot of electrical and electronic devices attached to it which generate a lot of heat. To keep the medical devices continuously operational and free from probable breakdowns we need a robust chiller that can recirculate chilled water and remove the excess heat from the helium system as well as the electrical and electronic systems in the medical device."
+    ],
+    "featureList": [],
+    "advantagesList": [],
+    "specificationText": [],
+    "galleryImages": [
+      "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Multiple-Water-Cooled-Screw-Chiller-1-2.jpg"
+    ]
+  },
+  "chiller-for-cnc-cooling": {
+    "title": "Chiller for CNC Cooling",
+    "slug": "chiller-for-cnc-cooling",
+    "category": "APPLICATION",
+    "heroImage": "https://www.drycoolchillers.com/wp-content/uploads/2021/08/CNC-Cooling-Banner.jpg",
+    "paragraphs": [
+      "Whether it is a CNC machine, laser cutting machine, plasma cutting machine, waterjet cutting machine, or a welding machine, each process required a steady constant flow of chilled water. Many of these processes have a very critical load that is perfect for Drycool’ chiller systems. The state-of-the-art Drycool chiller provides ample redundancy with multiple chiller units available at any given time."
+    ],
+    "featureList": [],
+    "advantagesList": [],
+    "specificationText": [],
+    "galleryImages": [
+      "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Multiple-Water-Cooled-Screw-Chiller-1-2.jpg"
+    ]
+  },
+  "chiller-for-printing-and-packaging": {
+    "title": "Chiller For Printing and Packaging",
+    "slug": "chiller-for-printing-and-packaging",
+    "category": "APPLICATION",
+    "heroImage": "https://www.drycoolchillers.com/wp-content/uploads/2021/08/Printing-Packaging-Banner.jpg",
+    "paragraphs": [
+      "Chillers are used to remove the heat generated by the heated printing rollers due to friction.",
+      "Large-scale printing projects generate substantial heat at the rollers; chillers help maintain color quality and paper stability.",
+      "It is cost saving to the printing industry because it is used to regulate temperatures in presses and rollers which helps to the reduction of stretching and bleeding. In doing this it decreases the time needed to print. Expedited printing means more sellable product opportunity per week"
+    ],
+    "featureList": [],
+    "advantagesList": [],
+    "specificationText": [],
+    "galleryImages": [
+      "https://www.drycoolchillers.com/wp-content/uploads/2022/12/Chiller-For-Printing-and-Packaging.png"
+    ]
+  },
+  "battery-energy-storage-systems-bess-chillers": {
+    "title": "Battery Energy Storage Systems (BESS) Chillers",
+    "slug": "battery-energy-storage-systems-bess-chillers",
+    "category": "APPLICATION",
+    "heroImage": "https://www.drycoolchillers.com/wp-content/uploads/2023/12/BESS-Chiller-Banner.jpg",
+    "paragraphs": [
+      "High-density battery racks generate significant heat during rapid charge and discharge cycles. Maintaining an optimal range (15°C to 30°C) is essential.",
+      "DryCool provides specialized Liquid Cooling Units (LCUs) designed for grid stability and load balancing."
+    ],
+    "featureList": [],
+    "advantagesList": [],
+    "specificationText": [],
+    "galleryImages": [
+      "https://www.drycoolchillers.com/wp-content/uploads/2025/09/chiller-for-battery-768x1024.jpeg"
+    ]
+  },
+  "chillers-for-eyewash-and-safety-showers": {
+    "title": "Chillers for Eyewash and Safety Showers (Emergency Water Tempering)",
+    "slug": "chillers-for-eyewash-and-safety-showers",
+    "category": "APPLICATION",
+    "heroImage": "https://www.drycoolchillers.com/wp-content/uploads/2023/12/Safety-Shower-Banner.jpg",
+    "paragraphs": [
+      "ANSI/ISEA Z358.1 standards require that water delivered to stations be tepid (between 16°C and 38°C) to ensure injured workers can withstand the 15-minute flush.",
+      "Drycool chillers keep water at 20°C, day or night, reducing the growth of bacteria and ensuring life-safety compliance.",
+      "The customized engineered chillers in the Drycool’ DAC/DWC/SS series allows for multiple options for reducing safety shower water temperature including heat exchangers, chilled water, or integrated chillers. These chillers are built from robust, corrosion resistant materials for a long and trouble-free life. Drycool chillers come with a water level indicator, water temperature display and testing lever for easy testing and maintenance."
+    ],
+    "featureList": [],
+    "advantagesList": [],
+    "specificationText": [],
+    "galleryImages": [
+      "https://www.drycoolchillers.com/wp-content/uploads/2023/01/Chillers-for-Safety-Showers.png"
+    ]
+  },
+  "hvac-chiller": {
+    "title": "HVAC Chiller",
+    "slug": "hvac-chiller",
+    "category": "CUSTOMIZED CHILLER",
+    "heroImage": "https://www.drycoolchillers.com/wp-content/uploads/2015/11/Slide011.jpg",
+    "paragraphs": [
+      "An HVAC chiller is a mechanical device that is used to provide chilled water for a building. The main requirement for the HVAC chiller is to provide a consistent temperature of 7 deg C water to the terminal equipment chilled water coils in the building to properly maintain the temperature of conditioned air. We are one of the best HVAC Contractor in India. It works by absorbing heat from a fluid, such as water or refrigerant, and rejecting that heat to the outdoor air or a nearby water source. Chillers are typically used in large commercial and industrial buildings, such as office buildings, hospitals, and factories, where a significant amount of cooling is required.",
+      "There are several types of chillers, including air-cooled, water-cooled, and evaporative cooled. Air-cooled chillers use air to reject the absorbed heat, while water-cooled chillers use water as the heat rejection medium. Evaporative-cooled chillers reject heat to the air using the process of evaporation. Each type has its own advantages and disadvantages and is best suited for certain applications."
+    ],
+    "featureList": [
+      "Twin Screw Compressor is suitable to operate at 415V, most suited for Indian Operating Electrical Environment.",
+      "High efficiency due to the scientific profile design of screws, high-speed operation, and precision controls.",
+      "Step-less capacity control from 100% to 25% for each compressor. Consistent loading and unloading with hydraulically actuated slide valve mechanism; a rugged and trouble-free design",
+      "These are semi-hermetic type compressors and hence, easily serviceable.",
+      "Robust and proven construction with double-walled, single-housing and new slider technology.",
+      "Each compressor is provided with a self-motor protection module, PTC motor winding protection, oil temperature protection, oil level switch and oil heaters – all these guarantees reliability and long life.",
+      "Multistage and ultrafine, inbuilt oil-separator results in less oil carryover rate.",
+      "Double casing structure with high-strength inner ribs ensures Lower sound level.",
+      "No external oil pump is required.",
+      "Direct-driven design eliminates gear set; improves efficiency and reliability."
+    ],
+    "advantagesList": [
+      "Microprocessor Based Controller",
+      "Stepless Capacity Control",
+      "BMS Compatibility",
+      "Compact Design",
+      "High Efficiency",
+      "Low Noise Level"
+    ],
+    "specificationText": [
+      "Shell|Shell-and-tube type flooded type",
+      "Tubes|Integral finned copper tubes",
+      "Controls|Microprocessor Based"
+    ],
+    "galleryImages": [
+      "https://www.drycoolchillers.com/wp-content/uploads/2015/11/Slide011.jpg"
+    ]
+  },
+  "chiller-for-chemical-pharmaceutical": {
+    "title": "Chiller For Chemical & Pharmaceutical Industry",
+    "slug": "chiller-for-chemical-pharmaceutical",
+    "category": "CUSTOMIZED CHILLER",
+    "heroImage": "https://www.drycoolchillers.com/wp-content/uploads/2015/11/Slide011.jpg",
+    "paragraphs": [
+      "Drycool Systems is one of the leading suppliers of brine chillers, chemical chillers, methanol chillers for applications in which Pharmaceuticals, Agrochemicals, Polymers, Additives, Surfactants, Pigments, Dyes, etc are being manufactured. Drycool’s export design and manufacturing team ensures that the medicinal or the petrochemical product receives complete coverage of a high volume of brine, which provides total temperature uniformity within the batch.",
+      "200 TR VFD Glycol Screw Chiller operating at –30°C, among our largest and most complex systems to date."
+    ],
+    "featureList": [],
+    "advantagesList": [],
+    "specificationText": [],
+    "galleryImages": [
+      "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Chemical-Chiller.jpg",
+      "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Pharmaceutical-Chiller.jpg"
+    ]
+  },
+  "hazardous-area-chiller": {
+    "title": "Hazardous Area Chiller",
+    "slug": "hazardous-area-chiller",
+    "category": "CUSTOMIZED CHILLER",
+    "heroImage": "https://www.drycoolchillers.com/wp-content/uploads/2015/11/Slide011.jpg",
+    "paragraphs": [
+      "Drycool System’s hazardous area chiller is skilfully designed and manufactured to be used in explosive atmospheres. Explosive atmospheres are better described as petrochemical industries, oil industries, marine industries, and gas industries. Every product which needs to be worked in such a hazardous area needs to be certified under ISO 9001. It is the proper description of a high-quality management system along with industry-leading components.",
+      "Hazardous area chiller is entirely made out of stainless-steel casing which will offer corrosion resistance and a reliable product for longer life. All the equipment is specifically designed with integrated multiple types of cooling systems or applications using the simple interface. It will offer reliability, efficiency, and safety by following all the key design criteria in the hazardous area chiller.",
+      "Our team of expert engineers is following all the international manufacturing standards to ensure cutting-edge technology for every application of industry. Get the complete controlled water or fluid temperature which is being regulated automatically within the temperature range between 20 degrees Celsius to 28 degrees Celsius. The temperature range will be pre-set according to the requirement of the client or the requirement of the industry.",
+      "The hazardous area chiller will be having an integrated upper condenser section and all the other components will be connected with the lower compartment with proper protection from weather and noise reduction solution. Our engineers are using various protection concepts which are specially designed by keeping the safety of the user in mind. Most importantly all the controls which were being installed into the chiller are being specially designed to maintain the easy operation.",
+      "This eliminates the requirement for overcomplicated programming while still maintaining the efficiency and reliability of the automated control of the fluid temperature. Every hazardous area chiller is completely tested and has eco-friendly refrigerant which is especially needed for such areas."
+    ],
+    "featureList": [
+      "Suitability: Every hazardous area is divided into two different zones identify it as zone one and zone 2 by the safety regulation board. Every hazardous area chiller will be guaranteed suitability for both zones.",
+      "Expert Engineers: Get complete support for the installation and commissioning of hazardous area chiller by our expert team of technicians.",
+      "High-Quality Outcome: Get the complete support for IP56 protection for the refrigeration module.",
+      "Types: Two different types of compression options are available including screw and reciprocating for hazardous area chillers.",
+      "More Relevant: Get the completely cooling possibilities with hazardous fluids and hydrocarbons makes it much more relevant to be used in different industries.",
+      "Convenient Testing: Integrated high-quality pressure vessels and heat exchangers along with the convenient testing stamp to ensure the quality within the hazardous area chiller."
+    ],
+    "advantagesList": [
+      "Zone 1 & 2 Suitability",
+      "IP56 Protection",
+      "Stainless Steel Casing",
+      "Corrosion Resistance"
+    ],
+    "specificationText": [
+      "Ambient Temperature|Extreme tropical range",
+      "Protection|IP56 Module protection",
+      "Casing|Stainless Steel"
+    ],
+    "galleryImages": [
+      "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Multiple-Water-Cooled-Screw-Chiller-2-1.jpg"
+    ]
+  },
+  "ammonia-chillers": {
+    "title": "Ammonia chillers",
+    "slug": "ammonia-chillers",
+    "category": "CUSTOMIZED CHILLER",
+    "heroImage": "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Amonia-Based-Milk-Chiller-1.jpg",
+    "paragraphs": [
+      "Drycool Systems ammonia milk chillers is one of the most compact chilling plants and skid mounted which is used for a white temperature range from low to medium temperature process cooling applications.",
+      "Various features are integrated into the ammonia chiller which we have listed below."
+    ],
+    "featureList": [],
+    "advantagesList": [],
+    "specificationText": [],
+    "galleryImages": [
+      "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Amonia-Based-Milk-Chiller-1.jpg"
+    ]
+  },
+  "falling-film-chiller": {
+    "title": "Falling Film Chiller",
+    "slug": "falling-film-chiller",
+    "category": "CUSTOMIZED CHILLER",
+    "heroImage": "https://www.drycoolchillers.com/wp-content/uploads/2015/11/Slide011.jpg",
+    "paragraphs": [
+      "Falling film chillers are highly efficient heat exchangers used for cooling liquids. They work by spreading a thin film of liquid over the surface of the heat exchanger tubes, which allows for rapid heat transfer.",
+      "A falling film chiller uses a controlled film of liquid refrigerant or process fluid over the evaporator surface instead of flooding the shell. This design maximizes heat transfer efficiency while using 30–40% less refrigerant compared to conventional flooded evaporators. The result is a high-performance, energy-efficient chiller with faster response and better part-load operation."
+    ],
+    "featureList": [
+      "Wait, I'll just keep it simple as before but with www"
+    ],
+    "advantagesList": [
+      "Energy Efficient",
+      "Low Refrigerant Charge",
+      "Fast Response"
+    ],
+    "specificationText": [
+      "Type|Falling Film Evaporator",
+      "Efficiency|High Part-load Efficiency"
+    ],
+    "galleryImages": [
+      "https://www.drycoolchillers.com/wp-content/uploads/2015/11/Slide011.jpg"
+    ]
+  },
+  "bio-gas-chillers": {
+    "title": "Bio Gas Chillers",
+    "slug": "bio-gas-chillers",
+    "category": "CUSTOMIZED CHILLER",
+    "heroImage": "https://www.drycoolchillers.com/wp-content/uploads/2015/11/Slide01-1024x360.jpg",
+    "paragraphs": [
+      "Bio gas chillers are used to cool and dehumidify biogas produced from anaerobic digestion. Cooling the biogas removes moisture and impurities, which helps to protect downstream equipment and improve the efficiency of the biogas plant.",
+      "We look forward to continuing our partnerships around the globe and driving forward with sustainable and advanced technologies!"
+    ],
+    "featureList": [],
+    "advantagesList": [
+      "Moisture Removal",
+      "Equipment Protection",
+      "Improved Efficiency"
+    ],
+    "specificationText": [
+      "Application|Anaerobic Digestion",
+      "Function|Cooling & Dehumidification"
+    ],
+    "galleryImages": [
+      "https://www.drycoolchillers.com/wp-content/uploads/2015/11/Slide01-1024x360.jpg"
+    ]
+  },
+  "anodizing-chillers": {
+    "title": "Anodizing Chillers",
+    "slug": "anodizing-chillers",
+    "category": "CUSTOMIZED CHILLER",
+    "heroImage": "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Multiple-Water-Cooled-Screw-Chiller-1-2.jpg",
+    "paragraphs": [
+      "Anodizing chillers are used to control the temperature of the acid bath during the anodizing process. Precise temperature control is essential for ensuring the quality and consistency of the anodized finish.",
+      "Various features are offered by anodizing chiller by Drycool Systems."
+    ],
+    "featureList": [],
+    "advantagesList": [
+      "Acid Resistant Design",
+      "Precise Temperature",
+      "Durable Build"
+    ],
+    "specificationText": [
+      "Application|Anodizing & Plating",
+      "Exchanger|Acid-resistant"
+    ],
+    "galleryImages": [
+      "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Multiple-Water-Cooled-Screw-Chiller-1-2.jpg"
+    ]
+  },
+  "brine-chillers": {
+    "title": "Brine Chillers",
+    "slug": "brine-chillers",
+    "category": "CUSTOMIZED CHILLER",
+    "heroImage": "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Brine-Chiller2.jpg",
+    "paragraphs": [
+      "Brine chillers are used to cool brine, which is a solution of salt and water. Brine is often used as a secondary coolant in applications where temperatures below the freezing point of water are required.",
+      "Advantages of Drycool System’s Brine Chiller:"
+    ],
+    "featureList": [],
+    "advantagesList": [
+      "Low Temperature Cooling",
+      "Robust Construction",
+      "Expert Engineering"
+    ],
+    "specificationText": [
+      "Coolant|Brine Solution",
+      "Temperature|Below freezing point"
+    ],
+    "galleryImages": [
+      "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Brine-Chiller2.jpg"
+    ]
+  },
+  "methanol-chillers": {
+    "title": "Methanol Chillers",
+    "slug": "methanol-chillers",
+    "category": "CUSTOMIZED CHILLER",
+    "heroImage": "https://www.drycoolchillers.com/wp-content/uploads/2015/11/Slide011.jpg",
+    "paragraphs": [
+      "Methanol chillers are used to cool methanol, which is a volatile and flammable liquid. These chillers are designed with safety features to prevent leaks and ensure safe operation in chemical processing environments.",
+      "Methanol Chillers are designed for using methanol water as the cooling media, in place of glycol or brine up to low temperatures of up to Minus 30°C (evap. temp.). Methanol being flammable, the system should be flameproof, or alternately the evaporator and the machine are made in two separator skids, with the refrigeration skid being installed in the safe area. The evaporator is installed remotely in a separate skid, and all the instruments on this skid is of flameproof design."
+    ],
+    "featureList": [],
+    "advantagesList": [
+      "Safety Focused Design",
+      "Low Temperature (Up to -30°C)",
+      "Flameproof Options"
+    ],
+    "specificationText": [
+      "Media|Methanol Water",
+      "Safety|Remote skid / Flameproof"
+    ],
+    "galleryImages": [
+      "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Multiple-Water-Cooled-Screw-Chiller-1-2.jpg"
+    ]
+  },
+  "glycol-chillers": {
+    "title": "Glycol Chillers",
+    "slug": "glycol-chillers",
+    "category": "CUSTOMIZED CHILLER",
+    "heroImage": "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Air-Cooled-Scroll-Chiller-1-1.jpg",
+    "paragraphs": [
+      "Glycol chillers are used to cool process fluids by circulating a glycol-water mixture. This type of cooling is often used in applications where precise temperature control is required and the cooling medium must remain liquid at low temperatures.",
+      "The Glycol Chiller is integrated into the high-performance Glycol pumps and high-quality pressure vessels. These are completely made out of stainless steel which will offer high corrosion resistance."
+    ],
+    "featureList": [],
+    "advantagesList": [
+      "High Efficiency Pumps",
+      "Stainless Steel Construction",
+      "Corrosion Resistance"
+    ],
+    "specificationText": [
+      "Medium|Glycol-water mixture",
+      "Pump|High-performance Glycol pumps"
+    ],
+    "galleryImages": [
+      "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Air-Cooled-Scroll-Chiller-1-1.jpg"
+    ]
+  },
+  "oil-chiller": {
+    "title": "Oil Chiller",
+    "slug": "oil-chiller",
+    "category": "CUSTOMIZED CHILLER",
+    "heroImage": "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Oil-Chiller2.jpg",
+    "paragraphs": [
+      "Oil chillers are used to cool industrial oils that are used for lubrication or as a coolant in various machinery. Cooling the oil helps to maintain its viscosity and protect the machinery from heat damage.",
+      "We provide industrial oil chillers which are integrated with high-quality and premium components. Our team of expert engineers ensures to use of high-quality components and reliable products which can give rock-solid performance for a very long period."
+    ],
+    "featureList": [],
+    "advantagesList": [
+      "Viscosity Maintenance",
+      "Machinery Protection",
+      "Robust Performance"
+    ],
+    "specificationText": [
+      "Application|Oil Cooling",
+      "Performance|Rock-solid for long period"
+    ],
+    "galleryImages": [
+      "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Oil-Chiller2.jpg"
+    ]
+  },
+  "chiller-for-soap-industry": {
+    "title": "Chiller For Soap Industry",
+    "slug": "chiller-for-soap-industry",
+    "category": "CUSTOMIZED CHILLER",
+    "heroImage": "https://www.drycoolchillers.com/wp-content/uploads/2015/11/Slide011.jpg",
+    "paragraphs": [
+      "The soap manufacturing process involves high heat, especially during the mixing and saponification stages. Chillers help to control the temperature of the soap mixture, ensuring a high-quality product and preventing the mixture from becoming too hot and degrading.",
+      "Our soap chillers are specially designed for the process which involves soap manufacturing and production. Precise temperature control is crucial in the soap manufacturing industry to ensure consistent product quality."
+    ],
+    "featureList": [],
+    "advantagesList": [
+      "Precise Temperature Control",
+      "Consistent Product Quality",
+      "Optimized Production"
+    ],
+    "specificationText": [
+      "Application|Soap Manufacturing",
+      "Range|Roll mill & Die set cooling"
+    ],
+    "galleryImages": [
+      "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Multiple-Water-Cooled-Screw-Chiller-1-2.jpg"
+    ]
+  },
+  "chiller-for-hdpe-cpvc-upvc-pipes": {
+    "title": "HDPE / CPVC / UPVC PIPE CHILLER",
+    "slug": "chiller-for-hdpe-cpvc-upvc-pipes",
+    "category": "CUSTOMIZED CHILLER",
+    "heroImage": "https://www.drycoolchillers.com/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-29-at-11.17.37-AM.jpeg",
+    "paragraphs": [
+      "During the manufacturing process of HDPE, CPVC, and UPVC pipes, it's essential to control the temperature carefully to ensure the high-quality product. Chillers are used to cool the pipes as they are being extruded, which helps to maintain their shape and prevent thermal degradation.",
+      "We offer high-quality chillers for HDPE / CPVC / UPVC pipe plants which are integrated with the high-quality condensing and refrigeration unit. Our machine can work at extreme tropical weather conditions of up to 52 degrees Celsius which makes it much more reliable in such environments."
+    ],
+    "featureList": [],
+    "advantagesList": [
+      "High Efficiency",
+      "Maintains Mold Temperature",
+      "Reduces Scrap Count"
+    ],
+    "specificationText": [
+      "App|HDPE / CPVC / UPVC Pipes",
+      "Ambient|Up to 52°C"
+    ],
+    "galleryImages": [
+      "https://www.drycoolchillers.com/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-29-at-11.17.37-AM.jpeg",
+      "https://www.drycoolchillers.com/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-29-at-11.17.39-AM-1.jpeg",
+      "https://www.drycoolchillers.com/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-29-at-11.17.35-AM-1.jpeg",
+      "https://www.drycoolchillers.com/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-29-at-11.17.34-AM-1.jpeg"
+    ]
+  },
+  "chiller-for-injection-molding-machine": {
+    "title": "Chiller for injection molding machine",
+    "slug": "chiller-for-injection-molding-machine",
+    "category": "CUSTOMIZED CHILLER",
+    "heroImage": "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Multiple-Water-Cooled-Scroll-Chiller-1-2.jpg",
+    "paragraphs": [
+      "Advantages of Drycool System’s Chiller for Injection Molding Industries:"
+    ],
+    "featureList": [],
+    "advantagesList": [],
+    "specificationText": [],
+    "galleryImages": [
+      "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Multiple-Water-Cooled-Scroll-Chiller-1-2.jpg"
+    ]
+  },
+  "chiller-for-blow-molding": {
+    "title": "Chiller for Blow Molding",
+    "slug": "chiller-for-blow-molding",
+    "category": "CUSTOMIZED CHILLER",
+    "heroImage": "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Multiple-Water-Cooled-Screw-Chiller-2-1.jpg",
+    "paragraphs": [
+      "Various features are integrated into the Chiller for Blow Moulding which we have listed below."
+    ],
+    "featureList": [],
+    "advantagesList": [],
+    "specificationText": [],
+    "galleryImages": [
+      "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Multiple-Water-Cooled-Screw-Chiller-2-1.jpg"
+    ]
+  },
+  "rubber-molding-chiller": {
+    "title": "Rubber Molding Chiller",
+    "slug": "rubber-molding-chiller",
+    "category": "CUSTOMIZED CHILLER",
+    "heroImage": "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Multiple-Water-Cooled-Screw-Chiller-1-2.jpg",
+    "paragraphs": [
+      "Advantages of Drycool System’s Rubber Molding Chiller:"
+    ],
+    "featureList": [],
+    "advantagesList": [],
+    "specificationText": [],
+    "galleryImages": [
+      "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Multiple-Water-Cooled-Screw-Chiller-1-2.jpg"
+    ]
+  },
+  "industrial-chillers-in-uae": {
+    "title": "Industrial chillers in UAE",
+    "slug": "industrial-chillers-in-uae",
+    "category": "GLOBAL FOOTPRINTS",
+    "heroImage": "https://www.drycoolchillers.com/wp-content/uploads/2023/01/industrial-chiller-in-uae.png",
+    "paragraphs": [
+      "Drycool Systems manufactures and supplies a range of water chillers suitable for various industrial applications to the middle east (Saudi Arabia, Jordan, Qatar) and UAE. Chilled Water is transported by a water pump to an air handling unit, heat exchanger for petrochemical unit, storage tank, molding machine, rectifier tank, extruder or a stream, reservoir, etc. Pvt. Drycool Systems supplied and exports chillers in the UAE and liquid conditioning cooling Towers. If the makeup water line is a problem, air cooled chillers can also be considered, designed, and manufactured. Industrial Water Chillers are designed for higher condensing temperatures in the UAE and middle east since the condensing temperature is high. These industrial chillers are tested in the Drycool’ factory and provide high coefficient of performance, high energy efficiency ratio and lowest energy consumption.",
+      "Introduction",
+      "Drycool’ container flow type integrated units come with inbuilt SS tanks, pumps, chillers, cooling towers, interconnecting piping, and can be customized according to the specific project needs from customers. The chiller, cooling towers, chilled water pumps, and the condenser water pumps in the container will have independent breakers with electrical cables and glands. The PLC, HMI and Scada will be mounted inside the container and interlocked with all the essential safeties. The chillers and cooling towers supplied by Drycool can range from 30 TR – 1800 TR with an operating weight from 2 tonnes to 200 tonnes.",
+      "Drycool has supplied a numerous amount of water chillers for petrochemical industry to cool the styrene monomer tanks, ice factories, pharmaceutical and chemical companies and HVAC applications in UAE and middle east."
+    ],
+    "featureList": [],
+    "advantagesList": [],
+    "specificationText": [],
+    "galleryImages": [
+      "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Single-Air-Cooled-Screw-Chiller.jpg"
+    ]
+  },
+  "industrial-chillers-in-africa": {
+    "title": "Industrial chillers in Africa",
+    "slug": "industrial-chillers-in-africa",
+    "category": "GLOBAL FOOTPRINTS",
+    "heroImage": "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Single-Air-Cooled-Screw-Chiller.jpg",
+    "paragraphs": [
+      "Drycool Systems manufactures and supplies energy efficient of industrial chillers suitable for various industrial applications to the African countries (South Africa, Nigeria, Kenya, Tanzania, and Uganda). Chilled Water is transported by a water pump to an air handling unit, heat exchanger for petrochemical unit, storage tank, molding machine, rectifier tank, extruder or a stream, reservoir, etc. Drycool Systems supplies and exports industrial chillers in Africa and liquid conditioning cooling Towers. If the makeup water line is a problem, air cooled chillers can also be considered, designed, and manufactured. Industrial Water Chillers are designed for higher condensing temperatures in the Africa and middle African countries since the condensing temperature is high. These industrial chillers are tested in the Drycool’ factory and provide high coefficient of performance, high energy efficiency ratio and lowest energy consumption.",
+      "Introduction",
+      "Drycool’ container flow type integrated units come with inbuilt SS tanks, pumps, chillers, cooling towers, interconnecting piping, and can be customized according to the specific project needs from customers. The chiller, cooling towers, chilled water pumps, and the condenser water pumps in the container will have independent breakers with electrical cables and glands. The PLC, HMI and Scada will be mounted inside the container and interlocked with all the essential safeties. The chillers and cooling towers supplied by Drycool can range from 30 TR – 1800 TR with an operating weight from 2 tonnes to 200 tonnes.",
+      "Drycool has supplied a numerous amount of water chillers for petrochemical industry to cool the styrene monomer tanks, ice factories, pharmaceutical and chemical companies and HVAC applications in Africa and middle African countries."
+    ],
+    "featureList": [],
+    "advantagesList": [],
+    "specificationText": [],
+    "galleryImages": []
+  },
+  "industrial-chillers-in-indonesia": {
+    "title": "Industrial chillers in Indonesia",
+    "slug": "industrial-chillers-in-indonesia",
+    "category": "GLOBAL FOOTPRINTS",
+    "heroImage": "https://www.drycoolchillers.com/wp-content/uploads/2023/01/chiller-manufacturer-in-nepal.jpg",
+    "paragraphs": [
+      "Drycool Systems is the most preferred manufacturer to procure Industrial Water Chillers and Cooling Towers in Indonesia. We have built our reputation as a highly trustworthy manufacturer of these industrial chillers. We focus on innovation and technology to constantly improve our products with the changing market trends.",
+      "Introduction",
+      "We have a state-of-the-art manufacturing facility in India to manufacture customized chillers and cater to the demands of our OEMs (plastics, concrete, RO water, brewery, and fermentation, chemical and pharmaceutical, hydrogen refuelling, medical devices, anodizing, food, refrigeration, HVAC and marine applications) in Indonesia. Our team comprises of qualified welders, Skilled fitters and diligent workers put hours into every single unit to ensure a quality product.",
+      "Tested in accordance with the latest international standards and in different challenging conditions, these units promise unmatched performance for years after the purchase. This has made us one of the highly appreciated Industrial Water Chillers Manufacturers in Indonesia.",
+      "Our company has emerged as one of the most illustrious Low-Temperature Industrial Water Chillers Exporters and Suppliers in Indonesia. The industrial chillers provided by Drycool are energy efficient and provide a high coefficient of performance. We are already supplying these units to many firmly established organizations in Indonesia."
+    ],
+    "featureList": [],
+    "advantagesList": [],
+    "specificationText": [],
+    "galleryImages": [
+      "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Single-Air-Cooled-Screw-Chiller.jpg"
+    ]
+  },
+  "industrial-chillers-in-nepal": {
+    "title": "Industrial chillers in Nepal",
+    "slug": "industrial-chillers-in-nepal",
+    "category": "GLOBAL FOOTPRINTS",
+    "heroImage": "https://www.drycoolchillers.com/wp-content/uploads/2023/01/chiller-manufacturer-in-nepal.jpg",
+    "paragraphs": [
+      "Drycool Systems is specialized in designing and manufacturing a wide range of chillers and cooling towers for plastics, concrete, RO water, brewery and fermentation, chemical and pharmaceutical, hydrogen refueling, medical devices, anodizing, , food, refrigeration, HVAC and marine applications. Our dedicated efforts to customer satisfaction have gained us recognition among the top-tier manufacturers of chillers and cooling towers in Nepal.",
+      "Introduction",
+      "Our focus is to boost industrial process productivity with our innovative products and bring our customers the right solutions that fit your demands the best. Counted among the top-tier Chiller Heat Exchanger Manufacturers in Nepal, we have experts and apply our resources and knowledge in every design, which enhances their efficiency and working.",
+      "Being one of the pioneers in the manufacture of Industrial Chillers and Cooling Towers, we export and supply our equipment in Nepal and have products to meet all your industrial process requirements. We supply air-cooled chillers and water-cooled chillers with capacities ranging from 1 TR – 1800 TR and can customize the design as per the requirement of the end user."
+    ],
+    "featureList": [],
+    "advantagesList": [],
+    "specificationText": [],
+    "galleryImages": [
+      "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Single-Air-Cooled-Screw-Chiller.jpg"
+    ]
+  },
+  "industrial-chiller-in-bangladesh": {
+    "title": "Industrial chiller in Bangladesh",
+    "slug": "industrial-chiller-in-bangladesh",
+    "category": "GLOBAL FOOTPRINTS",
+    "heroImage": "https://www.drycoolchillers.com/wp-content/uploads/2023/01/water-cooled-reciprocating-chillers.jpg",
+    "paragraphs": [
+      "Drycool Systems has been supplying Industrial Chillers and Cooling Towers to India’s immediate neighbor, Bangladesh since 2018. Since then, Drycool has provided several industrial solutions like oil chillers, brine chillers, HVAC chillers, batching plant chillers, pharmaceutical chillers, extrusion chillers and injection molding chillers. These installations were carried out across the country’s key industries, which included plastics, concrete, RO water, brewery, and fermentation, chemical and pharmaceutical, hydrogen refueling, medical devices, anodizing, food, refrigeration, HVAC and marine applications.",
+      "Chilled water is integral part of the industrial operations across several industries. Due to the flexibility, adaptability and uniqueness of the solutions provided by Drycool, the company has been a provider of choice for chillers across every industry in the country. Drycool offers a variety of products including chillers, cooling towers, plate heat exchangers, air handling units, air washers and cold rooms which are energy efficient and provide a high coefficient of performance.",
+      "Special features of Drycool’s Robust and Energy Efficient Water Chiller for Bangladesh",
+      "• Chillers are designed to attain brine, glycol and methanol temperatures upto -50 deg C and can work on condensing temperatures as high as 57 deg C",
+      "• Energy efficient reciprocating compressors from Denmark (Danfoss), Germany (Bitzer), and Italy (Dorin) with piston and cylinders for compression of refrigerant and ease of maintenance",
+      "• Customization to add flame proof motors (Bharat Bijlee/ Crompton/ ABB/ Siemens) on open drive reciprocating compressors as per requirement.",
+      "• Eco friendly freon gas R-134a / R-407C/ R-404a",
+      "• Customization to use Ammonia (NH3) as a refrigerant",
+      "• Electronic expansion valve for minimum superheat, energy efficiency and precise temperature control",
+      "• Multiple circuits including brine or water pumps and stainless-steel storage tanks on skid",
+      "• Wheels provided on the skid for extra ruggedness for mobile operation",
+      "• Low Fins per inch count and high condensing surface area with blue coated fins for easy maintenance",
+      "• Shell and tube type evaporators with high-flow design, ready to handle fluid debris and suspended particles. Customization to use SS 316 shell and SS316 tubes is also available.",
+      "• Weatherproof design with IP55 / IP65 level protection",
+      "• Customization to add Siemens/Allen Bradley/Schneider’s automatic PLC, HMI, Industrial PC and Scada units with remote operation and data logging facilities",
+      "• Customization to use ATEX/PESO certified instrumentation and ATEX certified compressors",
+      "• Third Party ATEX Chiller Certification can be provided",
+      "• Automatic stepped capacity control from 25%-50%-75%-100%, or stepless capacity control, from 25% to 100%."
+    ],
+    "featureList": [],
+    "advantagesList": [],
+    "specificationText": [],
+    "galleryImages": [
+      "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Single-Air-Cooled-Screw-Chiller.jpg"
+    ]
+  },
+};
 
-  // ═══════════════════════════════════════════
-  // PRODUCTS > AIR CHILLER
-  // ═══════════════════════════════════════════
-  {
-    slug: "air-chiller",
-    title: "Air Chiller",
-    subtitle: "Versatile air chillers for general industrial and commercial cooling",
-    description: "Drycool Air Chillers provide reliable, cost-effective cooling for a wide range of industrial and commercial applications. Available in multiple configurations to suit specific requirements.",
-    features: [
-      { icon: Wind, title: "Versatile Design", desc: "Multiple configurations for diverse cooling applications." },
-      { icon: Gauge, title: "Cost Effective", desc: "Optimized design for best price-to-performance ratio." },
-      { icon: Shield, title: "Durable Build", desc: "Heavy-duty construction for continuous industrial operation." },
-      { icon: Settings, title: "Easy Maintenance", desc: "Accessible components for quick servicing and low downtime." },
-    ],
-    specs: [
-      { label: "Capacity Range", value: "1 TR – 100 TR" },
-      { label: "Refrigerant", value: "R-22 / R-407C" },
-      { label: "Type", value: "Air Cooled" },
-      { label: "Application", value: "General Purpose" },
-      { label: "Power Supply", value: "415V / 3Ph / 50Hz" },
-      { label: "Construction", value: "MS Powder Coated" },
-    ],
-    applications: ["General Industry", "Workshops", "Small Factories", "Commercial Spaces", "Warehouses", "Agricultural Processing"],
-    advantages: ["Affordable", "Easy to install", "Low maintenance", "Wide range available", "Reliable performance", "Quick delivery"],
-    category: "products",
-    parentLabel: "Products",
-    parentPath: "/products",
-  },
+export const getProductBySlug = (slug: string): ProductPageData | undefined => {
+  return productPages[slug];
+};
 
-  // ═══════════════════════════════════════════
-  // PRODUCTS > RECIPROCATING CHILLERS
-  // ═══════════════════════════════════════════
-  {
-    slug: "water-cooled-reciprocating-chiller",
-    title: "Water-cooled Reciprocating Chillers",
-    subtitle: "Robust water-cooled reciprocating chillers for reliable industrial cooling",
-    description: "Water-cooled reciprocating chillers engineered for heavy-duty industrial applications. Semi-hermetic compressors with shell & tube heat exchangers for consistent performance.",
-    features: [
-      { icon: Droplets, title: "Water Cooled", desc: "Shell & tube condenser for efficient heat rejection via cooling tower." },
-      { icon: Settings, title: "Semi-Hermetic", desc: "Field-serviceable semi-hermetic compressors for easy maintenance." },
-      { icon: Gauge, title: "Heavy Duty", desc: "Built for continuous 24/7 industrial operation." },
-      { icon: Shield, title: "Proven Technology", desc: "Time-tested reciprocating compressor technology with decades of reliability." },
-    ],
-    specs: [
-      { label: "Capacity Range", value: "5 TR – 100 TR" },
-      { label: "Refrigerant", value: "R-22 / R-407C" },
-      { label: "Compressor", value: "Semi-Hermetic Reciprocating" },
-      { label: "Evaporator", value: "Shell & Tube" },
-      { label: "Condenser", value: "Shell & Tube" },
-      { label: "Power Supply", value: "415V / 3Ph / 50Hz" },
-    ],
-    applications: ["Industrial Process", "Plastic Molding", "Chemical Plants", "Textile Industry", "Dairy Plants", "Beverage Industry"],
-    advantages: ["Easy to maintain", "Low cost of ownership", "Reliable operation", "Robust construction", "Field repairable", "Wide parts availability"],
-    category: "products",
-    parentLabel: "Products",
-    parentPath: "/products",
-  },
-  {
-    slug: "air-cooled-reciprocating-chiller",
-    title: "Air-cooled Reciprocating Chillers",
-    subtitle: "Air-cooled reciprocating chillers for simple, reliable cooling solutions",
-    description: "Air-cooled reciprocating chillers offering simple installation without cooling towers. Ideal for medium-capacity applications requiring dependable, no-fuss cooling.",
-    features: [
-      { icon: Wind, title: "No Cooling Tower", desc: "Self-contained air-cooled design eliminates cooling tower requirements." },
-      { icon: Settings, title: "Simple Operation", desc: "Straightforward controls and easy-to-understand operation." },
-      { icon: Gauge, title: "Reliable", desc: "Proven reciprocating technology for dependable performance." },
-      { icon: Shield, title: "Weather Resistant", desc: "Outdoor-rated construction for all-weather installation." },
-    ],
-    specs: [
-      { label: "Capacity Range", value: "3 TR – 60 TR" },
-      { label: "Refrigerant", value: "R-22 / R-407C" },
-      { label: "Compressor", value: "Hermetic / Semi-Hermetic" },
-      { label: "Condenser", value: "Air-Cooled Copper Coil" },
-      { label: "Ambient Temp.", value: "Up to 48°C" },
-      { label: "Power Supply", value: "415V / 3Ph / 50Hz" },
-    ],
-    applications: ["Small Industry", "Food Processing", "Packaging", "Plastic Molding", "Printing", "Electroplating"],
-    advantages: ["No water required", "Outdoor installation", "Low initial cost", "Easy maintenance", "Compact design", "Quick commissioning"],
-    category: "products",
-    parentLabel: "Products",
-    parentPath: "/products",
-  },
-  {
-    slug: "industrial-reciprocating-chiller",
-    title: "Industrial Reciprocating Chillers",
-    subtitle: "Heavy-duty industrial reciprocating chillers for demanding environments",
-    description: "Purpose-built industrial reciprocating chillers designed for the most demanding cooling applications. Rugged construction with advanced safety features for 24/7 operation.",
-    features: [
-      { icon: Factory, title: "Industrial Grade", desc: "Heavy-gauge construction for harsh industrial environments." },
-      { icon: Shield, title: "Safety Features", desc: "HP/LP cutouts, oil pressure switch, phase reversal protection." },
-      { icon: Gauge, title: "24/7 Operation", desc: "Designed for continuous duty with no downtime requirements." },
-      { icon: Settings, title: "Custom Options", desc: "Available with SS evaporator, dual pump, and backup systems." },
-    ],
-    specs: [
-      { label: "Capacity Range", value: "10 TR – 150 TR" },
-      { label: "Refrigerant", value: "R-407C / R-134A" },
-      { label: "Duty", value: "Continuous 24/7" },
-      { label: "Safety", value: "Full protection suite" },
-      { label: "Construction", value: "Heavy-gauge MS" },
-      { label: "Options", value: "SS evaporator, dual pump" },
-    ],
-    applications: ["Heavy Industry", "Mining", "Steel Plants", "Cement Industry", "Power Plants", "Petrochemical"],
-    advantages: ["Extreme durability", "Full safety suite", "24/7 reliability", "Custom configurations", "Wide capacity range", "Easy field service"],
-    category: "products",
-    parentLabel: "Products",
-    parentPath: "/products",
-  },
 
-  // ═══════════════════════════════════════════
-  // PRODUCTS > COOLING TOWER MANUFACTURER
-  // ═══════════════════════════════════════════
-  {
-    slug: "cooling-tower-manufacturer",
-    title: "Cooling Tower Manufacturer",
-    subtitle: "FRP cooling towers engineered for maximum thermal performance",
-    description: "Drycool manufactures a complete range of FRP cooling towers including cross-flow, counter-flow, and induced draft designs. Our cooling towers complement our chiller systems for complete cooling solutions.",
-    features: [
-      { icon: Droplets, title: "FRP Construction", desc: "Corrosion-resistant fiberglass reinforced plastic for long service life." },
-      { icon: Wind, title: "Multiple Designs", desc: "Cross-flow, counter-flow, and bottle-shaped configurations available." },
-      { icon: Gauge, title: "High Efficiency", desc: "Optimized fill media and drift eliminators for maximum thermal performance." },
-      { icon: Shield, title: "Low Maintenance", desc: "Easy-access design with minimal maintenance requirements." },
-    ],
-    specs: [
-      { label: "Capacity Range", value: "5 TR – 1000 TR" },
-      { label: "Material", value: "FRP (Fiberglass)" },
-      { label: "Types", value: "Cross-flow / Counter-flow" },
-      { label: "Fan", value: "Axial / Induced Draft" },
-      { label: "Fill Media", value: "PVC / PP" },
-      { label: "Drift Loss", value: "< 0.01%" },
-    ],
-    applications: ["HVAC Systems", "Industrial Process", "Power Plants", "Chemical Plants", "Refineries", "Steel Mills"],
-    advantages: ["Corrosion resistant", "Long lifespan", "Low drift loss", "Quiet operation", "Easy installation", "Complete solutions"],
-    category: "products",
-    parentLabel: "Products",
-    parentPath: "/products",
-  },
-  {
-    slug: "chiller-manufacturer-kolkata",
-    title: "Chiller Manufacturer in Kolkata",
-    subtitle: "Leading chiller manufacturer serving Eastern India from Kolkata",
-    description: "Drycool Systems is a leading chiller manufacturer based in Kolkata, serving Eastern India and beyond. Our state-of-the-art manufacturing facility produces a complete range of industrial and commercial chillers.",
-    features: [
-      { icon: Factory, title: "Kolkata Manufacturing", desc: "State-of-the-art production facility in Kolkata for Eastern India." },
-      { icon: Shield, title: "ISO Certified", desc: "ISO 9001:2015 certified manufacturing for consistent quality." },
-      { icon: Settings, title: "Full Range", desc: "Complete product range from 1 TR to 500 TR capacity." },
-      { icon: Gauge, title: "Quick Delivery", desc: "Proximity advantage for faster delivery across Eastern India." },
-    ],
-    specs: [
-      { label: "Location", value: "Kolkata, West Bengal" },
-      { label: "Certification", value: "ISO 9001:2015" },
-      { label: "Capacity Range", value: "1 TR – 500 TR" },
-      { label: "Products", value: "Screw, Scroll, Reciprocating" },
-      { label: "Service Area", value: "Eastern India & Bangladesh" },
-      { label: "Experience", value: "25+ Years" },
-    ],
-    applications: ["Eastern India Industries", "Bangladesh Market", "Steel Belt Region", "Tea Industry", "Jute Industry", "IT Sector Kolkata"],
-    advantages: ["Local manufacturing", "Quick response time", "On-site service", "Competitive pricing", "Regional expertise", "Complete solutions"],
-    category: "products",
-    parentLabel: "Products",
-    parentPath: "/products",
-  },
 
-  // ═══════════════════════════════════════════
-  // APPLICATION
-  // ═══════════════════════════════════════════
-  {
-    slug: "chiller-for-plastic-industry",
-    title: "Chiller For Plastic Industry",
-    subtitle: "Precision cooling solutions for injection molding and extrusion",
-    description: "Specially designed chillers for the plastics industry covering injection molding, blow molding, extrusion, and thermoforming. Precise temperature control ensures consistent product quality and faster cycle times.",
-    features: [
-      { icon: Thermometer, title: "Precise Cooling", desc: "±0.5°C accuracy for consistent mold temperature and product quality." },
-      { icon: Gauge, title: "Fast Cycle Times", desc: "Optimized cooling reduces cycle time and increases production output." },
-      { icon: Settings, title: "Mold Protection", desc: "Anti-freeze and flow monitoring protect expensive molds." },
-      { icon: Shield, title: "24/7 Ready", desc: "Built for continuous duty in high-production environments." },
-    ],
-    specs: [
-      { label: "Capacity Range", value: "1 TR – 200 TR" },
-      { label: "Temperature", value: "5°C to 25°C" },
-      { label: "Accuracy", value: "±0.5°C" },
-      { label: "Pump Pressure", value: "Up to 5 bar" },
-      { label: "Process Fluid", value: "Water / Glycol" },
-      { label: "Control", value: "PLC / Microprocessor" },
-    ],
-    applications: ["Injection Molding", "Blow Molding", "Extrusion", "Thermoforming", "PET Preform", "Pipe Manufacturing"],
-    advantages: ["Faster cycle times", "Better product quality", "Mold protection", "Energy efficient", "Low maintenance", "Custom configurations"],
-    category: "application",
-    parentLabel: "Application",
-    parentPath: "/industries",
-  },
-  {
-    slug: "chiller-for-cement-industry",
-    title: "Chiller For Cement Industry",
-    subtitle: "Industrial cooling solutions for cement and concrete production",
-    description: "High-capacity chillers for cement plants and ready-mix concrete operations. Cooling water and aggregate for concrete batching to maintain structural integrity in hot climates.",
-    features: [
-      { icon: Factory, title: "Concrete Cooling", desc: "Cools mixing water and aggregates for optimal concrete temperature." },
-      { icon: Thermometer, title: "Low Temp Output", desc: "Delivers chilled water as low as 1°C for hot weather concreting." },
-      { icon: Shield, title: "Dust Resistant", desc: "Sealed and protected design for dusty cement plant environments." },
-      { icon: Gauge, title: "High Capacity", desc: "Large cooling loads handled efficiently for batch production." },
-    ],
-    specs: [
-      { label: "Capacity Range", value: "20 TR – 500 TR" },
-      { label: "Outlet Temp.", value: "1°C to 7°C" },
-      { label: "Application", value: "Water & Ice Cooling" },
-      { label: "Environment", value: "Dust-proof rated" },
-      { label: "Operation", value: "Batch / Continuous" },
-      { label: "Refrigerant", value: "R-407C / R-134A" },
-    ],
-    applications: ["Ready-Mix Concrete", "Precast Plants", "Dam Construction", "Bridge Construction", "Mass Concrete Pours", "Hot Weather Concreting"],
-    advantages: ["Maintains concrete quality", "Hot weather operation", "High capacity cooling", "Dust-proof design", "Reliable performance", "Multiple configurations"],
-    category: "application",
-    parentLabel: "Application",
-    parentPath: "/industries",
-  },
-  {
-    slug: "chiller-for-brewery-fermentation",
-    title: "Chiller For Brewery & Fermentation",
-    subtitle: "Temperature-controlled chillers for brewing and fermentation processes",
-    description: "Precision temperature control chillers for breweries, wineries, and fermentation processes. Glycol-based systems maintaining exact fermentation temperatures for consistent product quality.",
-    features: [
-      { icon: Beaker, title: "Glycol Systems", desc: "Food-grade glycol circulation for precise fermentation temperature control." },
-      { icon: Thermometer, title: "Multi-Zone", desc: "Independent temperature zones for different fermentation stages." },
-      { icon: Shield, title: "Food Grade", desc: "Stainless steel contact surfaces meeting food safety standards." },
-      { icon: Gauge, title: "Consistent Quality", desc: "Precise temperature = consistent fermentation = consistent product." },
-    ],
-    specs: [
-      { label: "Capacity Range", value: "5 TR – 100 TR" },
-      { label: "Glycol Temp.", value: "-5°C to 15°C" },
-      { label: "Accuracy", value: "±0.3°C" },
-      { label: "Material", value: "SS 304 / SS 316" },
-      { label: "Glycol Conc.", value: "25% – 35%" },
-      { label: "Control", value: "PLC with HMI" },
-    ],
-    applications: ["Beer Brewing", "Wine Making", "Distilleries", "Kombucha Production", "Yeast Propagation", "Craft Breweries"],
-    advantages: ["Precise fermentation control", "Food-grade construction", "Multi-zone capability", "Energy efficient", "Compact glycol units", "Easy CIP integration"],
-    category: "application",
-    parentLabel: "Application",
-    parentPath: "/industries",
-  },
-  {
-    slug: "chiller-for-food-beverage-industry",
-    title: "Chiller For Food & Beverage Industry",
-    subtitle: "Hygienic cooling solutions for food processing and beverage production",
-    description: "Food-grade chillers designed for HACCP-compliant food and beverage processing. Stainless steel construction with precise temperature control for safety and quality.",
-    features: [
-      { icon: Thermometer, title: "HACCP Compliant", desc: "Meets food safety standards for hygienic cooling applications." },
-      { icon: Shield, title: "SS Construction", desc: "Full stainless steel contact surfaces for food-grade operation." },
-      { icon: Gauge, title: "Rapid Cooling", desc: "Quick pull-down capability for perishable food processing." },
-      { icon: Settings, title: "CIP Compatible", desc: "Designed for Clean-In-Place sanitation procedures." },
-    ],
-    specs: [
-      { label: "Capacity Range", value: "5 TR – 300 TR" },
-      { label: "Temperature", value: "0°C to 15°C" },
-      { label: "Material", value: "SS 304 / SS 316L" },
-      { label: "Compliance", value: "HACCP / FDA" },
-      { label: "Refrigerant", value: "R-134A / NH3" },
-      { label: "Control", value: "PLC with data logging" },
-    ],
-    applications: ["Dairy Processing", "Meat Processing", "Bakery", "Confectionery", "Beverage Bottling", "Cold Storage"],
-    advantages: ["Food safety compliant", "Hygienic design", "Rapid cooling", "Data logging", "CIP compatible", "Energy efficient"],
-    category: "application",
-    parentLabel: "Application",
-    parentPath: "/industries",
-  },
-  {
-    slug: "chiller-for-heavy-industrial-purpose",
-    title: "Chiller For Heavy Industrial Purpose",
-    subtitle: "Rugged chillers built for the toughest industrial environments",
-    description: "Heavy-duty industrial chillers engineered for extreme conditions in steel plants, power generation, mining, and heavy manufacturing. Robust construction with full safety systems.",
-    features: [
-      { icon: Factory, title: "Heavy Duty", desc: "Extra-robust construction for harsh industrial environments." },
-      { icon: Shield, title: "Full Protection", desc: "Complete safety suite including HP/LP, oil pressure, phase protection." },
-      { icon: Gauge, title: "Continuous Duty", desc: "Designed for 24/7/365 operation without scheduled downtime." },
-      { icon: Settings, title: "Custom Built", desc: "Tailored to specific industrial cooling requirements." },
-    ],
-    specs: [
-      { label: "Capacity Range", value: "50 TR – 500 TR" },
-      { label: "Duty Cycle", value: "24/7 Continuous" },
-      { label: "Temperature", value: "-10°C to 25°C" },
-      { label: "Construction", value: "Heavy-gauge MS/SS" },
-      { label: "Safety", value: "Full protection suite" },
-      { label: "Refrigerant", value: "R-134A / R-407C / NH3" },
-    ],
-    applications: ["Steel Plants", "Power Generation", "Mining", "Heavy Manufacturing", "Oil & Gas", "Cement Plants"],
-    advantages: ["Extreme durability", "24/7 reliability", "Full safety systems", "Custom engineering", "Wide capacity range", "On-site commissioning"],
-    category: "application",
-    parentLabel: "Application",
-    parentPath: "/industries",
-  },
-  {
-    slug: "chiller-for-hydrogen-refueling-station",
-    title: "Chiller For Hydrogen Refueling Station",
-    subtitle: "Specialized cooling for hydrogen fuel cell and refueling infrastructure",
-    description: "Purpose-built chillers for hydrogen refueling stations requiring precise pre-cooling of hydrogen gas to -40°C before dispensing. Critical for safe and efficient hydrogen fueling.",
-    features: [
-      { icon: Flame, title: "H2 Pre-Cooling", desc: "Cools hydrogen gas to -40°C for safe, fast dispensing." },
-      { icon: Shield, title: "ATEX Rated", desc: "Explosion-proof design for hazardous hydrogen environments." },
-      { icon: Thermometer, title: "Ultra-Low Temp", desc: "Cascade refrigeration for ultra-low temperature operation." },
-      { icon: Cpu, title: "Smart Control", desc: "Automated control with remote monitoring and safety interlocks." },
-    ],
-    specs: [
-      { label: "Cooling Temp.", value: "-40°C" },
-      { label: "Protocol", value: "SAE J2601" },
-      { label: "Safety", value: "ATEX Zone 2" },
-      { label: "Refrigeration", value: "Cascade System" },
-      { label: "Refrigerant", value: "R-134A / R-404A" },
-      { label: "Monitoring", value: "24/7 Remote" },
-    ],
-    applications: ["H2 Refueling Stations", "Fuel Cell Testing", "Hydrogen Storage", "Green Energy Projects", "Transport Hubs", "Research Labs"],
-    advantages: ["Ultra-low temperature", "ATEX compliance", "SAE J2601 protocol", "Remote monitoring", "Cascade efficiency", "Future-ready technology"],
-    category: "application",
-    parentLabel: "Application",
-    parentPath: "/industries",
-  },
-  {
-    slug: "chillers-for-milk-industry",
-    title: "Chillers For Milk Industry",
-    subtitle: "Rapid milk cooling and dairy processing chiller systems",
-    description: "Dairy-grade chillers for rapid milk cooling from 35°C to 4°C within minutes. Stainless steel construction meeting dairy industry hygiene standards.",
-    features: [
-      { icon: Milk, title: "Rapid Milk Cooling", desc: "Flash cooling from 35°C to 4°C to preserve milk quality." },
-      { icon: Shield, title: "Dairy Grade", desc: "SS 304/316 construction meeting dairy hygiene standards." },
-      { icon: Thermometer, title: "Precise Control", desc: "±0.5°C accuracy for consistent cold storage temperatures." },
-      { icon: Settings, title: "Plate Chillers", desc: "PHE-based instant cooling for inline milk processing." },
-    ],
-    specs: [
-      { label: "Capacity Range", value: "5 TR – 200 TR" },
-      { label: "Inlet Temp.", value: "35°C" },
-      { label: "Outlet Temp.", value: "2°C to 4°C" },
-      { label: "Material", value: "SS 304 / SS 316" },
-      { label: "Type", value: "PHE / Shell & Tube" },
-      { label: "Compliance", value: "FSSAI / Dairy Grade" },
-    ],
-    applications: ["Milk Chilling Centers", "Dairy Plants", "Cheese Manufacturing", "Yogurt Production", "Ice Cream Plants", "Milk Powder Plants"],
-    advantages: ["Rapid cooling", "Preserves quality", "Hygienic design", "Energy efficient", "FSSAI compliant", "24/7 operation"],
-    category: "application",
-    parentLabel: "Application",
-    parentPath: "/industries",
-  },
-  {
-    slug: "chiller-for-medical-device",
-    title: "Chiller For Medical Device",
-    subtitle: "Precision cooling for medical equipment and healthcare facilities",
-    description: "Medical-grade chillers for MRI machines, CT scanners, linear accelerators, and laboratory equipment. Ultra-precise temperature control with clean, quiet operation.",
-    features: [
-      { icon: Pill, title: "Medical Grade", desc: "Clean, precise cooling for sensitive medical equipment." },
-      { icon: Thermometer, title: "Ultra-Precise", desc: "±0.1°C temperature stability for critical medical applications." },
-      { icon: Shield, title: "Clean Operation", desc: "Low-vibration, low-noise design for hospital environments." },
-      { icon: Cpu, title: "Redundancy", desc: "Dual-circuit design with automatic failover for uninterrupted cooling." },
-    ],
-    specs: [
-      { label: "Capacity Range", value: "2 TR – 50 TR" },
-      { label: "Accuracy", value: "±0.1°C" },
-      { label: "Noise Level", value: "< 65 dB(A)" },
-      { label: "Redundancy", value: "N+1 Available" },
-      { label: "Filtration", value: "5 micron inline" },
-      { label: "Communication", value: "RS-485 / BACnet" },
-    ],
-    applications: ["MRI Cooling", "CT Scanner", "Linear Accelerator", "Laboratory Equipment", "Blood Bank", "Dialysis Centers"],
-    advantages: ["Ultra-precise control", "Low noise & vibration", "Redundant systems", "Medical compliance", "Clean operation", "Remote monitoring"],
-    category: "application",
-    parentLabel: "Application",
-    parentPath: "/industries",
-  },
-  {
-    slug: "chiller-for-cnc-cooling",
-    title: "Chiller For CNC Cooling",
-    subtitle: "Reliable cooling solutions for CNC machines and spindle cooling",
-    description: "Purpose-built chillers for CNC machining centers, spindle cooling, and cutting fluid temperature control. Maintains machining accuracy by preventing thermal expansion.",
-    features: [
-      { icon: Settings, title: "Spindle Cooling", desc: "Dedicated cooling circuits for high-speed spindle temperature control." },
-      { icon: Thermometer, title: "Thermal Stability", desc: "Prevents thermal expansion for consistent machining accuracy." },
-      { icon: Gauge, title: "Oil Cooling", desc: "Hydraulic oil and lubricant cooling for machine longevity." },
-      { icon: Shield, title: "Compact Design", desc: "Space-efficient units designed to fit alongside CNC machines." },
-    ],
-    specs: [
-      { label: "Capacity Range", value: "0.5 TR – 20 TR" },
-      { label: "Temperature", value: "15°C to 25°C" },
-      { label: "Accuracy", value: "±0.5°C" },
-      { label: "Coolant", value: "Water / Oil" },
-      { label: "Flow Rate", value: "10 – 100 LPM" },
-      { label: "Footprint", value: "Compact" },
-    ],
-    applications: ["CNC Machining Centers", "VMC / HMC", "Laser Cutting", "EDM Machines", "Grinding Machines", "Wire Cut EDM"],
-    advantages: ["Improved accuracy", "Extended tool life", "Compact size", "Oil & water cooling", "Quick installation", "Low maintenance"],
-    category: "application",
-    parentLabel: "Application",
-    parentPath: "/industries",
-  },
-  {
-    slug: "chiller-for-printing-packaging",
-    title: "Chiller For Printing & Packaging",
-    subtitle: "Temperature control solutions for printing presses and packaging lines",
-    description: "Printing industry chillers for roller cooling, ink temperature control, and UV curing in offset, flexo, and rotogravure printing. Ensures print quality and color consistency.",
-    features: [
-      { icon: Printer, title: "Roller Cooling", desc: "Precise roller temperature control for consistent print quality." },
-      { icon: Thermometer, title: "Ink Control", desc: "Stable ink viscosity through accurate temperature management." },
-      { icon: Gauge, title: "UV Curing", desc: "Cooling support for UV curing lamps and LED systems." },
-      { icon: Shield, title: "Non-Stop", desc: "Continuous operation for high-speed printing production." },
-    ],
-    specs: [
-      { label: "Capacity Range", value: "3 TR – 50 TR" },
-      { label: "Temperature", value: "8°C to 18°C" },
-      { label: "Accuracy", value: "±0.5°C" },
-      { label: "Application", value: "Roller / Ink / UV" },
-      { label: "Flow Rate", value: "20 – 200 LPM" },
-      { label: "Control", value: "Digital / PLC" },
-    ],
-    applications: ["Offset Printing", "Flexographic Printing", "Rotogravure", "Digital Printing", "Lamination", "Packaging Lines"],
-    advantages: ["Better print quality", "Color consistency", "Reduced waste", "Extended roller life", "Energy efficient", "Multiple cooling points"],
-    category: "application",
-    parentLabel: "Application",
-    parentPath: "/industries",
-  },
-  {
-    slug: "bess-chillers",
-    title: "Battery Energy Storage Systems (BESS) Chillers",
-    subtitle: "Thermal management for battery energy storage and EV charging",
-    description: "Specialized chillers for Battery Energy Storage Systems (BESS) providing critical thermal management to maintain optimal battery temperature, extend battery life, and ensure safety.",
-    features: [
-      { icon: Battery, title: "Battery Cooling", desc: "Maintains optimal battery temperature for performance and longevity." },
-      { icon: Shield, title: "Safety Critical", desc: "Prevents thermal runaway with precise temperature management." },
-      { icon: Zap, title: "EV Compatible", desc: "Supports EV charging station thermal management requirements." },
-      { icon: Cpu, title: "BMS Integration", desc: "Seamless integration with Battery Management Systems." },
-    ],
-    specs: [
-      { label: "Capacity Range", value: "5 TR – 100 TR" },
-      { label: "Temperature", value: "20°C to 25°C" },
-      { label: "Accuracy", value: "±0.5°C" },
-      { label: "Coolant", value: "Glycol / Dielectric" },
-      { label: "Redundancy", value: "N+1 Standard" },
-      { label: "Communication", value: "CAN / Modbus" },
-    ],
-    applications: ["Grid Storage", "Solar Farms", "Wind Farms", "EV Charging Hubs", "Data Centers", "Microgrids"],
-    advantages: ["Extends battery life", "Prevents thermal runaway", "BMS compatible", "Redundant design", "Energy efficient", "Future-ready"],
-    category: "application",
-    parentLabel: "Application",
-    parentPath: "/industries",
-  },
-  {
-    slug: "chillers-for-eyewash-safety-showers",
-    title: "Chillers for Eyewash and Safety Showers",
-    subtitle: "Tepid water chillers for emergency eyewash and safety shower stations",
-    description: "ANSI Z358.1 compliant tepid water chillers for emergency eyewash stations and safety showers in industrial facilities. Maintains water at 16°C–38°C as required by safety regulations.",
-    features: [
-      { icon: ShowerHead, title: "ANSI Compliant", desc: "Meets ANSI Z358.1 requirements for tepid water delivery." },
-      { icon: Thermometer, title: "Tepid Water", desc: "Maintains water between 16°C and 38°C year-round." },
-      { icon: Shield, title: "Instant Response", desc: "Always ready for emergency activation with continuous circulation." },
-      { icon: Settings, title: "Multi-Station", desc: "Serves multiple eyewash and shower stations simultaneously." },
-    ],
-    specs: [
-      { label: "Capacity Range", value: "1 TR – 20 TR" },
-      { label: "Temperature", value: "16°C to 38°C" },
-      { label: "Compliance", value: "ANSI Z358.1" },
-      { label: "Flow Duration", value: "15 minutes min." },
-      { label: "Stations", value: "Multiple per unit" },
-      { label: "Circulation", value: "Continuous" },
-    ],
-    applications: ["Chemical Plants", "Refineries", "Laboratories", "Manufacturing Plants", "Oil & Gas", "Pharmaceutical"],
-    advantages: ["ANSI compliant", "Year-round tepid water", "Instant availability", "Multi-station support", "Continuous circulation", "Worker safety"],
-    category: "application",
-    parentLabel: "Application",
-    parentPath: "/industries",
-  },
 
-  // ═══════════════════════════════════════════
-  // CUSTOMIZED CHILLER
-  // ═══════════════════════════════════════════
-  {
-    slug: "hvac-chiller",
-    title: "HVAC Chiller",
-    subtitle: "Central HVAC chillers for commercial and institutional buildings",
-    description: "Central HVAC chillers designed for comfort cooling in commercial buildings, hotels, hospitals, malls, and institutional facilities. Energy-efficient with smart BMS integration.",
-    features: [
-      { icon: Wind, title: "Comfort Cooling", desc: "Designed specifically for human comfort applications." },
-      { icon: Cpu, title: "BMS Ready", desc: "Full building management system integration capability." },
-      { icon: Gauge, title: "Energy Star", desc: "High IPLV ratings for lowest operating cost." },
-      { icon: Settings, title: "Quiet Operation", desc: "Low noise design suitable for occupied building spaces." },
-    ],
-    specs: [
-      { label: "Capacity Range", value: "10 TR – 500 TR" },
-      { label: "Supply Temp.", value: "6°C to 12°C" },
-      { label: "Return Temp.", value: "12°C to 18°C" },
-      { label: "Noise", value: "< 75 dB(A)" },
-      { label: "Communication", value: "BACnet / Modbus" },
-      { label: "Efficiency", value: "ASHRAE 90.1" },
-    ],
-    applications: ["Office Buildings", "Hotels", "Hospitals", "Shopping Malls", "Airports", "Convention Centers"],
-    advantages: ["Comfort optimized", "BMS integrated", "Energy efficient", "Low noise", "Reliable", "Easy maintenance"],
-    category: "customized",
-    parentLabel: "Customized Chiller",
-    parentPath: "/products/customized-chiller",
-  },
-  {
-    slug: "chiller-for-chemical-pharmaceutical",
-    title: "Chiller For Chemical & Pharmaceutical Industry",
-    subtitle: "Explosion-proof and GMP-compliant chillers for chemical & pharma plants",
-    description: "GMP-compliant chillers for pharmaceutical manufacturing and chemical processing. Available with explosion-proof motors and flameproof electrical components for hazardous environments.",
-    features: [
-      { icon: FlaskConical, title: "GMP Compliant", desc: "Meets Good Manufacturing Practice standards for pharma production." },
-      { icon: Shield, title: "Explosion Proof", desc: "Flameproof motors and electricals for hazardous areas." },
-      { icon: Thermometer, title: "Reactor Cooling", desc: "Precise temperature control for exothermic reaction cooling." },
-      { icon: Settings, title: "Validated", desc: "IQ/OQ/PQ validation documentation available." },
-    ],
-    specs: [
-      { label: "Capacity Range", value: "5 TR – 300 TR" },
-      { label: "Temperature", value: "-20°C to 25°C" },
-      { label: "Compliance", value: "cGMP / FDA" },
-      { label: "Zone Rating", value: "Zone 1 / Zone 2" },
-      { label: "Material", value: "SS 316L available" },
-      { label: "Validation", value: "IQ/OQ/PQ" },
-    ],
-    applications: ["API Manufacturing", "Formulation", "Reactor Cooling", "Solvent Recovery", "Clean Room", "Bulk Drug Production"],
-    advantages: ["GMP compliant", "Explosion proof", "Validated systems", "Precise control", "SS construction", "Documentation support"],
-    category: "customized",
-    parentLabel: "Customized Chiller",
-    parentPath: "/products/customized-chiller",
-  },
-  {
-    slug: "batching-plant-chiller",
-    title: "Batching Plant Chiller",
-    subtitle: "Concrete batching plant chillers for hot weather concreting",
-    description: "High-capacity chillers for ready-mix concrete batching plants. Cools mixing water to maintain concrete placement temperature below 30°C even in extreme hot weather.",
-    features: [
-      { icon: Droplets, title: "Water Chilling", desc: "Cools mixing water to as low as 1°C for concrete temperature control." },
-      { icon: Snowflake, title: "Ice Systems", desc: "Optional flake ice machines for additional cooling capacity." },
-      { icon: Gauge, title: "High Volume", desc: "Large water storage with rapid re-cooling for continuous batching." },
-      { icon: Factory, title: "Site Ready", desc: "Skid-mounted, weatherproof design for construction site deployment." },
-    ],
-    specs: [
-      { label: "Capacity Range", value: "20 TR – 400 TR" },
-      { label: "Water Temp.", value: "1°C to 7°C" },
-      { label: "Tank Capacity", value: "5000 – 50000 L" },
-      { label: "Ice Option", value: "Flake Ice Available" },
-      { label: "Mounting", value: "Skid Mounted" },
-      { label: "Protection", value: "IP55 Weatherproof" },
-    ],
-    applications: ["RMC Plants", "Precast Factories", "Dam Projects", "Infrastructure Projects", "High-Rise Construction", "Bridge & Flyover"],
-    advantages: ["Hot weather concreting", "Quality concrete", "Large storage", "Rapid recovery", "Site-ready design", "Ice integration"],
-    category: "customized",
-    parentLabel: "Customized Chiller",
-    parentPath: "/products/customized-chiller",
-  },
-  {
-    slug: "hazardous-area-chiller",
-    title: "Hazardous Area Chiller",
-    subtitle: "ATEX-rated explosion-proof chillers for hazardous environments",
-    description: "Flameproof and explosion-proof chillers designed for Zone 1 and Zone 2 hazardous areas. Suitable for oil & gas, petrochemical, paint, and solvent handling facilities.",
-    features: [
-      { icon: Shield, title: "ATEX Rated", desc: "Full ATEX/IECEx certification for hazardous area installation." },
-      { icon: Flame, title: "Flameproof", desc: "Explosion-proof motors, starters, and control panels." },
-      { icon: Settings, title: "Zone 1 & 2", desc: "Designed for both Zone 1 and Zone 2 classified areas." },
-      { icon: Gauge, title: "Intrinsically Safe", desc: "IS-rated sensors and instrumentation throughout." },
-    ],
-    specs: [
-      { label: "Capacity Range", value: "5 TR – 200 TR" },
-      { label: "Zone Rating", value: "Zone 1 / Zone 2" },
-      { label: "Certification", value: "ATEX / IECEx" },
-      { label: "Motors", value: "Flameproof (Ex d)" },
-      { label: "Controls", value: "Ex-proof Panel" },
-      { label: "Gas Group", value: "IIA / IIB / IIC" },
-    ],
-    applications: ["Oil & Gas Platforms", "Petrochemical Plants", "Paint Manufacturing", "Solvent Processing", "Ammunition Plants", "Gas Processing"],
-    advantages: ["ATEX certified", "Zone 1 rated", "Flameproof design", "IS instrumentation", "Heavy duty", "Complete documentation"],
-    category: "customized",
-    parentLabel: "Customized Chiller",
-    parentPath: "/products/customized-chiller",
-  },
-  {
-    slug: "ammonia-chillers",
-    title: "Ammonia Chillers",
-    subtitle: "Eco-friendly ammonia (NH3) chillers for industrial refrigeration",
-    description: "Natural refrigerant ammonia (NH3/R-717) chillers for medium to low temperature industrial refrigeration. Zero ODP and zero GWP for environmentally responsible cooling.",
-    features: [
-      { icon: Snowflake, title: "Natural Refrigerant", desc: "Ammonia R-717 with zero ODP and zero GWP — truly green cooling." },
-      { icon: Gauge, title: "High Efficiency", desc: "Ammonia delivers superior thermodynamic efficiency vs synthetic refrigerants." },
-      { icon: Thermometer, title: "Low Temperature", desc: "Capable of reaching -40°C for cold storage and freezing applications." },
-      { icon: Factory, title: "Skid Mounted", desc: "Complete skid-mounted packages for fast site installation." },
-    ],
-    specs: [
-      { label: "Capacity Range", value: "20 TR – 500 TR" },
-      { label: "Temperature", value: "-40°C to +10°C" },
-      { label: "Refrigerant", value: "NH3 (R-717)" },
-      { label: "ODP / GWP", value: "0 / 0" },
-      { label: "Compressor", value: "Screw / Reciprocating" },
-      { label: "Compliance", value: "ASHRAE 15" },
-    ],
-    applications: ["Cold Storage", "Food Freezing", "Ice Plants", "Dairy Processing", "Meat Processing", "Chemical Industry"],
-    advantages: ["Zero environmental impact", "High efficiency", "Low operating cost", "Ultra-low temperatures", "Long equipment life", "Proven technology"],
-    category: "customized",
-    parentLabel: "Customized Chiller",
-    parentPath: "/products/customized-chiller",
-  },
-  {
-    slug: "falling-film-chiller",
-    title: "Falling Film Chiller",
-    subtitle: "High-efficiency falling film evaporator chillers for process cooling",
-    description: "Falling film evaporator technology for highest efficiency and lowest refrigerant charge. Ideal for large-capacity applications requiring minimal approach temperatures.",
-    features: [
-      { icon: Droplets, title: "Falling Film", desc: "Thin-film evaporation for superior heat transfer coefficient." },
-      { icon: Gauge, title: "Low Charge", desc: "Requires 50% less refrigerant than flooded evaporators." },
-      { icon: Thermometer, title: "Low Approach", desc: "Achieves approach temperatures as low as 1°C." },
-      { icon: Shield, title: "No Freeze Risk", desc: "Inherently safe against freeze-up in the evaporator." },
-    ],
-    specs: [
-      { label: "Capacity Range", value: "100 TR – 2000 TR" },
-      { label: "Approach Temp.", value: "As low as 1°C" },
-      { label: "Refrigerant Charge", value: "50% less vs flooded" },
-      { label: "Evaporator", value: "Falling Film Shell & Tube" },
-      { label: "Refrigerant", value: "R-134A / R-513A" },
-      { label: "Application", value: "Large Capacity" },
-    ],
-    applications: ["District Cooling", "Large HVAC", "Process Industries", "Data Center Campuses", "Airports", "Industrial Parks"],
-    advantages: ["Highest efficiency", "Low refrigerant charge", "No freeze risk", "Minimal approach temp", "Large capacity", "Sustainable design"],
-    category: "customized",
-    parentLabel: "Customized Chiller",
-    parentPath: "/products/customized-chiller",
-  },
-  {
-    slug: "bio-gas-chillers",
-    title: "Bio Gas Chillers",
-    subtitle: "Specialized chillers for biogas dehumidification and cooling",
-    description: "Biogas cooling and dehumidification chillers for biogas plants, landfill gas processing, and anaerobic digestion facilities. Removes moisture and impurities for clean biogas output.",
-    features: [
-      { icon: Waves, title: "Gas Cooling", desc: "Cools and dehumidifies biogas for downstream equipment protection." },
-      { icon: Shield, title: "Corrosion Proof", desc: "Resistant to H2S and other corrosive biogas components." },
-      { icon: Gauge, title: "Moisture Removal", desc: "Reduces moisture content to pipeline-quality specifications." },
-      { icon: Settings, title: "Continuous Duty", desc: "24/7 operation matching continuous biogas generation." },
-    ],
-    specs: [
-      { label: "Capacity Range", value: "5 TR – 50 TR" },
-      { label: "Gas Temp. Out", value: "5°C to 10°C" },
-      { label: "Material", value: "SS 316 / Epoxy Coated" },
-      { label: "H2S Resistance", value: "Up to 5000 ppm" },
-      { label: "Duty", value: "24/7 Continuous" },
-      { label: "Moisture Out", value: "< 90% RH" },
-    ],
-    applications: ["Biogas Plants", "Landfill Gas", "Sewage Treatment", "Anaerobic Digesters", "Biomethane Upgrading", "CBG Plants"],
-    advantages: ["Corrosion resistant", "Continuous operation", "Effective dehumidification", "Compact design", "Low maintenance", "Gas quality improvement"],
-    category: "customized",
-    parentLabel: "Customized Chiller",
-    parentPath: "/products/customized-chiller",
-  },
-  {
-    slug: "anodizing-chillers",
-    title: "Anodizing Chillers",
-    subtitle: "Process chillers for anodizing and electroplating bath cooling",
-    description: "Specialized chillers for anodizing bath temperature control in aluminum surface treatment. Maintains consistent bath temperature for uniform anodic coating quality.",
-    features: [
-      { icon: Thermometer, title: "Bath Cooling", desc: "Precise anodizing bath temperature control for coating quality." },
-      { icon: Shield, title: "Acid Resistant", desc: "Titanium or PVDF heat exchangers for acid bath compatibility." },
-      { icon: Gauge, title: "Uniform Coating", desc: "Temperature consistency ensures uniform anodic film thickness." },
-      { icon: Settings, title: "Multi-Tank", desc: "Serves multiple anodizing and plating tanks simultaneously." },
-    ],
-    specs: [
-      { label: "Capacity Range", value: "5 TR – 100 TR" },
-      { label: "Bath Temp.", value: "18°C to 22°C" },
-      { label: "Accuracy", value: "±0.5°C" },
-      { label: "HX Material", value: "Titanium / PVDF" },
-      { label: "Acid Compat.", value: "Sulfuric / Chromic" },
-      { label: "Tanks", value: "Multiple" },
-    ],
-    applications: ["Aluminum Anodizing", "Hard Anodizing", "Electroplating", "Chrome Plating", "Nickel Plating", "Zinc Plating"],
-    advantages: ["Acid resistant HX", "Consistent coating", "Multi-tank support", "Precise temperature", "Chemical compatible", "Energy efficient"],
-    category: "customized",
-    parentLabel: "Customized Chiller",
-    parentPath: "/products/customized-chiller",
-  },
-  {
-    slug: "brine-chillers",
-    title: "Brine Chillers",
-    subtitle: "Low-temperature brine chillers for sub-zero process cooling",
-    description: "Brine (calcium chloride / ethylene glycol) chillers for sub-zero temperature applications. Indirect cooling systems for food freezing, cold storage, and chemical processing.",
-    features: [
-      { icon: Snowflake, title: "Sub-Zero Cooling", desc: "Delivers brine temperatures as low as -30°C for freezing applications." },
-      { icon: Droplets, title: "Indirect System", desc: "Brine circulation prevents direct refrigerant contact with product." },
-      { icon: Gauge, title: "Multiple Brines", desc: "Compatible with CaCl2, MEG, MPG, and other secondary coolants." },
-      { icon: Shield, title: "Heavy Duty", desc: "Corrosion-resistant construction for brine service." },
-    ],
-    specs: [
-      { label: "Capacity Range", value: "10 TR – 300 TR" },
-      { label: "Brine Temp.", value: "-30°C to 0°C" },
-      { label: "Brine Types", value: "CaCl2 / MEG / MPG" },
-      { label: "Evaporator", value: "SS Shell & Tube" },
-      { label: "Insulation", value: "PUF / PIR" },
-      { label: "Controls", value: "PLC with HMI" },
-    ],
-    applications: ["Food Freezing", "Cold Storage", "Chemical Plants", "Pharmaceutical", "Ice Rinks", "Process Cooling"],
-    advantages: ["Deep sub-zero temps", "Safe indirect cooling", "Corrosion resistant", "Multiple brine options", "Insulated piping", "Reliable operation"],
-    category: "customized",
-    parentLabel: "Customized Chiller",
-    parentPath: "/products/customized-chiller",
-  },
-  {
-    slug: "methanol-chillers",
-    title: "Methanol Chillers",
-    subtitle: "Specialized chillers for methanol and solvent cooling applications",
-    description: "Explosion-proof chillers designed for methanol cooling in chemical and pharmaceutical processes. Flameproof construction with SS heat exchangers for safe solvent handling.",
-    features: [
-      { icon: FlaskConical, title: "Solvent Safe", desc: "Designed for safe cooling of methanol and other flammable solvents." },
-      { icon: Shield, title: "Explosion Proof", desc: "ATEX-rated components for hazardous solvent environments." },
-      { icon: Thermometer, title: "Low Temperature", desc: "Capable of cooling methanol to -25°C for reaction control." },
-      { icon: Settings, title: "SS Construction", desc: "Full stainless steel wetted parts for chemical compatibility." },
-    ],
-    specs: [
-      { label: "Capacity Range", value: "5 TR – 100 TR" },
-      { label: "Temperature", value: "-25°C to +10°C" },
-      { label: "Material", value: "SS 316L" },
-      { label: "Safety", value: "ATEX Zone 1" },
-      { label: "Refrigerant", value: "R-407C / R-404A" },
-      { label: "Seals", value: "Solvent-resistant" },
-    ],
-    applications: ["Pharmaceutical", "Chemical Processing", "API Manufacturing", "Solvent Recovery", "Reactor Cooling", "Distillation"],
-    advantages: ["Explosion proof", "Solvent compatible", "SS construction", "Low temperatures", "ATEX certified", "Safe operation"],
-    category: "customized",
-    parentLabel: "Customized Chiller",
-    parentPath: "/products/customized-chiller",
-  },
-  {
-    slug: "glycol-chillers",
-    title: "Glycol Chillers",
-    subtitle: "Glycol-based chillers for anti-freeze industrial cooling circuits",
-    description: "Glycol chillers using propylene or ethylene glycol for freeze-protected cooling loops. Essential for cold climates and sub-zero process applications.",
-    features: [
-      { icon: Snowflake, title: "Freeze Protected", desc: "Glycol mixture prevents freezing in cold ambient or sub-zero processes." },
-      { icon: Droplets, title: "Closed Loop", desc: "Sealed glycol circulation prevents contamination and corrosion." },
-      { icon: Gauge, title: "Wide Temp Range", desc: "Operating temperatures from -20°C to +20°C." },
-      { icon: Settings, title: "Pre-Charged", desc: "Factory-filled with correct glycol concentration, ready to connect." },
-    ],
-    specs: [
-      { label: "Capacity Range", value: "5 TR – 200 TR" },
-      { label: "Temperature", value: "-20°C to +20°C" },
-      { label: "Glycol Type", value: "PG / EG" },
-      { label: "Concentration", value: "25% – 50%" },
-      { label: "Loop", value: "Closed Circuit" },
-      { label: "Pump", value: "Integrated" },
-    ],
-    applications: ["Food Processing", "Breweries", "HVAC", "Industrial Process", "Cold Climates", "Solar Cooling"],
-    advantages: ["Freeze protection", "Closed loop safety", "Pre-charged", "Wide temp range", "Corrosion inhibited", "Low maintenance"],
-    category: "customized",
-    parentLabel: "Customized Chiller",
-    parentPath: "/products/customized-chiller",
-  },
-  {
-    slug: "oil-chiller",
-    title: "Oil Chiller",
-    subtitle: "Dedicated oil cooling systems for hydraulic and lubrication circuits",
-    description: "Specially designed to cool oil directly via refrigerant-to-oil heat exchanging circuits. Available in air-cooled and water-cooled variants for hydraulic, lubrication, and transformer oil cooling.",
-    features: [
-      { icon: Pipette, title: "Direct Oil Cooling", desc: "Refrigerant-to-oil heat exchanger for efficient direct cooling." },
-      { icon: Thermometer, title: "Precise Control", desc: "Maintains oil temperature for optimal machinery performance." },
-      { icon: Settings, title: "Dual Variants", desc: "Available in both air-cooled and water-cooled configurations." },
-      { icon: Shield, title: "Oil Compatible", desc: "Materials selected for compatibility with various oil types." },
-    ],
-    specs: [
-      { label: "Capacity Range", value: "1 TR – 50 TR" },
-      { label: "Oil Temp.", value: "20°C to 35°C" },
-      { label: "Oil Types", value: "Hydraulic / Lube / Transformer" },
-      { label: "HX Type", value: "Brazed Plate / Shell & Coil" },
-      { label: "Filtration", value: "Optional inline" },
-      { label: "Flow Rate", value: "10 – 200 LPM" },
-    ],
-    applications: ["Hydraulic Presses", "CNC Machines", "Transformer Cooling", "Gear Box Cooling", "Compressor Oil", "Rolling Mills"],
-    advantages: ["Direct oil cooling", "Extended oil life", "Machine protection", "Compact design", "Air/water cooled options", "Multiple oil types"],
-    category: "customized",
-    parentLabel: "Customized Chiller",
-    parentPath: "/products/customized-chiller",
-  },
-  {
-    slug: "chiller-for-soap-industry",
-    title: "Chiller for Soap Industry",
-    subtitle: "Process chillers for soap and detergent manufacturing",
-    description: "Specialized cooling systems for soap manufacturing processes including saponification cooling, soap noodle cooling, and toilet soap pressing. Temperature-controlled for product quality.",
-    features: [
-      { icon: Factory, title: "Process Cooling", desc: "Dedicated cooling for saponification and finishing processes." },
-      { icon: Thermometer, title: "Controlled Cooling", desc: "Gradual cooling profiles for optimal soap crystal formation." },
-      { icon: Shield, title: "Hygiene Design", desc: "Easy-to-clean construction for cosmetic-grade production." },
-      { icon: Gauge, title: "Continuous", desc: "Matches continuous soap production line requirements." },
-    ],
-    specs: [
-      { label: "Capacity Range", value: "5 TR – 80 TR" },
-      { label: "Temperature", value: "5°C to 20°C" },
-      { label: "Application", value: "Saponification / Pressing" },
-      { label: "Material", value: "SS / MS Epoxy" },
-      { label: "Duty", value: "Continuous" },
-      { label: "Control", value: "PLC / Digital" },
-    ],
-    applications: ["Toilet Soap", "Laundry Soap", "Liquid Soap", "Detergent Powder", "Cosmetics", "Personal Care"],
-    advantages: ["Process optimized", "Quality improvement", "Continuous operation", "Hygienic design", "Energy efficient", "Custom configurations"],
-    category: "customized",
-    parentLabel: "Customized Chiller",
-    parentPath: "/products/customized-chiller",
-  },
-  {
-    slug: "chiller-for-hdpe-cpvc-upvc-pipes",
-    title: "Chiller for HDPE Pipes CPVC Pipes UPVC Pipes",
-    subtitle: "Pipe extrusion cooling systems for HDPE, CPVC, and UPVC manufacturing",
-    description: "High-capacity cooling systems for plastic pipe extrusion lines. Provides cooling water for sizing, vacuum tanks, and spray cooling baths in HDPE, CPVC, and UPVC pipe manufacturing.",
-    features: [
-      { icon: Factory, title: "Extrusion Cooling", desc: "Cooling water for pipe sizing and spray bath systems." },
-      { icon: Thermometer, title: "Consistent Temp", desc: "Stable water temperature for uniform pipe dimensions." },
-      { icon: Gauge, title: "High Volume", desc: "Large water flow rates for continuous extrusion lines." },
-      { icon: Settings, title: "Multi-Line", desc: "Single chiller serving multiple extrusion lines." },
-    ],
-    specs: [
-      { label: "Capacity Range", value: "10 TR – 200 TR" },
-      { label: "Temperature", value: "12°C to 20°C" },
-      { label: "Pipe Types", value: "HDPE / CPVC / UPVC" },
-      { label: "Flow Rate", value: "100 – 1000 LPM" },
-      { label: "Lines", value: "Multi-line capable" },
-      { label: "Pump", value: "High-flow integrated" },
-    ],
-    applications: ["HDPE Pipe Extrusion", "CPVC Pipe Manufacturing", "UPVC Pipe Lines", "Corrugated Pipes", "DWC Pipes", "Drip Irrigation Pipes"],
-    advantages: ["Multi-pipe support", "Consistent dimensions", "High flow capacity", "Energy efficient", "Multi-line operation", "Reliable cooling"],
-    category: "customized",
-    parentLabel: "Customized Chiller",
-    parentPath: "/products/customized-chiller",
-  },
 
-  // ═══════════════════════════════════════════
-  // GLOBAL FOOTPRINTS
-  // ═══════════════════════════════════════════
-  {
-    slug: "industrial-chillers-in-uae",
-    title: "Industrial Chillers in UAE",
-    subtitle: "High-ambient industrial chillers for the UAE and Gulf region",
-    description: "Drycool's industrial chillers are engineered for the extreme high-ambient conditions of the UAE, capable of operating efficiently at 55°C+ ambient temperatures. Serving Dubai, Abu Dhabi, Sharjah, and across the Emirates.",
-    features: [
-      { icon: Globe, title: "UAE Operations", desc: "Extensive installation base across Dubai, Abu Dhabi, and Sharjah." },
-      { icon: Thermometer, title: "55°C Ambient", desc: "Designed to operate efficiently at extreme Gulf temperatures." },
-      { icon: Shield, title: "Desert Proof", desc: "Sand, dust, and corrosion-resistant construction for desert climates." },
-      { icon: Settings, title: "Local Support", desc: "Dedicated sales and service network across the UAE." },
-    ],
-    specs: [
-      { label: "Ambient Rating", value: "Up to 55°C" },
-      { label: "Products", value: "Full Range" },
-      { label: "Coverage", value: "All Emirates" },
-      { label: "Protection", value: "Desert-rated IP55" },
-      { label: "Service", value: "Local teams" },
-      { label: "Compliance", value: "ASHRAE / DEWA" },
-    ],
-    applications: ["Oil & Gas", "Construction", "HVAC", "District Cooling", "Manufacturing", "Data Centers"],
-    advantages: ["High ambient rated", "Desert-proof design", "Local service network", "Complete product range", "Proven track record", "Competitive pricing"],
-    category: "global",
-    parentLabel: "Global Footprints",
-    parentPath: "/products/global-footprints",
-  },
-  {
-    slug: "industrial-chillers-in-africa",
-    title: "Industrial Chillers in Africa",
-    subtitle: "Robust industrial chillers for African markets and climate conditions",
-    description: "Drycool exports industrial chillers across Africa including Egypt, Nigeria, Kenya, South Africa, Tanzania, and Ethiopia. Robust designs for diverse African climate and industrial conditions.",
-    features: [
-      { icon: Globe, title: "Pan-African Reach", desc: "Exports to 15+ African nations across all regions." },
-      { icon: Shield, title: "Robust Design", desc: "Built for varied African climates from tropical to arid." },
-      { icon: Gauge, title: "Voltage Tolerant", desc: "Wide voltage tolerance for unstable power grid conditions." },
-      { icon: Settings, title: "Easy Service", desc: "Simplified designs for easy maintenance with local parts." },
-    ],
-    specs: [
-      { label: "Countries", value: "15+ Nations" },
-      { label: "Products", value: "Full Range" },
-      { label: "Voltage", value: "380-440V Tolerant" },
-      { label: "Climate", value: "Tropical to Arid" },
-      { label: "Frequency", value: "50Hz" },
-      { label: "Packaging", value: "Export Sea-Worthy" },
-    ],
-    applications: ["Mining", "Food Processing", "Manufacturing", "HVAC", "Agriculture", "Beverage Industry"],
-    advantages: ["Wide voltage tolerance", "Tropical rated", "Simple maintenance", "Export packaging", "Competitive pricing", "After-sales support"],
-    category: "global",
-    parentLabel: "Global Footprints",
-    parentPath: "/products/global-footprints",
-  },
-  {
-    slug: "industrial-chillers-in-indonesia",
-    title: "Industrial Chillers in Indonesia",
-    subtitle: "Tropical-grade industrial chillers for Indonesian manufacturing",
-    description: "Industrial chillers optimized for Indonesia's tropical climate and growing manufacturing sector. Serving Jakarta, Surabaya, Bandung, and industrial estates across the archipelago.",
-    features: [
-      { icon: Globe, title: "Indonesia Market", desc: "Growing presence across Java, Sumatra, and Kalimantan." },
-      { icon: Thermometer, title: "Tropical Optimized", desc: "Designed for high humidity and temperature conditions." },
-      { icon: Shield, title: "Marine Grade", desc: "Corrosion-resistant coatings for coastal and island installations." },
-      { icon: Settings, title: "Local Partners", desc: "Network of authorized dealers and service partners." },
-    ],
-    specs: [
-      { label: "Coverage", value: "Major Industrial Zones" },
-      { label: "Products", value: "Full Range" },
-      { label: "Climate Rating", value: "Tropical Humid" },
-      { label: "Coating", value: "Marine-grade epoxy" },
-      { label: "Voltage", value: "380V / 3Ph / 50Hz" },
-      { label: "Compliance", value: "SNI Standards" },
-    ],
-    applications: ["Textile Industry", "Palm Oil Processing", "Automotive", "Electronics", "Food Processing", "Pharmaceutical"],
-    advantages: ["Tropical optimized", "Marine-grade protection", "Local dealer network", "Competitive pricing", "Complete solutions", "After-sales service"],
-    category: "global",
-    parentLabel: "Global Footprints",
-    parentPath: "/products/global-footprints",
-  },
-  {
-    slug: "industrial-chillers-in-nepal",
-    title: "Industrial Chillers in Nepal",
-    subtitle: "Industrial cooling solutions for Nepal's growing industries",
-    description: "Drycool supplies industrial chillers to Nepal's growing manufacturing sector. Close proximity from our Indian manufacturing base ensures quick delivery, competitive pricing, and responsive service.",
-    features: [
-      { icon: Globe, title: "Nepal Presence", desc: "Active installations across Kathmandu Valley and Terai region." },
-      { icon: MapPin, title: "Proximity Advantage", desc: "Quick delivery from India with minimal transit time." },
-      { icon: Gauge, title: "Altitude Rated", desc: "Compressor de-rating and adjustments for high-altitude operation." },
-      { icon: Settings, title: "Service Support", desc: "Cross-border service support from nearby Indian facilities." },
-    ],
-    specs: [
-      { label: "Coverage", value: "Pan-Nepal" },
-      { label: "Products", value: "Full Range" },
-      { label: "Altitude", value: "Up to 2500m adjusted" },
-      { label: "Delivery", value: "Ex-India, 3-5 days" },
-      { label: "Voltage", value: "400V / 3Ph / 50Hz" },
-      { label: "Service", value: "Cross-border support" },
-    ],
-    applications: ["Cement Industry", "Food Processing", "Hospitality", "Pharmaceutical", "Beverage", "Manufacturing"],
-    advantages: ["Quick delivery", "Competitive pricing", "Altitude adjustments", "Cross-border service", "Proven reliability", "Complete solutions"],
-    category: "global",
-    parentLabel: "Global Footprints",
-    parentPath: "/products/global-footprints",
-  },
-  {
-    slug: "industrial-chillers-in-bangladesh",
-    title: "Industrial Chillers in Bangladesh",
-    subtitle: "Industrial chillers for Bangladesh's booming manufacturing sector",
-    description: "Drycool is a leading chiller exporter to Bangladesh, serving the textile, garment, pharmaceutical, and food processing industries. Proximity from Kolkata ensures fast delivery and service.",
-    features: [
-      { icon: Globe, title: "Bangladesh Market", desc: "Major supplier to Dhaka, Chittagong, and Gazipur industrial zones." },
-      { icon: MapPin, title: "Kolkata Proximity", desc: "Direct land route from Kolkata factory for fastest delivery." },
-      { icon: Gauge, title: "Textile Expertise", desc: "Specialized chillers for Bangladesh's massive garment industry." },
-      { icon: Shield, title: "Humid Climate", desc: "Tropically rated for Bangladesh's high humidity conditions." },
-    ],
-    specs: [
-      { label: "Coverage", value: "Pan-Bangladesh" },
-      { label: "Products", value: "Full Range" },
-      { label: "Key Sector", value: "Textile & Garment" },
-      { label: "Delivery", value: "Ex-Kolkata, 2-3 days" },
-      { label: "Voltage", value: "400V / 3Ph / 50Hz" },
-      { label: "Climate", value: "Tropical Humid" },
-    ],
-    applications: ["Garment Factories", "Textile Mills", "Pharmaceutical", "Food Processing", "Plastics", "Jute Industry"],
-    advantages: ["Fastest delivery", "Textile expertise", "Competitive pricing", "Kolkata proximity", "Local knowledge", "After-sales service"],
-    category: "global",
-    parentLabel: "Global Footprints",
-    parentPath: "/products/global-footprints",
-  },
-];
 
-export function getProductBySlug(slug: string): ProductPageData | undefined {
-  return productPages.find((p) => p.slug === slug);
-}
 
-export function getProductsByCategory(category: ProductPageData["category"]): ProductPageData[] {
-  return productPages.filter((p) => p.category === category);
-}
+
+
+
+
+
+
+
+
+

@@ -1,60 +1,100 @@
-import { Link } from "react-router-dom";
-import { ArrowRight, Shield, Wrench, Clock, CheckCircle, Phone } from "lucide-react";
+import { useState } from "react";
 import SectionHeading from "@/components/SectionHeading";
 import PageHero from "@/components/PageHero";
 import AnimatedSection from "@/components/AnimatedSection";
 import GlassCard from "@/components/GlassCard";
+import { Send, Phone, Mail, MapPin } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
-const amcPlans = [
-  { title: "Basic AMC", features: ["Quarterly preventive maintenance", "Filter cleaning & replacement", "Performance checks", "Phone support"], highlight: false },
-  { title: "Comprehensive AMC", features: ["Monthly preventive maintenance", "All spare parts included", "24/7 breakdown support", "Performance reports", "Priority response"], highlight: true },
-  { title: "Premium AMC", features: ["Weekly monitoring", "All parts & labor covered", "Dedicated service engineer", "Energy audit reports", "SLA-backed response time", "Remote monitoring"], highlight: false },
-];
+const AMC = () => {
+  const { toast } = useToast();
+  const [form, setForm] = useState({ name: "", company: "", city: "", phone: "", email: "", subject: "", message: "" });
+  const [submitting, setSubmitting] = useState(false);
 
-const AMC = () => (
-  <>
-    <PageHero title="Annual Maintenance Contract" subtitle="Keep your chillers running at peak performance year-round" />
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
 
-    <section className="py-20">
-      <div className="container">
-        <AnimatedSection>
-          <SectionHeading title="AMC Plans" subtitle="Choose the plan that fits your needs" />
-        </AnimatedSection>
-        <div className="grid sm:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          {amcPlans.map((plan, i) => (
-            <AnimatedSection key={plan.title} delay={i * 0.1}>
-              <GlassCard className={`bg-card ${plan.highlight ? "ring-2 ring-accent" : ""}`}>
-                <h3 className="font-heading text-2xl font-bold text-foreground mb-6">{plan.title}</h3>
-                <ul className="space-y-3 mb-8">
-                  {plan.features.map((f) => (
-                    <li key={f} className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <CheckCircle className="h-4 w-4 text-accent shrink-0" />
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-                <Link to="/contact" className={`inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold transition-opacity shadow ${plan.highlight ? "bg-accent text-accent-foreground" : "bg-primary text-primary-foreground"}`}>
-                  Get Quote <ArrowRight className="h-3.5 w-3.5" />
-                </Link>
-              </GlassCard>
-            </AnimatedSection>
-          ))}
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitting(true);
+    await new Promise((r) => setTimeout(r, 1000));
+    setSubmitting(false);
+    setForm({ name: "", company: "", city: "", phone: "", email: "", subject: "", message: "" });
+    toast({ title: "Enquiry Sent!", description: "Thank you for your enquiry. We will contact you soon." });
+  };
+
+  const inputClass = "w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 transition-shadow";
+
+  return (
+    <>
+      <PageHero title="Chiller AMC" subtitle="Drycool Systems Annual Maintenance Contract" />
+
+      <section className="py-20">
+        <div className="container grid lg:grid-cols-2 gap-12">
+          <AnimatedSection>
+            <SectionHeading title="Chiller AMC" centered={false} />
+            <p className="mb-8 text-lg text-muted-foreground leading-relaxed">
+              We Provide Chiller AMC in a reasonable price, Please call us 9811134394 or Mail us: enquiry@drycoolchillers.com
+            </p>
+            
+            <div className="bg-card rounded-2xl p-8 border border-border shadow-sm">
+              <h3 className="font-heading text-xl font-bold text-foreground mb-6 uppercase">Chiller AMC Form</h3>
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <input name="name" placeholder="Your Name:" value={form.name} onChange={handleChange} className={inputClass} required />
+                  <input name="company" placeholder="Company Name:" value={form.company} onChange={handleChange} className={inputClass} />
+                </div>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <input name="city" placeholder="City:" value={form.city} onChange={handleChange} className={inputClass} />
+                  <input name="phone" placeholder="Phone:" value={form.phone} onChange={handleChange} className={inputClass} required />
+                </div>
+                <input name="email" type="email" placeholder="Your Email:" value={form.email} onChange={handleChange} className={inputClass} required />
+                <input name="subject" placeholder="Subject:" value={form.subject} onChange={handleChange} className={inputClass} />
+                <textarea name="message" rows={5} placeholder="Your Message:" value={form.message} onChange={handleChange} className={inputClass} required />
+                <button type="submit" disabled={submitting} className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-7 py-3.5 font-semibold text-accent-foreground hover:opacity-90 transition-opacity disabled:opacity-50 shadow-lg">
+                  {submitting ? "Sending..." : "Submit Enquiry"} <Send className="h-4 w-4" />
+                </button>
+              </form>
+            </div>
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.2}>
+            <div className="space-y-8 lg:mt-24">
+              <div className="space-y-4">
+                <h4 className="font-heading text-xl font-bold text-foreground">Address</h4>
+                <div className="flex gap-4">
+                  <MapPin className="h-5 w-5 text-accent shrink-0 mt-1" />
+                  <p className="text-muted-foreground">
+                    Address: c-34, sector 63,<br />
+                    Noida – 201307,<br />
+                    Uttar Pradesh,<br />
+                    India.
+                  </p>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <h4 className="font-heading text-xl font-bold text-foreground">Phone</h4>
+                <div className="flex gap-4">
+                  <Phone className="h-5 w-5 text-accent shrink-0 mt-1" />
+                  <p className="text-muted-foreground">Mobile :+91-9811134394</p>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <h4 className="font-heading text-xl font-bold text-foreground">Email</h4>
+                <div className="flex gap-4">
+                  <Mail className="h-5 w-5 text-accent shrink-0 mt-1" />
+                  <p className="text-muted-foreground">enquiry@drycoolchillers.com</p>
+                </div>
+              </div>
+            </div>
+          </AnimatedSection>
         </div>
-      </div>
-    </section>
-
-    <section className="py-16 bg-hero-gradient">
-      <div className="container text-center">
-        <AnimatedSection>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-primary-foreground">Protect Your Investment</h2>
-          <p className="mt-3 text-primary-foreground/70 max-w-lg mx-auto">Extend equipment life and reduce downtime with our maintenance programs.</p>
-          <a href="tel:+919811134394" className="inline-flex items-center gap-2 mt-6 rounded-lg bg-accent px-7 py-3.5 font-semibold text-accent-foreground hover:opacity-90 transition-opacity shadow-lg">
-            <Phone className="h-4 w-4" /> Call for AMC
-          </a>
-        </AnimatedSection>
-      </div>
-    </section>
-  </>
-);
+      </section>
+    </>
+  );
+};
 
 export default AMC;

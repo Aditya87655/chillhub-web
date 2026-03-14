@@ -16,6 +16,10 @@ import Projects from "./pages/Projects";
 
 // About submenu pages
 import Profile from "./pages/about/Profile";
+import Vision from "./pages/about/Vision";
+import Mission from "./pages/about/Mission";
+import InfrastructureDropdown from "./pages/about/Infrastructure";
+import WhyChooseUs from "./pages/about/WhyChooseUs";
 import QualityAssurance from "./pages/about/QualityAssurance";
 import Accreditations from "./pages/about/Accreditations";
 import Clients from "./pages/about/Clients";
@@ -69,20 +73,23 @@ const App = () => (
 
             {/* About submenu */}
             <Route path="/about/profile" element={<Profile />} />
+            <Route path="/about/vision" element={<Vision />} />
+            <Route path="/about/mission" element={<Mission />} />
+            <Route path="/about/infrastructure" element={<InfrastructureDropdown />} />
+            <Route path="/about/why-choose-us" element={<WhyChooseUs />} />
             <Route path="/about/quality-assurance" element={<QualityAssurance />} />
             <Route path="/about/accreditations" element={<Accreditations />} />
             <Route path="/about/clients" element={<Clients />} />
             <Route path="/about/our-team" element={<OurTeam />} />
 
             {/* Products submenu — main dropdown pages */}
-            <Route path="/products/customized-chiller" element={<CustomizedChiller />} />
+            <Route path="/customized" element={<CustomizedChiller />} />
             <Route path="/products/global-footprints" element={<GlobalFootprints />} />
 
             {/* Products submenu — dynamic detail pages */}
             <Route path="/products/:slug" element={<ProductDetailPage />} />
             <Route path="/application/:slug" element={<ProductDetailPage />} />
             <Route path="/customized/:slug" element={<ProductDetailPage />} />
-            <Route path="/global/:slug" element={<ProductDetailPage />} />
 
             {/* Intelligence submenu */}
             <Route path="/intelligence/hvac-contractor" element={<HVACContractor />} />

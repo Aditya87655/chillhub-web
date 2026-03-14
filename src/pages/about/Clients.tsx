@@ -1,59 +1,81 @@
 import SectionHeading from "@/components/SectionHeading";
 import PageHero from "@/components/PageHero";
 import AnimatedSection from "@/components/AnimatedSection";
-import GlassCard from "@/components/GlassCard";
-import { Building2, Factory, Utensils, FlaskConical } from "lucide-react";
 
-const clientsByIndustry = [
+const clientCategories = [
   {
-    icon: Factory,
-    sector: "Manufacturing & Industrial",
-    clients: ["Hero MotoCorp", "UltraTech Cement", "JK Cement", "Birla Corp", "ACC Cement", "Dalmia Bharat"],
+    category: "Chemicals & Fertilizers",
+    clients: ["Hindustan Insecticide Ltd. (H.O. - New Delhi)", "R.P. Chemicals Ltd. (Goa)", "Hindustan Fluorocarbons Ltd. (Hyderabad)", "Indo-Gulf Fertilizers & Chemicals (Lucknow)"]
   },
   {
-    icon: Utensils,
-    sector: "Food & Beverages",
-    clients: ["Mother Dairy", "Amul", "Patanjali", "Dabur", "Parle Agro", "Haldirams"],
+    category: "Pharmaceuticals",
+    clients: ["Piramal Health Care Ltd.", "Dr. Reddy's Lab (A.P.)", "Ankur Drugs & Pharma (Baddi)", "Venus Pharma (Baddi)"]
   },
   {
-    icon: FlaskConical,
-    sector: "Pharma & Chemicals",
-    clients: ["Hindustan Unilever", "Dr. Reddy's", "Cipla", "Sun Pharma", "Ranbaxy", "Cadila Healthcare"],
+    category: "Engineering & Plastic",
+    clients: ["Supreme Industries Ltd. (H.O. - Mumbai)", "Essen Deinki (Chandigarh)", "Nilkamal Plastics Ltd. (Pondicherry)", "Bajaj Auto Ltd. (New Delhi)"]
   },
   {
-    icon: Building2,
-    sector: "Infrastructure & HVAC",
-    clients: ["Delhi Metro", "DMRC", "Airports Authority", "NBCC", "CPWD", "L&T Construction"],
+    category: "Automotive & Mechanical",
+    clients: ["TATA Motors Ltd. (Lucknow)", "Ashok Leyland Ltd. (Chennai)", "Hero Moto Corp Ltd. (Gurgaon)", "Honda Cars India Ltd. (Noida)"]
   },
+  {
+    category: "Commercial Air Conditioning",
+    clients: ["Voltas Ltd. (H.O. - Mumbai)", "Blue Star Ltd. (New Delhi)", "Carrier Aircon Ltd. (Gurgaon)", "Daikin Airconditioning India (Noida)"]
+  },
+  {
+    category: "Rice & Other Mills",
+    clients: ["LT Foods Ltd. (Daawat Rice)", "KRBL Ltd. (India Gate Rice)", "Satnam Overseas (H.O. - New Delhi)", "Amira Pure Foods (Gurgaon)"]
+  }
 ];
 
 const Clients = () => (
   <>
-    <PageHero title="Our Clients" subtitle="Trusted by India's leading brands and global enterprises" />
+    <PageHero 
+      title="Our Clients" 
+      subtitle="Trusted by Industry Leaders Worldwide" 
+      backgroundImage="https://drycoolchillers.com/wp-content/uploads/2013/08/about2.jpg"
+    />
 
     <section className="py-20">
       <div className="container">
-        {clientsByIndustry.map((group, gi) => (
-          <div key={group.sector} className={gi > 0 ? "mt-16" : ""}>
-            <AnimatedSection>
-              <div className="flex items-center gap-3 mb-8">
-                <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-accent/10">
-                  <group.icon className="h-5 w-5 text-accent" />
+        <AnimatedSection>
+          <SectionHeading title="Global Client Base" centered={true} />
+          <p className="text-muted-foreground text-center max-w-3xl mx-auto mb-16">
+            We take pride in serving some of the most prestigious names across diverse industries globally. Our commitment to quality and service has earned us the trust of market leaders.
+          </p>
+        </AnimatedSection>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {clientCategories.map((cat, idx) => (
+            <AnimatedSection key={idx} delay={idx * 0.1}>
+              <div className="h-full p-8 rounded-2xl bg-card border border-border/50 shadow-xl hover:border-accent/40 transition-all group">
+                <div className="mb-6 inline-flex items-center justify-center p-3 rounded-xl bg-primary/10 text-primary group-hover:bg-accent/10 group-hover:text-accent transition-colors">
+                  <span className="font-bold text-sm tracking-wider uppercase">{cat.category}</span>
                 </div>
-                <h3 className="font-heading text-2xl font-bold text-foreground">{group.sector}</h3>
+                <ul className="space-y-3">
+                  {cat.clients.map((client, cIdx) => (
+                    <li key={cIdx} className="flex items-start gap-2 text-muted-foreground group-hover:text-foreground transition-colors">
+                      <div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-accent flex-shrink-0" />
+                      <span className="text-sm leading-relaxed">{client}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </AnimatedSection>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-              {group.clients.map((c, i) => (
-                <AnimatedSection key={c} delay={i * 0.05}>
-                  <GlassCard className="text-center py-6 bg-card" hover={false}>
-                    <span className="font-heading text-sm font-bold text-foreground">{c}</span>
-                  </GlassCard>
-                </AnimatedSection>
-              ))}
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section className="py-20 bg-section-gradient">
+      <div className="container text-center">
+        <AnimatedSection>
+          <SectionHeading title="And Many More..." centered={true} />
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            Our portfolio includes over 2000+ satisfied clients across 32+ countries in sectors ranging from Food Processing and Textiles to IT and Construction.
+          </p>
+        </AnimatedSection>
       </div>
     </section>
   </>

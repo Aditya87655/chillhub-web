@@ -1,69 +1,136 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, CheckCircle, ClipboardList, HardHat, Settings, Zap } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
 import PageHero from "@/components/PageHero";
 import AnimatedSection from "@/components/AnimatedSection";
 import GlassCard from "@/components/GlassCard";
 
-const phases = [
-  { icon: ClipboardList, title: "Design & Engineering", desc: "Load calculation, equipment selection, system design, and engineering drawings." },
-  { icon: HardHat, title: "Procurement & Supply", desc: "Sourcing of all equipment, materials, and components from certified vendors." },
-  { icon: Settings, title: "Installation & Commissioning", desc: "Complete installation, testing, balancing, and system commissioning." },
-  { icon: Zap, title: "Operations & Maintenance", desc: "Ongoing maintenance, performance monitoring, and warranty support." },
-];
-
-const projectTypes = [
-  "Central Air Conditioning Plants",
-  "Chiller Plant Rooms",
-  "Industrial Process Cooling Systems",
-  "Data Center Cooling",
-  "Hospital HVAC Systems",
-  "Pharmaceutical Clean Room HVAC",
-  "Hotel & Hospitality HVAC",
-  "Mall & Retail Space Cooling",
+const adaniActivities = [
+  "We Installed 240 TR ( Nominal Capacity) screw chiller, evaporative condenser, pumps, MCC panels, PLC panels.",
+  "Process & Hydraulic Design of Complete Industrial Process Cooling Package.",
+  "Sizing of equipment's / auxiliaries & Piping system within Package Battery Limit.",
+  "Selection and process design of internals to meet the performance guarantee.",
+  "Mechanical Design & Structural design of equipment's / auxiliaries & piping supports within Package Battery Limit.",
+  "Complete Engineering activities including piping routing, preparation of isometrics, stress analysis, design of supports, furnishing the pipe support foundation loads, Piping MTO for fabrication, etc.",
+  "Procurement of raw materials including bought out items & fabrication of package in compliance with project requirements.",
+  "Design of Anchor Bolts (Nos., location & size)",
+  "Participation in Kick off meeting, Design review, HAZOP, SIL review, Model Review meeting.",
+  "Assembly of all items in Package as per requisition from client",
+  "Drawings and documentation for clients.",
+  "Pickling & Passivation for stainless steel material and welds wherever applicable",
+  "Positive Material Identification (PMI) for stainless steel and high alloy materials",
+  "Performance Guarantees and Mechanical Warrantees as per Project Specifications.",
+  "Mechanical / Performance Test for equipment within Package as per Drycool approved ITP / QAP.",
+  "Factory acceptance test, Complete unit tests, Noise, and vibration test for compressors, Pumps as per ITP",
+  "Manufacturing and assembly",
+  "Third party verification and certification for bought out items.",
+  "Inspection, Testing & Non-Destructive Examination (NDE) in accordance with Drycool QAP.",
+  "Hydrotest of Equipment & piping",
+  "Delivery and transport documentation",
+  "Supervision during installation, pre-commissioning, commissioning & Performance Guarantee test at site.",
+  "Adjustment and/or alignment of work.",
 ];
 
 const TurnkeyProjects = () => (
   <>
-    <PageHero title="Turnkey Projects" subtitle="End-to-end project delivery from concept to commissioning" />
+    <PageHero 
+      title="Turnkey Projects" 
+      subtitle="Complete turnkey Project for setting up of chilling plants" 
+    />
 
     <section className="py-20">
-      <div className="container">
+      <div className="container text-center max-w-4xl">
         <AnimatedSection>
-          <SectionHeading title="Turnkey Approach" subtitle="Single-point responsibility for complete HVAC projects" />
+          <SectionHeading 
+            title="Chiller Turnkey Projects" 
+            subtitle="Expertise in industrial and commercial refrigeration"
+          />
+          <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+            We have executed several turnkey projects in industrial and commercial refrigeration ranging from 30 TR – 4500 TR refrigeration capacity. We do turnkey projects for chillers in India. We are experts to do complete projects to set up a chiller plant.
+          </p>
         </AnimatedSection>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {phases.map((p, i) => (
-            <AnimatedSection key={p.title} delay={i * 0.1}>
-              <GlassCard className="text-center py-8 bg-card">
-                <div className="flex items-center justify-center h-14 w-14 rounded-full bg-accent/10 mx-auto mb-4">
-                  <p.icon className="h-7 w-7 text-accent" />
+      </div>
+    </section>
+
+    <div className="container">
+      <div className="relative rounded-3xl overflow-hidden aspect-[21/9] shadow-2xl mb-20">
+        <img 
+          src="https://www.drycoolchillers.com/wp-content/uploads/2023/01/turnkey-project-for-chiller.png" 
+          alt="Turnkey Projects Overview"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-12">
+          <p className="text-white text-xl font-medium max-w-2xl">
+            "We specialize in undertaking global turnkey projects for setting up of chilling plants & chilled water systems starting from concept to commissioning."
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <section className="py-20 bg-section-gradient">
+      <div className="container">
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
+          <AnimatedSection>
+            <h2 className="font-heading text-3xl font-bold text-foreground mb-6">Adani Turnkey Project 2022</h2>
+            <h3 className="font-heading text-xl font-semibold text-accent mb-8">We Successfully Completed Our turnkey project for Adani Group</h3>
+            <div className="space-y-3">
+              {adaniActivities.slice(0, 12).map((activity, i) => (
+                <div key={i} className="flex gap-3 text-sm text-muted-foreground">
+                  <CheckCircle2 className="h-5 w-5 text-accent shrink-0" />
+                  <span>{activity}</span>
                 </div>
-                <h3 className="font-heading text-lg font-bold text-foreground">{p.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{p.desc}</p>
-              </GlassCard>
-            </AnimatedSection>
-          ))}
+              ))}
+            </div>
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.2}>
+            <div className="space-y-3 lg:mt-20">
+              {adaniActivities.slice(12).map((activity, i) => (
+                <div key={i} className="flex gap-3 text-sm text-muted-foreground">
+                  <CheckCircle2 className="h-5 w-5 text-accent shrink-0" />
+                  <span>{activity}</span>
+                </div>
+              ))}
+            </div>
+          </AnimatedSection>
         </div>
       </div>
     </section>
 
-    <div className="container"><div className="h-px bg-gradient-to-r from-transparent via-border to-transparent" /></div>
-
-    <section className="py-20 bg-section-gradient">
+    <section className="py-20">
       <div className="container">
-        <AnimatedSection>
-          <SectionHeading title="Project Types" subtitle="Turnkey solutions across sectors" />
-        </AnimatedSection>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
-          {projectTypes.map((p, i) => (
-            <AnimatedSection key={p} delay={i * 0.05}>
-              <GlassCard className="flex items-center gap-3 py-4 bg-card" hover={false}>
-                <CheckCircle className="h-4 w-4 text-accent shrink-0" />
-                <span className="text-xs font-medium text-foreground">{p}</span>
-              </GlassCard>
-            </AnimatedSection>
-          ))}
+        <div className="grid md:grid-cols-2 gap-8">
+          <AnimatedSection>
+            <div className="space-y-6">
+              <h2 className="font-heading text-3xl font-bold text-foreground">Our Turnkey Projects in Moon Beverages</h2>
+              <p className="text-muted-foreground leading-relaxed">
+                We installed 700 TR Water Cooled VFD Screw Chiller Complete Project including Cooling towers, Pumps, MCC Panels, PLC panel with Piping in Moon Beverages (COCA COLA).
+              </p>
+              <div className="relative rounded-2xl overflow-hidden aspect-video shadow-lg">
+                <img 
+                  src="https://www.drycoolchillers.com/wp-content/uploads/2023/09/Moon-Beverages-turnkey-works.png" 
+                  alt="Moon Beverages Project"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.2}>
+            <div className="space-y-6">
+              <h2 className="font-heading text-3xl font-bold text-foreground">Global Reach</h2>
+              <p className="text-muted-foreground leading-relaxed">
+                We specialize in undertaking global turnkey projects for setting up of chilling plants & chilled water systems. We have executed several large projects – many of them on turnkey basis – valuing even more than 8 crores (INR).
+              </p>
+              <div className="relative rounded-2xl overflow-hidden aspect-video shadow-lg">
+                <img 
+                  src="https://www.drycoolchillers.com/wp-content/uploads/2015/10/ChillPlantRoom.png" 
+                  alt="Global Project Execution"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          </AnimatedSection>
         </div>
       </div>
     </section>

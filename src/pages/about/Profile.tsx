@@ -1,60 +1,44 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, CheckCircle, Award, Globe, Users, Factory, Calendar, Target } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
 import PageHero from "@/components/PageHero";
 import AnimatedSection from "@/components/AnimatedSection";
-import GlassCard from "@/components/GlassCard";
-import factoryImg from "@/assets/factory-floor.jpg";
-
-const milestones = [
-  { year: "1992", title: "Founded", desc: "Drycool Systems India Pvt. Ltd. established in Noida, UP" },
-  { year: "2002", title: "ISO Certified", desc: "Achieved ISO 9001:2008 quality management certification" },
-  { year: "2010", title: "Global Expansion", desc: "Started exporting to UAE, Africa, and SE Asia" },
-  { year: "2020", title: "5000+ Installations", desc: "Crossed 5,000 chiller installations worldwide" },
-];
-
-const coreValues = [
-  { icon: Target, title: "Innovation", desc: "Continuous R&D in energy-efficient cooling technology" },
-  { icon: Award, title: "Quality", desc: "ISO 9001 certified manufacturing with zero-defect philosophy" },
-  { icon: Globe, title: "Global Reach", desc: "Serving 50+ countries across all continents" },
-  { icon: Users, title: "Customer First", desc: "Dedicated after-sales support and engineering consultation" },
-];
-
-const strengths = [
-  "30+ years of chiller manufacturing expertise",
-  "CFC-free, environment-friendly refrigerants",
-  "European-origin compressors (Bitzer, Frascold)",
-  "In-house R&D and quality testing lab",
-  "Pan-India service network with 200+ engineers",
-  "Custom chiller design for any industry requirement",
-];
 
 const Profile = () => (
   <>
-    <PageHero title="Company Profile" subtitle="Three decades of pioneering industrial cooling solutions" />
+    <PageHero 
+      title="Our Profile" 
+      subtitle="A Legacy of Excellence in Industrial Cooling Since 1989" 
+      backgroundImage="https://drycoolchillers.com/wp-content/uploads/2015/10/Amonia-Based-Milk-Chiller.jpg"
+    />
 
     <section className="py-20">
       <div className="container grid lg:grid-cols-2 gap-12 items-center">
         <AnimatedSection>
-          <SectionHeading title="Who We Are" centered={false} />
-          <p className="text-muted-foreground leading-relaxed mb-4">
-            Drycool Systems India Private Limited is one of the oldest and leading chiller manufacturers in India as well as other parts of the world. We are pioneers in manufacturing industrial chillers including screw chillers, scroll chillers, water cooled screw chillers, air cooled screw chillers, ammonia chillers, brine chillers, batching plant chillers, inverter chillers, oil chillers, water chillers, and air chillers.
-          </p>
-          <p className="text-muted-foreground leading-relaxed mb-6">
-            Our chillers are CFC-free and contain energy-saving components integral for the conservation of the environment. The engineering and design simplicity utilized by Drycool provides an added advantage to customers.
-          </p>
-          <ul className="space-y-3">
-            {strengths.map((s) => (
-              <li key={s} className="flex items-center gap-3 text-sm font-medium text-foreground">
-                <CheckCircle className="h-5 w-5 text-accent shrink-0" />
-                {s}
-              </li>
-            ))}
-          </ul>
+          <SectionHeading title="Our Profile" centered={false} />
+          <div className="space-y-6 text-muted-foreground leading-relaxed">
+            <p>
+              Drycool Systems India Pvt. Ltd. having the business objective which is also associated with having higher benefits ensured for the customers. We are having our business Goodwill along with outstanding market credibility which is appreciated by all. Our company was established in the year of 1989, since then our organization is one of the front-line developer, designer, fabricator and also the delivery service of innovative and hybrid Technology designed chiller equipment.
+            </p>
+            <p>
+              We are the experts of chiller plant manufacturer along with the designer of cold rooms to offer customized chillers according to the requirement of the customer in India. We are also involved in various markets including African countries and South East Asia. Drycool Systems is one of the best chiller manufacturers in India along with the exporting and supplying services for FRP Cooling Towers, Scroll Chillers, Screw Chillers, chilling plants, and various other equipment which are being manufactured by using cutting-edge technology.
+            </p>
+            <p>
+              We ensure the complete delivery of the best cooling requirements with the involvement of optimum operation which is including less maintenance cost along with less operative. We’re extremely valuable clients and we ensure the best chillers in India supply to them with highly competitive advantages which will help them increase productivity along with profitability.
+            </p>
+            <p>
+              Over the years we have developed expertise to offer the unquestionable array of industrial refrigeration services. Our experienced management team is completely equipped with proper knowledge and understanding to assist you with various products and services. We ensure the international grade equipment which is appropriate for the productivity increment in various industries. Drycool Systems will install and supply the industrial refrigeration process by manufacturing it completely from the scratch. We will also offer maintenance, consultancy services, and repair to every client.
+            </p>
+          </div>
         </AnimatedSection>
         <AnimatedSection delay={0.2}>
-          <div className="rounded-xl overflow-hidden shadow-xl">
-            <img src={factoryImg} alt="Drycool manufacturing facility in Noida" className="w-full h-full object-cover" loading="lazy" />
+          <div className="rounded-xl overflow-hidden shadow-2xl border border-border/50">
+            <img 
+              src="https://drycoolchillers.com/wp-content/uploads/2015/10/Amonia-Based-Milk-Chiller.jpg" 
+              alt="Industrial Chiller" 
+              className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700" 
+              loading="lazy" 
+            />
           </div>
         </AnimatedSection>
       </div>
@@ -62,49 +46,36 @@ const Profile = () => (
 
     <div className="container"><div className="h-px bg-gradient-to-r from-transparent via-border to-transparent" /></div>
 
-    {/* Core Values */}
     <section className="py-20 bg-section-gradient">
-      <div className="container">
+      <div className="container grid md:grid-cols-2 gap-12">
         <AnimatedSection>
-          <SectionHeading title="Core Values" subtitle="The pillars that drive our excellence" />
+          <div className="p-8 rounded-2xl bg-card border border-border/50 shadow-xl h-full">
+            <h3 className="text-2xl font-heading font-bold mb-4 text-primary">The Vision of Drycool Systems</h3>
+            <p className="text-muted-foreground leading-relaxed">
+              We are determined to serve as the framework to increase sustainable growth and also it objectively describes the business. Drycool Systems is having the vision of threefold duty for portfolio, people, and productivity which will help us to have the most effective and progressive organization.
+            </p>
+          </div>
         </AnimatedSection>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {coreValues.map((v, i) => (
-            <AnimatedSection key={v.title} delay={i * 0.1}>
-              <GlassCard className="text-center py-8 bg-card">
-                <div className="flex items-center justify-center h-14 w-14 rounded-full bg-accent/10 mx-auto mb-4">
-                  <v.icon className="h-7 w-7 text-accent" />
-                </div>
-                <h3 className="font-heading text-xl font-bold text-foreground">{v.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{v.desc}</p>
-              </GlassCard>
-            </AnimatedSection>
-          ))}
-        </div>
+
+        <AnimatedSection delay={0.2}>
+          <div className="p-8 rounded-2xl bg-card border border-border/50 shadow-xl h-full">
+            <h3 className="text-2xl font-heading font-bold mb-4 text-primary">The Mission of Drycool Systems</h3>
+            <p className="text-muted-foreground leading-relaxed">
+              Drycool Systems is having a mission that completely highlights the major reason and the purpose of the company. The mission of the company is inspired by various creative values, movements of optimism, and innovation in the construction of equipment management. We ensure to offer the best possible services and be the best chiller supplier in India.
+            </p>
+          </div>
+        </AnimatedSection>
       </div>
     </section>
 
-    {/* Timeline */}
     <section className="py-20">
       <div className="container">
         <AnimatedSection>
-          <SectionHeading title="Our Journey" subtitle="Key milestones in our growth story" />
+          <SectionHeading title="Turnkey Projects of Drycool Systems" centered={false} />
+          <p className="text-muted-foreground leading-relaxed max-w-4xl">
+            We are having a team of professional experts and our company is completely capable of offering turnkey solutions to every client in the best possible way along with preliminary reports. We will also offer to frame technical specifications, erection and commissioning, preparing for site layout, equipment selection, etc.
+          </p>
         </AnimatedSection>
-        <div className="max-w-3xl mx-auto space-y-6">
-          {milestones.map((m, i) => (
-            <AnimatedSection key={m.year} delay={i * 0.1}>
-              <GlassCard className="flex gap-6 items-start bg-card">
-                <div className="shrink-0 flex items-center justify-center h-16 w-16 rounded-xl bg-accent/10">
-                  <span className="font-heading text-xl font-bold text-accent">{m.year}</span>
-                </div>
-                <div>
-                  <h3 className="font-heading text-xl font-bold text-foreground">{m.title}</h3>
-                  <p className="mt-1 text-sm text-muted-foreground">{m.desc}</p>
-                </div>
-              </GlassCard>
-            </AnimatedSection>
-          ))}
-        </div>
       </div>
     </section>
 

@@ -1,38 +1,69 @@
-import { ShieldCheck, Award, Globe, FileCheck } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
 import PageHero from "@/components/PageHero";
 import AnimatedSection from "@/components/AnimatedSection";
-import GlassCard from "@/components/GlassCard";
-
-const accreditations = [
-  { icon: ShieldCheck, title: "ISO 9001:2008", desc: "Quality Management System certification ensuring consistent product quality, continuous improvement, and customer satisfaction across all operations." },
-  { icon: Award, title: "CE Marking", desc: "European conformity marking indicating compliance with health, safety, and environmental protection standards for products sold within the European Economic Area." },
-  { icon: Globe, title: "BIS Certification", desc: "Bureau of Indian Standards certification confirming products meet national quality benchmarks and safety requirements for the Indian market." },
-  { icon: FileCheck, title: "AHRI Certified", desc: "Air-Conditioning, Heating, and Refrigeration Institute performance certification validating chiller capacity and efficiency ratings." },
-];
 
 const Accreditations = () => (
   <>
-    <PageHero title="Accreditations" subtitle="Recognized by international and national standards bodies" />
+    <PageHero 
+      title="Accreditations" 
+      subtitle="International Recognition for Manufacturing Standards" 
+      backgroundImage="https://drycoolchillers.com/wp-content/uploads/2015/10/association.jpg"
+    />
 
     <section className="py-20">
       <div className="container">
         <AnimatedSection>
-          <SectionHeading title="Our Certifications" subtitle="Meeting the highest global standards in chiller manufacturing" />
+          <SectionHeading title="Accreditations" centered={false} />
+          <div className="space-y-6 text-muted-foreground leading-relaxed max-w-4xl">
+            <p className="text-xl text-primary font-medium">
+              Drycool Systems exports its products to over 50 countries including European Union and United States.
+            </p>
+            <p>
+              We also handle projects in many countries particularly of large sizes as well as for various highly customised applications, like Oil & Gas, Concrete, Beverages, Pharmaceuticals, Chemicals etc.
+            </p>
+            <p>
+              We are accredited with UL, ISO 14001:2004 and ISO 9001:2008 certifications, as well as are approved through various prestigious consultants and certifying bodies for specific and peculiar process cooling applications across the world.
+            </p>
+            <p>
+              The design, fabrication, assembly and testing procedures at our factories conform to HTRI, ASME Section VIII/IX, TEMA C/B/R, SHELL DEP and ATEX standards, for an extensive set of specifications of the equipments and installations.
+            </p>
+          </div>
         </AnimatedSection>
-        <div className="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          {accreditations.map((a, i) => (
-            <AnimatedSection key={a.title} delay={i * 0.1}>
-              <GlassCard className="text-center py-10 bg-card">
-                <div className="flex items-center justify-center h-16 w-16 rounded-full bg-accent/10 mx-auto mb-4">
-                  <a.icon className="h-8 w-8 text-accent" />
+      </div>
+    </section>
+
+    <div className="container"><div className="h-px bg-gradient-to-r from-transparent via-border to-transparent" /></div>
+
+    <section className="py-20 bg-section-gradient">
+      <div className="container">
+        <AnimatedSection>
+          <SectionHeading title="Certified Quality Standards" centered={false} />
+          <p className="text-muted-foreground mb-12 max-w-2xl">
+            In our design and manufacturing we strictly follow according to the following standards, associations and directories:
+          </p>
+          
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+            {[
+              "HTRI", "ASME", "TEMA", "AHRI", "ISHRAE", 
+              "ASHRAE", "CE", "EUROVENT", "ISO", "MSME"
+            ].map((name, i) => (
+              <AnimatedSection key={i} delay={i * 0.05}>
+                <div className="aspect-video flex items-center justify-center p-6 rounded-xl bg-card border border-border/50 shadow-sm hover:border-accent/50 transition-colors group">
+                  <span className="text-2xl font-bold text-muted-foreground/60 group-hover:text-primary transition-colors">{name}</span>
                 </div>
-                <h3 className="font-heading text-2xl font-bold text-foreground">{a.title}</h3>
-                <p className="mt-3 text-sm text-muted-foreground leading-relaxed max-w-xs mx-auto">{a.desc}</p>
-              </GlassCard>
-            </AnimatedSection>
-          ))}
-        </div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </AnimatedSection>
+      </div>
+    </section>
+
+    <section className="py-16 bg-hero-gradient">
+      <div className="container text-center">
+        <AnimatedSection>
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-primary-foreground">Global Presence</h2>
+          <p className="mt-3 text-primary-foreground/70 max-w-lg mx-auto">Exporting excellence to over 32 countries with world-class engineering standards.</p>
+        </AnimatedSection>
       </div>
     </section>
   </>

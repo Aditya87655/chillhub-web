@@ -3,15 +3,31 @@ import { motion } from "framer-motion";
 interface PageHeroProps {
   title: string;
   subtitle: string;
+  backgroundImage?: string;
 }
 
-const PageHero = ({ title, subtitle }: PageHeroProps) => (
-  <section className="relative bg-hero-gradient py-20 overflow-hidden">
+const PageHero = ({ title, subtitle, backgroundImage }: PageHeroProps) => (
+  <section className="relative min-h-[40vh] py-20 overflow-hidden flex items-center">
+    {/* Background Image with Overlay */}
+    {backgroundImage ? (
+      <div className="absolute inset-0 z-0">
+        <img 
+          src={backgroundImage} 
+          alt="" 
+          className="w-full h-full object-cover" 
+        />
+        <div className="absolute inset-0 bg-hero-gradient opacity-90" />
+      </div>
+    ) : (
+      <div className="absolute inset-0 bg-hero-gradient" />
+    )}
+    
     {/* Decorative elements */}
-    <div className="absolute inset-0 opacity-10">
+    <div className="absolute inset-0 opacity-10 pointer-events-none">
       <div className="absolute top-10 left-10 w-72 h-72 rounded-full bg-accent blur-3xl" />
       <div className="absolute bottom-10 right-10 w-96 h-96 rounded-full bg-accent blur-3xl" />
     </div>
+    
     <div className="container relative z-10">
       <motion.div
         initial={{ opacity: 0, y: 20 }}

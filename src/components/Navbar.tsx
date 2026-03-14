@@ -60,9 +60,9 @@ const navItems: NavItem[] = [
       {
         heading: "RECIPROCATING CHILLERS",
         items: [
-          { label: "Water-cooled Reciprocating", to: "/products/water-cooled-reciprocating-chiller" },
-          { label: "Air-cooled Reciprocating", to: "/products/air-cooled-reciprocating-chiller" },
-          { label: "Industrial Reciprocating", to: "/products/industrial-reciprocating-chiller" },
+          { label: "Water-cooled Reciprocating Chillers", to: "/products/water-cooled-reciprocating-chillers" },
+          { label: "Air-cooled Reciprocating Chillers", to: "/products/air-cooled-reciprocating-chillers" },
+          { label: "Industrial Reciprocating Chillers", to: "/products/industrial-reciprocating-chillers" },
         ],
       },
       {
@@ -76,17 +76,17 @@ const navItems: NavItem[] = [
         heading: "APPLICATION",
         items: [
           { label: "Plastic Industry", to: "/application/chiller-for-plastic-industry" },
-          { label: "Cement Industry", to: "/application/chiller-for-cement-industry" },
-          { label: "Brewery & Fermentation", to: "/application/chiller-for-brewery-fermentation" },
+          { label: "Cement Industry (Batching Plant)", to: "/application/batching-plant-chiller" },
+          { label: "Brewery & Fermentation", to: "/application/chiller-for-brewery-and-fermentation" },
           { label: "Food & Beverage", to: "/application/chiller-for-food-beverage-industry" },
           { label: "Heavy Industrial", to: "/application/chiller-for-heavy-industrial-purpose" },
           { label: "Hydrogen Refueling", to: "/application/chiller-for-hydrogen-refueling-station" },
           { label: "Milk Industry", to: "/application/chillers-for-milk-industry" },
           { label: "Medical Device", to: "/application/chiller-for-medical-device" },
           { label: "CNC Cooling", to: "/application/chiller-for-cnc-cooling" },
-          { label: "Printing & Packaging", to: "/application/chiller-for-printing-packaging" },
-          { label: "BESS Chillers", to: "/application/bess-chillers" },
-          { label: "Eyewash & Safety Showers", to: "/application/chillers-for-eyewash-safety-showers" },
+          { label: "Printing & Packaging", to: "/application/chiller-for-printing-and-packaging" },
+          { label: "BESS Chillers", to: "/application/battery-energy-storage-systems-bess-chillers" },
+          { label: "Eyewash & Safety Showers", to: "/application/chillers-for-eyewash-and-safety-showers" },
         ],
       },
       {
@@ -111,11 +111,11 @@ const navItems: NavItem[] = [
       {
         heading: "GLOBAL FOOTPRINTS",
         items: [
-          { label: "Chillers in UAE", to: "/global/industrial-chillers-in-uae" },
-          { label: "Chillers in Africa", to: "/global/industrial-chillers-in-africa" },
-          { label: "Chillers in Indonesia", to: "/global/industrial-chillers-in-indonesia" },
-          { label: "Chillers in Nepal", to: "/global/industrial-chillers-in-nepal" },
-          { label: "Chillers in Bangladesh", to: "/global/industrial-chillers-in-bangladesh" },
+          { label: "Chillers in UAE", to: "/products/industrial-chillers-in-uae" },
+          { label: "Chillers in Africa", to: "/products/industrial-chillers-in-africa" },
+          { label: "Chillers in Indonesia", to: "/products/industrial-chillers-in-indonesia" },
+          { label: "Chillers in Nepal", to: "/products/industrial-chillers-in-nepal" },
+          { label: "Chillers in Bangladesh", to: "/products/industrial-chiller-in-bangladesh" },
         ],
       },
     ],

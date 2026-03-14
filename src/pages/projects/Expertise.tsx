@@ -1,40 +1,78 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Award, Cog, Building2, Thermometer, Droplets, Wind } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
 import PageHero from "@/components/PageHero";
 import AnimatedSection from "@/components/AnimatedSection";
 import GlassCard from "@/components/GlassCard";
 
-const expertiseAreas = [
-  { icon: Thermometer, title: "Chiller Plant Design", desc: "Complete chiller plant room design including equipment sizing, piping layout, and ancillary systems." },
-  { icon: Wind, title: "HVAC Engineering", desc: "Central air conditioning system design for commercial complexes, hospitals, and industrial facilities." },
-  { icon: Droplets, title: "Process Cooling", desc: "Specialized cooling system design for manufacturing processes including injection molding, extrusion, and pharma." },
-  { icon: Building2, title: "MEP Consultancy", desc: "Mechanical, Electrical, and Plumbing design consultancy with energy-efficient solutions." },
-  { icon: Cog, title: "Retrofit & Upgrades", desc: "Energy audits, chiller replacement studies, and system optimization for existing installations." },
-  { icon: Award, title: "Green Building", desc: "LEED and GRIHA-compliant HVAC design for sustainable, energy-efficient buildings." },
+const expertiseObjectives = [
+  "Setting superior but achievable objectives.",
+  "Adept conceptualization of the project.",
+  "Meticulous planning to execute.",
+  "Timely and effective execution.",
+  "Realisation of the objectives.",
 ];
 
 const Expertise = () => (
   <>
-    <PageHero title="Our Expertise" subtitle="Decades of experience in cooling system engineering and design" />
+    <PageHero 
+      title="Expertise" 
+      subtitle="Specialize in Engineering, Manufacturing, Contracting, Servicing & Maintenance" 
+    />
 
     <section className="py-20">
       <div className="container">
-        <AnimatedSection>
-          <SectionHeading title="Areas of Expertise" subtitle="Comprehensive capabilities in cooling and HVAC engineering" />
-        </AnimatedSection>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {expertiseAreas.map((e, i) => (
-            <AnimatedSection key={e.title} delay={i * 0.08}>
-              <GlassCard className="bg-card">
-                <div className="flex items-center justify-center h-14 w-14 rounded-xl bg-accent/10 mb-4">
-                  <e.icon className="h-7 w-7 text-accent" />
-                </div>
-                <h3 className="font-heading text-xl font-bold text-foreground">{e.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{e.desc}</p>
-              </GlassCard>
-            </AnimatedSection>
-          ))}
+        <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
+          <AnimatedSection>
+            <SectionHeading 
+              title="Our Engineering Excellence" 
+              subtitle="Customized cooling solutions for diverse industries"
+            />
+            <div className="space-y-6 text-muted-foreground leading-relaxed">
+              <p>
+                Drycool Specialize in Engineering, Manufacturing, Contracting, Servicing & Maintenance, having expertise in engineering customised solution for cooling process, in Printing Packaging, Food processing & beverages, Plastics, Anodising, chemical industry, construction etc.
+              </p>
+              <p>
+                Project handling requires mature expertise and experience besides proper knowledge and exposure to the specific industry and environment, since the benefits of proper project execution to the organisation can be realised only through expert handling of the project, from conceptualisation to commissioning, within the specified timeframe, meeting objectives convincingly.
+              </p>
+            </div>
+          </AnimatedSection>
+          
+          <AnimatedSection delay={0.2}>
+            <div className="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-2xl">
+              <img 
+                src="https://www.drycoolchillers.com/wp-content/uploads/2022/08/Dark-Picnic-with-Friends-Photo-Collage.jpg" 
+                alt="Our Expertise"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </AnimatedSection>
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <AnimatedSection delay={0.4} className="order-2 lg:order-1">
+            <div className="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-2xl">
+              <img 
+                src="http://drycoolchillers.com/wp-content/uploads/2013/08/20131017_140001.jpg" 
+                alt="Project Execution"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.6} className="order-1 lg:order-2">
+            <h3 className="font-heading text-2xl font-bold text-foreground mb-6">Project Execution Objectives</h3>
+            <div className="grid gap-4">
+              {expertiseObjectives.map((objective, i) => (
+                <GlassCard key={i} className="flex items-center gap-4 py-4 bg-card/50" hover={false}>
+                  <div className="h-8 w-8 rounded-full bg-accent/10 flex items-center justify-center shrink-0">
+                    <CheckCircle2 className="h-5 w-5 text-accent" />
+                  </div>
+                  <span className="text-foreground font-medium">{objective}</span>
+                </GlassCard>
+              ))}
+            </div>
+          </AnimatedSection>
         </div>
       </div>
     </section>
@@ -42,9 +80,9 @@ const Expertise = () => (
     <section className="py-16 bg-hero-gradient">
       <div className="container text-center">
         <AnimatedSection>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-primary-foreground">Leverage Our Expertise</h2>
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-primary-foreground">Our some new Projects</h2>
           <Link to="/contact" className="inline-flex items-center gap-2 mt-6 rounded-lg bg-accent px-7 py-3.5 font-semibold text-accent-foreground hover:opacity-90 transition-opacity shadow-lg">
-            Consult Our Engineers <ArrowRight className="h-4 w-4" />
+            Discuss Your Project <ArrowRight className="h-4 w-4" />
           </Link>
         </AnimatedSection>
       </div>

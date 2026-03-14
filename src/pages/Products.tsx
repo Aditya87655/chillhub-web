@@ -10,14 +10,17 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 
 const allProducts = [
-  { title: "Air Cooled Screw Chillers", description: "Multiple compressor configuration, fabricated in ISO 9001:2008 certified units with CFC-free refrigerants R-407C & R-134A, complete with in-built process pump.", image: screwImg },
-  { title: "Water Cooled Screw Chillers", description: "Specially designed to work in extreme weather while maintaining energy efficiency. Best-in-class chiller with superior standards.", image: screwImg },
-  { title: "Air Cooled Scroll Chillers", description: "Highly energy-efficient, designed for extreme tropical weather with European origin compressors and separate refrigeration circuits.", image: scrollImg },
-  { title: "Water Cooled Scroll Chillers", description: "State-of-the-art liquid chiller for comfort and process-cooling applications, factory-assembled with complete quality assurance.", image: scrollImg },
-  { title: "Ammonia Chillers", description: "Skid-mounted, compact ammonia chillers for medium to low temperature ranges — ideal for food processing, pharmaceutical, and cold storage.", image: ammoniaImg },
-  { title: "Oil Chillers", description: "Specially designed to cool oil directly via refrigerant-to-oil heat exchanging circuits. Available in air-cooled and water-cooled variants.", image: oilImg },
-  { title: "Inverter Screw Chillers", description: "Variable frequency drive technology for optimal compressor speed adjustment, delivering up to 50% energy savings.", image: screwImg },
-  { title: "VFD Chillers", description: "Advanced variable frequency drive chillers offering precise temperature control with significantly reduced power consumption.", image: scrollImg },
+  { title: "Air Cooled Screw Chiller", slug: "air-cooled-screw-chiller", description: "Efficient air cooled screw chillers for industrial cooling, with capacities ranging from 30 Ton up to 1800 Ton.", image: "https://www.drycoolchillers.com/wp-content/uploads/2015/11/Slide011.jpg" },
+  { title: "Water Cooled Screw Chiller", slug: "water-cooled-screw-chiller", description: "Specifically designed for extreme tropical weather, using high-quality Bitzer and Frascold compressors.", image: "https://drycoolchillers.com/wp-content/uploads/2015/10/Single-Water-Cooled-Screw-Chiller.jpg" },
+  { title: "Air Cooled Scroll Chillers", slug: "air-cooled-scroll-chiller", description: "Highly energy-efficient, separate refrigeration circuits designed for maximum flexibility and performance.", image: "https://drycoolchillers.com/wp-content/uploads/2015/09/Multiple-Air-Cooled-Scroll-Chiller.jpg" },
+  { title: "Water Cooled Scroll Chillers", slug: "water-cooled-scroll-chiller", description: "Compact and factory-assembled liquid scroll chillers for comfort and process-cooling applications.", image: "https://drycoolchillers.com/wp-content/uploads/2015/10/Multiple-Water-Cooled-Scroll-Chiller-3-1.jpg" },
+  { title: "Inverter Scroll Chiller", slug: "inverter-scroll-chiller", description: "Integrated inverter technology for precise temperature control and maximum energy savings.", image: "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Multiple-Water-Cooled-Scroll-Chiller-3-1.jpg" },
+  { title: "Air Chiller", slug: "air-chiller", description: "Reliable industrial air chillers with precise temperature control and improved internal air quality.", image: "https://www.drycoolchillers.com/wp-content/uploads/2023/01/Air-cooled-Air-chiller.jpg" },
+  { title: "Inverter Screw Chiller", slug: "inverter-screw-chiller", description: "Advanced permanent magnet motor and variable frequency drive for up to 50% energy savings.", image: "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Multiple-Water-Cooled-Screw-Chiller-1-2.jpg" },
+  { title: "Buy VFD Chiller", slug: "air-cooled-vfd-screw-chiller", description: "Variable frequency drive chillers for optimal pressure control and significant power reduction.", image: "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Multiple-Water-Cooled-Screw-Chiller-2-1.jpg" },
+  { title: "Water-cooled Reciprocating Chillers", slug: "water-cooled-reciprocating-chillers", description: "Energy-efficient water cooled reciprocating chillers suitable for most tropical weather conditions.", image: "https://www.drycoolchillers.com/wp-content/uploads/2015/11/Slide02.jpg" },
+  { title: "Air-cooled Reciprocating Chillers", slug: "air-cooled-reciprocating-chillers", description: "Tropical-weather efficient air cooled reciprocating chillers using state-of-the-art European compressors.", image: "https://www.drycoolchillers.com/wp-content/uploads/2015/11/Slide01.jpg" },
+  { title: "Industrial Reciprocating Chillers", slug: "industrial-reciprocating-chillers", description: "Specifically designed for varied industrial applications using unique, process-specific materials.", image: "https://www.drycoolchillers.com/wp-content/uploads/2015/11/Slide03.jpg" },
 ];
 
 const Products = () => (

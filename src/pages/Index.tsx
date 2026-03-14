@@ -382,74 +382,34 @@ const Index = () => {
       </section>
 
       {/* Our Clients */}
-      <section className="py-14 bg-section-gradient">
+      <section className="py-14 bg-section-gradient overflow-hidden">
         <div className="container">
           <AnimatedSection>
             <h3 className="font-heading text-2xl md:text-3xl font-bold text-foreground mb-10 text-center">Our Clients</h3>
           </AnimatedSection>
-          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4 items-center">
-            {clientLogos.map((logo, i) => (
-              <AnimatedSection key={`${logo.alt}-${i}`} delay={i * 0.03}>
-                <div className="flex items-center justify-center p-3 bg-card rounded-lg border border-border hover:shadow-md transition-shadow">
+        </div>
+        
+        {/* Marquee Container */}
+        <div className="group flex overflow-hidden whitespace-nowrap pt-2 pb-6 w-full">
+          <div className="animate-marquee group-hover:[animation-play-state:paused] flex gap-6 px-3">
+             {/* Duplicate array to ensure seamless looping */}
+             {[...clientLogos, ...clientLogos].map((logo, i) => (
+                <div 
+                  key={`${logo.alt}-${i}`} 
+                  className="flex shrink-0 items-center justify-center p-4 bg-card rounded-lg border border-border hover:shadow-md transition-shadow w-[160px] md:w-[200px]"
+                >
                   <img
                     src={logo.src}
                     alt={logo.alt}
-                    className="max-h-16 w-auto object-contain"
+                    className="h-16 w-auto object-contain mx-auto"
                     loading="lazy"
                   />
                 </div>
-              </AnimatedSection>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Contact Form Section */}
-      <section className="py-14">
-        <div className="container max-w-2xl">
-          <AnimatedSection>
-            <h3 className="font-heading text-2xl md:text-3xl font-bold text-foreground mb-8 text-center">Contact Form</h3>
-          </AnimatedSection>
-          <AnimatedSection delay={0.1}>
-            <form className="space-y-4 bg-card rounded-xl border border-border p-8 industrial-shadow">
-              <div>
-                <label className="block text-sm font-medium text-foreground mb-1">Your Name:</label>
-                <input type="text" className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring" />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-foreground mb-1">Company Name:</label>
-                <input type="text" className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring" />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-foreground mb-1">City:</label>
-                <input type="text" className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring" />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-foreground mb-1">Phone:</label>
-                <input type="tel" className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring" />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-foreground mb-1">Your Email:</label>
-                <input type="email" className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring" />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-foreground mb-1">Subject:</label>
-                <input type="text" className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring" />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-foreground mb-1">Your Message:</label>
-                <textarea rows={4} className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring resize-none" />
-              </div>
-              <button
-                type="submit"
-                className="w-full rounded-lg bg-[hsl(var(--industrial-orange))] px-6 py-3 font-semibold text-white hover:opacity-90 transition-opacity"
-              >
-                Submit
-              </button>
-            </form>
-          </AnimatedSection>
-        </div>
-      </section>
     </>
   );
 };

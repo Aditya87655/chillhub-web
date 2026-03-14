@@ -42,7 +42,7 @@ const routeNames: Record<string, string> = {
 const categoryParents: Record<string, { label: string; to: string }> = {
   "/products": { label: "Products", to: "/products" },
   "/application": { label: "Application", to: "/industries" },
-  "/customized": { label: "Customized Chiller", to: "/products/customized-chiller" },
+  "/customized": { label: "Customized Chiller", to: "/customized" },
   "/global": { label: "Global Footprints", to: "/products/global-footprints" },
 };
 
