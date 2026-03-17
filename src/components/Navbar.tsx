@@ -186,7 +186,7 @@ const DesktopMegaMenu = ({ sections, onClose }: { sections: NavSection[]; onClos
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 8 }}
       transition={{ duration: 0.2, ease: "easeOut" }}
-      className="absolute left-1/2 -translate-x-1/2 top-full z-50 mt-2 w-[95vw] max-w-[1200px] rounded-xl border border-border/50 bg-card/95 backdrop-blur-xl shadow-2xl"
+      className="fixed left-0 right-0 top-[var(--navbar-height,auto)] z-50 mx-auto w-full max-w-[1200px] rounded-xl border border-border/50 bg-card/95 backdrop-blur-xl shadow-2xl"
       role="menu"
       style={{ maxHeight: maxH }}
     >
@@ -248,7 +248,7 @@ const DesktopNavItem = ({ item }: { item: NavItem }) => {
   }
 
   return (
-    <div className="relative" onMouseEnter={handleEnter} onMouseLeave={handleLeave} role="navigation">
+    <div className={item.mega ? "" : "relative"} onMouseEnter={handleEnter} onMouseLeave={handleLeave} role="navigation">
       <Link
         to={item.to}
         className={`inline-flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 whitespace-nowrap relative group ${
@@ -273,7 +273,7 @@ const DesktopNavItem = ({ item }: { item: NavItem }) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 8 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className="absolute left-0 top-full z-50 mt-2 min-w-[240px] rounded-xl border border-border/50 bg-card/95 backdrop-blur-xl p-2 shadow-2xl"
+            className={`absolute ${item.label === "Contact Us" || item.label === "Download" ? "right-0" : "left-0"} top-full z-50 mt-2 min-w-[240px] rounded-xl border border-border/50 bg-card/95 backdrop-blur-xl p-2 shadow-2xl`}
             role="menu"
           >
             {item.children.map((child) => (
@@ -411,7 +411,7 @@ const Navbar = () => {
 
       {/* Main nav */}
       <nav
-        className={`border-b transition-all duration-500 ${
+        className={`border-b transition-all duration-500 relative ${
           scrolled
             ? "bg-card/80 backdrop-blur-xl border-border/30 shadow-sm"
             : "bg-card/95 backdrop-blur-md border-border/50"
