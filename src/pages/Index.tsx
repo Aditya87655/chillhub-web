@@ -143,37 +143,54 @@ const ProductCardOriginal = ({
   title,
   desc,
   link,
+  index,
 }: {
   image: string;
   title: string;
   desc: string;
   link: string;
+  index: number;
 }) => (
-  <div className="rounded-xl border border-border bg-card overflow-hidden industrial-shadow hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col">
+  <motion.div
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, margin: "-50px" }}
+    transition={{ duration: 0.5, delay: index * 0.1, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] }}
+    className="rounded-2xl border border-border/40 bg-card/90 backdrop-blur-sm overflow-hidden shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group flex flex-col"
+  >
     <div className="relative overflow-hidden" style={{ paddingBottom: "56.25%" }}>
       <Link to={link}>
         <img
           src={image}
           alt={title}
-          className="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
+          className="absolute inset-0 h-full w-full object-cover group-hover:scale-110 transition-transform duration-700"
           loading="lazy"
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-foreground/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       </Link>
     </div>
     <div className="p-5 flex flex-col flex-1">
       <Link to={link}>
-        <h5 className="font-heading text-lg font-bold text-foreground group-hover:text-[hsl(var(--industrial-orange))] transition-colors">
+        <h5 className="font-heading text-lg font-bold text-foreground group-hover:text-industrial-orange transition-colors duration-300">
           {title}
         </h5>
       </Link>
       <p className="mt-2 text-sm text-muted-foreground leading-relaxed flex-1">{desc}</p>
       <Link
         to={link}
-        className="mt-4 inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:opacity-90 transition-opacity"
+        className="mt-4 inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-industrial-orange transition-colors duration-300 group/btn"
       >
         More Info
+        <ArrowRight className="h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
       </Link>
     </div>
+  </motion.div>
+);
+
+/* ─── Section Divider ─── */
+const SectionDivider = () => (
+  <div className="container">
+    <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent my-12" />
   </div>
 );
 
@@ -181,7 +198,7 @@ const Index = () => {
   return (
     <>
       {/* Title Bar - matching original site's top section */}
-      <section className="bg-card py-10">
+      <section className="bg-card py-12">
         <div className="container">
           <AnimatedSection>
             <h1 className="font-heading text-2xl md:text-3xl lg:text-4xl font-bold text-foreground leading-tight">
@@ -189,7 +206,7 @@ const Index = () => {
             </h1>
             <div className="mt-6 space-y-4 text-sm md:text-base text-muted-foreground leading-relaxed">
               <p>
-                Drycool Systems India Private Limited ("Drycool") is one of oldest and leading chiller manufacturers in India as well as other parts of the world. Drycool is a pioneer in manufacturing of industrial chillers like screw chiller, <Link to="/products/water-cooled-scroll-chiller" className="text-[hsl(var(--industrial-teal))] hover:underline">scroll chiller</Link>, water cooled screw chiller, air cooled screw chiller, air cooled scroll chiller, water cooled scroll chiller, ammonia chillers, brine chiller, batching plant chiller, inverter screw chiller, inverter scroll chiller, oil chiller, water chiller, air chillers.
+                Drycool Systems India Private Limited ("Drycool") is one of oldest and leading chiller manufacturers in India as well as other parts of the world. Drycool is a pioneer in manufacturing of industrial chillers like screw chiller, <Link to="/products/water-cooled-scroll-chiller" className="text-accent hover:underline transition-colors">scroll chiller</Link>, water cooled screw chiller, air cooled screw chiller, air cooled scroll chiller, water cooled scroll chiller, ammonia chillers, brine chiller, batching plant chiller, inverter screw chiller, inverter scroll chiller, oil chiller, water chiller, air chillers.
               </p>
               <p>
                 The chillers manufactured and supplied by Drycool are CFC free and contain an energy saving component which is integral for the conservation of the environment. The engineering and design simplicity utilized by Drycool in manufacturing the chillers provides an added advantage to the customer in utilizing the chillers.
@@ -206,65 +223,68 @@ const Index = () => {
       </section>
 
       {/* Hero Slider */}
-      <HeroSlider />
+      <div className="container">
+        <HeroSlider />
+      </div>
 
-      {/* Divider */}
-      <div className="container"><div className="h-px bg-border my-10" /></div>
+      <SectionDivider />
 
       {/* Screw Chillers Section */}
-      <section className="pb-10">
+      <section className="pb-12">
         <div className="container">
           <AnimatedSection>
-            <h3 className="font-heading text-2xl font-bold text-foreground mb-8 border-b-2 border-border pb-2 inline-block">
+            <h3 className="font-heading text-2xl font-bold text-foreground mb-8 relative inline-block">
               Screw Chillers
+              <span className="absolute -bottom-2 left-0 w-full h-0.5 rounded-full" style={{ background: "linear-gradient(90deg, hsl(var(--industrial-orange)), transparent)" }} />
             </h3>
           </AnimatedSection>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {screwChillers.map((p, i) => (
-              <AnimatedSection key={p.title} delay={i * 0.1}>
-                <ProductCardOriginal {...p} />
-              </AnimatedSection>
+              <ProductCardOriginal key={p.title} {...p} index={i} />
             ))}
           </div>
         </div>
       </section>
 
-      {/* Divider */}
-      <div className="container"><div className="h-px bg-border my-6" /></div>
+      <SectionDivider />
 
       {/* Scroll Chillers Section */}
-      <section className="pb-10">
+      <section className="pb-12">
         <div className="container">
           <AnimatedSection>
-            <h3 className="font-heading text-2xl font-bold text-foreground mb-8 border-b-2 border-border pb-2 inline-block">
-              <Link to="/products/water-cooled-scroll-chiller" className="hover:text-[hsl(var(--industrial-orange))] transition-colors">
+            <h3 className="font-heading text-2xl font-bold text-foreground mb-8 relative inline-block">
+              <Link to="/products/water-cooled-scroll-chiller" className="hover:text-industrial-orange transition-colors duration-300">
                 Scroll Chillers
               </Link>
+              <span className="absolute -bottom-2 left-0 w-full h-0.5 rounded-full" style={{ background: "linear-gradient(90deg, hsl(var(--industrial-orange)), transparent)" }} />
             </h3>
           </AnimatedSection>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {scrollChillers.map((p, i) => (
-              <AnimatedSection key={p.title} delay={i * 0.1}>
-                <ProductCardOriginal {...p} />
-              </AnimatedSection>
+              <ProductCardOriginal key={p.title} {...p} index={i} />
             ))}
           </div>
         </div>
       </section>
 
-      {/* Divider */}
-      <div className="container"><div className="h-px bg-border my-6" /></div>
+      {/* Wave Divider */}
+      <div className="relative h-16 overflow-hidden">
+        <svg viewBox="0 0 1440 64" fill="none" className="absolute bottom-0 w-full h-full" preserveAspectRatio="none">
+          <path d="M0 32C240 0 480 64 720 32C960 0 1200 64 1440 32V64H0V32Z" fill="hsl(var(--muted))" />
+        </svg>
+      </div>
 
       {/* Why Us */}
-      <section className="py-14 bg-section-gradient">
+      <section className="py-16 bg-muted">
         <div className="container">
           <AnimatedSection>
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-10 text-center">Why Us</h2>
+            <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-12 text-center">Why Us</h2>
           </AnimatedSection>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
             {whyUsItems.map((item, i) => (
               <AnimatedSection key={item.title} delay={i * 0.08}>
-                <GlassCard className="bg-card group">
+                <GlassCard className="bg-card h-full">
+                  <div className="w-10 h-1 rounded-full bg-industrial-orange mb-4" />
                   <h3 className="font-heading text-lg font-bold text-foreground">{item.title}</h3>
                   <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
                 </GlassCard>
@@ -274,8 +294,15 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Wave Divider reversed */}
+      <div className="relative h-16 overflow-hidden">
+        <svg viewBox="0 0 1440 64" fill="none" className="absolute top-0 w-full h-full" preserveAspectRatio="none">
+          <path d="M0 32C240 64 480 0 720 32C960 64 1200 0 1440 32V0H0V32Z" fill="hsl(var(--muted))" />
+        </svg>
+      </div>
+
       {/* Introduction Section */}
-      <section className="py-14">
+      <section className="py-16">
         <div className="container">
           <AnimatedSection>
             <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-6">Introduction</h2>
@@ -289,18 +316,22 @@ const Index = () => {
             </div>
           </AnimatedSection>
           <AnimatedSection delay={0.2} className="mt-8">
-            <img
+            <motion.img
               src="/images/buy-chiller.png"
               alt="Buy chiller"
-              className="w-full max-w-4xl mx-auto rounded-xl"
+              className="w-full max-w-4xl mx-auto rounded-2xl shadow-lg"
               loading="lazy"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.4 }}
             />
           </AnimatedSection>
         </div>
       </section>
 
+      <SectionDivider />
+
       {/* Detailed Product Descriptions */}
-      <section className="py-14 bg-section-gradient">
+      <section className="py-16 bg-section-gradient">
         <div className="container space-y-10">
           {[
             {
@@ -345,10 +376,11 @@ const Index = () => {
             },
           ].map((item, i) => (
             <AnimatedSection key={item.title} delay={i * 0.05}>
-              <div>
+              <div className="group">
                 <h3 className="font-heading text-xl font-bold text-foreground mb-3">
-                  <Link to={item.link} className="hover:text-[hsl(var(--industrial-orange))] transition-colors">
+                  <Link to={item.link} className="hover:text-industrial-orange transition-colors duration-300 relative inline-block">
                     {item.title}
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-industrial-orange group-hover:w-full transition-all duration-300" />
                   </Link>
                 </h3>
                 <p className="text-sm md:text-base text-muted-foreground leading-relaxed">{item.text}</p>
@@ -359,33 +391,46 @@ const Index = () => {
       </section>
 
       {/* Industries / Applications note */}
-      <section className="py-14">
+      <section className="py-16">
         <div className="container">
           <AnimatedSection>
-            <p className="text-sm md:text-base text-foreground font-semibold mb-6">
+            <p className="text-sm md:text-base text-foreground font-semibold mb-8">
               All equipment and systems are properly engineered to ensure cost-effective installation, less power consumption along advanced technologies. We will be offering our advanced cooling solutions to various industries which include
             </p>
           </AnimatedSection>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
             {industryLinks.map((ind, i) => (
-              <AnimatedSection key={ind.label} delay={i * 0.03}>
+              <motion.div
+                key={ind.label}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: i * 0.02 }}
+              >
                 <Link
                   to={ind.to}
-                  className="block rounded-lg border border-border bg-card p-4 text-sm font-medium text-foreground hover:bg-[hsl(var(--industrial-orange))] hover:text-white hover:border-[hsl(var(--industrial-orange))] transition-all duration-300 text-center"
+                  className="block rounded-xl border border-border/50 bg-card p-4 text-sm font-medium text-foreground hover:bg-industrial-orange hover:text-white hover:border-industrial-orange hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-center"
                 >
                   {ind.label}
                 </Link>
-              </AnimatedSection>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
+      {/* Wave Divider */}
+      <div className="relative h-16 overflow-hidden">
+        <svg viewBox="0 0 1440 64" fill="none" className="absolute bottom-0 w-full h-full" preserveAspectRatio="none">
+          <path d="M0 32C240 0 480 64 720 32C960 0 1200 64 1440 32V64H0V32Z" fill="hsl(var(--muted))" />
+        </svg>
+      </div>
+
       {/* Our Clients */}
-      <section className="py-14 bg-section-gradient overflow-hidden">
+      <section className="py-16 bg-muted overflow-hidden">
         <div className="container">
           <AnimatedSection>
-            <h3 className="font-heading text-2xl md:text-3xl font-bold text-foreground mb-10 text-center">Our Clients</h3>
+            <h3 className="font-heading text-2xl md:text-3xl font-bold text-foreground mb-12 text-center">Our Clients</h3>
           </AnimatedSection>
         </div>
         
@@ -396,12 +441,12 @@ const Index = () => {
              {[...clientLogos, ...clientLogos].map((logo, i) => (
                 <div 
                   key={`${logo.alt}-${i}`} 
-                  className="flex shrink-0 items-center justify-center p-4 bg-card rounded-lg border border-border hover:shadow-md transition-shadow w-[160px] md:w-[200px]"
+                  className="flex shrink-0 items-center justify-center p-4 bg-card rounded-xl border border-border/40 hover:shadow-lg hover:border-accent/30 hover:-translate-y-1 transition-all duration-300 w-[160px] md:w-[200px]"
                 >
                   <img
                     src={logo.src}
                     alt={logo.alt}
-                    className="h-16 w-auto object-contain mx-auto"
+                    className="h-16 w-auto object-contain mx-auto grayscale hover:grayscale-0 transition-all duration-500"
                     loading="lazy"
                   />
                 </div>

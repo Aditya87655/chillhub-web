@@ -17,6 +17,12 @@ const slides = [
   { image: "/images/slider/turnkey-project.jpg", alt: "turnkey project" },
 ];
 
+const slideVariants = {
+  enter: (dir: number) => ({ x: dir > 0 ? 300 : -300, opacity: 0, scale: 1.05 }),
+  center: { x: 0, opacity: 1, scale: 1 },
+  exit: (dir: number) => ({ x: dir > 0 ? -300 : 300, opacity: 0, scale: 0.95 }),
+};
+
 const HeroSlider = () => {
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(1);
@@ -39,15 +45,17 @@ const HeroSlider = () => {
   const slide = slides[current];
 
   return (
-    <section className="relative w-full overflow-hidden bg-muted" style={{ aspectRatio: "960/350" }}>
+    <section className="relative w-full overflow-hidden bg-muted rounded-xl mx-auto" style={{ aspectRatio: "960/350" }}>
       {/* Background images */}
-      <AnimatePresence mode="wait">
+      <AnimatePresence custom={direction} mode="wait">
         <motion.div
           key={current}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.8 }}
+          custom={direction}
+          variants={slideVariants}
+          initial="enter"
+          animate="center"
+          exit="exit"
+          transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="absolute inset-0"
         >
           <img
@@ -59,24 +67,31 @@ const HeroSlider = () => {
         </motion.div>
       </AnimatePresence>
 
+      {/* Gradient overlays for depth */}
+      <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-foreground/5 to-transparent" />
+
       {/* Arrows */}
-      <button
+      <motion.button
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
         onClick={prev}
-        className="absolute left-3 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center h-10 w-10 rounded-full bg-foreground/10 backdrop-blur-sm text-foreground hover:bg-foreground/20 transition-colors"
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center h-11 w-11 rounded-full bg-card/30 backdrop-blur-md text-foreground hover:bg-card/60 transition-all duration-300 border border-border/20"
         aria-label="Previous Slide"
       >
         <ChevronLeft className="h-5 w-5" />
-      </button>
-      <button
+      </motion.button>
+      <motion.button
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
         onClick={next}
-        className="absolute right-3 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center h-10 w-10 rounded-full bg-foreground/10 backdrop-blur-sm text-foreground hover:bg-foreground/20 transition-colors"
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center h-11 w-11 rounded-full bg-card/30 backdrop-blur-md text-foreground hover:bg-card/60 transition-all duration-300 border border-border/20"
         aria-label="Next Slide"
       >
         <ChevronRight className="h-5 w-5" />
-      </button>
+      </motion.button>
 
       {/* Dots */}
-      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex gap-1.5">
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex gap-2 bg-card/20 backdrop-blur-md rounded-full px-3 py-1.5">
         {slides.map((_, i) => (
           <button
             key={i}
@@ -84,8 +99,8 @@ const HeroSlider = () => {
               setDirection(i > current ? 1 : -1);
               setCurrent(i);
             }}
-            className={`h-2 rounded-full transition-all duration-300 ${
-              i === current ? "w-6 bg-[hsl(var(--industrial-orange))]" : "w-2 bg-foreground/30 hover:bg-foreground/50"
+            className={`h-2 rounded-full transition-all duration-400 ${
+              i === current ? "w-7 bg-industrial-orange" : "w-2 bg-foreground/30 hover:bg-foreground/50"
             }`}
             aria-label={`Go to slide ${i + 1}`}
           />
