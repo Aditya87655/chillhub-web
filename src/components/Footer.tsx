@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, Facebook, Linkedin, Twitter, Youtube } from "lucide-react";
+import { motion } from "framer-motion";
 
 const quickLinks = [
   { label: "About Us", to: "/about" },
@@ -23,13 +24,29 @@ const productLinks = [
 
 const Footer = () => {
   return (
-    <footer className="bg-primary text-primary-foreground">
-      <div className="container py-16">
+    <footer className="relative bg-primary text-primary-foreground overflow-hidden">
+      {/* Decorative top gradient line */}
+      <div className="absolute top-0 left-0 right-0 h-1"
+        style={{ background: "linear-gradient(90deg, hsl(var(--industrial-teal)), hsl(var(--industrial-orange)), hsl(var(--industrial-teal)))" }}
+      />
+
+      {/* Subtle decorative blobs */}
+      <div className="absolute inset-0 pointer-events-none opacity-5">
+        <div className="absolute -top-20 -left-20 w-80 h-80 rounded-full bg-accent blur-3xl" />
+        <div className="absolute -bottom-20 -right-20 w-96 h-96 rounded-full bg-industrial-orange blur-3xl" />
+      </div>
+
+      <div className="container relative py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
             <h3 className="font-heading text-2xl font-bold mb-4">
-              DRY<span className="text-[hsl(var(--industrial-orange))]">COOL</span>
+              DRY<span className="text-industrial-orange">COOL</span>
             </h3>
             <p className="text-sm opacity-80 leading-relaxed mb-4">
               One of the oldest and leading chiller manufacturers in India, pioneering energy-efficient industrial cooling solutions worldwide since 1992.
@@ -40,87 +57,125 @@ const Footer = () => {
             {/* Social */}
             <div className="flex gap-3">
               {[Facebook, Linkedin, Twitter, Youtube].map((Icon, i) => (
-                <a key={i} href="#" className="flex items-center justify-center h-9 w-9 rounded-full bg-primary-foreground/10 hover:bg-[hsl(var(--industrial-orange))] transition-colors" aria-label="Social link">
+                <motion.a
+                  key={i}
+                  href="#"
+                  whileHover={{ scale: 1.15, y: -2 }}
+                  className="flex items-center justify-center h-10 w-10 rounded-full bg-primary-foreground/10 hover:bg-industrial-orange transition-colors duration-300"
+                  aria-label="Social link"
+                >
                   <Icon className="h-4 w-4" />
-                </a>
+                </motion.a>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Quick Links */}
-          <div>
-            <h4 className="font-heading text-lg font-semibold mb-4">Quick Links</h4>
-            <ul className="space-y-2 text-sm opacity-80">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            <h4 className="font-heading text-lg font-semibold mb-4 relative inline-block">
+              Quick Links
+              <span className="absolute -bottom-1 left-0 w-8 h-0.5 bg-industrial-orange rounded-full" />
+            </h4>
+            <ul className="space-y-2.5 text-sm opacity-80">
               {quickLinks.map((l) => (
                 <li key={l.to}>
-                  <Link to={l.to} className="hover:text-[hsl(var(--industrial-orange))] transition-colors">
+                  <Link to={l.to} className="hover:text-industrial-orange hover:pl-1 transition-all duration-300 inline-block">
                     {l.label}
                   </Link>
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Products */}
-          <div>
-            <h4 className="font-heading text-lg font-semibold mb-4">Our Products</h4>
-            <ul className="space-y-2 text-sm opacity-80">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <h4 className="font-heading text-lg font-semibold mb-4 relative inline-block">
+              Our Products
+              <span className="absolute -bottom-1 left-0 w-8 h-0.5 bg-industrial-orange rounded-full" />
+            </h4>
+            <ul className="space-y-2.5 text-sm opacity-80">
               {productLinks.map((p) => (
                 <li key={p.to}>
-                  <Link to={p.to} className="hover:text-[hsl(var(--industrial-orange))] transition-colors">
+                  <Link to={p.to} className="hover:text-industrial-orange hover:pl-1 transition-all duration-300 inline-block">
                     {p.label}
                   </Link>
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Contact */}
-          <div>
-            <h4 className="font-heading text-lg font-semibold mb-4">Contact Us</h4>
-            <div className="space-y-3 text-sm opacity-80">
-              <div className="flex items-start gap-2">
-                <MapPin className="h-4 w-4 mt-0.5 shrink-0" />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
+            <h4 className="font-heading text-lg font-semibold mb-4 relative inline-block">
+              Contact Us
+              <span className="absolute -bottom-1 left-0 w-8 h-0.5 bg-industrial-orange rounded-full" />
+            </h4>
+            <div className="space-y-4 text-sm opacity-80">
+              <div className="flex items-start gap-3 group">
+                <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-primary-foreground/10 flex items-center justify-center group-hover:bg-industrial-orange transition-colors duration-300">
+                  <MapPin className="h-4 w-4" />
+                </div>
                 <div>
                   <p className="font-medium">Corporate Office</p>
                   <p>B-88, Sector-6, Noida,</p>
                   <p>Uttar Pradesh - 201301, India</p>
                 </div>
               </div>
-              <div className="flex items-start gap-2">
-                <MapPin className="h-4 w-4 mt-0.5 shrink-0" />
+              <div className="flex items-start gap-3 group">
+                <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-primary-foreground/10 flex items-center justify-center group-hover:bg-industrial-orange transition-colors duration-300">
+                  <MapPin className="h-4 w-4" />
+                </div>
                 <div>
                   <p className="font-medium">Manufacturing Unit</p>
                   <p>Plot No. 35-36, Ecotech-12,</p>
                   <p>Greater Noida, U.P., India</p>
                 </div>
               </div>
-              <div className="flex items-center gap-2">
-                <Phone className="h-4 w-4 shrink-0" />
+              <div className="flex items-center gap-3 group">
+                <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-primary-foreground/10 flex items-center justify-center group-hover:bg-industrial-orange transition-colors duration-300">
+                  <Phone className="h-4 w-4" />
+                </div>
                 <div>
                   <p>+91-9811134394</p>
                   <p>+91-120-4243862</p>
                 </div>
               </div>
-              <div className="flex items-center gap-2">
-                <Mail className="h-4 w-4 shrink-0" />
+              <div className="flex items-center gap-3 group">
+                <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-primary-foreground/10 flex items-center justify-center group-hover:bg-industrial-orange transition-colors duration-300">
+                  <Mail className="h-4 w-4" />
+                </div>
                 <div>
                   <p>info@drycoolchillers.com</p>
                   <p>sales@drycoolchillers.com</p>
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
 
-      <div className="border-t border-primary-foreground/10">
-        <div className="container py-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs opacity-60">
+      <div className="border-t border-primary-foreground/10 relative">
+        <div className="container py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs opacity-60">
           <span>© {new Date().getFullYear()} Drycool Systems India Pvt. Ltd. All rights reserved.</span>
           <div className="flex gap-4">
-            <Link to="/about/profile" className="hover:text-[hsl(var(--industrial-orange))] transition-colors">About</Link>
-            <Link to="/contact/enquiry" className="hover:text-[hsl(var(--industrial-orange))] transition-colors">Contact</Link>
-            <Link to="/downloads/company-profile" className="hover:text-[hsl(var(--industrial-orange))] transition-colors">Downloads</Link>
+            <Link to="/about/profile" className="hover:text-industrial-orange transition-colors">About</Link>
+            <Link to="/contact/enquiry" className="hover:text-industrial-orange transition-colors">Contact</Link>
+            <Link to="/downloads/company-profile" className="hover:text-industrial-orange transition-colors">Downloads</Link>
           </div>
         </div>
       </div>

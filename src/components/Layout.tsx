@@ -5,22 +5,25 @@ import Footer from "./Footer";
 import Breadcrumb from "./Breadcrumb";
 import StickyCTA from "./StickyCTA";
 import ScrollToTop from "./ScrollToTop";
+import ScrollProgress from "./ScrollProgress";
+import WhatsAppButton from "./WhatsAppButton";
 
 const Layout = () => {
   const location = useLocation();
 
   return (
     <div className="flex min-h-screen flex-col">
+      <ScrollProgress />
       <Navbar />
       <Breadcrumb />
       <main className="flex-1">
         <AnimatePresence mode="wait">
           <motion.div
             key={location.pathname}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.35, ease: "easeInOut" }}
           >
             <Outlet />
           </motion.div>
@@ -28,6 +31,7 @@ const Layout = () => {
       </main>
       <Footer />
       <StickyCTA />
+      <WhatsAppButton />
       <ScrollToTop />
     </div>
   );

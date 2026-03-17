@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone, ChevronDown } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface NavChild {
   label: string;
@@ -165,7 +166,7 @@ const navItems: NavItem[] = [
   },
 ];
 
-/* ─── Desktop Mega Menu (fixed overflow) ─── */
+/* ─── Desktop Mega Menu ─── */
 const DesktopMegaMenu = ({ sections, onClose }: { sections: NavSection[]; onClose: () => void }) => {
   const menuRef = useRef<HTMLDivElement>(null);
   const [maxH, setMaxH] = useState("80vh");
@@ -179,28 +180,32 @@ const DesktopMegaMenu = ({ sections, onClose }: { sections: NavSection[]; onClos
   }, []);
 
   return (
-    <div
+    <motion.div
       ref={menuRef}
-      className="absolute left-1/2 -translate-x-1/2 top-full z-50 mt-1 w-[95vw] max-w-[1200px] rounded-lg border bg-popover shadow-xl backdrop-blur-sm"
+      initial={{ opacity: 0, y: 8 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 8 }}
+      transition={{ duration: 0.2, ease: "easeOut" }}
+      className="absolute left-1/2 -translate-x-1/2 top-full z-50 mt-2 w-[95vw] max-w-[1200px] rounded-xl border border-border/50 bg-card/95 backdrop-blur-xl shadow-2xl"
       role="menu"
       style={{ maxHeight: maxH }}
     >
-      <div className="overflow-y-auto overscroll-contain p-4" style={{ maxHeight: `calc(${maxH} - 2px)` }}>
-        <div className="grid grid-cols-4 gap-x-5 gap-y-3">
+      <div className="overflow-y-auto overscroll-contain p-5" style={{ maxHeight: `calc(${maxH} - 2px)` }}>
+        <div className="grid grid-cols-4 gap-x-6 gap-y-4">
           {sections.map((sec) => (
             <div key={sec.heading ?? sec.items[0]?.label}>
               {sec.heading && (
-                <h4 className="mb-1.5 text-[11px] font-bold uppercase tracking-wider text-[hsl(var(--industrial-orange))]">
+                <h4 className="mb-2 text-[11px] font-bold uppercase tracking-wider text-industrial-orange">
                   {sec.heading}
                 </h4>
               )}
-              <ul className="space-y-0">
+              <ul className="space-y-0.5">
                 {sec.items.map((child) => (
                   <li key={child.to}>
                     <Link
                       to={child.to}
                       onClick={onClose}
-                      className="block rounded-md px-2 py-1 text-[13px] leading-tight text-popover-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
+                      className="block rounded-lg px-2.5 py-1.5 text-[13px] leading-tight text-popover-foreground/80 hover:bg-accent/10 hover:text-accent transition-all duration-200"
                       role="menuitem"
                     >
                       {child.label}
@@ -212,7 +217,7 @@ const DesktopMegaMenu = ({ sections, onClose }: { sections: NavSection[]; onClos
           ))}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
@@ -232,11 +237,12 @@ const DesktopNavItem = ({ item }: { item: NavItem }) => {
     return (
       <Link
         to={item.to}
-        className={`px-3 py-2 rounded-md text-sm font-medium transition-colors whitespace-nowrap ${
-          isActive ? "bg-primary text-primary-foreground" : "text-foreground hover:bg-muted"
+        className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 whitespace-nowrap relative group ${
+          isActive ? "text-industrial-orange" : "text-foreground/80 hover:text-foreground"
         }`}
       >
         {item.label}
+        <span className={`absolute bottom-0 left-3 right-3 h-[2px] rounded-full bg-industrial-orange transition-transform duration-300 origin-left ${isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`} />
       </Link>
     );
   }
@@ -245,33 +251,45 @@ const DesktopNavItem = ({ item }: { item: NavItem }) => {
     <div className="relative" onMouseEnter={handleEnter} onMouseLeave={handleLeave} role="navigation">
       <Link
         to={item.to}
-        className={`inline-flex items-center gap-1 px-3 py-2 rounded-md text-sm font-medium transition-colors whitespace-nowrap ${
-          isActive ? "bg-primary text-primary-foreground" : "text-foreground hover:bg-muted"
+        className={`inline-flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 whitespace-nowrap relative group ${
+          isActive ? "text-industrial-orange" : "text-foreground/80 hover:text-foreground"
         }`}
         aria-haspopup="true"
         aria-expanded={open}
       >
         {item.label}
-        <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${open ? "rotate-180" : ""}`} />
+        <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-300 ${open ? "rotate-180" : ""}`} />
+        <span className={`absolute bottom-0 left-3 right-3 h-[2px] rounded-full bg-industrial-orange transition-transform duration-300 origin-left ${isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`} />
       </Link>
 
-      {open && item.mega && <DesktopMegaMenu sections={item.mega} onClose={() => setOpen(false)} />}
+      <AnimatePresence>
+        {open && item.mega && <DesktopMegaMenu sections={item.mega} onClose={() => setOpen(false)} />}
+      </AnimatePresence>
 
-      {open && item.children && !item.mega && (
-        <div className="absolute left-0 top-full z-50 mt-1 min-w-[240px] rounded-lg border bg-popover p-1.5 shadow-xl backdrop-blur-sm" role="menu">
-          {item.children.map((child) => (
-            <Link
-              key={child.to}
-              to={child.to}
-              onClick={() => setOpen(false)}
-              className="block rounded-md px-3 py-2.5 text-sm transition-colors text-popover-foreground hover:bg-accent hover:text-accent-foreground"
-              role="menuitem"
-            >
-              {child.label}
-            </Link>
-          ))}
-        </div>
-      )}
+      <AnimatePresence>
+        {open && item.children && !item.mega && (
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 8 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="absolute left-0 top-full z-50 mt-2 min-w-[240px] rounded-xl border border-border/50 bg-card/95 backdrop-blur-xl p-2 shadow-2xl"
+            role="menu"
+          >
+            {item.children.map((child) => (
+              <Link
+                key={child.to}
+                to={child.to}
+                onClick={() => setOpen(false)}
+                className="block rounded-lg px-3 py-2.5 text-sm transition-all duration-200 text-popover-foreground/80 hover:bg-accent/10 hover:text-accent hover:pl-4"
+                role="menuitem"
+              >
+                {child.label}
+              </Link>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
@@ -289,7 +307,7 @@ const MobileNavItem = ({ item, onClose }: { item: NavItem; onClose: () => void }
         to={item.to}
         onClick={onClose}
         className={`block px-6 py-3 text-sm font-medium transition-colors ${
-          location.pathname === item.to ? "bg-primary text-primary-foreground" : "text-foreground hover:bg-muted"
+          location.pathname === item.to ? "text-industrial-orange" : "text-foreground hover:bg-muted"
         }`}
       >
         {item.label}
@@ -305,20 +323,41 @@ const MobileNavItem = ({ item, onClose }: { item: NavItem; onClose: () => void }
         aria-expanded={expanded}
       >
         {item.label}
-        <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${expanded ? "rotate-180" : ""}`} />
+        <ChevronDown className={`h-4 w-4 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`} />
       </button>
 
-      {expanded && (
-        <div className="bg-muted/50 max-h-[60vh] overflow-y-auto" role="menu">
-          {item.mega
-            ? item.mega.map((sec) => (
-                <div key={sec.heading ?? "default"}>
-                  {sec.heading && (
-                    <div className="px-8 pt-3 pb-1 text-xs font-bold uppercase tracking-wider text-[hsl(var(--industrial-orange))]">
-                      {sec.heading}
+      <AnimatePresence>
+        {expanded && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="overflow-hidden"
+          >
+            <div className="bg-muted/50 max-h-[60vh] overflow-y-auto" role="menu">
+              {item.mega
+                ? item.mega.map((sec) => (
+                    <div key={sec.heading ?? "default"}>
+                      {sec.heading && (
+                        <div className="px-8 pt-3 pb-1 text-xs font-bold uppercase tracking-wider text-industrial-orange">
+                          {sec.heading}
+                        </div>
+                      )}
+                      {sec.items.map((child) => (
+                        <Link
+                          key={child.to}
+                          to={child.to}
+                          onClick={onClose}
+                          className="block px-10 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+                          role="menuitem"
+                        >
+                          {child.label}
+                        </Link>
+                      ))}
                     </div>
-                  )}
-                  {sec.items.map((child) => (
+                  ))
+                : item.children?.map((child) => (
                     <Link
                       key={child.to}
                       to={child.to}
@@ -329,21 +368,10 @@ const MobileNavItem = ({ item, onClose }: { item: NavItem; onClose: () => void }
                       {child.label}
                     </Link>
                   ))}
-                </div>
-              ))
-            : item.children?.map((child) => (
-                <Link
-                  key={child.to}
-                  to={child.to}
-                  onClick={onClose}
-                  className="block px-10 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
-                  role="menuitem"
-                >
-                  {child.label}
-                </Link>
-              ))}
-        </div>
-      )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
@@ -351,16 +379,27 @@ const MobileNavItem = ({ item, onClose }: { item: NavItem; onClose: () => void }
 /* ─── Main Navbar ─── */
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
     setMobileOpen(false);
   }, [location.pathname]);
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-50 w-full">
+    <header className={`sticky top-0 z-50 w-full transition-all duration-500 ${scrolled ? "shadow-lg" : ""}`}>
       {/* Top bar */}
-      <div className="bg-primary text-primary-foreground">
+      <motion.div
+        className="bg-primary text-primary-foreground overflow-hidden"
+        animate={{ height: scrolled ? 0 : "auto", opacity: scrolled ? 0 : 1 }}
+        transition={{ duration: 0.3 }}
+      >
         <div className="container flex items-center justify-between py-2 text-sm">
           <div className="flex items-center gap-2">
             <Phone className="h-3.5 w-3.5" />
@@ -368,15 +407,22 @@ const Navbar = () => {
           </div>
           <span className="hidden md:block">Drycool Systems India Pvt. Ltd.</span>
         </div>
-      </div>
+      </motion.div>
 
       {/* Main nav */}
-      <nav className="border-b bg-card/95 backdrop-blur-md" aria-label="Main navigation">
+      <nav
+        className={`border-b transition-all duration-500 ${
+          scrolled
+            ? "bg-card/80 backdrop-blur-xl border-border/30 shadow-sm"
+            : "bg-card/95 backdrop-blur-md border-border/50"
+        }`}
+        aria-label="Main navigation"
+      >
         <div className="container flex items-center justify-between py-3">
-          <Link to="/" className="flex items-center gap-2">
+          <Link to="/" className="flex items-center gap-2 group">
             <div className="flex flex-col leading-tight">
-              <span className="font-heading text-2xl font-bold text-primary">
-                DRY<span className="text-[hsl(var(--industrial-orange))]">COOL</span>
+              <span className="font-heading text-2xl font-bold text-primary group-hover:text-industrial-orange transition-colors duration-300">
+                DRY<span className="text-industrial-orange">COOL</span>
               </span>
               <span className="text-[10px] tracking-widest text-muted-foreground uppercase">
                 Constructability | Sustainability
@@ -394,7 +440,7 @@ const Navbar = () => {
           {/* Mobile toggle */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="xl:hidden p-2 rounded-md hover:bg-muted"
+            className="xl:hidden p-2 rounded-lg hover:bg-muted transition-colors"
             aria-label="Toggle menu"
           >
             {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -402,13 +448,25 @@ const Navbar = () => {
         </div>
 
         {/* Mobile menu */}
-        {mobileOpen && (
-          <div className="xl:hidden border-t bg-card pb-4 max-h-[80vh] overflow-y-auto" role="navigation" aria-label="Mobile navigation">
-            {navItems.map((item) => (
-              <MobileNavItem key={item.label} item={item} onClose={() => setMobileOpen(false)} />
-            ))}
-          </div>
-        )}
+        <AnimatePresence>
+          {mobileOpen && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="xl:hidden border-t bg-card overflow-hidden"
+              role="navigation"
+              aria-label="Mobile navigation"
+            >
+              <div className="pb-4 max-h-[80vh] overflow-y-auto">
+                {navItems.map((item) => (
+                  <MobileNavItem key={item.label} item={item} onClose={() => setMobileOpen(false)} />
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
     </header>
   );
