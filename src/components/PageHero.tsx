@@ -31,7 +31,8 @@ const PageHero = ({ title, subtitle, backgroundImage }: PageHeroProps) => {
             animate={{ scale: 1 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
           />
-          <div className="absolute inset-0 bg-hero-gradient opacity-90" />
+          {/* Using background/90 instead of hero-gradient for better image visibility in light mode */}
+          <div className="absolute inset-0 bg-background/90" />
         </div>
       ) : (
         <div className="absolute inset-0 bg-hero-gradient" />
@@ -53,7 +54,8 @@ const PageHero = ({ title, subtitle, backgroundImage }: PageHeroProps) => {
 
       <div className="container relative z-10">
         <div>
-          <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground flex flex-wrap gap-x-3">
+          {/* Changed text-primary-foreground to text-foreground (Dark Navy) */}
+          <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-foreground flex flex-wrap gap-x-3 drop-shadow-sm">
             {words.map((word, i) => (
               <motion.span
                 key={i}
@@ -66,8 +68,9 @@ const PageHero = ({ title, subtitle, backgroundImage }: PageHeroProps) => {
               </motion.span>
             ))}
           </h1>
+          {/* Changed text-primary-foreground/70 to text-foreground/80 */}
           <motion.p
-            className="mt-4 text-lg text-primary-foreground/70 max-w-xl"
+            className="mt-4 text-lg text-foreground/80 max-w-xl font-medium"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
