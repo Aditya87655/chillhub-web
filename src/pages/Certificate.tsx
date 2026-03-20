@@ -3,6 +3,8 @@ import PageHero from "@/components/PageHero";
 import AnimatedSection from "@/components/AnimatedSection";
 import GlassCard from "@/components/GlassCard";
 import { ShieldCheck, Download, FileText } from "lucide-react";
+import DownloadModal from "@/components/DownloadModal";
+import { useState } from "react";
 
 const certifications = [
   { title: "ISO 9001:2008", desc: "Quality Management System certification ensuring consistent product quality and customer satisfaction." },
@@ -30,6 +32,12 @@ const extractedPdfs = [
 ];
 
 const DocumentItem = ({ name, url, hash }: { name: string, url: string, hash: string }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleDownload = () => {
+    window.open(url, "_blank");
+  };
+
   return (
     <GlassCard className="flex flex-col gap-4 p-5 bg-card group" id={hash}>
       <div className="flex items-center gap-4">
@@ -42,15 +50,19 @@ const DocumentItem = ({ name, url, hash }: { name: string, url: string, hash: st
         </div>
       </div>
       <div className="flex justify-end mt-2 pt-4 border-t border-border">
-        <a
-          href={url}
-          target="_blank"
-          rel="noopener noreferrer"
+        <button
+          onClick={() => setIsModalOpen(true)}
           className="inline-flex w-full items-center justify-center gap-1.5 px-4 py-2.5 text-sm font-semibold rounded-md bg-accent text-accent-foreground hover:opacity-90 transition-opacity"
         >
           View PDF
-        </a>
+        </button>
       </div>
+      <DownloadModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        onSuccess={handleDownload}
+        title={name}
+      />
     </GlassCard>
   );
 };

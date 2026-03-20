@@ -3,6 +3,8 @@ import SectionHeading from "@/components/SectionHeading";
 import PageHero from "@/components/PageHero";
 import AnimatedSection from "@/components/AnimatedSection";
 import GlassCard from "@/components/GlassCard";
+import DownloadModal from "@/components/DownloadModal";
+import { useState } from "react";
 
 const highlights = [
   "30+ years of chiller manufacturing excellence",
@@ -16,6 +18,12 @@ const highlights = [
 const pdfUrl = "https://www.drycoolchillers.com/profile.pdf";
 
 const CompanyProfileDownload = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleDownload = () => {
+    window.open(pdfUrl, "_blank");
+  };
+
   return (
     <>
       <PageHero title="Company Profile" subtitle="Download our comprehensive company profile document" />
@@ -47,15 +55,20 @@ const CompanyProfileDownload = () => {
                 <p className="mt-2 text-sm text-muted-foreground mb-6">PDF Document • Drycool Systems</p>
                 
                 <div className="flex items-center justify-center">
-                  <a 
-                    href={pdfUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <button 
+                    onClick={() => setIsModalOpen(true)}
                     className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-lg bg-accent px-8 py-3.5 font-semibold text-accent-foreground hover:opacity-90 transition-opacity shadow-lg"
                   >
                     <ExternalLink className="h-4 w-4" /> View PDF
-                  </a>
+                  </button>
                 </div>
+
+                <DownloadModal 
+                  isOpen={isModalOpen} 
+                  onClose={() => setIsModalOpen(false)} 
+                  onSuccess={handleDownload}
+                  title="Company Profile"
+                />
               </GlassCard>
             </AnimatedSection>
           </div>

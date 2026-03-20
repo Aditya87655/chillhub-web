@@ -2,6 +2,8 @@ import { Download, FileText, ExternalLink } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import AnimatedSection from "@/components/AnimatedSection";
 import GlassCard from "@/components/GlassCard";
+import DownloadModal from "@/components/DownloadModal";
+import { useState } from "react";
 
 interface DownloadPageProps {
   title: string;
@@ -12,6 +14,14 @@ interface DownloadPageProps {
 }
 
 const DownloadPage = ({ title, subtitle, description, features, pdfUrl }: DownloadPageProps) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleDownload = () => {
+    if (pdfUrl) {
+      window.open(pdfUrl, "_blank");
+    }
+  };
+
   return (
     <>
       <PageHero title={title} subtitle={subtitle} />
@@ -41,16 +51,22 @@ const DownloadPage = ({ title, subtitle, description, features, pdfUrl }: Downlo
                 <p className="mt-2 text-sm text-muted-foreground mb-6">PDF Document • Drycool Systems</p>
 
                 {pdfUrl ? (
-                  <div className="flex items-center justify-center">
-                    <a
-                      href={pdfUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-lg bg-accent px-8 py-3.5 font-semibold text-accent-foreground hover:opacity-90 transition-opacity shadow-lg"
-                    >
-                      <ExternalLink className="h-4 w-4" /> View PDF
-                    </a>
-                  </div>
+                  <>
+                    <div className="flex items-center justify-center">
+                      <button
+                        onClick={() => setIsModalOpen(true)}
+                        className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-lg bg-accent px-8 py-3.5 font-semibold text-accent-foreground hover:opacity-90 transition-opacity shadow-lg"
+                      >
+                        <ExternalLink className="h-4 w-4" /> View PDF
+                      </button>
+                    </div>
+                    <DownloadModal 
+                      isOpen={isModalOpen} 
+                      onClose={() => setIsModalOpen(false)} 
+                      onSuccess={handleDownload}
+                      title={title}
+                    />
+                  </>
                 ) : (
                   <button disabled className="inline-flex items-center gap-2 rounded-lg bg-muted px-7 py-3.5 font-semibold text-muted-foreground cursor-not-allowed">
                     Document Unavailable

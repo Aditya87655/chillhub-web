@@ -367,11 +367,7 @@ export const productPages: Record<string, ProductPageData> = {
       "Long Equipment Life",
       "Perfection in Refrigeration Technology"
     ],
-    "specificationText": [
-      "INJECTION MOLDING | 1 KG/TON",
-      "EXTRUSION | 1 KG/TON",
-      "Components|Scroll/Screw Compressor, Water Tank, Mixer"
-    ],
+    "specificationText": [],
     "galleryImages": [
       "https://www.drycoolchillers.com/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-29-at-11.18.31-AM-1-1.jpeg",
       "https://www.drycoolchillers.com/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-29-at-11.18.32-AM.jpeg",

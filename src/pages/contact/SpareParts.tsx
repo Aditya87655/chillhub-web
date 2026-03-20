@@ -24,6 +24,8 @@ const spareParts = [
   { title: "Water flow switch", img: "https://www.drycoolchillers.com/wp-content/uploads/2022/09/New-Project-7-570x321.jpg" },
   { title: "Low Pressure Switch", img: "https://www.drycoolchillers.com/wp-content/uploads/2022/09/low-pressure-switch-STANDARD-1-570x321.jpg" },
   { title: "High Pressure Switch", img: "https://www.drycoolchillers.com/wp-content/uploads/2022/09/Danfoss-HP-SWITCH-e1664181616623-570x321.jpg" },
+  { title: "Condenser Tube Cleaning Brush", img: "/images/products/brush.jpg" },
+  { title: "Temperature Sensor", img: "/images/products/temp-sensor.png" },
 ];
 
 const SpareParts = () => {
@@ -61,8 +63,8 @@ const SpareParts = () => {
               <AnimatedSection key={part.title} delay={i * 0.05}>
                 <div className="group overflow-hidden rounded-2xl bg-card border border-border transition-all hover:shadow-xl">
                   <div className="aspect-[16/9] overflow-hidden">
-                    <img 
-                      src={part.img} 
+                    <img
+                      src={part.img}
                       alt={part.title}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />

@@ -1,6 +1,7 @@
 import SectionHeading from "@/components/SectionHeading";
 import PageHero from "@/components/PageHero";
 import AnimatedSection from "@/components/AnimatedSection";
+import GlassCard from "@/components/GlassCard";
 
 const About = () => (
   <>
@@ -76,7 +77,7 @@ const About = () => (
           <p className="text-muted-foreground leading-relaxed mb-6">
             Drycool Systems are completely operational in various divisions which will ensure a better impact on the environmental and industrial aspects.
           </p>
-          <ul className="grid md:grid-cols-2 gap-4 text-muted-foreground">
+          <ul className="grid md:grid-cols-2 gap-4 text-muted-foreground mb-16">
             {[
               "Manufacturing, planning, procurement, and R & D.",
               "Administration and finance.",
@@ -90,6 +91,24 @@ const About = () => (
               </li>
             ))}
           </ul>
+        </AnimatedSection>
+
+        <AnimatedSection delay={0.4}>
+          <SectionHeading title="Why Us" centered={false} />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { title: "Quality Assurance", desc: "Rigorous testing and international standards for every chiller." },
+              { title: "Industry Experience", desc: "Over 35 years of excellence in industrial cooling solutions." },
+              { title: "Customer Satisfaction", desc: "Dedicated support and tailored solutions for global clients." },
+              { title: "Advanced Technology", desc: "Energy-efficient and innovative refrigeration systems." },
+              { title: "Reliable Support", desc: "After-sales services and technical assistance around the clock." }
+            ].map((item, i) => (
+              <GlassCard key={i} className="flex flex-col gap-2">
+                <h3 className="font-heading font-bold text-lg text-foreground">{item.title}</h3>
+                <p className="text-sm text-muted-foreground">{item.desc}</p>
+              </GlassCard>
+            ))}
+          </div>
         </AnimatedSection>
       </div>
     </section>
