@@ -202,9 +202,15 @@ const DesktopMegaMenu = ({ sections, onClose }: { sections: NavSection[]; onClos
           {sections.map((sec) => (
             <div key={sec.heading ?? sec.items[0]?.label}>
               {sec.heading && (
-                <h4 className="mb-2 text-[11px] font-bold uppercase tracking-wider text-industrial-orange">
-                  {sec.heading}
-                </h4>
+                sec.headingLink ? (
+                  <Link to={sec.headingLink} onClick={onClose} className="mb-2 block text-[11px] font-bold uppercase tracking-wider text-industrial-orange hover:underline">
+                    {sec.heading}
+                  </Link>
+                ) : (
+                  <h4 className="mb-2 text-[11px] font-bold uppercase tracking-wider text-industrial-orange">
+                    {sec.heading}
+                  </h4>
+                )
               )}
               <ul className="space-y-0.5">
                 {sec.items.map((child) => (
