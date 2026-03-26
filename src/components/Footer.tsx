@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Phone, Mail, MapPin, Facebook, Linkedin, Twitter, Youtube } from "lucide-react";
+import { Phone, Mail, MapPin, Facebook, Linkedin, Twitter, Youtube, Instagram } from "lucide-react";
 import { motion } from "framer-motion";
 
 const quickLinks = [
@@ -56,10 +56,18 @@ const Footer = () => {
             </p>
             {/* Social */}
             <div className="flex gap-3">
-              {[Facebook, Linkedin, Twitter, Youtube].map((Icon, i) => (
+              {[
+                { Icon: Facebook, url: "https://www.facebook.com/Drycoolchillers" },
+                { Icon: Linkedin, url: "https://in.linkedin.com/company/drycool-systems-india-private-limite" },
+                { Icon: Twitter, url: "https://x.com/drycoolchiller" },
+                { Icon: Youtube, url: "https://www.youtube.com/channel/UCKBDberY3tU3S47r5dqpXbA" },
+                { Icon: Instagram, url: "https://www.instagram.com/drycoolchillers/" },
+              ].map(({ Icon, url }, i) => (
                 <motion.a
                   key={i}
-                  href="#"
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   whileHover={{ scale: 1.15, y: -2 }}
                   className="flex items-center justify-center h-10 w-10 rounded-full bg-primary-foreground/10 hover:bg-industrial-orange transition-colors duration-300"
                   aria-label="Social link"

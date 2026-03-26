@@ -15,7 +15,7 @@ const contactSchema = z.object({
 });
 
 const contactInfo = [
-  { icon: MapPin, title: "Address", text: "B-56, Sector-64, Noida, Uttar Pradesh 201301, India" },
+  { icon: MapPin, title: "Address", text: "B-88, Sector-6, Noida, Uttar Pradesh - 201301, India" },
   { icon: Phone, title: "Phone", text: "+91-9811134394" },
   { icon: Mail, title: "Email", text: "info@drycoolchillers.com" },
   { icon: Clock, title: "Working Hours", text: "Mon - Sat: 9:00 AM - 6:00 PM" },

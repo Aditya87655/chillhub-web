@@ -10,6 +10,7 @@ interface NavChild {
 
 interface NavSection {
   heading?: string;
+  headingLink?: string;
   items: NavChild[];
 }
 
@@ -39,6 +40,7 @@ const navItems: NavItem[] = [
     mega: [
       {
         heading: "SCREW CHILLERS",
+        headingLink: "/products/screw-chillers",
         items: [
           { label: "Air Cooled Screw Chiller", to: "/products/air-cooled-screw-chiller" },
           { label: "Water Cooled Screw Chiller", to: "/products/water-cooled-screw-chiller" },
@@ -48,6 +50,7 @@ const navItems: NavItem[] = [
       },
       {
         heading: "SCROLL CHILLER",
+        headingLink: "/products/scroll-chillers",
         items: [
           { label: "Air Cooled Scroll Chillers", to: "/products/air-cooled-scroll-chiller" },
           { label: "Water Cooled Scroll Chillers", to: "/products/water-cooled-scroll-chiller" },
@@ -60,6 +63,7 @@ const navItems: NavItem[] = [
       },
       {
         heading: "RECIPROCATING CHILLERS",
+        headingLink: "/products/reciprocating-chillers",
         items: [
           { label: "Water-cooled Reciprocating Chillers", to: "/products/water-cooled-reciprocating-chillers" },
           { label: "Air-cooled Reciprocating Chillers", to: "/products/air-cooled-reciprocating-chillers" },
@@ -75,6 +79,7 @@ const navItems: NavItem[] = [
       },
       {
         heading: "APPLICATION",
+        headingLink: "/products/application",
         items: [
           { label: "Plastic Industry", to: "/application/chiller-for-plastic-industry" },
           { label: "Cement Industry (Batching Plant)", to: "/application/batching-plant-chiller" },
@@ -92,6 +97,7 @@ const navItems: NavItem[] = [
       },
       {
         heading: "CUSTOMIZED CHILLER",
+        headingLink: "/customized",
         items: [
           { label: "HVAC Chiller", to: "/customized/hvac-chiller" },
           { label: "Chemical & Pharma", to: "/customized/chiller-for-chemical-pharmaceutical" },
@@ -111,6 +117,7 @@ const navItems: NavItem[] = [
       },
       {
         heading: "GLOBAL FOOTPRINTS",
+        headingLink: "/products/global-footprints",
         items: [
           { label: "Chillers in UAE", to: "/products/industrial-chillers-in-uae" },
           { label: "Chillers in Africa", to: "/products/industrial-chillers-in-africa" },
@@ -195,9 +202,15 @@ const DesktopMegaMenu = ({ sections, onClose }: { sections: NavSection[]; onClos
           {sections.map((sec) => (
             <div key={sec.heading ?? sec.items[0]?.label}>
               {sec.heading && (
-                <h4 className="mb-2 text-[11px] font-bold uppercase tracking-wider text-industrial-orange">
-                  {sec.heading}
-                </h4>
+                sec.headingLink ? (
+                  <Link to={sec.headingLink} onClick={onClose} className="mb-2 block text-[11px] font-bold uppercase tracking-wider text-industrial-orange hover:underline">
+                    {sec.heading}
+                  </Link>
+                ) : (
+                  <h4 className="mb-2 text-[11px] font-bold uppercase tracking-wider text-industrial-orange">
+                    {sec.heading}
+                  </h4>
+                )
               )}
               <ul className="space-y-0.5">
                 {sec.items.map((child) => (
