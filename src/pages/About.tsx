@@ -22,7 +22,7 @@ const About = () => (
         <AnimatedSection delay={0.2}>
           <div className="rounded-xl overflow-hidden shadow-2xl border border-border/50">
             <img 
-              src="https://drycoolchillers.com/wp-content/uploads/2013/08/about2.jpg" 
+              src="https://drycoolchillers.com/wp-content/uploads/2013/08/about2.jpg"
               alt="About Our Industrial Chillers" 
               className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700" 
               loading="lazy" 
