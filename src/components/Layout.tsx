@@ -3,10 +3,9 @@ import { AnimatePresence, motion } from "framer-motion";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import Breadcrumb from "./Breadcrumb";
-import StickyCTA from "./StickyCTA";
+import FloatingCTA from "./FloatingCTA";
 import ScrollToTop from "./ScrollToTop";
 import ScrollProgress from "./ScrollProgress";
-import WhatsAppButton from "./WhatsAppButton";
 
 const Layout = () => {
   const location = useLocation();
@@ -30,8 +29,7 @@ const Layout = () => {
         </AnimatePresence>
       </main>
       <Footer />
-      <StickyCTA />
-      <WhatsAppButton />
+      <FloatingCTA />
       <ScrollToTop />
     </div>
   );
