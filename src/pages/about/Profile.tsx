@@ -80,7 +80,7 @@ const Profile = () => (
     </section>
 
     {/* CTA */}
-    <section className="py-16 bg-hero-gradient">
+    <section className="py-16 bg-teal-gradient">
       <div className="container text-center">
         <AnimatedSection>
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-primary-foreground">Want to Know More About Us?</h2>

@@ -134,7 +134,7 @@ const Projects = () => (
     </section>
 
     {/* Sectors */}
-    <section className="py-20 bg-hero-gradient">
+    <section className="py-20 bg-teal-gradient">
       <div className="container">
         <AnimatedSection>
           <SectionHeading title="Sectors We Serve" subtitle="Cooling solutions across every major industry" light />

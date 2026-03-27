@@ -129,7 +129,7 @@ const BMSServices = () => (
       </div>
     </AnimatedSection>
 
-    <section className="py-16 bg-hero-gradient">
+    <section className="py-16 bg-teal-gradient">
       <div className="container text-center px-4">
         <AnimatedSection>
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-primary-foreground">Scale Your Energy Efficiency</h2>

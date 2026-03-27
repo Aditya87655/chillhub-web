@@ -97,7 +97,7 @@ const SmartBuildings = () => (
       </div>
     </section>
 
-    <section className="py-16 bg-hero-gradient">
+    <section className="py-16 bg-teal-gradient">
       <div className="container text-center">
         <AnimatedSection>
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-primary-foreground">Ready to Transform Your Infrastructure?</h2>
