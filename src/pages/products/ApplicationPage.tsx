@@ -44,7 +44,7 @@ const ApplicationPage = () => (
       </div>
     </section>
 
-    <section className="py-16 bg-hero-gradient">
+    <section className="py-16 bg-teal-gradient">
       <div className="container text-center">
         <AnimatedSection>
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-primary-foreground">Need a Chiller for Your Industry?</h2>
