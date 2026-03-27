@@ -312,15 +312,42 @@ export const productPages: Record<string, ProductPageData> = {
     "category": "MORE",
     "heroImage": "https://www.drycoolchillers.com/wp-content/uploads/2015/11/Slide05.jpg",
     "paragraphs": [
+      "we are one of the best cooling tower manufacturers. We supply Square Type Cooling Tower, Bottle Type Cooling Tower, Rectangular Type Cooling Tower, Forced Draft Cooling Tower.",
+      "We are cooling tower manufacturer. Cooling Towers are heating removal devices that use water to transfer and process waste heat into the atmosphere. Buy cooling tower includes both industrial cooling towers and commercial cooling tower. we are manufacturer of cooling tower. It uses the principle of removing the heat from the water using the operation process small part of the water which is recirculated through the unit. The proper mixture of cool air and one water instantly releases the heat of vaporization which makes the water cool. we supply our cooling tower in India & all over the world. You can buy cooling tower in a very sufficient price. A High-rise building is much required to have a cooling tower that ensures the proper management of temperature in the building. Drycool Systems is a chiller manufacturer which ensures the proper maintenance of air using the innovation and modernization of the commercial cooling towers.",
+      "Square Type Cooling Tower: Our company is engaged in manufacturing a qualitative range of FRP square type cooling towers. Which are offered to industry for process cooling. These are demanded by the users of process coolers, diesel engine, machine and air-conditioning plants.",
+      "Bottle Type Cooling Tower: Our Bottle Type cooling towers are of induced draft design, which is why these are more efficient than forced draft counter flow design. Using less power per cooling ton, our towers represent the latest development in the use of plastic technology. Using superior quality FRP materials in fabrication, we offer towers which have resistant to damages and also prevent corrosive effect of weather and chemicals. Our induced draft design consumes 50% less energy and it can easily cut city water and sewer bills by up to 97%, as water is re-circulated instead of being wasted.",
+      "Rectangular Type Cooling Tower: Backed by rich industry experience, we are offering an extensive range of Rectangular Type Cooling Tower. Precisely manufactured by our adroit professionals using premium quality raw material and most recent technology, this cooling tower is available in different technical specifications as per the precise requirements of clients. Also, offered cooling tower is tested on numerous quality parameters to ensure its flawless finish.",
+      "Forced Draft Cooling Tower: Forced draft \u2014 A mechanical draft tower with a blower type fan at the intake. The fan forces air into the tower, creating high entering and low exiting air velocities. The low exiting velocity is much more susceptible to recirculation. With the fan on the air intake, the fan is more susceptible to complications due to freezing conditions. Another disadvantage is that a forced draft design typically requires more motor horsepower than an equivalent induced draft design. The benefit of the forced draft design is its ability to work with high static pressure. Such setups can be installed in more-confined spaces and even in some indoor situations.",
+      "Systems of Cooling Towers: Most cooling towers are used for industrial processes, we will list out the types of the cooling tower which gate is to every kind of requirement.",
+      "Stainless steel cooling towers are a type of heat rejection system made primarily from stainless steel, known for their durability, strength, and corrosion resistance. These towers are used in industrial processes, power plants, and HVAC systems to remove excess heat by evaporating water into the air.",
+      "Advantages of Stainless Steel Cooling Towers over FRP (Fiberglass Reinforced Plastic) Cooling Towers:",
+      "Corrosion Resistance: Stainless steel is highly resistant to corrosion, making it ideal for environments with harsh chemicals, saltwater, or extreme weather conditions. FRP towers, while resistant to corrosion, can degrade over time in certain chemical environments, particularly in industrial settings.",
+      "Strength and Durability: Stainless steel offers superior structural strength compared to FRP, which can be more prone to cracking or damage under mechanical stress or extreme temperatures.",
+      "Longevity: Stainless steel cooling towers typically have a longer lifespan due to their resilience against corrosion and physical wear, leading to lower long-term maintenance and replacement costs.",
+      "Fire Resistance: Stainless steel is non-combustible, providing an added layer of safety, especially in high-risk environments. FRP, on the other hand, is a plastic material that can be flammable, depending on the resin used.",
+      "Aesthetic and Appearance: Stainless steel towers have a more polished, modern appearance, which may be important in certain commercial or architectural applications.",
       "In summary, while FRP cooling towers are a cost-effective and lightweight option, stainless steel cooling towers are generally preferred for their superior corrosion resistance, durability, and long-term performance, particularly in harsh industrial and marine environments."
     ],
-    "featureList": [],
-    "advantagesList": [],
-    "specificationText": [
-      "Installation | Rooftop, Compact, Modular"
+    "featureList": [
+      "Natural draft cooling tower system: This is used for large industries and power plant which needs cooling water flow continuously. It operates to remove the waste heat by increasing the hot air and releasing it into the atmosphere. It is hyperbolic in shape which will increase the proper airflow.",
+      "Mechanical draft cooling tower system: It works by force in the air through a structure using a fan with circulates the Year two of the tower. Most commonly the centrifugal fans and popular fans are being used in these towers. They are much more effective compared to natural draft towers as they consume more power and even cost more to operate.",
+      "Crossflow cooling tower systems: This is specially designed to allow the air to flow horizontally to the fill and the structure of the tower is an open plenum area. All the hot water will flow downward from the distribution basin. Also, important to have a motor driver the fan in weather topi against the moisture which can lead to freezing more inefficient.",
+      "Counterflow cooling tower systems: In this design, the air moves upward and the counter-current along with the hot water is falling directly downward to cool the air. This increases the performance at the maximum level to have the minimizing pump head requirement. Schedule of the counter flow cooling tower system which is much more efficient to make cold system in the hot weather and also self-energy in the long run.",
+      "Induced draft cooling tower systems: It is having a mounted fan at the top of the cooling tower which allows the hot air to get out. Due to the high existing air, the velocity is getting reduced and also the chance of recirculation. It will allow them to trap the water droplet while leaving the stream air and a drift eliminator is used. They are most efficient and can be used up to 30% to 70% less energy compared to any other design.",
+      "Forced draft cooling tower systems: This is much similar to the induced draught which is one of the basic differences in having an air moving fan is placed at the base of the cooling tower. It will allow the air to flow through the button which is one of the major advantages of having good air conditioning. Although the usage is limited due to the water distribution challenges along with high-powered fans and also a requirement for recirculation.",
+      "Flexible modular design: Cooling towers are too small for various industrial processes, which method is more compact for usage. This is the main reason it is entirely made out of galvanized metal cooling Towers and mostly it is above 250 tons. Drycool Systems being the best chiller plant manufacturer what was the combined power of 2500 cooling dance in a modular single unit. It will offer an extra margin of cooling capacity with giving the advantage of adjustment to operational heat load. This will also make changes in outflow and all the upgrading needs for the future cooling requirement.",
+      "Life expectancy: With the standard metal casing and the sheets of galvanized steel, it increases the life expectancy of the cooling towers. It will decrease the chances of catching and rebuilding which will prevent leakage. Even the water is treated properly to decrease the chance of attaching it to the galvanized metal and it will decrease the chance of wearing it out. Even the environmental conditions such as pollution, sunlight, and various other climatic condition will not affect much. This will prevent ambient air pollution to make it a premature failure. It will also decrease the chance of rust, and decelerate the Corrosion grade",
+      "Easier installation: Drycool Systems cooling tower is having the advantage of using the latest cooling tower Technology with easy installation mainly on the rooftop. It will have lightweight and it is much less thick than any other traditional cooling tower. The combination of cluster and installation is much easier and faster which makes it much more applicable in the majority of the usage.",
+      "More economical operation: With the engineered material it will reduce the inconvenience while operating the cooling tower for various reasons. The uses include water treatment chemicals, electric power usage, materials for maintenance, and labor. It will decrease the chance of unscheduled process downtime while it can be repaired and will not cause any trouble for the cooling towers. In most cases, maintenance and repair are mean interactions in productivity, but it will not happen due to the separate usage of various equipment and alternative materials."
     ],
+    "advantagesList": [],
+    "specificationText": [],
     "galleryImages": [
-      "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Rectangular-Cooling-Tower1-1.jpg"
+      "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Square-Shape-Cooling-Tower2.jpg",
+      "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Bottle-Type-Cooling-Tower2.jpg",
+      "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Rectangular-Cooling-Tower1-1.jpg",
+      "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Forced-Draft-Cooling-Tower2.jpg",
+      "https://www.drycoolchillers.com/wp-content/uploads/2024/11/WhatsApp-Image-2024-11-14-at-3.59.35-PM-1024x791.jpeg"
     ]
   },
   "chiller-manufacturer-kolkata": {
@@ -329,14 +356,62 @@ export const productPages: Record<string, ProductPageData> = {
     "category": "MORE",
     "heroImage": "https://www.drycoolchillers.com/wp-content/uploads/2022/09/New-Project-1.jpg",
     "paragraphs": [
-      "If you are searching for a dependable chiller manufacturer in Kolkata, Drycool Systems should be on top of your list – a partner you can trust for consistent cooling, lower operating costs, and long-term reliability."
+      "Drycool Systems, a leading chiller manufacturer in Kolkata, delivers energy-efficient, reliable, and customized cooling solutions for industries and businesses.",
+      "When businesses in Eastern India look for a chiller manufacturer in Kolkata, the name that often comes up is Drycool Systems. Known for reliable performance, energy efficiency, and strong after-sales service, Drycool has earned the trust of industries across pharmaceuticals, food processing, plastics, heavy manufacturing, and commercial infrastructure.",
+      "Kolkata's hot and humid climate makes industrial and commercial cooling a necessity, not a luxury. Whether it's an IT park in Salt Lake, a cold storage in Dum Dum, or a steel plant in Howrah, companies here need chillers that can withstand local conditions while minimizing power consumption. This is where Drycool Systems stands out \u2013 by offering customized chiller solutions that are practical, cost-effective, and built to last.",
+      "What Makes Chillers Essential for Kolkata:",
+      "Pharmaceuticals and Chemicals \u2013 Require process chillers to maintain strict temperature conditions during production and storage.",
+      "Food & Beverages \u2013 Dairy, brewery, frozen foods, and beverage plants rely on chillers for hygiene and freshness.",
+      "Plastic and Rubber Manufacturing \u2013 Need chillers for mould cooling to maintain quality and reduce production cycle time.",
+      "Steel and Heavy Industry \u2013 Large-scale cooling is necessary to protect machinery and maintain continuous operations.",
+      "Commercial Real Estate \u2013 High-rise offices, shopping malls, and IT parks depend on HVAC chillers for central air conditioning.",
+      "Given these requirements, the need for a dependable chiller supplier in Kolkata is stronger than ever.",
+      "Drycool Systems \u2013 A Leading Chiller Manufacturer in Kolkata:",
+      "Drycool Systems has positioned itself as one of the top chiller manufacturers in Kolkata, delivering solutions that are tailored to both industrial and commercial needs. What sets them apart is not just the product range, but also the company's ability to combine technology, efficiency, and service into one complete package.",
+      "Types of Chillers Available with Drycool:",
+      "When searching for an industrial chiller manufacturer in Kolkata, clients often need clarity on which type of chiller is right for them. Drycool offers all major categories.",
+      "Why Local Manufacturers Like Drycool Are Better:",
+      "Some businesses consider importing chillers or buying from brands based outside Kolkata. However, working with a local chiller manufacturer in Kolkata like Drycool offers several clear benefits.",
+      "How to Choose the Best Chiller Supplier in Kolkata:",
+      "If you are looking for a reliable chiller supplier in Kolkata, here are some factors to keep in mind.",
+      "Growing Demand for Modern Chillers in Kolkata:",
+      "The cooling industry is changing, and Kolkata businesses are increasingly looking for advanced systems. Drycool Systems has kept pace with these demands by offering IoT-Enabled Smart Chillers, Green Refrigerants, Hybrid Cooling Systems, and Modular Chillers. These advancements are particularly relevant for Kolkata's growing IT hubs, industrial zones like Dankuni and Barasat, and commercial centers across Salt Lake and Park Street.",
+      "Industries in Kolkata Trust Drycool Systems:",
+      "From pharmaceuticals in Baruipur, steel units in Howrah, cold storage facilities in Dum Dum, to IT hubs in Salt Lake Sector V, companies across Kolkata trust Drycool Systems for their cooling needs. Their reputation is built on three strong pillars: High-Quality Chillers \u2013 Durable and reliable products designed for Indian conditions. Service Excellence \u2013 Quick response, regular maintenance, and long-term support. Customer-Centric Approach \u2013 Offering not just machines but complete cooling solutions tailored to the client's industry.",
+      "As Kolkata continues to grow as an industrial and commercial hub, the demand for high-performance chillers will only increase. Choosing the right partner is critical \u2013 not just for immediate cooling needs, but also for long-term operational efficiency.",
+      "With its wide product range, energy-efficient designs, and strong local service support, Drycool Systems has established itself as a leading chiller manufacturer in Kolkata. Whether you need an air-cooled chiller for your office, a water-cooled chiller for your factory, or a custom-built system for a specialized industrial process, Drycool has the expertise to deliver.",
+      "If you are searching for a dependable chiller manufacturer in Kolkata, Drycool Systems should be on top of your list \u2013 a partner you can trust for consistent cooling, lower operating costs, and long-term reliability."
     ],
-    "featureList": [],
+    "featureList": [
+      "Wide Product Range \u2013 Drycool manufactures air-cooled chillers, water-cooled chillers, screw chillers, scroll chillers, and absorption chillers. This makes them a one-stop solution for businesses across multiple sectors.",
+      "Customization \u2013 Every business has different cooling needs. Drycool specializes in designing custom chillers in Kolkata that are made-to-order, ensuring better performance and energy savings.",
+      "Energy Efficiency \u2013 With rising electricity costs, industries prefer systems that consume less power. Drycool's energy-efficient designs help cut down on operational expenses.",
+      "Eco-Friendly Cooling \u2013 The company uses eco-friendly refrigerants that comply with global environmental norms, making them a future-ready partner for sustainable industries.",
+      "Strong Local Support \u2013 Unlike imported chillers that take weeks for service or spare parts, Drycool has a dedicated service team in Kolkata, ensuring quick response and minimal downtime.",
+      "Air-Cooled Chillers in Kolkata \u2013 Compact, low-maintenance, and ideal for offices, malls, and small factories.",
+      "Water-Cooled Chillers in Kolkata \u2013 Highly efficient for large industrial loads, commonly used in heavy industries.",
+      "Screw Chillers \u2013 Reliable and efficient, suitable for mid-to-large-scale cooling applications.",
+      "Scroll Chillers \u2013 Compact and cost-effective for medium-sized businesses.",
+      "Absorption Chillers \u2013 Perfect for industries that want to use waste heat or steam as a cooling source instead of relying only on electricity.",
+      "Competitive Pricing \u2013 Products are more cost-effective compared to imported machines.",
+      "Quick Delivery & Installation \u2013 Faster turnaround due to local manufacturing and supply.",
+      "Easy Maintenance \u2013 On-ground service engineers ensure quick repairs.",
+      "Spare Parts Readily Available \u2013 No long waits for replacement parts.",
+      "Climate-Specific Designs \u2013 Machines are built keeping Kolkata's humid weather in mind.",
+      "Experience and Reputation \u2013 Drycool has worked with multiple industries across India, showcasing a strong track record.",
+      "Product Portfolio \u2013 A manufacturer should offer multiple options, from small air-cooled units to large centrifugal chillers.",
+      "Service Network \u2013 After-sales service is crucial. Drycool's local team makes them a preferred choice.",
+      "Energy and Environmental Compliance \u2013 Ensure the chillers are energy-efficient and eco-friendly.",
+      "Warranty and AMC (Annual Maintenance Contract) \u2013 A professional manufacturer will back their product with comprehensive service support.",
+      "IoT-Enabled Smart Chillers \u2013 Remote monitoring and predictive maintenance features.",
+      "Green Refrigerants \u2013 Use of natural refrigerants for eco-friendly cooling.",
+      "Hybrid Cooling Systems \u2013 Combining air-cooled and water-cooled technology for better efficiency.",
+      "Modular Chillers \u2013 Flexible designs that allow capacity expansion in the future."
+    ],
     "advantagesList": [],
-    "specificationText": [
-      "Features | IoT-Enabled, Eco-Friendly, Modular"
-    ],
+    "specificationText": [],
     "galleryImages": [
+      "https://www.drycoolchillers.com/wp-content/uploads/2022/09/New-Project-1.jpg",
       "https://www.drycoolchillers.com/wp-content/uploads/2023/01/turnkey-project-for-chiller-1024x791.png"
     ]
   },
