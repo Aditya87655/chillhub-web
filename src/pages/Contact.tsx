@@ -15,9 +15,9 @@ const contactSchema = z.object({
 });
 
 const contactInfo = [
-  { icon: MapPin, title: "Address", text: "B-88, Sector-6, Noida, Uttar Pradesh - 201301, India" },
+  { icon: MapPin, title: "Address", text: "Works 1: C-34, Sector 63, Noida – 201307, U.P., India" },
   { icon: Phone, title: "Phone", text: "+91-9811134394" },
-  { icon: Mail, title: "Email", text: "info@drycoolchillers.com" },
+  { icon: Mail, title: "Email", text: "enquiry@drycoolchillers.com" },
   { icon: Clock, title: "Working Hours", text: "Mon - Sat: 9:00 AM - 6:00 PM" },
 ];
 
@@ -32,8 +32,10 @@ const Contact = () => {
     setErrors({ ...errors, [e.target.name]: "" });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validation check
     const result = contactSchema.safeParse(form);
     if (!result.success) {
       const fieldErrors: Record<string, string> = {};
@@ -41,11 +43,35 @@ const Contact = () => {
       setErrors(fieldErrors);
       return;
     }
+    
     setSubmitting(true);
-    await new Promise((r) => setTimeout(r, 1000));
-    setSubmitting(false);
-    setForm({ name: "", email: "", phone: "", message: "" });
-    toast({ title: "Message sent!", description: "We'll get back to you shortly." });
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "9cba1d32-5bda-46a0-ad04-29647e9daa88",
+          from_name: "Drycool Contact Page",
+          subject: "New Contact Message",
+          ...form,
+        }),
+      });
+
+      if (response.status === 200) {
+        toast({ title: "Message sent!", description: "We'll get back to you shortly." });
+        setForm({ name: "", email: "", phone: "", message: "" });
+      } else {
+        toast({ title: "Error", description: "Submission failed.", variant: "destructive" });
+      }
+    } catch (error) {
+      toast({ title: "Error", description: "Something went wrong.", variant: "destructive" });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const inputClass = "w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 transition-shadow";

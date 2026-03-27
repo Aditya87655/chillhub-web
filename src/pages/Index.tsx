@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Gauge, DollarSign, SlidersHorizontal, Zap, Cog, Users, Factory, Snowflake, ThermometerSun, Wind, Droplets } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
 import HeroSlider from "@/components/HeroSlider";
 import { motion, useScroll, useTransform } from "framer-motion";
 
-/* ─── Typewriter Component for Hero Heading ─── */
+/* ─── Typewriter ─── */
 const TypewriterEffect = () => {
   const words = ["Industrial Chiller", "Screw Chiller", "Scroll Chiller", "Inverter Chiller"];
   const [index, setIndex] = useState(0);
@@ -14,139 +14,102 @@ const TypewriterEffect = () => {
 
   useEffect(() => {
     if (subIndex === words[index].length + 1 && !reverse) {
-      const timeout = setTimeout(() => setReverse(true), 2000);
-      return () => clearTimeout(timeout);
+      const t = setTimeout(() => setReverse(true), 2000);
+      return () => clearTimeout(t);
     }
-
     if (subIndex === 0 && reverse) {
       setReverse(false);
-      setIndex((prev) => (prev + 1) % words.length);
+      setIndex((p) => (p + 1) % words.length);
       return;
     }
-
-    const timeout = setTimeout(() => {
-      setSubIndex((prev) => prev + (reverse ? -1 : 1));
-    }, Math.max(reverse ? 40 : 80, Math.random() * 50 + 40));
-
-    return () => clearTimeout(timeout);
+    const t = setTimeout(() => setSubIndex((p) => p + (reverse ? -1 : 1)), Math.max(reverse ? 40 : 80, Math.random() * 50 + 40));
+    return () => clearTimeout(t);
   }, [subIndex, index, reverse]);
 
   return (
-    <span className="text-industrial-orange relative inline-block">
+    <span className="text-gradient-navy relative inline-block min-w-[3ch]">
       {words[index].substring(0, subIndex)}
-      <span className="animate-pulse text-foreground font-light absolute -right-4">|</span>
+      <span className="animate-pulse text-primary/60 font-light absolute -right-3">|</span>
     </span>
   );
 };
 
-/* ─── Screw Chiller Product Cards ─── */
+/* ─── Animated Counter ─── */
+const Counter = ({ end, suffix = "" }: { end: number; suffix?: string }) => {
+  const [count, setCount] = useState(0);
+  const [started, setStarted] = useState(false);
+
+  useEffect(() => {
+    if (!started) return;
+    let current = 0;
+    const step = Math.ceil(end / 60);
+    const timer = setInterval(() => {
+      current += step;
+      if (current >= end) { setCount(end); clearInterval(timer); }
+      else setCount(current);
+    }, 25);
+    return () => clearInterval(timer);
+  }, [end, started]);
+
+  return (
+    <motion.span onViewportEnter={() => setStarted(true)} viewport={{ once: true }} className="stat-number font-heading text-4xl md:text-5xl font-extrabold">
+      {count}{suffix}
+    </motion.span>
+  );
+};
+
+/* ─── Product Data ─── */
 const screwChillers = [
-  {
-    image: "/images/products/air-cooled-screw-multi.jpg",
-    title: "Air Cooled Screw Chillers",
-    desc: "Our company offers Air Cooled Screw Chiller – Multiple Compressors, which is fabricated in our ISO 9001:2008 certified manufacturing unit factory with an option of using cfc free refrigerants r-407c & r-134a complete with in-built process pump…",
-    link: "/products/air-cooled-screw-chiller",
-  },
-  {
-    image: "/images/products/air-cooled-screw-single.jpg",
-    title: "Air Cooled Screw Chillers (Single Compressor)",
-    desc: "We are engaged in manufacturing Air Cooled Screw Chiller – Single Compressor, which is fully microprocessor based suitable for process cooling applications from (+) 20°c up to 40°c and for low lower temp of up to (-) 50°C…",
-    link: "/products/air-cooled-screw-chiller",
-  },
-  {
-    image: "/images/products/water-cooled-screw-multi.jpg",
-    title: "Water Cooled Screw Chiller",
-    desc: "Drycool System's water cooled screw chiller is specially designed to work even in extreme weather conditions. They will still maintain energy efficiency in any weather condition. We will offer the best possible equipment being the best chiller supplier in India…..",
-    link: "/products/water-cooled-screw-chiller",
-  },
-  {
-    image: "/images/products/water-cooled-screw-single.jpg",
-    title: "Water Cooled Screw Chillers (Single Compressor)",
-    desc: "We are engaged in offering a wide range of Water Cooled Screw Chiller – Single Compressor, which is manufactured using quality screw compressors from bitzer (Germany) , frascold (Italy) and Many others",
-    link: "/products/water-cooled-screw-chiller",
-  },
+  { image: "/images/products/air-cooled-screw-multi.jpg", title: "Air Cooled Screw Chillers", desc: "ISO 9001:2008 certified with CFC-free refrigerants R-407C & R-134A. In-built process pump for high energy efficiency.", link: "/products/air-cooled-screw-chiller" },
+  { image: "/images/products/air-cooled-screw-single.jpg", title: "Air Cooled Screw Chiller (Single)", desc: "Fully microprocessor based, suitable for process cooling from +20°C to -50°C across diverse industrial environments.", link: "/products/air-cooled-screw-chiller" },
+  { image: "/images/products/water-cooled-screw-multi.jpg", title: "Water Cooled Screw Chiller", desc: "Designed for extreme weather conditions while maintaining peak energy efficiency. Best-in-class supplier quality.", link: "/products/water-cooled-screw-chiller" },
+  { image: "/images/products/water-cooled-screw-single.jpg", title: "Water Cooled Screw Chiller (Single)", desc: "Premium compressors from Bitzer (Germany) & Frascold (Italy). Energy-efficient with minimal maintenance.", link: "/products/water-cooled-screw-chiller" },
 ];
 
-/* ─── Scroll Chiller Product Cards ─── */
 const scrollChillers = [
-  {
-    image: "/images/products/air-cooled-scroll-multi.jpg",
-    title: "Air Cooled Scroll Chillers",
-    desc: "The Air-cooled Scroll Chillers are highly energy efficient and are perfectly designed to work within extreme tropical weather conditions. Supported with European origin compressors, these chillers are designed…",
-    link: "/products/air-cooled-scroll-chiller",
-  },
-  {
-    image: "/images/products/air-cooled-scroll-single.jpg",
-    title: "Air Cooled Scroll Chillers (Single Compressor)",
-    desc: "The Air Cooled Chillers are suitable for working in extreme weather conditions with maintaining energy and operational efficiency. The equipment is designed and manufactured in compliance with…",
-    link: "/products/air-cooled-scroll-chiller",
-  },
-  {
-    image: "/images/products/water-cooled-scroll-multi.jpg",
-    title: "Water Cooled Scroll Chillers",
-    desc: "Drycool Scroll chillers are state-of-the-art liquid chiller for a wide range of comfort and process-cooling applications. These scroll chillers are complete, factory-assembled liquid chiller that offers…",
-    link: "/products/water-cooled-scroll-chiller",
-  },
-  {
-    image: "/images/products/water-cooled-scroll-single.jpg",
-    title: "Water Cooled Scroll Chillers ( Single Compressor)",
-    desc: "We are offering Water Cooled Scroll Chiller which are fabricated with globally renowned scroll compressors from danfoss(Denmark), maneurop and Copeland.",
-    link: "/products/water-cooled-scroll-chiller",
-  },
+  { image: "/images/products/air-cooled-scroll-multi.jpg", title: "Air Cooled Scroll Chillers", desc: "European compressors with multiple configurations for enhanced reliability, redundancy, and superior cooling.", link: "/products/air-cooled-scroll-chiller" },
+  { image: "/images/products/air-cooled-scroll-single.jpg", title: "Air Cooled Scroll Chiller (Single)", desc: "Compact footprint with microprocessor controls for precise temperature regulation per international standards.", link: "/products/air-cooled-scroll-chiller" },
+  { image: "/images/products/water-cooled-scroll-multi.jpg", title: "Water Cooled Scroll Chillers", desc: "Factory-assembled with individual refrigeration circuits. Quiet, vibration-free operation for sensitive environments.", link: "/products/water-cooled-scroll-chiller" },
+  { image: "/images/products/water-cooled-scroll-single.jpg", title: "Water Cooled Scroll Chiller (Single)", desc: "Renowned compressors from Danfoss, Maneurop & Copeland. Reliable across wide temperature ranges.", link: "/products/water-cooled-scroll-chiller" },
 ];
 
-/* ─── Why Us items ─── */
+/* ─── Why Us ─── */
 const whyUsItems = [
-  {
-    title: "Accurate Monitoring",
-    desc: "The accurate monitoring system is being integrated to have the proper tracking of suction pressure and other types of system variables.",
-  },
-  {
-    title: "Cost-Effective",
-    desc: "It will offer the most cost-effective functionality due to the 50% less usage of energy. High-end temperature control with energy-saving benefits without much requirement for maintenance.",
-  },
-  {
-    title: "Get Accurate Adjustment",
-    desc: "Get accurate adjustment of compressor motor speed according to the requirement of the industry. With the implementation of proper monitoring functionality according to the functionality.",
-  },
-  {
-    title: "Optimum Performance",
-    desc: "Various new additional imports are being included which will help in offering the optimum performance by adjustment of the compressor speed.",
-  },
-  {
-    title: "Compressor in the chiller",
-    desc: "We are engaged in offering a wide range of Industrial Chillers – Compressors, which are manufactured using quality screw compressors from Bitzer (Germany) and Frascold (Italy).",
-  },
-  {
-    title: "Expert Engineers",
-    desc: "Get high-quality products from our line of expert engineers to have the best high-end customer experience.",
-  },
+  { icon: Gauge, title: "Accurate Monitoring", desc: "Integrated monitoring for precise tracking of suction pressure and critical system variables in real-time." },
+  { icon: DollarSign, title: "Cost-Effective", desc: "50% less energy usage with high-end temperature control, energy-saving benefits, and minimal maintenance." },
+  { icon: SlidersHorizontal, title: "Precise Adjustment", desc: "Accurate compressor motor speed adjustment with proper monitoring matching industry requirements." },
+  { icon: Zap, title: "Optimum Performance", desc: "Advanced systems for peak performance through intelligent compressor speed and load optimization." },
+  { icon: Cog, title: "Premium Compressors", desc: "Quality screw compressors from Bitzer (Germany) and Frascold (Italy) for world-class reliability." },
+  { icon: Users, title: "Expert Engineers", desc: "Dedicated team of expert engineers delivering high-quality products with the best customer experience." },
 ];
 
-/* ─── Industries links ─── */
+/* ─── Industries ─── */
 const industryLinks = [
-  { label: "Chiller For Injection Molding Machine", to: "/application/chiller-for-plastic-industry" },
-  { label: "Pet Blow Molding Chiller", to: "/application/chiller-for-plastic-industry" },
-  { label: "Food & beverages industries", to: "/application/chiller-for-food-beverage-industry" },
-  { label: "Chiller For Lamination Plant", to: "/application/chiller-for-plastic-industry" },
-  { label: "Chiller for Sole Molding", to: "/application/chiller-for-plastic-industry" },
-  { label: "Chiller For Tape Plant", to: "/application/chiller-for-plastic-industry" },
-  { label: "Chiller For Blow Molding", to: "/application/chiller-for-plastic-industry" },
-  { label: "Rubber Molding Chiller", to: "/application/chiller-for-plastic-industry" },
-  { label: "Chiller For Pipe Industries", to: "/customized/chiller-for-hdpe-cpvc-upvc-pipes" },
-  { label: "Chiller For Pharma & chemicals industries", to: "/customized/chiller-for-chemical-pharmaceutical" },
-  { label: "Chillers For Hydrogen Refueling Station", to: "/application/chiller-for-hydrogen-refueling-station" },
-  { label: "Batching Plant Chiller", to: "/customized/batching-plant-chiller" },
+  { label: "Injection Molding", to: "/application/chiller-for-plastic-industry", icon: Factory },
+  { label: "Pet Blow Molding", to: "/application/chiller-for-plastic-industry", icon: Wind },
+  { label: "Food & Beverages", to: "/application/chiller-for-food-beverage-industry", icon: Snowflake },
+  { label: "Pharma & Chemicals", to: "/customized/chiller-for-chemical-pharmaceutical", icon: ThermometerSun },
+  { label: "Hydrogen Refueling", to: "/application/chiller-for-hydrogen-refueling-station", icon: Zap },
+  { label: "Batching Plants", to: "/customized/batching-plant-chiller", icon: Factory },
+  { label: "Pipe Industries", to: "/customized/chiller-for-hdpe-cpvc-upvc-pipes", icon: Cog },
+  { label: "Bio Gas", to: "/customized/bio-gas-chillers", icon: Wind },
+  { label: "Brine Chillers", to: "/customized/brine-chillers", icon: Droplets },
+  { label: "HVAC Systems", to: "/customized/hvac-chiller", icon: ThermometerSun },
+  { label: "Anodizing", to: "/customized/anodizing-chillers", icon: Zap },
+  { label: "Hazardous Area", to: "/customized/hazardous-area-chiller", icon: Factory },
+];
+
+const moreIndustries = [
+  { label: "Lamination Plant", to: "/application/chiller-for-plastic-industry" },
+  { label: "Sole Molding", to: "/application/chiller-for-plastic-industry" },
+  { label: "Tape Plant", to: "/application/chiller-for-plastic-industry" },
+  { label: "Blow Molding", to: "/application/chiller-for-plastic-industry" },
+  { label: "Rubber Molding", to: "/application/chiller-for-plastic-industry" },
   { label: "Inverter Screw Chiller", to: "/products/inverter-screw-chiller" },
   { label: "Inverter Scroll Chiller", to: "/products/inverter-scroll-chiller" },
-  { label: "Bio Gas Chillers", to: "/customized/bio-gas-chillers" },
-  { label: "Brine Chillers", to: "/customized/brine-chillers" },
   { label: "VFD Chiller", to: "/products/air-cooled-vfd-screw-chiller" },
-  { label: "Chiller for Extrusion Lines", to: "/application/chiller-for-plastic-industry" },
-  { label: "Chiller for Multi Layer/pp films industry", to: "/application/chiller-for-plastic-industry" },
-  { label: "Anodizing industries", to: "/customized/anodizing-chillers" },
-  { label: "Hazardous Area Chiller", to: "/customized/hazardous-area-chiller" },
-  { label: "Chiller For HVAC System", to: "/customized/hvac-chiller" },
+  { label: "Extrusion Lines", to: "/application/chiller-for-plastic-industry" },
+  { label: "Multi Layer/PP Films", to: "/application/chiller-for-plastic-industry" },
 ];
 
 /* ─── Client logos ─── */
@@ -170,349 +133,284 @@ const clientLogos = [
   { src: "/images/clients/new-project-3.jpg", alt: "Client" },
 ];
 
-/* ─── Advanced 3D Flip Product Card Component ─── */
-const FlipProductCard = ({
-  image,
-  title,
-  desc,
-  link,
-  index,
-}: {
-  image: string;
-  title: string;
-  desc: string;
-  link: string;
-  index: number;
-}) => (
-  <motion.div
-    initial={{ opacity: 0, y: 40 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, margin: "-50px" }}
-    transition={{ duration: 0.6, delay: index * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
-    className="group relative w-full h-[400px] perspective-[1500px]"
-  >
-    <div className="relative w-full h-full transition-transform duration-[800ms] [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] shadow-md group-hover:shadow-[0_20px_40px_rgba(234,88,12,0.15)] rounded-[2rem]">
+/* ─── Product Descriptions ─── */
+const productDescriptions = [
+  { title: "Screw Chillers", link: "/products", text: "Air-cooled & water-cooled versions for tropical conditions with superior standards, fitted with the most efficient European compressors." },
+  { title: "Scroll Chillers", link: "/products/air-cooled-scroll-chiller", text: "High energy-efficient design available in Water-Cooled & Air-Cooled variants, backed by skilled engineers with international approvals." },
+  { title: "Water Cooled Scroll", link: "/products/water-cooled-scroll-chiller", text: "Eco-friendly with individual refrigeration circuits. Multiple compressor configuration ensuring reliability and easy maintenance." },
+  { title: "Ammonia Chillers", link: "/customized/ammonia-chillers", text: "Skid mounted, compact for medium to low temperature ranges. Ideal for food, pharma, cold storage, chemical and dairy use." },
+  { title: "Air Cooled Screw", link: "/products/air-cooled-screw-chiller", text: "Engineered for harsh tropical weather with eco-friendly design. Tested by international parameters before supply." },
+  { title: "Air Cooled Scroll", link: "/products/air-cooled-scroll-chiller", text: "European compressors with multiple configurations and individual refrigeration circuits. Fluid pump and skid installation included." },
+  { title: "Water Cooled Screw", link: "/products/water-cooled-screw-chiller", text: "Best design for extreme conditions with highest energy efficiency. Operation-friendly with complete engineering team support." },
+  { title: "Oil Chillers", link: "/customized/oil-chiller", text: "Cools oil directly using refrigerant-to-oil heat exchanging. Available in air-cooled and water-cooled variants with mounted oil pumps." },
+];
 
-      {/* 🌟 Front Side (Image + Bottom Gradient Title) 🌟 */}
-      <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] rounded-[2rem] overflow-hidden bg-card/60 backdrop-blur-xl border border-border/30">
-        <img
-          src={image}
-          alt={title}
-          className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-          loading="lazy"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
-        <div className="absolute bottom-0 left-0 w-full p-8 text-left">
-          <h5 className="font-heading text-2xl font-bold text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)] leading-tight">
-            {title}
-          </h5>
+/* ─── Product Card ─── */
+const ProductCard = ({ image, title, desc, link, index }: { image: string; title: string; desc: string; link: string; index: number }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, margin: "-40px" }}
+    transition={{ duration: 0.5, delay: index * 0.08 }}
+  >
+    <Link to={link} className="group block h-full">
+      <div className="relative h-full rounded-2xl bg-white border border-slate-100 overflow-hidden shadow-[0_2px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_40px_rgba(99,102,241,0.12)] transition-all duration-500 hover:-translate-y-1.5">
+        <div className="aspect-square overflow-hidden bg-gradient-to-br from-slate-50 to-slate-100 relative">
+          <img src={image} alt={title} className="product-card-img w-full h-full object-contain p-5" loading="lazy" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+            <span className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-sm text-xs font-bold text-primary">
+              View Details <ArrowRight className="h-3 w-3" />
+            </span>
+          </div>
+        </div>
+        <div className="p-5">
+          <h4 className="font-heading text-base font-bold text-foreground mb-1.5 group-hover:text-primary transition-colors line-clamp-1">{title}</h4>
+          <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2">{desc}</p>
         </div>
       </div>
-
-      {/* 🌟 Back Side (Description + Button) 🌟 */}
-      <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] rounded-[2rem] bg-card/95 backdrop-blur-2xl border border-industrial-orange/40 p-8 flex flex-col justify-center items-center text-center">
-        <h5 className="font-heading text-xl font-bold text-industrial-orange mb-4 line-clamp-2">
-          {title}
-        </h5>
-        <p className="text-sm text-foreground/80 font-medium leading-relaxed mb-8 flex-1 line-clamp-4">
-          {desc}
-        </p>
-        <Link
-          to={link}
-          className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-industrial-orange to-[#ff7b00] px-7 py-3 text-sm font-bold text-white hover:shadow-[0_0_25px_rgba(234,88,12,0.5)] hover:scale-105 transition-all duration-300 group/btn"
-        >
-          More Info
-          <ArrowRight className="h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
-        </Link>
-      </div>
-
-    </div>
+    </Link>
   </motion.div>
 );
 
-/* ─── Premium Modern Divider ─── */
-const PremiumDivider = () => (
-  <div className="w-full flex justify-center items-center py-16">
-    <div className="h-[1px] w-full max-w-6xl bg-gradient-to-r from-transparent via-border/50 to-transparent relative">
-      <div className="absolute left-1/2 -translate-x-1/2 -top-1.5 w-3 h-3 rotate-45 border border-border/50 bg-background/80 backdrop-blur-md shadow-[0_0_10px_rgba(0,0,0,0.1)]" />
-    </div>
+/* ─── Section Header ─── */
+const SectionHeader = ({ badge, title, subtitle }: { badge?: string; title: string; subtitle?: string }) => (
+  <div className="text-center mb-14">
+    {badge && (
+      <motion.span initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 border border-primary/10 text-primary text-xs font-bold uppercase tracking-widest mb-4">
+        <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+        {badge}
+      </motion.span>
+    )}
+    <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground">{title}</h2>
+    {subtitle && <p className="text-muted-foreground text-lg mt-3 max-w-2xl mx-auto">{subtitle}</p>}
   </div>
 );
 
+/* ═══════════════════════════════════════════════════
+   INDEX PAGE
+   ═══════════════════════════════════════════════════ */
 const Index = () => {
   const { scrollY } = useScroll();
-
-  // Advanced Parallax & Pin Effect Settings
-  const imageScale = useTransform(scrollY, [0, 800], [1.1, 0.9]);
-  const imageY = useTransform(scrollY, [0, 800], ['0%', '25%']);
-  const imageOpacity = useTransform(scrollY, [0, 400], [0.15, 0.4]);
+  const bgY = useTransform(scrollY, [0, 1000], ["0%", "30%"]);
+  const bgOpacity = useTransform(scrollY, [0, 600], [0.06, 0.15]);
 
   return (
     <>
-      {/* 🌟 3D FIXED SCROLL-PIN BACKGROUND LAYER 🌟 */}
-      <div className="fixed inset-0 z-[-1] h-screen w-full overflow-hidden bg-background flex justify-center items-center">
-        <motion.img
-          style={{ y: imageY, scale: imageScale, opacity: imageOpacity }}
-          src="/images/buy-chiller.png"
-          alt="3D Industrial Chiller Background"
-          className="absolute w-full max-w-5xl lg:max-w-7xl h-[120%] -top-[10%] object-contain object-center transition-opacity duration-700 ease-out"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/60 to-background/90" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-background" />
+      {/* Fixed subtle background */}
+      <div className="fixed inset-0 z-[-1] overflow-hidden">
+        <motion.img style={{ y: bgY, opacity: bgOpacity }} src="/images/buy-chiller.png" alt="" className="absolute w-full max-w-5xl left-1/2 -translate-x-1/2 top-0 h-auto object-contain pointer-events-none" />
+        <div className="absolute inset-0 mesh-gradient" />
       </div>
 
-      {/* 🎬 1. Hero / Intro Section */}
-      <section className="relative overflow-hidden pt-20 pb-32 lg:pt-28 lg:pb-48 bg-transparent">
-        <div className="container relative z-10">
-
+      {/* ═══ HERO SLIDER ═══ */}
+      <section className="pt-20 lg:pt-24 pb-6">
+        <div className="container">
           <AnimatedSection direction="up">
-            <div className="flex flex-col gap-1 mb-8">
-              <span className="font-heading text-xl md:text-2xl text-industrial-orange font-bold uppercase tracking-widest drop-shadow-sm">
-                All Type of Chillers Manufacturer
-              </span>
-              <h1 className="font-heading text-4xl md:text-5xl lg:text-7xl font-extrabold text-foreground leading-tight tracking-tight max-w-5xl flex flex-wrap items-center gap-x-4">
-                <span className="drop-shadow-sm">BUY</span>
-                <TypewriterEffect />
-              </h1>
-            </div>
-          </AnimatedSection>
-
-          {/* Magazine-style split layout for intro text */}
-          <AnimatedSection direction="up" delay={0.2}>
-            <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 mt-12">
-              <div className="lg:col-span-5 space-y-6">
-                <p className="text-lg md:text-xl text-foreground/90 font-medium leading-relaxed backdrop-blur-md bg-background/40 p-6 rounded-2xl border border-border/20 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
-                  Drycool Systems India Private Limited ("Drycool") is one of oldest and leading chiller manufacturers in India as well as other parts of the world. Drycool is a pioneer in manufacturing of industrial chillers like screw chiller, <Link to="/products/water-cooled-scroll-chiller" className="text-industrial-orange font-bold hover:underline transition-colors">scroll chiller</Link>, water cooled screw chiller, air cooled screw chiller, air cooled scroll chiller, water cooled scroll chiller, ammonia chillers, brine chiller, batching plant chiller, inverter screw chiller, inverter scroll chiller, oil chiller, water chiller, air chillers.
-                </p>
-                <div className="h-1.5 w-24 bg-gradient-to-r from-industrial-orange to-transparent rounded-full" />
-              </div>
-
-              <div className="lg:col-span-7 grid sm:grid-cols-2 gap-6">
-                <div className="bg-card/50 backdrop-blur-xl rounded-[2rem] p-8 border border-border/40 shadow-[0_8px_30px_rgb(0,0,0,0.03)] hover:bg-card/70 transition-all duration-300">
-                  <p className="text-sm md:text-base text-foreground/80 font-medium leading-relaxed">
-                    The chillers manufactured and supplied by Drycool are CFC free and contain an energy saving component which is integral for the conservation of the environment. The engineering and design simplicity utilized by Drycool in manufacturing the chillers provides an added advantage to the customer in utilizing the chillers.
-                  </p>
-                </div>
-                <div className="bg-card/50 backdrop-blur-xl rounded-[2rem] p-8 border border-border/40 shadow-[0_8px_30px_rgb(0,0,0,0.03)] hover:bg-card/70 transition-all duration-300">
-                  <p className="text-sm md:text-base text-foreground/80 font-medium leading-relaxed">
-                    Drycool is an industry expert in manufacturing chillers for a variety of industries such as injection molding, blow molding, vacuum forming, thermoforming, extrusion, petrochemicals, chemicals &amp; pharmaceuticals, anodizing, medical equipment, HVAC, food &amp; beverages, milk, biogas, ready mix concrete/batching plants, brewery &amp; distillery, multilayer &amp; PP films and non-woven fabrics.
-                  </p>
-                </div>
-                <div className="sm:col-span-2 bg-gradient-to-br from-industrial-navy/10 to-industrial-navy/5 backdrop-blur-xl rounded-[2rem] p-8 border border-industrial-navy/20 relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-industrial-orange/20 rounded-full blur-3xl" />
-                  <p className="text-sm md:text-base text-foreground font-semibold leading-relaxed relative z-10">
-                    Drycool manufactures chillers in Noida and supply in Delhi, Gurgaon, Noida, Mumbai, Kolkata, Chennai, Bangalore, Hyderabad, Ahmedabad, Pune, Visakhapatnam, Surat, Jaipur, Coimbatore, Kanpur, Nagpur, Raipur, Kochi, Madurai, Salem, Thiruvananthapuram, Jamnagar, Sri City, Rajahmundry, Dibrugarh, Bhilai, Raigarh, Vadodara, Sonipat, Baddi …All over India. We export chillers in countries like UAE, Saudi Arabia, Qatar, kuwait, Oman, Yemen, Egypt, and all African Countries.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* Hero Slider */}
-      <div className="container relative z-20 -mt-20 lg:-mt-32 mb-8">
-        <AnimatedSection direction="up" delay={0.4}>
-          <div className="rounded-[2.5rem] p-2 bg-background/50 backdrop-blur-3xl border border-white/20 shadow-[0_30px_60px_rgba(0,0,0,0.15)]">
-            <div className="rounded-[2rem] overflow-hidden">
+            <div className="rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.08)] border border-slate-100">
               <HeroSlider />
             </div>
-          </div>
-        </AnimatedSection>
-      </div>
-
-      <PremiumDivider />
-
-      {/* Screw Chillers Section */}
-      <section className="pb-16 pt-8 bg-transparent">
-        <div className="container">
-          <AnimatedSection direction="left">
-            <div className="flex items-center gap-4 mb-12">
-              <div className="w-2 h-10 bg-industrial-orange rounded-full" />
-              <h3 className="font-heading text-4xl font-bold text-foreground tracking-tight backdrop-blur-md bg-background/40 px-5 py-2 rounded-2xl border border-border/20">
-                Screw Chillers
-              </h3>
-            </div>
           </AnimatedSection>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {screwChillers.map((p, i) => (
-              <FlipProductCard key={p.title} {...p} index={i} />
-            ))}
-          </div>
         </div>
       </section>
 
-      <PremiumDivider />
-
-      {/* Scroll Chillers Section */}
-      <section className="pb-16 pt-8 bg-transparent">
+      {/* ═══ HERO HEADING + STATS ═══ */}
+      <section className="py-16 lg:py-20">
         <div className="container">
-          <AnimatedSection direction="left">
-            <div className="flex items-center gap-4 mb-12">
-              <div className="w-2 h-10 bg-industrial-orange rounded-full" />
-              <h3 className="font-heading text-4xl font-bold text-foreground tracking-tight backdrop-blur-md bg-background/40 px-5 py-2 rounded-2xl border border-border/20">
-                <Link to="/products/water-cooled-scroll-chiller" className="hover:text-industrial-orange transition-colors duration-300">
-                  Scroll Chillers
+          <div className="max-w-4xl mx-auto text-center">
+            <AnimatedSection direction="up">
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 border border-primary/10 text-primary text-xs font-bold uppercase tracking-widest mb-6">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                India's Leading Chiller Manufacturer
+              </span>
+              <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground leading-[1.1] tracking-tight mb-6">
+                BUY <TypewriterEffect />
+              </h1>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+                Drycool Systems India Private Limited — one of the oldest and leading chiller manufacturers in India, pioneering industrial cooling solutions with world-class engineering.
+              </p>
+            </AnimatedSection>
+
+            <AnimatedSection direction="up" delay={0.15}>
+              <div className="flex flex-wrap justify-center gap-4 mt-10">
+                <Link to="/products" className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-primary text-white font-bold text-sm hover:bg-primary/90 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 hover:-translate-y-0.5">
+                  Explore Products <ArrowRight className="h-4 w-4" />
                 </Link>
-              </h3>
-            </div>
-          </AnimatedSection>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {scrollChillers.map((p, i) => (
-              <FlipProductCard key={p.title} {...p} index={i} />
-            ))}
+                <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-white text-foreground font-bold text-sm border border-slate-200 hover:border-primary/30 hover:bg-primary/5 shadow-sm transition-all duration-300 hover:-translate-y-0.5">
+                  Get Quote
+                </Link>
+              </div>
+            </AnimatedSection>
           </div>
-        </div>
-      </section>
 
-      {/* Why Us */}
-      <section className="py-24 relative bg-background/40 backdrop-blur-xl border-y border-border/30">
-        <div className="container relative z-10">
-          <AnimatedSection direction="up">
-            <div className="text-center mb-16">
-              <span className="text-industrial-orange font-bold tracking-wider uppercase text-sm mb-3 block drop-shadow-md">Our Advantages</span>
-              <h2 className="font-heading text-4xl md:text-5xl font-extrabold text-foreground drop-shadow-sm">Why Us</h2>
-            </div>
-          </AnimatedSection>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {whyUsItems.map((item, i) => (
-              <AnimatedSection key={item.title} delay={i * 0.1} direction="up">
-                <div className="group relative h-full rounded-[2rem] bg-card/40 backdrop-blur-2xl p-10 shadow-lg border border-border/40 hover:border-industrial-orange/50 hover:-translate-y-2 transition-all duration-500 overflow-hidden">
-                  <div className="absolute -right-10 -top-10 w-40 h-40 bg-industrial-orange/20 rounded-full blur-3xl group-hover:bg-industrial-orange/30 transition-colors duration-700" />
-                  <div className="w-14 h-1.5 rounded-full bg-gradient-to-r from-industrial-orange to-industrial-orange/30 mb-8 transform origin-left group-hover:scale-x-150 transition-transform duration-500" />
-                  <h3 className="font-heading text-2xl font-bold text-foreground mb-4 group-hover:text-industrial-orange transition-colors">{item.title}</h3>
-                  <p className="text-foreground/80 font-medium leading-relaxed relative z-10">{item.desc}</p>
+          {/* Stats */}
+          <AnimatedSection direction="up" delay={0.25}>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 max-w-4xl mx-auto">
+              {[
+                { value: 25, suffix: "+", label: "Years Experience" },
+                { value: 5000, suffix: "+", label: "Chillers Delivered" },
+                { value: 500, suffix: "+", label: "Happy Clients" },
+                { value: 30, suffix: "+", label: "Countries Export" },
+              ].map((s) => (
+                <div key={s.label} className="text-center p-5 rounded-2xl bg-white/70 backdrop-blur-sm border border-slate-100 shadow-sm">
+                  <Counter end={s.value} suffix={s.suffix} />
+                  <p className="text-xs font-semibold text-muted-foreground mt-1.5 uppercase tracking-wider">{s.label}</p>
                 </div>
-              </AnimatedSection>
-            ))}
-          </div>
+              ))}
+            </div>
+          </AnimatedSection>
         </div>
       </section>
 
-      {/* Introduction Section */}
-      <section className="py-32 relative overflow-hidden bg-transparent">
+      {/* ═══ ABOUT INTRO ═══ */}
+      <section className="py-16 bg-gradient-to-b from-slate-50/80 to-white">
         <div className="container">
-          <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <AnimatedSection direction="left">
-              <h2 className="font-heading text-4xl md:text-5xl font-extrabold text-foreground mb-8 relative inline-block">
-                <span className="backdrop-blur-sm bg-background/30 px-3 py-1 rounded-xl">Introduction</span>
-                <span className="absolute -bottom-3 left-0 w-1/2 h-1.5 rounded-full bg-gradient-to-r from-industrial-orange to-transparent" />
-              </h2>
-              <div className="space-y-6 text-lg text-foreground/90 font-medium leading-relaxed bg-background/40 backdrop-blur-xl p-8 rounded-[2rem] border border-border/20 shadow-[0_8px_30px_rgb(0,0,0,0.06)]">
-                <p>Our Industrial Chillers are now with latest Technologies, we are the top most chiller manufacturer, supplier and export all over the world. Buy Industrial chiller from us with very good quality &amp; with the best price also in Industry.</p>
-                <p>Get the unmatched quality range along with high demand nationwide which ensure the quality, durability, high performance along with the ability to protect products, people, and process from various coming from air contamination. Drycool Systems is one of the best chiller manufacturers in India. We will be offering the best solution which includes designing, manufacturing, installing, and also validating clean rooms to offer flawless products to valuable clients.</p>
-                <p>Being the best chiller supplier in India, we will ensure that every system is completely superior in temperature and pressure range, it will be meeting the demands. They will offer all the reasonable efforts for having various advantages for being the renowned chiller plant manufacturer. We are experienced in manufacturing and designing sophisticated dehumidifiers, refrigeration systems as being the best-Customized Chiller Supplier in India.</p>
-                <p>We will ensure to offer effective solutions to control temperature and humidity for your processes and products. We are proficient in quality, system design, and performance. Our company is completely expert in catering to various industrial and commercial sectors.</p>
-              </div>
-            </AnimatedSection>
-
-            <AnimatedSection direction="right" className="relative hidden lg:block">
-              <div className="absolute -inset-10 bg-gradient-to-tr from-industrial-orange/30 via-transparent to-industrial-teal/30 blur-3xl rounded-full opacity-60" />
-              <div className="relative rounded-[3rem] p-3 bg-background/30 backdrop-blur-2xl border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.15)] transform rotate-2 hover:rotate-0 transition-transform duration-700">
-                <motion.img
-                  src="/images/buy-chiller.png"
-                  alt="Buy chiller"
-                  className="w-full rounded-[2.5rem] shadow-inner"
-                  loading="lazy"
-                />
-              </div>
-            </AnimatedSection>
-          </div>
-        </div>
-      </section>
-
-      <PremiumDivider />
-
-      {/* Detailed Product Descriptions */}
-      <section className="py-24 bg-background/50 backdrop-blur-2xl border-y border-border/30">
-        <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-            {[
-              {
-                title: "Screw Chillers",
-                link: "/products",
-                text: "Screw Chillers are available in two different versions air-cooled screw chillers and water-cooled screw chillers. It will work properly in tropical conditions which will be completely operational and maintain the energy efficiently. It is completely manufactured and designed to deliver superior designing and manufacturing standards. Industrial screw chillers are properly designed with the combination of metallurgy along with qualitative material which is a unique design and it's fitted with the most efficient compressors that come from Europe.",
-              },
-              {
-                title: "Scroll Chillers",
-                link: "/products/air-cooled-scroll-chiller",
-                text: "Scroll Chillers is a unique design to offer high energy-efficient working conditions even in extreme tropical weather. There are two different types of scroll chillers available in the market including Water-Cooled Scroll Chillers & Air-Cooled Scroll Chillers. They are completely friendly to be operational and easy to install which is being completely backed up by a team of skilled engineers. They are properly designed, manufactured, and tested with approval from International parameters to ensure the best quality of equipment.",
-              },
-              {
-                title: "Water Cooled Scroll Chillers",
-                link: "/products/water-cooled-scroll-chiller",
-                text: "Water-Cooled Scroll Chillers are completely eco-friendly and much easier to install with the proper functioning to work properly in extreme tropical weather conditions. The compressor is having utilization capacity along with individual refrigeration circuits and separate refrigeration circuits. It will also offer the best reliability due to the multiple compressor configuration in the machinery. The refrigeration circuits which are installed in the Water-Cooled Scroll Chillers are completely separate and it can be so it can be easy maintenance even if the other working modules are on duty.",
-              },
-              {
-                title: "Ammonia Chillers",
-                link: "/customized/ammonia-chillers",
-                text: "Drycool Systems is one of the best ammonia chiller manufacturers in India and we are responsible for the manufacturing and supplying of the best ammonia chiller which is skid mounted and compact and suitable for use in a wide temperature range. The temperature range can be maintained between medium to low according to the cooling application required for productivity. It is most suitable for food processing, pharmaceutical, cold storage, chemical, dairy, industrial gases, etc. We ensure the best choice of equipment and accessories which are being proposed to every client by our engineering team.",
-              },
-              {
-                title: "Air Cooled Screw Chillers",
-                link: "/products/air-cooled-screw-chiller",
-                text: "Air Cooled Screw Chiller is the best for working in harsh tropical weather while maintaining operational efficiency and energy. Drycool Systems is one of the best chiller manufacturers in India who is completely equipped with the best engineers to design and manufacture while maintaining superior standards. It is completely eco-friendly and much easy to install and all the test is being completed by the international parameters before it is being supplied to the industries.",
-              },
-              {
-                title: "Air Cooled Scroll Chillers",
-                link: "/products/air-cooled-scroll-chiller",
-                text: "Air Cooled Scroll Chiller is completely energy efficient which is designed to work even in extreme tropical weather conditions. It is having European compressors and even all the chillers are designed and manufactured along with the test is being done by international standards. Drycool Systems is one of the best chiller plant manufacturers which uses an easy installation process and an operation-friendly engineering team to ensure you with the best equipment. It is having multiple compressive configurations which will offer the individual separate refrigeration circuit unit. It is equipped with a fluid pump and storage tank with the skid installation.",
-              },
-              {
-                title: "Water Cooled Screw Chillers",
-                link: "/products/water-cooled-screw-chiller",
-                text: "Water Cooled Screw Chiller is having the best design to which time the extreme tropical weather conditions even maintain the highest energy efficiency. The design of the government is to with identical conditions with superior standards. Drycool Systems offers the best chillers in India responsible for maintaining the highest standards of manufacturing and testing with high-quality facilities. We try to maintain the international standards which make us the best chiller manufacturers in India. The equipment is completely operation friendly and can be easily installed and it is being completely backed up by the engineering team to maintain the advantages during the industrial operation.",
-              },
-              {
-                title: "Oil Chillers",
-                link: "/customized/oil-chiller",
-                text: "Oil Chillers is having specially designed equipment that will cool the oil directly using the refrigerant to oil heat exchanging circuits. It is designed in a unique way that can handle the oil while entering the evaporator even when the temperature is higher than normal. Now temperature of the oil will also be higher than normal and it uses the standard preparation to cool. Oil Chillers also have two different types of models including the water-cooled variant and air-cooled variant. Oil Chillers are compact which is have mounted oil pumps and speed and are properly tested according to the international factory standards.",
-              },
-            ].map((item, i) => (
-              <AnimatedSection key={item.title} delay={i * 0.05} direction="up">
-                <div className="group relative bg-card/50 backdrop-blur-xl rounded-[2rem] p-8 md:p-10 border border-border/40 shadow-sm hover:shadow-[0_20px_40px_rgba(0,0,0,0.1)] hover:-translate-y-1 transition-all duration-500 overflow-hidden z-10 h-full">
-                  <div className="absolute inset-0 bg-gradient-to-br from-transparent to-muted/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
-                  <h3 className="font-heading text-2xl font-bold text-foreground mb-5 flex items-center gap-4">
-                    <div className="w-1.5 h-8 bg-industrial-orange rounded-full transform origin-bottom scale-y-50 group-hover:scale-y-100 transition-transform duration-300" />
-                    <Link to={item.link} className="hover:text-industrial-orange transition-colors">
-                      {item.title}
-                    </Link>
-                  </h3>
-                  <p className="text-base text-foreground/80 font-medium leading-relaxed">{item.text}</p>
+              <div className="space-y-6">
+                <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/5 border border-primary/10 text-primary text-xs font-bold uppercase tracking-wider">About Drycool</span>
+                <h2 className="font-heading text-3xl md:text-4xl font-extrabold text-foreground leading-tight">
+                  Pioneering Industrial Cooling <span className="text-gradient-navy">Since Inception</span>
+                </h2>
+                <div className="space-y-4 text-base text-muted-foreground leading-relaxed">
+                  <p>Our chillers are CFC-free with integrated energy-saving components for environmental conservation. The engineering simplicity in our manufacturing provides added advantage to customers.</p>
+                  <p>We are industry experts manufacturing chillers for injection molding, blow molding, vacuum forming, petrochemicals, pharmaceuticals, anodizing, HVAC, food & beverages, biogas, batching plants, and many more industries.</p>
                 </div>
-              </AnimatedSection>
-            ))}
+                <div className="flex flex-wrap gap-4 pt-2">
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center"><Snowflake className="h-4 w-4 text-primary" /></div>
+                    <span className="text-sm font-semibold">CFC-Free</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center"><Zap className="h-4 w-4 text-primary" /></div>
+                    <span className="text-sm font-semibold">Energy Saving</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center"><Factory className="h-4 w-4 text-primary" /></div>
+                    <span className="text-sm font-semibold">ISO Certified</span>
+                  </div>
+                </div>
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection direction="right">
+              <div className="relative">
+                <div className="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-primary/10 to-accent/10 blur-2xl" />
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-100">
+                  <img src="/images/buy-chiller.png" alt="Drycool Industrial Chiller" className="w-full" loading="lazy" />
+                </div>
+              </div>
+            </AnimatedSection>
           </div>
+
+          <AnimatedSection direction="up" delay={0.1}>
+            <div className="mt-12 p-6 rounded-2xl bg-gradient-to-r from-primary/5 via-accent/5 to-primary/5 border border-primary/10">
+              <p className="text-sm text-foreground/80 font-medium leading-relaxed text-center">
+                <strong className="text-foreground">Pan-India & Global Supply:</strong> Delhi, Mumbai, Kolkata, Chennai, Bangalore, Hyderabad, Ahmedabad, Pune, Jaipur, Coimbatore, and all major Indian cities. Exports to UAE, Saudi Arabia, Qatar, Kuwait, Oman, Egypt, and all African countries.
+              </p>
+            </div>
+          </AnimatedSection>
         </div>
       </section>
 
-      {/* Industries / Applications note */}
-      <section className="py-24 relative bg-transparent">
+      {/* ═══ SCREW CHILLERS ═══ */}
+      <section className="py-20">
         <div className="container">
           <AnimatedSection>
-            <div className="max-w-4xl mx-auto text-center mb-12">
-              <p className="text-lg md:text-xl text-foreground font-semibold leading-relaxed bg-background/40 backdrop-blur-xl p-6 rounded-2xl border border-border/20 shadow-[0_8px_30px_rgb(0,0,0,0.06)]">
-                All equipment and systems are properly engineered to ensure cost-effective installation, less power consumption along advanced technologies. We will be offering our advanced cooling solutions to various industries which include
-              </p>
-              <div className="h-1 w-24 bg-industrial-orange mx-auto mt-8 rounded-full" />
-            </div>
+            <SectionHeader badge="Our Products" title="Screw Chillers" subtitle="Industrial-grade screw chillers engineered for maximum efficiency and reliability" />
+          </AnimatedSection>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
+            {screwChillers.map((p, i) => <ProductCard key={p.title} {...p} index={i} />)}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ SCROLL CHILLERS ═══ */}
+      <section className="py-20 bg-gradient-to-b from-slate-50/80 to-white">
+        <div className="container">
+          <AnimatedSection>
+            <SectionHeader badge="Our Products" title="Scroll Chillers" subtitle="Energy-efficient scroll chillers with European compressors for precise temperature control" />
+          </AnimatedSection>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
+            {scrollChillers.map((p, i) => <ProductCard key={p.title} {...p} index={i} />)}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ WHY US ═══ */}
+      <section className="py-24 relative overflow-hidden">
+        <div className="absolute inset-0 mesh-gradient" />
+        <div className="container relative z-10">
+          <AnimatedSection>
+            <SectionHeader badge="Our Advantages" title="Why Choose Drycool?" subtitle="Decades of excellence in industrial cooling technology" />
+          </AnimatedSection>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {whyUsItems.map((item, i) => (
+              <AnimatedSection key={item.title} delay={i * 0.08} direction="up">
+                <div className="group h-full p-7 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-[0_12px_40px_rgba(99,102,241,0.1)] hover:border-primary/20 transition-all duration-500 hover:-translate-y-1">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+                    <item.icon className="h-6 w-6 text-primary" />
+                  </div>
+                  <h3 className="font-heading text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors">{item.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ PRODUCT DETAILS GRID ═══ */}
+      <section className="py-24 bg-gradient-to-b from-slate-50/80 to-white">
+        <div className="container">
+          <AnimatedSection>
+            <SectionHeader badge="Complete Range" title="Our Chiller Range" subtitle="Comprehensive cooling solutions for every industrial application" />
+          </AnimatedSection>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+            {productDescriptions.map((item, i) => (
+              <AnimatedSection key={item.title} delay={i * 0.05} direction="up">
+                <Link to={item.link} className="group block h-full">
+                  <div className="h-full p-6 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-[0_12px_40px_rgba(99,102,241,0.1)] hover:border-primary/20 transition-all duration-500 hover:-translate-y-1 relative overflow-hidden">
+                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                    <h3 className="font-heading text-base font-bold text-foreground mb-3 group-hover:text-primary transition-colors flex items-center gap-2">
+                      {item.title}
+                      <ArrowRight className="h-3.5 w-3.5 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{item.text}</p>
+                  </div>
+                </Link>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ INDUSTRIES ═══ */}
+      <section className="py-24 relative overflow-hidden">
+        <div className="absolute inset-0 mesh-gradient" />
+        <div className="container relative z-10">
+          <AnimatedSection>
+            <SectionHeader badge="Applications" title="Industries We Serve" subtitle="Advanced cooling solutions engineered for cost-effective installation and low power consumption" />
           </AnimatedSection>
 
-          <div className="flex flex-wrap justify-center gap-4 mt-12">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
             {industryLinks.map((ind, i) => (
-              <motion.div
-                key={ind.label}
-                initial={{ opacity: 0, scale: 0.95, y: 10 }}
-                whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.02 }}
-              >
-                <Link
-                  to={ind.to}
-                  className="relative inline-flex items-center justify-center px-6 py-3.5 rounded-full text-sm font-bold overflow-hidden group border border-border/40 bg-card/70 backdrop-blur-xl hover:border-industrial-orange/50 shadow-sm hover:shadow-[0_0_20px_rgba(234,88,12,0.25)] hover:-translate-y-1 transition-all duration-300"
-                >
-                  <span className="relative z-10 text-foreground group-hover:text-industrial-orange transition-colors">{ind.label}</span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-industrial-orange/0 via-industrial-orange/10 to-industrial-orange/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <motion.div key={ind.label} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.03 }}>
+                <Link to={ind.to} className="group flex items-center gap-3 p-4 rounded-xl bg-white border border-slate-100 hover:border-primary/20 hover:shadow-[0_8px_30px_rgba(99,102,241,0.08)] transition-all duration-300 hover:-translate-y-0.5">
+                  <div className="shrink-0 w-9 h-9 rounded-lg bg-primary/5 flex items-center justify-center group-hover:bg-primary/10 transition-colors">
+                    <ind.icon className="h-4 w-4 text-primary/70 group-hover:text-primary transition-colors" />
+                  </div>
+                  <span className="text-sm font-semibold text-foreground/80 group-hover:text-primary transition-colors">{ind.label}</span>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="flex flex-wrap justify-center gap-2.5">
+            {moreIndustries.map((ind, i) => (
+              <motion.div key={ind.label} initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.3, delay: i * 0.02 }}>
+                <Link to={ind.to} className="inline-flex items-center px-4 py-2 rounded-full text-xs font-bold bg-white border border-slate-200 text-foreground/70 hover:border-primary/30 hover:text-primary hover:bg-primary/5 shadow-sm transition-all duration-300">
+                  {ind.label}
                 </Link>
               </motion.div>
             ))}
@@ -520,35 +418,48 @@ const Index = () => {
         </div>
       </section>
 
-      <PremiumDivider />
-
-      {/* Our Clients */}
-      <section className="py-16 pb-24 overflow-hidden relative bg-background/70 backdrop-blur-3xl border-t border-border/30">
+      {/* ═══ TRUSTED CLIENTS ═══ */}
+      <section className="py-20 bg-gradient-to-b from-slate-50/80 to-white overflow-hidden">
         <div className="container">
           <AnimatedSection>
-            <h3 className="font-heading text-3xl md:text-4xl font-extrabold text-foreground mb-16 text-center drop-shadow-sm">Trusted By Global Leaders</h3>
+            <SectionHeader badge="Our Clients" title="Trusted By Industry Leaders" />
           </AnimatedSection>
         </div>
 
         <div
-          className="group flex overflow-hidden whitespace-nowrap py-4 w-full"
-          style={{ maskImage: 'linear-gradient(to right, transparent 0, black 15%, black 85%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to right, transparent 0, black 15%, black 85%, transparent 100%)' }}
+          className="group flex overflow-hidden whitespace-nowrap py-3"
+          style={{ maskImage: "linear-gradient(to right, transparent 0, black 10%, black 90%, transparent 100%)", WebkitMaskImage: "linear-gradient(to right, transparent 0, black 10%, black 90%, transparent 100%)" }}
         >
-          <div className="animate-marquee group-hover:[animation-play-state:paused] flex gap-8 px-4 items-center">
+          <div className="animate-marquee group-hover:[animation-play-state:paused] flex gap-6 px-3 items-center">
             {[...clientLogos, ...clientLogos].map((logo, i) => (
-              <div
-                key={`${logo.alt}-${i}`}
-                className="flex shrink-0 items-center justify-center p-6 bg-card/80 backdrop-blur-xl rounded-[2rem] border border-border/40 hover:shadow-[0_10px_30px_rgba(0,0,0,0.12)] hover:border-industrial-orange/40 hover:-translate-y-1 transition-all duration-500 w-[180px] md:w-[220px] h-[120px]"
-              >
-                <img
-                  src={logo.src}
-                  alt={logo.alt}
-                  className="max-h-16 w-auto object-contain mx-auto opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500"
-                  loading="lazy"
-                />
+              <div key={`${logo.alt}-${i}`} className="flex shrink-0 items-center justify-center px-8 py-5 bg-white rounded-xl border border-slate-100 shadow-sm hover:shadow-md hover:border-primary/20 transition-all duration-400 w-[160px] md:w-[180px] h-[90px]">
+                <img src={logo.src} alt={logo.alt} className="max-h-12 w-auto object-contain mx-auto opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500" loading="lazy" />
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ═══ BOTTOM CTA ═══ */}
+      <section className="py-20">
+        <div className="container">
+          <AnimatedSection>
+            <div className="relative rounded-3xl overflow-hidden p-12 md:p-16 text-center bg-gradient-to-br from-primary via-primary/95 to-accent">
+              <div className="absolute inset-0 bg-[url('/images/buy-chiller.png')] bg-center bg-no-repeat bg-contain opacity-5" />
+              <div className="relative z-10">
+                <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4">Ready to Get Your Chiller?</h2>
+                <p className="text-white/80 text-lg max-w-xl mx-auto mb-8">Get a customized cooling solution engineered for your specific industrial requirements with the best price in the market.</p>
+                <div className="flex flex-wrap justify-center gap-4">
+                  <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-white text-primary font-bold text-sm hover:bg-white/90 shadow-lg transition-all duration-300 hover:-translate-y-0.5">
+                    Request Quote <ArrowRight className="h-4 w-4" />
+                  </Link>
+                  <Link to="/products" className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-white/10 text-white font-bold text-sm border border-white/20 hover:bg-white/20 transition-all duration-300 hover:-translate-y-0.5">
+                    Browse All Products
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </AnimatedSection>
         </div>
       </section>
     </>

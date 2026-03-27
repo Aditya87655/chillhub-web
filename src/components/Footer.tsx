@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Phone, Mail, MapPin, Facebook, Linkedin, Twitter, Youtube, Instagram } from "lucide-react";
+import { Phone, Mail, MapPin, Facebook, Linkedin, Twitter, Youtube } from "lucide-react";
 import { motion } from "framer-motion";
 
 const quickLinks = [
@@ -38,7 +38,8 @@ const Footer = () => {
 
       <div className="container relative py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          {/* Brand */}
+          
+          {/* Brand & Socials */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -54,20 +55,12 @@ const Footer = () => {
             <p className="text-sm opacity-80 leading-relaxed mb-6">
               ISO 9001:2015 certified manufacturer with 5000+ chillers installed across 50+ countries.
             </p>
-            {/* Social */}
+            {/* Social Icons */}
             <div className="flex gap-3">
-              {[
-                { Icon: Facebook, url: "https://www.facebook.com/Drycoolchillers" },
-                { Icon: Linkedin, url: "https://in.linkedin.com/company/drycool-systems-india-private-limite" },
-                { Icon: Twitter, url: "https://x.com/drycoolchiller" },
-                { Icon: Youtube, url: "https://www.youtube.com/channel/UCKBDberY3tU3S47r5dqpXbA" },
-                { Icon: Instagram, url: "https://www.instagram.com/drycoolchillers/" },
-              ].map(({ Icon, url }, i) => (
+              {[Facebook, Linkedin, Twitter, Youtube].map((Icon, i) => (
                 <motion.a
                   key={i}
-                  href={url}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="#"
                   whileHover={{ scale: 1.15, y: -2 }}
                   className="flex items-center justify-center h-10 w-10 rounded-full bg-primary-foreground/10 hover:bg-industrial-orange transition-colors duration-300"
                   aria-label="Social link"
@@ -122,7 +115,7 @@ const Footer = () => {
             </ul>
           </motion.div>
 
-          {/* Contact */}
+          {/* Contact (Corrected Information) */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -134,49 +127,58 @@ const Footer = () => {
               <span className="absolute -bottom-1 left-0 w-8 h-0.5 bg-industrial-orange rounded-full" />
             </h4>
             <div className="space-y-4 text-sm opacity-80">
+              
+              {/* Works 1 / Head Office */}
               <div className="flex items-start gap-3 group">
                 <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-primary-foreground/10 flex items-center justify-center group-hover:bg-industrial-orange transition-colors duration-300">
                   <MapPin className="h-4 w-4" />
                 </div>
                 <div>
-                  <p className="font-medium">Corporate Office</p>
-                  <p>B-88, Sector-6, Noida,</p>
-                  <p>Uttar Pradesh - 201301, India</p>
+                  <p className="font-medium">Works 1 (Head Office)</p>
+                  <p>C-34, Sector 63, Noida,</p>
+                  <p>Uttar Pradesh - 201307, India</p>
                 </div>
               </div>
+
+              {/* Works 2 */}
               <div className="flex items-start gap-3 group">
                 <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-primary-foreground/10 flex items-center justify-center group-hover:bg-industrial-orange transition-colors duration-300">
                   <MapPin className="h-4 w-4" />
                 </div>
                 <div>
-                  <p className="font-medium">Manufacturing Unit</p>
-                  <p>Plot No. 35-36, Ecotech-12,</p>
-                  <p>Greater Noida, U.P., India</p>
+                  <p className="font-medium">Works 2</p>
+                  <p>Plot No. B-64, M.G. Road,</p>
+                  <p>Phase 1, Dasna, Hapur - 201015</p>
                 </div>
               </div>
+
+              {/* Phone */}
               <div className="flex items-center gap-3 group">
                 <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-primary-foreground/10 flex items-center justify-center group-hover:bg-industrial-orange transition-colors duration-300">
                   <Phone className="h-4 w-4" />
                 </div>
                 <div>
                   <p>+91-9811134394</p>
-                  <p>+91-120-4243862</p>
                 </div>
               </div>
+
+              {/* Email */}
               <div className="flex items-center gap-3 group">
                 <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-primary-foreground/10 flex items-center justify-center group-hover:bg-industrial-orange transition-colors duration-300">
                   <Mail className="h-4 w-4" />
                 </div>
                 <div>
-                  <p>info@drycoolchillers.com</p>
-                  <p>sales@drycoolchillers.com</p>
+                  <p>enquiry@drycoolchillers.com</p>
                 </div>
               </div>
+
             </div>
           </motion.div>
+
         </div>
       </div>
 
+      {/* Bottom Bar */}
       <div className="border-t border-primary-foreground/10 relative">
         <div className="container py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs opacity-60">
           <span>© {new Date().getFullYear()} Drycool Systems India Pvt. Ltd. All rights reserved.</span>

@@ -432,16 +432,16 @@ const Navbar = () => {
         aria-label="Main navigation"
       >
         <div className="container flex items-center justify-between py-3">
-          <Link to="/" className="flex items-center gap-2 group">
-            <div className="flex flex-col leading-tight">
-              <span className="font-heading text-2xl font-bold text-primary group-hover:text-industrial-orange transition-colors duration-300">
-                DRY<span className="text-industrial-orange">COOL</span>
-              </span>
-              <span className="text-[10px] tracking-widest text-muted-foreground uppercase">
-                Constructability | Sustainability
-              </span>
-            </div>
+          
+          {/* 🌟 UPDATED LOGO SECTION 🌟 */}
+          <Link to="/" className="flex items-center shrink-0 transition-transform hover:scale-[1.02]">
+            <img 
+              src="/images/logo.jpeg" /* 🔴 Make sure this path matches where your logo is stored */
+              alt="Drycool Systems Logo" 
+              className="h-12 md:h-16 w-auto object-contain drop-shadow-sm" 
+            />
           </Link>
+          {/* 🌟 END LOGO SECTION 🌟 */}
 
           {/* Desktop nav */}
           <div className="hidden xl:flex items-center gap-0.5">

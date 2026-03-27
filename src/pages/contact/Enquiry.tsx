@@ -15,15 +15,37 @@ const Enquiry = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
-    await new Promise((r) => setTimeout(r, 1000));
-    setSubmitting(false);
-    setForm({ name: "", company: "", city: "", phone: "", email: "", subject: "", message: "" });
-    toast({ title: "Enquiry Sent!", description: "Thank you for your enquiry. We will contact you soon." });
-  };
 
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "9cba1d32-5bda-46a0-ad04-29647e9daa88", 
+          from_name: "Drycool Website Form",
+          subject: form.subject ? form.subject : "New Website Enquiry",
+          ...form,
+        }),
+      });
+
+      if (response.status === 200) {
+        toast({ title: "Success!", description: "Thank you for your enquiry. We will contact you soon." });
+        setForm({ name: "", company: "", city: "", phone: "", email: "", subject: "", message: "" });
+      } else {
+        toast({ title: "Error", description: "Submission failed. Please try again.", variant: "destructive" });
+      }
+    } catch (error) {
+      toast({ title: "Error", description: "Something went wrong.", variant: "destructive" });
+    } finally {
+      setSubmitting(false);
+    }
+  };
   const inputClass = "w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 transition-shadow";
 
   return (

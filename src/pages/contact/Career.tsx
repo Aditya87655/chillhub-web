@@ -15,13 +15,34 @@ const Career = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmitting(true);
-    await new Promise((r) => setTimeout(r, 1000));
-    setSubmitting(false);
-    setForm({ name: "", email: "", city: "", phone: "", department: "", message: "" });
-    toast({ title: "Application Sent!", description: "Thank you for your application. HR will review it soon." });
+
+    // Grab the actual form data including the file
+    const formData = new FormData(e.currentTarget);
+    formData.append("access_key", "9cba1d32-5bda-46a0-ad04-29647e9daa88");
+    formData.append("from_name", "Drycool Career Portal");
+    formData.append("subject", `New Job Application for ${form.department || 'Drycool'}`);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData, // Sending as FormData so the PDF is attached
+      });
+
+      if (response.status === 200) {
+        toast({ title: "Application Sent!", description: "Thank you. HR will review it soon." });
+        setForm({ name: "", email: "", city: "", phone: "", department: "", message: "" });
+        (e.target as HTMLFormElement).reset(); // clears the file input
+      } else {
+        toast({ title: "Error", description: "Failed to send application.", variant: "destructive" });
+      }
+    } catch (error) {
+      toast({ title: "Error", description: "Something went wrong.", variant: "destructive" });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const inputClass = "w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 transition-shadow";

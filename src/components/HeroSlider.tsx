@@ -45,7 +45,7 @@ const HeroSlider = () => {
   const slide = slides[current];
 
   return (
-    <section className="relative w-full overflow-hidden bg-muted rounded-xl mx-auto" style={{ aspectRatio: "960/350" }}>
+    <section className="relative w-full overflow-hidden bg-slate-50 rounded-2xl mx-auto" style={{ aspectRatio: "16/6" }}>
       {/* Background images */}
       <AnimatePresence custom={direction} mode="wait">
         <motion.div
@@ -55,7 +55,7 @@ const HeroSlider = () => {
           initial="enter"
           animate="center"
           exit="exit"
-          transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+          transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="absolute inset-0"
         >
           <img
@@ -67,31 +67,31 @@ const HeroSlider = () => {
         </motion.div>
       </AnimatePresence>
 
-      {/* Gradient overlays for depth */}
-      <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-foreground/5 to-transparent" />
+      {/* Subtle bottom gradient */}
+      <div className="absolute inset-x-0 bottom-0 h-20 pointer-events-none bg-gradient-to-t from-black/10 to-transparent" />
 
       {/* Arrows */}
       <motion.button
-        whileHover={{ scale: 1.1 }}
+        whileHover={{ scale: 1.15 }}
         whileTap={{ scale: 0.9 }}
         onClick={prev}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center h-11 w-11 rounded-full bg-card/30 backdrop-blur-md text-foreground hover:bg-card/60 transition-all duration-300 border border-border/20"
+        className="absolute left-3 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center h-10 w-10 rounded-full bg-white/80 backdrop-blur-md text-slate-700 hover:bg-white shadow-lg transition-all duration-300"
         aria-label="Previous Slide"
       >
         <ChevronLeft className="h-5 w-5" />
       </motion.button>
       <motion.button
-        whileHover={{ scale: 1.1 }}
+        whileHover={{ scale: 1.15 }}
         whileTap={{ scale: 0.9 }}
         onClick={next}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center h-11 w-11 rounded-full bg-card/30 backdrop-blur-md text-foreground hover:bg-card/60 transition-all duration-300 border border-border/20"
+        className="absolute right-3 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center h-10 w-10 rounded-full bg-white/80 backdrop-blur-md text-slate-700 hover:bg-white shadow-lg transition-all duration-300"
         aria-label="Next Slide"
       >
         <ChevronRight className="h-5 w-5" />
       </motion.button>
 
-      {/* Dots */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex gap-2 bg-card/20 backdrop-blur-md rounded-full px-3 py-1.5">
+      {/* Progress dots */}
+      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex gap-1.5">
         {slides.map((_, i) => (
           <button
             key={i}
@@ -99,8 +99,8 @@ const HeroSlider = () => {
               setDirection(i > current ? 1 : -1);
               setCurrent(i);
             }}
-            className={`h-2 rounded-full transition-all duration-400 ${
-              i === current ? "w-7 bg-industrial-orange" : "w-2 bg-foreground/30 hover:bg-foreground/50"
+            className={`h-1.5 rounded-full transition-all duration-500 ${
+              i === current ? "w-8 bg-primary" : "w-1.5 bg-slate-400/50 hover:bg-slate-400"
             }`}
             aria-label={`Go to slide ${i + 1}`}
           />

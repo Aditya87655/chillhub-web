@@ -189,3 +189,75 @@ img[loading="lazy"].loaded,
 img[loading="lazy"]:not([src=""]) {
   opacity: 1;
 }
+
+/* ─── Enhanced Animations ─── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.15); }
+  50% { box-shadow: 0 0 40px rgba(99, 102, 241, 0.3); }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background-size: 200% 100%;
+  animation: shimmer 3s linear infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.animate-gradient-shift {
+  background-size: 200% 200%;
+  animation: gradient-shift 6s ease infinite;
+}
+
+/* Stat counter number styling */
+.stat-number {
+  background: linear-gradient(135deg, hsl(238.7 83.5% 66.7%), hsl(258.3 89.5% 66.3%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glass morphism utility */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Product card hover image zoom */
+.product-card-img {
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.group:hover .product-card-img {
+  transform: scale(1.05);
+}
+
+/* Mesh gradient background */
+.mesh-gradient {
+  background:
+    radial-gradient(at 20% 20%, hsla(238, 84%, 67%, 0.08) 0px, transparent 50%),
+    radial-gradient(at 80% 10%, hsla(258, 90%, 66%, 0.06) 0px, transparent 50%),
+    radial-gradient(at 50% 90%, hsla(238, 84%, 67%, 0.05) 0px, transparent 50%);
+}

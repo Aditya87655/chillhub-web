@@ -6,12 +6,12 @@ import GlassCard from "@/components/GlassCard";
 
 const offices = [
   {
-    name: "Works 1",
+    name: "Works 1 (Head Office)",
     address: "C-34, Sector 63, Noida – 201307, Uttar Pradesh, India.",
   },
   {
     name: "Works 2",
-    address: "Plot No. B-64, M.G. Road, Phase 1, Dasna, Hapur -201015, Uttar Pradesh, India.",
+    address: "Plot No. B-64, M.G. Road, Phase 1, Dasna, Hapur - 201015, Uttar Pradesh, India.",
   },
 ];
 
@@ -72,6 +72,31 @@ const Address = () => (
               </div>
             </div>
           </GlassCard>
+        </AnimatedSection>
+      </div>
+    </section>
+
+    {/* 📍 Interactive Google Map Section */}
+    <section className="py-10 pb-24 bg-transparent">
+      <div className="container max-w-6xl mx-auto">
+        <AnimatedSection>
+          <SectionHeading title="Find Us on the Map" centered={true} />
+          
+          <div className="mt-8 w-full h-[450px] md:h-[550px] rounded-[2rem] overflow-hidden border border-border/40 shadow-2xl relative bg-card/50 group">
+            {/* Loading glow behind the map */}
+            <div className="absolute inset-0 bg-accent/5 animate-pulse -z-10" />
+            
+            <iframe
+              src="https://maps.google.com/maps?q=Drycool%20Systems%20India%20Pvt%20Ltd,%20C-34,%20Sector%2063,%20Noida&t=&z=14&ie=UTF8&iwloc=&output=embed"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen={true}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="absolute inset-0 opacity-90 group-hover:opacity-100 transition-opacity duration-500"
+            ></iframe>
+          </div>
         </AnimatedSection>
       </div>
     </section>
