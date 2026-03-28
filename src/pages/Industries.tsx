@@ -77,6 +77,41 @@ const Industries = () => (
       </div>
     </section>
 
+    {/* Enrichment: Industry Details */}
+    <section className="py-20">
+      <div className="container space-y-12">
+        <AnimatedSection>
+          <SectionHeading title="Engineering Cooling Solutions for Every Sector" centered={false} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              Industrial cooling requirements vary dramatically across sectors, and Drycool Systems has built its reputation on understanding these nuances at a deep engineering level. In plastic injection molding, precise mold temperature control directly impacts product quality, cycle time, and surface finish. Our chillers for this segment feature rapid response temperature controllers and high-capacity pumping systems that maintain tight tolerances even during peak production runs.
+            </p>
+            <p>
+              For the food and beverage industry, our chillers are designed to meet strict hygiene standards with stainless steel contact surfaces, food-grade glycol compatibility, and rapid cooling capabilities essential for maintaining cold chain integrity. Dairy processing plants rely on our systems for milk chilling from collection temperature down to storage temperature within minutes, preserving freshness and preventing bacterial growth.
+            </p>
+            <p>
+              The pharmaceutical sector demands absolute precision in process cooling, where even minor temperature deviations can compromise drug efficacy or batch quality. Drycool Systems delivers GMP-compliant cooling systems with redundant controls, data logging capabilities, and validation documentation that satisfy regulatory audit requirements across global markets.
+            </p>
+          </div>
+        </AnimatedSection>
+
+        <AnimatedSection delay={0.1}>
+          <SectionHeading title="Performance, Efficiency & Sustainability" centered={false} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              Energy efficiency is at the core of every Drycool cooling system. Our VFD-equipped chillers can reduce power consumption by up to 50 percent compared to fixed-speed alternatives, translating into substantial operational cost savings for facilities running around the clock. Advanced heat recovery options allow waste heat from the chilling process to be repurposed for preheating water or space heating, further improving overall plant energy utilization.
+            </p>
+            <p>
+              With growing environmental regulations and corporate sustainability goals, Drycool Systems has invested heavily in developing systems that use low-GWP refrigerants and meet the latest energy performance standards. Our engineering team works closely with facility managers to conduct energy audits, identify optimization opportunities, and implement upgrades that deliver measurable reductions in carbon footprint alongside improved cooling performance.
+            </p>
+            <p>
+              Preventive maintenance programs, remote monitoring dashboards, and predictive analytics capabilities are available across our industrial chiller range, enabling proactive equipment management that minimizes unplanned downtime and extends the productive life of every installation.
+            </p>
+          </div>
+        </AnimatedSection>
+      </div>
+    </section>
+
     {/* CTA */}
     <section className="py-16 bg-teal-gradient">
       <div className="container text-center">

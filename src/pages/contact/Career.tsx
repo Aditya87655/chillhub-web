@@ -98,6 +98,31 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
                 </p>
               </div>
             </AnimatedSection>
+
+            {/* Enrichment */}
+            <AnimatedSection delay={0.3} className="mt-12">
+              <SectionHeading title="Why Work at Drycool Systems?" centered={false} />
+              <div className="space-y-4 text-muted-foreground leading-relaxed">
+                <p>
+                  Drycool Systems offers a dynamic work environment where engineering excellence meets entrepreneurial energy. As one of India's leading chiller manufacturers with over three decades of industry presence, we provide our team members with opportunities to work on challenging industrial cooling projects across diverse sectors including pharmaceuticals, food processing, petrochemicals, construction, and commercial HVAC. Our engineers gain hands-on experience with cutting-edge refrigeration technologies and work alongside experienced mentors who share deep domain knowledge.
+                </p>
+                <p>
+                  We believe that our people are our greatest asset. That's why we invest in continuous professional development through internal training programs, industry conference participation, and exposure to international projects across more than 50 countries. Team members have the opportunity to grow their careers across multiple functional areas including engineering design, manufacturing operations, project management, sales and marketing, and customer service.
+                </p>
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection delay={0.4} className="mt-12">
+              <SectionHeading title="Growth Opportunities & Culture" centered={false} />
+              <div className="space-y-4 text-muted-foreground leading-relaxed">
+                <p>
+                  At Drycool, we foster a culture of innovation, collaboration, and accountability. Our flat organizational structure encourages open communication and empowers team members to take ownership of their work. Whether you're a fresh engineering graduate looking to build your career foundation or an experienced professional seeking new challenges, Drycool offers a platform where your contributions make a visible impact on real-world industrial cooling solutions.
+                </p>
+                <p>
+                  Current openings span multiple departments including production engineering, quality control, sales, service, procurement, and administration. We welcome applications from candidates who share our passion for engineering excellence and customer satisfaction. Submit your resume through the form above, and our HR team will review your application and reach out if there's a suitable match with our current openings.
+                </p>
+              </div>
+            </AnimatedSection>
           </div>
         </div>
       </section>
@@ -106,4 +131,3 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 };
 
 export default Career;
-

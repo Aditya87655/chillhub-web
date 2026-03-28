@@ -112,6 +112,47 @@ const About = () => (
         </AnimatedSection>
       </div>
     </section>
+
+    {/* Enrichment: Technical Depth */}
+    <section className="py-20">
+      <div className="container space-y-16">
+        <AnimatedSection>
+          <SectionHeading title="Comprehensive Industrial Cooling Expertise" centered={false} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              With over three decades of operational excellence, Drycool Systems has established itself as a cornerstone of the Indian industrial cooling landscape. Our manufacturing facility, located in the industrial hub of Noida, Uttar Pradesh, is equipped with state-of-the-art CNC machining centers, automated assembly lines, and precision testing laboratories that ensure every chiller meets stringent international quality benchmarks before leaving our production floor.
+            </p>
+            <p>
+              Our engineering team brings together mechanical, electrical, and refrigeration specialists who collaborate on each project from initial concept through final commissioning. This integrated approach allows us to deliver turnkey cooling solutions that address the specific thermal management challenges faced by industries ranging from pharmaceutical manufacturing and food processing to petrochemical refining and data center operations.
+            </p>
+          </div>
+        </AnimatedSection>
+
+        <AnimatedSection delay={0.1}>
+          <SectionHeading title="Technology & Performance Standards" centered={false} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              Every Drycool chiller incorporates advanced refrigeration technologies including variable frequency drives for energy optimization, microprocessor-based control systems for precise temperature regulation, and shell-and-tube heat exchangers designed for maximum thermal transfer efficiency. Our systems utilize environmentally responsible refrigerants and are designed to comply with the latest international environmental regulations.
+            </p>
+            <p>
+              Our testing protocols exceed industry standards, with each unit undergoing more than 48 hours of continuous performance testing under simulated load conditions. Pressure testing, leak detection, electrical safety verification, and vibration analysis are performed systematically to guarantee reliable operation across demanding industrial environments. This rigorous quality control process has earned us the trust of major corporations across more than 50 countries worldwide.
+            </p>
+          </div>
+        </AnimatedSection>
+
+        <AnimatedSection delay={0.2}>
+          <SectionHeading title="Global Service Network & Support" centered={false} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              Drycool Systems maintains a comprehensive after-sales support network with branch offices across major Indian cities including Jaipur, Pune, Ahmedabad, Kolkata, Bangalore, and Hyderabad. Our service engineers are factory-trained and equipped to handle preventive maintenance, emergency breakdown support, and performance optimization for all chiller types in our product portfolio.
+            </p>
+            <p>
+              For our international clients, we provide remote diagnostic support, spare parts logistics management, and on-site commissioning assistance. Our annual maintenance contracts are designed to maximize equipment uptime and extend the operational lifespan of cooling systems, delivering measurable return on investment for facility owners and operators across diverse industrial sectors.
+            </p>
+          </div>
+        </AnimatedSection>
+      </div>
+    </section>
   </>
 );
 

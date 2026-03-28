@@ -123,6 +123,35 @@ const handleSubmit = async (e: React.FormEvent) => {
           </AnimatedSection>
         </div>
       </section>
+
+      {/* Enrichment */}
+      <section className="py-20 bg-section-gradient">
+        <div className="container space-y-12">
+          <AnimatedSection>
+            <SectionHeading title="Genuine Spare Parts for Optimal Performance" centered={false} />
+            <div className="space-y-4 text-muted-foreground leading-relaxed">
+              <p>
+                Using genuine Drycool spare parts is essential for maintaining the performance, efficiency, and reliability of your chiller system. Our spare parts are manufactured or sourced to the same exacting specifications as the original components installed in your equipment, ensuring perfect fit, optimal performance, and maintained warranty coverage. Non-genuine or counterfeit components can compromise system performance, increase energy consumption, and potentially cause costly equipment damage.
+              </p>
+              <p>
+                Our comprehensive spare parts inventory covers all critical chiller components including compressors, heat exchangers, expansion valves, pressure switches, temperature sensors, control boards, and fluid circuit components. We maintain strategic stock levels for high-demand items to ensure rapid fulfillment of urgent maintenance requirements, minimizing equipment downtime for our customers.
+              </p>
+            </div>
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.1}>
+            <SectionHeading title="Ordering & Technical Support" centered={false} />
+            <div className="space-y-4 text-muted-foreground leading-relaxed">
+              <p>
+                To order spare parts, simply submit an enquiry through the form above with your chiller model number, serial number, and the part description or part number if available. Our parts department will identify the correct components, confirm availability and pricing, and arrange prompt dispatch. For urgent breakdown situations, our service hotline at +91-9811134394 provides priority parts identification and expedited shipping coordination.
+              </p>
+              <p>
+                Our technical support team can also assist with troubleshooting guidance to help your maintenance staff accurately diagnose component failures and identify the correct replacement parts. Whether you need a single sensor replacement or a complete compressor overhaul kit, Drycool Systems is committed to keeping your cooling equipment running at peak performance with minimal disruption to your operations.
+              </p>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
     </>
   );
 };

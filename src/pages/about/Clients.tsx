@@ -78,6 +78,47 @@ const Clients = () => (
         </AnimatedSection>
       </div>
     </section>
+
+    {/* Enrichment */}
+    <section className="py-20">
+      <div className="container space-y-12">
+        <AnimatedSection>
+          <SectionHeading title="Trusted Across Diverse Industries" centered={false} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              The breadth of Drycool Systems' client portfolio reflects our versatility in delivering cooling solutions tailored to the unique demands of each industry sector. In the chemicals and fertilizers segment, our chillers support critical process cooling for reaction temperature control, product crystallization, and solvent recovery operations. Our equipment is designed to handle aggressive chemical environments with corrosion-resistant materials and specialized heat exchanger configurations.
+            </p>
+            <p>
+              Pharmaceutical clients choose Drycool for our ability to deliver GMP-compliant cooling systems with precise temperature control, comprehensive validation documentation, and clean-room compatible installation capabilities. Our systems support drug manufacturing processes including API synthesis, tablet coating, lyophilization, and cold storage, where temperature accuracy directly impacts product quality and regulatory compliance.
+            </p>
+          </div>
+        </AnimatedSection>
+
+        <AnimatedSection delay={0.1}>
+          <SectionHeading title="Engineering & Automotive Sector Partnerships" centered={false} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              Our partnerships with major engineering and automotive companies demonstrate our capability to deliver high-capacity, high-reliability cooling systems for demanding manufacturing environments. Automotive manufacturing plants require consistent cooling for CNC machining operations, hydraulic press cooling, paint shop temperature control, and testing facility climate management — all areas where Drycool has proven expertise and track record.
+            </p>
+            <p>
+              The commercial air conditioning sector trusts Drycool as a reliable OEM partner for chiller supply and system integration. Our collaborative relationships with leading HVAC brands enable us to deliver complete cooling solutions for large commercial projects including shopping malls, corporate office complexes, hospital campuses, and hotel chains across India and international markets.
+            </p>
+          </div>
+        </AnimatedSection>
+
+        <AnimatedSection delay={0.2}>
+          <SectionHeading title="Long-Term Client Relationships & Support" centered={false} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              What distinguishes Drycool Systems in the competitive chiller market is not just the quality of our products but the depth and continuity of our client relationships. Many of our key clients have been partnering with us for over a decade, continuously expanding their cooling infrastructure with Drycool equipment based on the consistent performance and responsive service they have experienced. This repeat business from industry leaders is the strongest endorsement of our commitment to quality and customer satisfaction.
+            </p>
+            <p>
+              Our dedicated key account management team ensures that major clients receive personalized attention for their cooling requirements, from initial consultation and system design through installation supervision, commissioning, and ongoing maintenance support. This comprehensive approach has made Drycool the preferred chiller partner for organizations that prioritize operational reliability and long-term equipment value.
+            </p>
+          </div>
+        </AnimatedSection>
+      </div>
+    </section>
   </>
 );
 

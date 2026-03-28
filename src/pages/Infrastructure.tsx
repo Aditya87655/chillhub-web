@@ -158,6 +158,35 @@ const Infrastructure = () => (
       </div>
     </section>
 
+    {/* Enrichment */}
+    <section className="py-20">
+      <div className="container space-y-12">
+        <AnimatedSection>
+          <SectionHeading title="Comprehensive BMS Architecture & Integration" centered={false} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              A well-designed Building Management System serves as the central nervous system of modern commercial and industrial facilities. Drycool's BMS solutions integrate direct digital controllers (DDC), networked sensors, and intelligent actuators across all building subsystems to create a unified control ecosystem. This integration enables coordinated operation of HVAC equipment, lighting systems, fire safety infrastructure, and security systems through a single management interface.
+            </p>
+            <p>
+              Our BMS architecture supports industry-standard communication protocols including BACnet, Modbus, and LonWorks, ensuring interoperability with equipment from multiple manufacturers. This open-protocol approach protects building owners from vendor lock-in and provides flexibility to expand or upgrade system components as building requirements evolve. Real-time data visualization dashboards provide facility managers with actionable insights into energy consumption patterns, equipment performance trends, and maintenance scheduling needs.
+            </p>
+          </div>
+        </AnimatedSection>
+
+        <AnimatedSection delay={0.1}>
+          <SectionHeading title="Energy Performance & ROI" centered={false} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              Buildings equipped with Drycool BMS solutions typically achieve energy savings of 15 to 30 percent compared to conventionally managed facilities. These savings result from optimized equipment scheduling, demand-based ventilation control, chiller plant load optimization, and identification of equipment inefficiencies through continuous monitoring. The return on investment for BMS installation typically occurs within two to four years, after which the ongoing energy savings contribute directly to reduced operational costs.
+            </p>
+            <p>
+              Our energy management capabilities extend beyond simple monitoring to include advanced analytics for benchmarking building performance against industry standards such as ECBC and GRIHA ratings. Automated reporting features generate compliance documentation and energy performance certificates, supporting building owners in meeting regulatory requirements and achieving green building certifications that enhance property value and tenant satisfaction.
+            </p>
+          </div>
+        </AnimatedSection>
+      </div>
+    </section>
+
     {/* CTA */}
     <section className="py-16 bg-teal-gradient">
       <div className="container text-center">

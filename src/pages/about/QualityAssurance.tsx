@@ -66,6 +66,35 @@ const QualityAssurance = () => (
       </div>
     </section>
 
+    {/* Enrichment */}
+    <section className="py-20">
+      <div className="container space-y-12">
+        <AnimatedSection>
+          <SectionHeading title="End-to-End Quality Control Process" centered={false} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              Quality assurance at Drycool Systems begins at the procurement stage, where incoming raw materials and bought-out components undergo thorough inspection against documented specifications. Compressors from leading manufacturers such as Bitzer and Frascold are verified for performance certificates, while copper tubing, steel sheets, and electrical components are checked for dimensional accuracy, material composition, and surface quality before being released to the production floor.
+            </p>
+            <p>
+              During the manufacturing process, multiple in-process inspection checkpoints ensure that fabrication, welding, brazing, and assembly operations meet our engineering standards. Weld quality is verified through visual inspection and, where required, non-destructive testing methods including dye penetrant testing and radiographic examination. Pressure vessels and heat exchangers are hydrostatically tested at pressures exceeding design specifications to confirm structural integrity before integration into the final chiller assembly.
+            </p>
+          </div>
+        </AnimatedSection>
+
+        <AnimatedSection delay={0.1}>
+          <SectionHeading title="Performance Verification & Certification" centered={false} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              Every completed chiller undergoes a comprehensive final testing sequence that includes continuous performance operation for a minimum of 48 hours under monitored conditions. During this extended run test, parameters including cooling capacity, power consumption, refrigerant pressures, temperatures, oil levels, and vibration levels are continuously recorded and compared against design specifications. Any deviation triggers investigation and corrective action before the unit is approved for dispatch.
+            </p>
+            <p>
+              Our quality management system maintains complete documentation for each chiller manufactured, including material test certificates, welding procedure qualifications, pressure test records, performance test data, and electrical safety test results. This documentation package accompanies every unit, providing our clients with full traceability and confidence in the quality of their investment. Our commitment to continuous improvement drives regular review of quality metrics and implementation of process enhancements that further elevate our manufacturing standards.
+            </p>
+          </div>
+        </AnimatedSection>
+      </div>
+    </section>
+
     <section className="py-16 bg-teal-gradient">
       <div className="container text-center">
         <AnimatedSection>

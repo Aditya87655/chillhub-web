@@ -112,6 +112,35 @@ const handleSubmit = async (e: React.FormEvent) => {
           </AnimatedSection>
         </div>
       </section>
+
+      {/* Enrichment */}
+      <section className="py-20 bg-section-gradient">
+        <div className="container space-y-12">
+          <AnimatedSection>
+            <SectionHeading title="Dealership Partnership Benefits" centered={false} />
+            <div className="space-y-4 text-muted-foreground leading-relaxed">
+              <p>
+                Becoming a Drycool Systems dealer offers significant business opportunities in the growing industrial cooling market. As a dealer partner, you gain access to our comprehensive product portfolio including screw chillers, scroll chillers, reciprocating chillers, cooling towers, and customized cooling solutions that serve diverse industrial applications. Our dealer support program includes competitive pricing structures, marketing material support, technical training for your sales and service teams, and priority access to new product launches.
+              </p>
+              <p>
+                Drycool dealers benefit from our established brand reputation built over three decades of manufacturing excellence and service to major corporations across India and internationally. Our ISO 9001:2008 certified products carry strong market credibility, making it easier for dealers to win customer confidence and close sales in competitive tender situations. The growing demand for energy-efficient industrial cooling solutions creates a favorable market environment for dealers representing Drycool's advanced VFD and inverter chiller technologies.
+              </p>
+            </div>
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.1}>
+            <SectionHeading title="Dealer Support & Training" centered={false} />
+            <div className="space-y-4 text-muted-foreground leading-relaxed">
+              <p>
+                We provide comprehensive training programs for dealer technical staff covering product knowledge, application engineering, installation best practices, and basic troubleshooting skills. Factory visits are arranged for new dealers to understand our manufacturing capabilities and quality processes firsthand. Our regional sales managers provide ongoing support for customer visits, technical presentations, and proposal preparation, ensuring dealers have the backup they need to handle projects of any size and complexity.
+              </p>
+              <p>
+                Dealer territories are carefully defined to protect market interests and ensure adequate coverage for customer service. Our after-sales support infrastructure backs dealer operations with spare parts logistics, warranty processing, and escalation support for complex technical issues. We invite entrepreneurs, HVAC professionals, and industrial equipment distributors with established market networks to explore this partnership opportunity by completing the dealership application form above.
+              </p>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
     </>
   );
 };

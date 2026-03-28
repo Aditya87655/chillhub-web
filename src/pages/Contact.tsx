@@ -130,6 +130,35 @@ const Contact = () => {
           </AnimatedSection>
         </div>
       </section>
+
+      {/* Enrichment */}
+      <section className="py-20 bg-section-gradient">
+        <div className="container space-y-12">
+          <AnimatedSection>
+            <SectionHeading title="Why Contact Drycool Systems?" centered={false} />
+            <div className="space-y-4 text-muted-foreground leading-relaxed">
+              <p>
+                Whether you are planning a new industrial cooling installation, upgrading existing equipment, or seeking reliable maintenance support, our experienced team is ready to assist. With over three decades of expertise in chiller manufacturing and HVAC system design, Drycool Systems provides comprehensive consultation services that help you select the optimal cooling solution for your specific application requirements, budget constraints, and energy efficiency goals.
+              </p>
+              <p>
+                Our engineering team can assist with initial cooling load calculations, equipment sizing, system configuration recommendations, and detailed project proposals. For facilities requiring custom-engineered solutions, we offer design consultations that explore specialized requirements including ultra-low temperature operation, hazardous area compliance, clean-room compatibility, and high-capacity central plant configurations.
+              </p>
+            </div>
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.1}>
+            <SectionHeading title="Our Service Commitment" centered={false} />
+            <div className="space-y-4 text-muted-foreground leading-relaxed">
+              <p>
+                When you reach out to Drycool Systems, you connect with a team that prioritizes responsive communication and technical accuracy. Initial inquiries typically receive a detailed response within 24 business hours, and complex project quotations are prepared within three to five working days. Our sales engineers are available for site visits across India to assess installation requirements and provide in-person technical consultation.
+              </p>
+              <p>
+                For international inquiries, our export team manages complete logistics coordination including equipment packaging for ocean freight, customs documentation, and arrangement of on-site commissioning support. Our commitment to customer satisfaction extends from the first point of contact through installation, commissioning, and ongoing maintenance for the entire operational life of your cooling equipment.
+              </p>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
     </>
   );
 };

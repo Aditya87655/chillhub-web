@@ -44,6 +44,35 @@ const ApplicationPage = () => (
       </div>
     </section>
 
+    {/* Enrichment */}
+    <section className="py-20">
+      <div className="container space-y-12">
+        <AnimatedSection>
+          <SectionHeading title="Industry-Specific Cooling Expertise" centered={false} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              Every industrial application presents unique thermal management challenges that demand specialized cooling solutions. Drycool Systems brings over three decades of application engineering experience to each project, ensuring that the chiller system selected and configured precisely matches the specific temperature requirements, cooling capacity needs, and environmental conditions of the target application. Our engineers work closely with process designers and facility managers to understand heat loads, duty cycles, and operating parameters before recommending the optimal cooling solution.
+            </p>
+            <p>
+              In the plastics industry, precise mold temperature control is critical for achieving consistent product quality, minimizing cycle times, and reducing reject rates. Our chillers for injection molding, blow molding, and extrusion processes feature rapid-response temperature controllers, high-flow pumping systems, and corrosion-resistant fluid circuits designed for continuous industrial operation. For cement batching plants, our specialized concrete cooling systems maintain precise water temperatures to control concrete setting times in high-ambient conditions.
+            </p>
+          </div>
+        </AnimatedSection>
+
+        <AnimatedSection delay={0.1}>
+          <SectionHeading title="Performance Advantages & Technical Support" centered={false} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              Food and beverage applications require chillers built with hygienic design principles, food-grade glycol compatibility, and rapid cooling capabilities essential for maintaining product safety and quality. Our brewery and fermentation chillers provide precise temperature staging throughout the fermentation cycle, while dairy industry systems deliver rapid milk chilling from collection temperature to storage temperature within minutes, preserving freshness and meeting regulatory requirements.
+            </p>
+            <p>
+              Medical device cooling, CNC machine cooling, and hydrogen refueling station chillers represent some of the most technically demanding applications in our portfolio. Each requires a combination of precise temperature control, high reliability, and application-specific safety features. Drycool's engineering team designs these systems with full redundancy, fail-safe controls, and compliance with relevant industry standards, backed by comprehensive after-sales support including preventive maintenance programs and emergency response services.
+            </p>
+          </div>
+        </AnimatedSection>
+      </div>
+    </section>
+
     <section className="py-16 bg-teal-gradient">
       <div className="container text-center">
         <AnimatedSection>

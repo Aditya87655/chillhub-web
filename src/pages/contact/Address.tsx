@@ -83,7 +83,6 @@ const Address = () => (
           <SectionHeading title="Find Us on the Map" centered={true} />
           
           <div className="mt-8 w-full h-[450px] md:h-[550px] rounded-[2rem] overflow-hidden border border-border/40 shadow-2xl relative bg-card/50 group">
-            {/* Loading glow behind the map */}
             <div className="absolute inset-0 bg-accent/5 animate-pulse -z-10" />
             
             <iframe
@@ -96,6 +95,35 @@ const Address = () => (
               referrerPolicy="no-referrer-when-downgrade"
               className="absolute inset-0 opacity-90 group-hover:opacity-100 transition-opacity duration-500"
             ></iframe>
+          </div>
+        </AnimatedSection>
+      </div>
+    </section>
+
+    {/* Enrichment */}
+    <section className="py-20 bg-section-gradient">
+      <div className="container space-y-12">
+        <AnimatedSection>
+          <SectionHeading title="Strategic Location & Accessibility" centered={false} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              Drycool Systems' headquarters in Sector 63, Noida, is strategically located in the heart of India's industrial and commercial hub of the National Capital Region. This prime location provides excellent connectivity to major highways, the Delhi Metro network, and Indira Gandhi International Airport, facilitating convenient access for clients, suppliers, and partners from across India and international destinations.
+            </p>
+            <p>
+              Our second manufacturing facility at Plot No. B-64, M.G. Road, Phase 1, Dasna, Hapur, expands our production capacity and provides dedicated space for large-scale chiller assembly and testing operations. This facility is equipped with heavy-duty overhead cranes, expanded fabrication areas, and additional testing bays to handle the growing demand for high-capacity industrial chiller systems.
+            </p>
+          </div>
+        </AnimatedSection>
+
+        <AnimatedSection delay={0.1}>
+          <SectionHeading title="Nationwide Branch Network" centered={false} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              Our pan-India branch office network in Jaipur, Pune, Ahmedabad, Kolkata, Rudrapur, Haridwar, Bangalore, Hyderabad, Chandigarh, and Chhattisgarh ensures that Drycool's sales and service teams are always within reach of our clients. Each branch is staffed with technically qualified professionals who provide pre-sales consultation, installation supervision, and after-sales service support for all chiller types in our product portfolio.
+            </p>
+            <p>
+              For site visits, technical consultations, or factory tours, please contact us by phone at +91-9811134394 or email at enquiry@drycoolchillers.com to schedule an appointment. Our team is available Monday through Saturday from 9:00 AM to 6:00 PM. We welcome visits from facility managers, consulting engineers, procurement teams, and potential dealer partners interested in exploring our product range and manufacturing capabilities firsthand.
+            </p>
           </div>
         </AnimatedSection>
       </div>

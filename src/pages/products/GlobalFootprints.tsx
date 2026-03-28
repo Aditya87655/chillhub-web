@@ -69,6 +69,35 @@ const GlobalFootprints = () => (
       </div>
     </section>
 
+    {/* Enrichment */}
+    <section className="py-20">
+      <div className="container space-y-12">
+        <AnimatedSection>
+          <SectionHeading title="International Project Execution Capabilities" centered={false} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              Drycool Systems' global footprint extends across more than 50 countries, with significant installations in regions demanding robust industrial cooling solutions. In the Middle East, our chillers operate in extreme ambient temperature conditions exceeding 50 degrees Celsius, engineered with oversized condenser coils and high-temperature rated components to maintain reliable performance. Our systems serve major industrial zones, commercial developments, and infrastructure projects across the UAE, Saudi Arabia, Qatar, and Kuwait.
+            </p>
+            <p>
+              African markets benefit from our range of rugged, low-maintenance chillers designed for environments where service infrastructure may be limited. Our systems incorporate simplified control interfaces, extended service intervals, and robust construction that minimizes the need for specialized maintenance personnel. From mining operations in South Africa to food processing plants in Nigeria and Kenya, Drycool chillers deliver consistent cooling performance across diverse climatic and operational conditions.
+            </p>
+          </div>
+        </AnimatedSection>
+
+        <AnimatedSection delay={0.1}>
+          <SectionHeading title="Export Infrastructure & Support" centered={false} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              Our export capabilities are supported by comprehensive logistics management including marine-grade packaging for ocean freight, complete customs documentation, and coordination with international shipping lines for timely delivery. Equipment is packaged on reinforced skids with weather-protective coverings and vibration-dampening materials to ensure safe transit to any global destination.
+            </p>
+            <p>
+              For international projects, Drycool provides on-site commissioning supervision by experienced engineers who travel to client locations for equipment startup, performance verification, and operator training. Remote technical support via video conferencing and real-time diagnostic connectivity enables our engineering team to assist with troubleshooting and performance optimization regardless of geographic distance, ensuring that every international client receives the same level of technical support as our domestic installations.
+            </p>
+          </div>
+        </AnimatedSection>
+      </div>
+    </section>
+
     <section className="py-16 bg-teal-gradient">
       <div className="container text-center">
         <AnimatedSection>
