@@ -77,6 +77,47 @@ const Expertise = () => (
       </div>
     </section>
 
+    {/* Enrichment */}
+    <section className="py-20 bg-section-gradient">
+      <div className="container space-y-12">
+        <AnimatedSection>
+          <SectionHeading title="Deep Industry Knowledge & Technical Mastery" centered={false} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              Our expertise in industrial cooling extends across a comprehensive range of applications, from high-precision pharmaceutical process cooling to heavy-duty petrochemical and refinery installations. Each project benefits from our team's accumulated knowledge of industry-specific requirements, including regulatory compliance, material compatibility, safety standards, and operational best practices. This deep domain expertise enables us to anticipate potential challenges and design solutions that address them proactively.
+            </p>
+            <p>
+              In the food processing and beverage industry, our cooling systems support critical operations including product chilling, fermentation temperature control, blast freezing, and cold storage maintenance. Our engineers understand the stringent hygiene requirements and temperature precision demanded by food safety regulations, designing systems with sanitary construction features, food-grade fluid compatibility, and fail-safe temperature controls that protect product quality.
+            </p>
+          </div>
+        </AnimatedSection>
+
+        <AnimatedSection delay={0.1}>
+          <SectionHeading title="From Concept to Commissioning" centered={false} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              The Drycool project execution methodology follows a structured five-phase approach: conceptualization, detailed engineering, manufacturing and procurement, installation and commissioning, and post-handover support. Each phase includes defined deliverables, quality checkpoints, and client approval milestones that ensure the project stays on track and the final installation meets all performance specifications and operational requirements.
+            </p>
+            <p>
+              Our manufacturing expertise allows us to control quality at every stage of equipment production, from raw material inspection and precision fabrication through assembly, wiring, refrigerant charging, and factory performance testing. This vertical integration eliminates quality risks associated with outsourced manufacturing and enables faster delivery timelines for even the most complex custom-engineered cooling systems.
+            </p>
+          </div>
+        </AnimatedSection>
+
+        <AnimatedSection delay={0.2}>
+          <SectionHeading title="Continuous Improvement & Innovation" centered={false} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              Drycool Systems continually invests in expanding our engineering expertise through staff training, technology partnerships, and participation in international HVAC conferences and exhibitions. Our R&D team evaluates emerging technologies including magnetic bearing compressors, absorption chillers, and district cooling systems to broaden our solution portfolio and address evolving market demands for higher efficiency and lower environmental impact cooling technologies.
+            </p>
+            <p>
+              This commitment to continuous improvement ensures that our clients always have access to the most advanced and cost-effective cooling solutions available. Whether the challenge is reducing energy consumption in an existing facility, designing a zero-emission cooling plant for a green building project, or engineering a custom chiller for a unique industrial process, Drycool Systems has the expertise and manufacturing capability to deliver outstanding results.
+            </p>
+          </div>
+        </AnimatedSection>
+      </div>
+    </section>
+
     <section className="py-16 bg-teal-gradient">
       <div className="container text-center">
         <AnimatedSection>

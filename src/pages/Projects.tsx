@@ -175,6 +175,35 @@ const Projects = () => (
       </div>
     </section>
 
+    {/* Enrichment */}
+    <section className="py-20">
+      <div className="container space-y-12">
+        <AnimatedSection>
+          <SectionHeading title="Project Execution Excellence" centered={false} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              Drycool Systems' project execution methodology combines decades of engineering expertise with structured project management practices to deliver cooling installations on time, within budget, and to specification. Our project teams handle every phase from initial feasibility assessment and conceptual design through detailed engineering, equipment manufacturing, site installation, and final commissioning. This single-source responsibility eliminates coordination gaps between multiple contractors and ensures seamless project delivery.
+            </p>
+            <p>
+              Our project portfolio spans cooling capacities from 30 TR for small manufacturing facilities to over 4500 TR for major industrial complexes. Each project is managed with detailed scheduling, resource planning, and quality checkpoints that track progress against milestones and enable proactive identification and resolution of potential issues before they impact project timelines. Regular client communication ensures alignment on technical specifications, delivery schedules, and installation coordination throughout the project lifecycle.
+            </p>
+          </div>
+        </AnimatedSection>
+
+        <AnimatedSection delay={0.1}>
+          <SectionHeading title="After-Commissioning Support & Optimization" centered={false} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              Project completion at Drycool extends beyond mechanical installation to include comprehensive commissioning, performance testing, and operator training. Our commissioning engineers verify every system parameter against design specifications, fine-tune control settings for optimal performance, and document baseline operating conditions for future reference. Operator training programs ensure that facility maintenance staff can effectively manage day-to-day chiller operations, interpret system diagnostics, and perform routine maintenance tasks.
+            </p>
+            <p>
+              Post-commissioning, our service team provides ongoing support through annual maintenance contracts, emergency breakdown response, and periodic performance assessments. Energy audits conducted on installed systems identify opportunities for further optimization, helping our clients continuously improve their cooling efficiency and reduce operational costs. This lifecycle approach to project delivery has earned us repeat business from major corporations who recognize the long-term value of partnering with Drycool Systems for their critical cooling infrastructure.
+            </p>
+          </div>
+        </AnimatedSection>
+      </div>
+    </section>
+
     <CTASection />
   </>
 );

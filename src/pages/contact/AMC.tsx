@@ -115,6 +115,35 @@ const handleSubmit = async (e: React.FormEvent) => {
           </AnimatedSection>
         </div>
       </section>
+
+      {/* Enrichment */}
+      <section className="py-20 bg-section-gradient">
+        <div className="container space-y-12">
+          <AnimatedSection>
+            <SectionHeading title="Comprehensive AMC Coverage" centered={false} />
+            <div className="space-y-4 text-muted-foreground leading-relaxed">
+              <p>
+                Drycool Systems' Annual Maintenance Contracts provide comprehensive coverage for all chiller types including screw, scroll, and reciprocating systems across air-cooled and water-cooled configurations. Our AMC plans include scheduled preventive maintenance visits, priority emergency breakdown response, genuine spare parts supply, and performance monitoring services that help maximize equipment uptime and extend operational lifespan.
+              </p>
+              <p>
+                Preventive maintenance visits are conducted by factory-trained service engineers who perform detailed inspections of compressor operation, refrigerant charge verification, electrical system checks, heat exchanger cleaning, control system calibration, and safety device testing. Each visit generates a comprehensive service report documenting equipment condition, measurements taken, work performed, and recommendations for any corrective actions needed to maintain optimal performance.
+              </p>
+            </div>
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.1}>
+            <SectionHeading title="Benefits of Regular Chiller Maintenance" centered={false} />
+            <div className="space-y-4 text-muted-foreground leading-relaxed">
+              <p>
+                Regular professional maintenance delivers significant benefits including improved energy efficiency, reduced risk of unexpected breakdowns, extended equipment life, and maintained manufacturer warranty coverage. Studies consistently show that well-maintained chillers consume 10 to 20 percent less energy than neglected systems, translating into substantial utility cost savings over time. Additionally, proactive identification of wear patterns and potential failure points prevents costly emergency repairs and the production losses associated with unplanned cooling system downtime.
+              </p>
+              <p>
+                Our AMC programs are available in multiple tiers to match different operational requirements and budgets. Basic plans cover essential preventive maintenance and emergency response, while comprehensive plans include all spare parts, unlimited service calls, performance guarantees, and periodic energy audits. Contact our service team to discuss the AMC option that best fits your facility's cooling infrastructure and operational requirements.
+              </p>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
     </>
   );
 };

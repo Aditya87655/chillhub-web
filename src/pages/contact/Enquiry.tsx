@@ -113,6 +113,35 @@ const handleSubmit = async (e: React.FormEvent) => {
           </AnimatedSection>
         </div>
       </section>
+
+      {/* Enrichment */}
+      <section className="py-20 bg-section-gradient">
+        <div className="container space-y-12">
+          <AnimatedSection>
+            <SectionHeading title="What to Expect When You Enquire" centered={false} />
+            <div className="space-y-4 text-muted-foreground leading-relaxed">
+              <p>
+                When you submit an enquiry through our form, our technical sales team reviews your requirements and responds within 24 business hours with an initial assessment. For standard product enquiries, we provide detailed quotations including equipment specifications, delivery timelines, and pricing. For complex projects requiring custom engineering, our team arranges a detailed technical discussion to understand your specific cooling requirements, site conditions, and performance expectations before preparing a comprehensive proposal.
+              </p>
+              <p>
+                Our consultation process is designed to ensure you receive the most suitable and cost-effective cooling solution for your application. Whether you need a single compact chiller for a laboratory, a multi-unit installation for a manufacturing plant, or a complete turnkey cooling system for a new facility, our engineering team provides expert guidance on equipment selection, system configuration, and energy optimization strategies.
+              </p>
+            </div>
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.1}>
+            <SectionHeading title="Comprehensive Support From First Contact" centered={false} />
+            <div className="space-y-4 text-muted-foreground leading-relaxed">
+              <p>
+                Drycool Systems offers end-to-end support that begins with your initial enquiry and continues throughout the entire equipment lifecycle. Our sales engineers are available for site visits across India to assess installation requirements, conduct cooling load calculations, and provide in-person technical consultation. For international enquiries, our export team coordinates complete logistics including shipping, customs documentation, and on-site commissioning support.
+              </p>
+              <p>
+                All enquiries are treated with complete confidentiality, and our technical proposals include detailed specifications, performance guarantees, warranty terms, and after-sales service options. We encourage enquiries from facility managers, consulting engineers, procurement teams, and project developers seeking reliable industrial cooling solutions backed by over three decades of manufacturing excellence and a proven track record across more than 50 countries worldwide.
+              </p>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
     </>
   );
 };
