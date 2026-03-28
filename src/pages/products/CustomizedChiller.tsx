@@ -70,6 +70,35 @@ const CustomizedChiller = () => (
       </div>
     </section>
 
+    {/* Enrichment */}
+    <section className="py-20">
+      <div className="container space-y-12">
+        <AnimatedSection>
+          <SectionHeading title="Custom Engineering Process" centered={false} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              The Drycool customization process begins with a thorough assessment of your facility's cooling requirements, including heat load analysis, ambient condition evaluation, available utility infrastructure, and space constraints. Our engineering team uses advanced thermal simulation tools to model system performance under various operating scenarios, ensuring that the final design delivers optimal cooling capacity with maximum energy efficiency across the full range of expected conditions.
+            </p>
+            <p>
+              Custom chiller configurations may include specialized compressor arrangements for redundancy, multi-circuit designs for partial load operation, exotic material construction for corrosive environments, or modular architectures for phased capacity expansion. Our in-house manufacturing capabilities allow us to accommodate unique dimensional requirements, non-standard connection sizes, and application-specific control system integrations that off-the-shelf products cannot address.
+            </p>
+          </div>
+        </AnimatedSection>
+
+        <AnimatedSection delay={0.1}>
+          <SectionHeading title="Performance Optimization & Lifecycle Value" centered={false} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              Every customized chiller is designed with lifecycle cost optimization in mind. Variable frequency drive integration reduces energy consumption by 30 to 50 percent compared to fixed-speed alternatives, while intelligent control systems with PLC and HMI interfaces provide operators with real-time performance monitoring and diagnostic capabilities. These smart features enable proactive maintenance scheduling that prevents costly unplanned downtime and extends equipment service life.
+            </p>
+            <p>
+              Our custom chillers undergo the same rigorous quality testing as our standard product range, including extended performance trials, pressure integrity verification, and comprehensive electrical safety checks. Complete documentation including engineering drawings, performance curves, operation manuals, and maintenance schedules accompanies every custom unit, providing your maintenance team with all the information needed for efficient long-term equipment management.
+            </p>
+          </div>
+        </AnimatedSection>
+      </div>
+    </section>
+
     <section className="py-16 bg-teal-gradient">
       <div className="container text-center">
         <AnimatedSection>

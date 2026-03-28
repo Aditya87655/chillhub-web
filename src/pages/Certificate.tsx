@@ -109,6 +109,35 @@ const Certificate = () => (
         </div>
       </div>
     </section>
+
+    {/* Enrichment */}
+    <section className="py-20">
+      <div className="container space-y-12">
+        <AnimatedSection>
+          <SectionHeading title="Understanding Our Certifications" centered={false} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              Drycool Systems' certifications represent rigorous third-party validation of our manufacturing processes, product quality, and environmental stewardship. Our ISO 9001:2008 quality management system certification ensures that documented procedures govern every aspect of our operations from design and procurement through manufacturing, testing, and after-sales service. Regular surveillance audits by accredited certification bodies verify ongoing compliance.
+            </p>
+            <p>
+              The CE marking on our products confirms conformity with European Union health, safety, and environmental protection directives, enabling unrestricted market access across all EU member states. BIS certification from the Bureau of Indian Standards validates that our products meet national quality benchmarks, while AHRI certification provides independent, laboratory-verified performance ratings that give specifying engineers and procurement teams confidence in published capacity and efficiency data.
+            </p>
+          </div>
+        </AnimatedSection>
+
+        <AnimatedSection delay={0.1}>
+          <SectionHeading title="Downloadable Resources & Technical Documentation" centered={false} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              Our comprehensive library of downloadable brochures and technical documents provides detailed information about our product range, capabilities, and application expertise. The company profile document offers a complete overview of Drycool Systems' history, manufacturing infrastructure, quality certifications, and global client portfolio. Product-specific brochures contain detailed technical specifications, dimensional drawings, and performance curves to support equipment selection and project planning.
+            </p>
+            <p>
+              Industry-specific brochures for sectors including plastics, food and beverages, pharmaceuticals, printing and packaging, and construction demonstrate our deep understanding of sector-specific cooling challenges and the tailored solutions we have developed to address them. Each document is regularly updated to reflect the latest product enhancements, new technology introductions, and expanded service capabilities that continue to strengthen our value proposition for industrial cooling customers worldwide.
+            </p>
+          </div>
+        </AnimatedSection>
+      </div>
+    </section>
   </>
 );
 
