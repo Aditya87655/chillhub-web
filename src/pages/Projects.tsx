@@ -134,7 +134,7 @@ const Projects = () => (
     </section>
 
     {/* Sectors */}
-    <section className="py-20 bg-hero-gradient">
+    <section className="py-20 bg-teal-gradient">
       <div className="container">
         <AnimatedSection>
           <SectionHeading title="Sectors We Serve" subtitle="Cooling solutions across every major industry" light />
@@ -143,7 +143,7 @@ const Projects = () => (
           {sectors.map((s, i) => (
             <AnimatedSection key={s} delay={i * 0.04}>
               <div className="flex items-center gap-2 rounded-xl border border-primary-foreground/10 bg-primary-foreground/5 backdrop-blur-sm px-4 py-4 hover:bg-primary-foreground/10 transition-all">
-                <CheckCircle className="h-4 w-4 text-accent shrink-0" />
+                <CheckCircle className="h-4 w-4 text-primary-foreground shrink-0" />
                 <span className="text-sm font-medium text-primary-foreground">{s}</span>
               </div>
             </AnimatedSection>
