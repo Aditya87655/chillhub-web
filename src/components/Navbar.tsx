@@ -286,7 +286,8 @@ const DesktopNavItem = ({ item }: { item: NavItem }) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 8 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className={`absolute ${item.label === "Contact Us" || item.label === "Download" ? "right-0" : "left-0"} top-full z-50 mt-2 min-w-[240px] rounded-xl border border-border/50 bg-card/95 backdrop-blur-xl p-2 shadow-2xl`}
+            /* 🌟 FIX: Changed min-w to a strict w-[280px] so it stops growing horizontally */
+            className={`absolute ${item.label === "Contact Us" || item.label === "Download" ? "right-0" : "left-0"} top-full z-50 mt-2 w-[280px] max-w-[90vw] rounded-xl border border-border/50 bg-card/95 backdrop-blur-xl p-2 shadow-2xl`}
             role="menu"
           >
             {item.children.map((child) => (
@@ -294,7 +295,8 @@ const DesktopNavItem = ({ item }: { item: NavItem }) => {
                 key={child.to}
                 to={child.to}
                 onClick={() => setOpen(false)}
-                className="block rounded-lg px-3 py-2.5 text-sm transition-all duration-200 text-popover-foreground/80 hover:bg-accent/10 hover:text-accent hover:pl-4"
+                /* 🌟 FIX: Added 'whitespace-normal leading-relaxed' so long text wraps nicely */
+                className="block rounded-lg px-3 py-2.5 text-sm transition-all duration-200 text-popover-foreground/80 hover:bg-accent/10 hover:text-accent hover:pl-4 whitespace-normal leading-relaxed"
                 role="menuitem"
               >
                 {child.label}
@@ -436,7 +438,7 @@ const Navbar = () => {
           {/* 🌟 UPDATED LOGO SECTION 🌟 */}
           <Link to="/" className="flex items-center shrink-0 transition-transform hover:scale-[1.02]">
             <img 
-              src="/images/logo.jpeg" /* 🔴 Make sure this path matches where your logo is stored */
+              src="/images/logo.jpeg" 
               alt="Drycool Systems Logo" 
               className="h-12 md:h-16 w-auto object-contain drop-shadow-sm" 
             />
