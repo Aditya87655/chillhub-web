@@ -26,7 +26,7 @@ const DownloadModal = ({ isOpen, onClose, onSuccess, title }: DownloadModalProps
     return /^\+?[\d\s-]{10,}$/.test(phone);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!validateEmail(email)) {
@@ -41,16 +41,36 @@ const DownloadModal = ({ isOpen, onClose, onSuccess, title }: DownloadModalProps
 
     setIsSubmitting(true);
     
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: import.meta.env.VITE_WEB3FORMS_KEY,
+          subject: `PDF Download Request: ${title}`, // Automatically includes the PDF title!
+          from_name: "Drycool Website Form",
+          email: email,
+          phone: phone,
+        }),
+      });
+
+      if (response.status === 200) {
+        toast.success("Form submitted successfully! Opening PDF...");
+        onSuccess(); // Opens the PDF
+        onClose();   // Closes the modal
+        setEmail(""); // Clear form
+        setPhone("");
+      } else {
+        toast.error("Submission failed. Please try again.");
+      }
+    } catch (error) {
+      toast.error("Something went wrong. Please try again.");
+    } finally {
       setIsSubmitting(false);
-      toast.success("Form submitted successfully! Opening PDF...");
-      onSuccess();
-      onClose();
-      // Clear form
-      setEmail("");
-      setPhone("");
-    }, 1000);
+    }
   };
 
   return (

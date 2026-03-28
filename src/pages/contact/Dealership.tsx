@@ -27,7 +27,7 @@ const handleSubmit = async (e: React.FormEvent) => {
           Accept: "application/json",
         },
         body: JSON.stringify({
-          access_key: "9cba1d32-5bda-46a0-ad04-29647e9daa88", 
+          access_key: import.meta.env.VITE_WEB3FORMS_KEY, 
           from_name: "Drycool Website Form",
           subject: form.subject ? form.subject : "New Website Enquiry",
           ...form,

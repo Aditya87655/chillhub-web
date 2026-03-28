@@ -21,7 +21,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 
     // Grab the actual form data including the file
     const formData = new FormData(e.currentTarget);
-    formData.append("access_key", "9cba1d32-5bda-46a0-ad04-29647e9daa88");
+    formData.append("access_key", import.meta.env.VITE_WEB3FORMS_KEY);
     formData.append("from_name", "Drycool Career Portal");
     formData.append("subject", `New Job Application for ${form.department || 'Drycool'}`);
 

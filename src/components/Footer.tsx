@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { Phone, Mail, MapPin, Facebook, Linkedin, Twitter, Youtube } from "lucide-react";
+// 🌟 Added Instagram to the imports
+import { Phone, Mail, MapPin, Facebook, Linkedin, Twitter, Youtube, Instagram } from "lucide-react";
 import { motion } from "framer-motion";
 
 const quickLinks = [
@@ -20,6 +21,15 @@ const productLinks = [
   { label: "HVAC Chillers", to: "/customized/hvac-chiller" },
   { label: "Glycol Chillers", to: "/customized/glycol-chillers" },
   { label: "Brine Chillers", to: "/customized/brine-chillers" },
+];
+
+// 🌟 Added the structured social links array
+const socialLinks = [
+  { Icon: Facebook, href: "https://www.facebook.com/Drycoolchillers", label: "Facebook" },
+  { Icon: Linkedin, href: "https://in.linkedin.com/company/drycool-systems-india-private-limite", label: "LinkedIn" },
+  { Icon: Twitter, href: "https://x.com/drycoolchiller", label: "Twitter (X)" },
+  { Icon: Instagram, href: "https://www.instagram.com/drycoolchillers/", label: "Instagram" },
+  { Icon: Youtube, href: "https://www.youtube.com/channel/UCKBDberY3tU3S47r5dqpXbA", label: "YouTube" },
 ];
 
 const Footer = () => {
@@ -55,20 +65,25 @@ const Footer = () => {
             <p className="text-sm opacity-80 leading-relaxed mb-6">
               ISO 9001:2015 certified manufacturer with 5000+ chillers installed across 50+ countries.
             </p>
-            {/* Social Icons */}
-            <div className="flex gap-3">
-              {[Facebook, Linkedin, Twitter, Youtube].map((Icon, i) => (
+            
+            {/* 🌟 UPDATED SOCIAL ICONS SECTION 🌟 */}
+            <div className="flex flex-wrap gap-3">
+              {socialLinks.map(({ Icon, href, label }) => (
                 <motion.a
-                  key={i}
-                  href="#"
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   whileHover={{ scale: 1.15, y: -2 }}
                   className="flex items-center justify-center h-10 w-10 rounded-full bg-primary-foreground/10 hover:bg-industrial-orange transition-colors duration-300"
-                  aria-label="Social link"
+                  aria-label={label}
+                  title={label}
                 >
                   <Icon className="h-4 w-4" />
                 </motion.a>
               ))}
             </div>
+            {/* 🌟 END SOCIAL ICONS SECTION 🌟 */}
           </motion.div>
 
           {/* Quick Links */}

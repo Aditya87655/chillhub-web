@@ -5,15 +5,8 @@ import AnimatedSection from "@/components/AnimatedSection";
 import GlassCard from "@/components/GlassCard";
 import { Phone, Mail, MapPin, Send, Clock } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { z } from "zod";
 
-const contactSchema = z.object({
-  name: z.string().trim().min(1, "Name is required").max(100),
-  email: z.string().trim().email("Invalid email address").max(255),
-  phone: z.string().trim().min(1, "Phone is required").max(20),
-  message: z.string().trim().min(1, "Message is required").max(2000),
-});
-
+// 🌟 Corrected Address details
 const contactInfo = [
   { icon: MapPin, title: "Address", text: "Works 1: C-34, Sector 63, Noida – 201307, U.P., India" },
   { icon: Phone, title: "Phone", text: "+91-9811134394" },
@@ -23,27 +16,16 @@ const contactInfo = [
 
 const Contact = () => {
   const { toast } = useToast();
-  const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  // 🌟 Matched state exactly to Enquiry.tsx
+  const [form, setForm] = useState({ name: "", company: "", city: "", phone: "", email: "", subject: "", message: "" });
   const [submitting, setSubmitting] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
-    setErrors({ ...errors, [e.target.name]: "" });
   };
 
-const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Validation check
-    const result = contactSchema.safeParse(form);
-    if (!result.success) {
-      const fieldErrors: Record<string, string> = {};
-      result.error.issues.forEach((i) => { fieldErrors[i.path[0] as string] = i.message; });
-      setErrors(fieldErrors);
-      return;
-    }
-    
     setSubmitting(true);
 
     try {
@@ -54,18 +36,18 @@ const handleSubmit = async (e: React.FormEvent) => {
           Accept: "application/json",
         },
         body: JSON.stringify({
-          access_key: "9cba1d32-5bda-46a0-ad04-29647e9daa88",
+          access_key: import.meta.env.VITE_WEB3FORMS_KEY, // 🌟 Pulled directly from .env
           from_name: "Drycool Contact Page",
-          subject: "New Contact Message",
+          subject: form.subject ? form.subject : "New Contact Enquiry",
           ...form,
         }),
       });
 
       if (response.status === 200) {
-        toast({ title: "Message sent!", description: "We'll get back to you shortly." });
-        setForm({ name: "", email: "", phone: "", message: "" });
+        toast({ title: "Enquiry Sent!", description: "Thank you for your enquiry. We will contact you soon." });
+        setForm({ name: "", company: "", city: "", phone: "", email: "", subject: "", message: "" });
       } else {
-        toast({ title: "Error", description: "Submission failed.", variant: "destructive" });
+        toast({ title: "Error", description: "Submission failed. Please try again.", variant: "destructive" });
       }
     } catch (error) {
       toast({ title: "Error", description: "Something went wrong.", variant: "destructive" });
@@ -82,37 +64,31 @@ const handleSubmit = async (e: React.FormEvent) => {
 
       <section id="enquiry" className="py-20">
         <div className="container grid lg:grid-cols-2 gap-12">
-          {/* Form */}
+          
+          {/* 🌟 Updated Form: Exact Match to Enquiry.tsx */}
           <AnimatedSection>
             <SectionHeading title="Send an Inquiry" centered={false} />
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div>
-                <input name="name" placeholder="Your Name *" value={form.name} onChange={handleChange} className={inputClass} />
-                {errors.name && <p className="mt-1 text-xs text-destructive">{errors.name}</p>}
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="grid sm:grid-cols-2 gap-4">
+                <input name="name" placeholder="Your Name:" value={form.name} onChange={handleChange} className={inputClass} required />
+                <input name="company" placeholder="Company Name:" value={form.company} onChange={handleChange} className={inputClass} />
               </div>
-              <div>
-                <input name="email" type="email" placeholder="Email Address *" value={form.email} onChange={handleChange} className={inputClass} />
-                {errors.email && <p className="mt-1 text-xs text-destructive">{errors.email}</p>}
+              <div className="grid sm:grid-cols-2 gap-4">
+                <input name="city" placeholder="City:" value={form.city} onChange={handleChange} className={inputClass} />
+                <input name="phone" placeholder="Phone:" value={form.phone} onChange={handleChange} className={inputClass} required />
               </div>
+              <input name="email" type="email" placeholder="Your Email:" value={form.email} onChange={handleChange} className={inputClass} required />
+              <input name="subject" placeholder="Subject:" value={form.subject} onChange={handleChange} className={inputClass} />
               <div>
-                <input name="phone" placeholder="Phone Number *" value={form.phone} onChange={handleChange} className={inputClass} />
-                {errors.phone && <p className="mt-1 text-xs text-destructive">{errors.phone}</p>}
+                <textarea name="message" rows={5} placeholder="Your Message:" value={form.message} onChange={handleChange} className={inputClass} required />
               </div>
-              <div>
-                <textarea name="message" rows={5} placeholder="Your Message *" value={form.message} onChange={handleChange} className={inputClass} />
-                {errors.message && <p className="mt-1 text-xs text-destructive">{errors.message}</p>}
-              </div>
-              <button
-                type="submit"
-                disabled={submitting}
-                className="inline-flex items-center gap-2 rounded-lg bg-accent px-7 py-3.5 font-semibold text-accent-foreground hover:opacity-90 transition-opacity disabled:opacity-50 shadow-lg"
-              >
-                {submitting ? "Sending..." : "Send Message"} <Send className="h-4 w-4" />
+              <button type="submit" disabled={submitting} className="inline-flex items-center gap-2 rounded-lg bg-accent px-7 py-3.5 font-semibold text-accent-foreground hover:opacity-90 transition-opacity disabled:opacity-50 shadow-lg">
+                {submitting ? "Sending..." : "Submit Enquiry"} <Send className="h-4 w-4" />
               </button>
             </form>
           </AnimatedSection>
 
-          {/* Contact Info */}
+          {/* Contact Info Side Panel */}
           <AnimatedSection delay={0.2}>
             <SectionHeading title="Get in Touch" centered={false} />
             <div className="space-y-4">
@@ -127,6 +103,29 @@ const handleSubmit = async (e: React.FormEvent) => {
                   </div>
                 </GlassCard>
               ))}
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* 📍 Interactive Google Map Section */}
+      <section className="py-10 pb-20">
+        <div className="container">
+          <AnimatedSection>
+            <SectionHeading title="Find Us on the Map" centered={true} />
+            
+            <div className="mt-8 w-full h-[400px] md:h-[500px] rounded-[2rem] overflow-hidden border border-border/40 shadow-xl relative bg-card/50 group">
+              <div className="absolute inset-0 bg-accent/5 animate-pulse -z-10" />
+              <iframe
+                src="https://maps.google.com/maps?q=Drycool%20Systems,%20C-34,%20Sector%2063,%20Noida&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen={true}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="absolute inset-0 opacity-90 group-hover:opacity-100 transition-opacity duration-500"
+              ></iframe>
             </div>
           </AnimatedSection>
         </div>
