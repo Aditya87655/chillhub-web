@@ -54,7 +54,7 @@ import Dealership from "./pages/contact/Dealership";
 
 // Download submenu pages
 import CompanyProfileDownload from "./pages/downloads/CompanyProfileDownload";
-import { CompanyFlyer, CoolingTowers, EnergySavingChiller, MEPDesign, PlasticChiller, HydrogenChillers } from "./pages/downloads/index";
+import { CompanyFlyer, CoolingTowers, EnergySavingChiller, MEPDesign, PlasticChiller, HydrogenChillers, BatchingPlantChiller, FoodBeveragesChiller, PrintingPackagingChiller, ChemicalPharmaceuticalChiller, R410aAirCooledChiller, BMSDownload, MRIMachineChiller, AirChillerDownload, DehumidifierDownload } from "./pages/downloads/index";
 
 const queryClient = new QueryClient();
 
@@ -125,6 +125,15 @@ const App = () => (
             <Route path="/downloads/mep-design" element={<MEPDesign />} />
             <Route path="/downloads/plastic-chiller" element={<PlasticChiller />} />
             <Route path="/downloads/hydrogen-chillers" element={<HydrogenChillers />} />
+            <Route path="/downloads/batching-plant-chiller" element={<BatchingPlantChiller />} />
+            <Route path="/downloads/food-beverages-chiller" element={<FoodBeveragesChiller />} />
+            <Route path="/downloads/printing-packaging-chiller" element={<PrintingPackagingChiller />} />
+            <Route path="/downloads/chemical-pharmaceutical-chiller" element={<ChemicalPharmaceuticalChiller />} />
+            <Route path="/downloads/r410a-air-cooled-chiller" element={<R410aAirCooledChiller />} />
+            <Route path="/downloads/bms" element={<BMSDownload />} />
+            <Route path="/downloads/mri-machine-chiller" element={<MRIMachineChiller />} />
+            <Route path="/downloads/air-chiller" element={<AirChillerDownload />} />
+            <Route path="/downloads/dehumidifier" element={<DehumidifierDownload />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
