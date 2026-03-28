@@ -79,6 +79,35 @@ const Profile = () => (
       </div>
     </section>
 
+    {/* Enrichment */}
+    <section className="py-20">
+      <div className="container space-y-12">
+        <AnimatedSection>
+          <SectionHeading title="Manufacturing Capabilities & Technology" centered={false} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              Our manufacturing plant is equipped with advanced CNC machinery, precision fabrication tools, and automated assembly lines that enable production of chiller systems ranging from compact 5 TR units for small-scale applications to high-capacity 1800 TR systems for major industrial installations. The facility includes dedicated areas for copper tube processing, shell-and-tube heat exchanger assembly, electrical control panel fabrication, and comprehensive final testing.
+            </p>
+            <p>
+              Drycool Systems has invested significantly in quality testing infrastructure including performance testing rigs capable of simulating full-load and part-load operating conditions, pressure testing equipment for verifying refrigerant circuit integrity, and advanced vibration and noise measurement instruments. This commitment to thorough verification ensures every chiller delivered to a client site performs reliably from the day of commissioning.
+            </p>
+          </div>
+        </AnimatedSection>
+
+        <AnimatedSection delay={0.1}>
+          <SectionHeading title="Service Network & Customer Commitment" centered={false} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              Beyond manufacturing excellence, Drycool Systems distinguishes itself through a comprehensive service network spanning all major industrial cities in India. Factory-trained service engineers provide rapid response for preventive maintenance, emergency repair, and performance optimization services. Our annual maintenance contracts are designed to maximize equipment uptime and minimize total cost of ownership for our clients.
+            </p>
+            <p>
+              For international clients across Africa, Southeast Asia, and the Middle East, we provide remote diagnostic support, on-site commissioning supervision, and efficient spare parts logistics. Our global service capabilities have been instrumental in building lasting client relationships across more than 50 countries, establishing Drycool Systems as a trusted partner for critical industrial cooling infrastructure worldwide.
+            </p>
+          </div>
+        </AnimatedSection>
+      </div>
+    </section>
+
     {/* CTA */}
     <section className="py-16 bg-teal-gradient">
       <div className="container text-center">

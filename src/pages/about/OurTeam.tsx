@@ -63,6 +63,47 @@ const OurTeam = () => (
         </div>
       </div>
     </section>
+
+    {/* Enrichment */}
+    <section className="py-20">
+      <div className="container space-y-12">
+        <AnimatedSection>
+          <SectionHeading title="Building Expertise Through Collaboration" centered={false} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              The strength of Drycool Systems lies in the collective expertise of a team that brings together decades of experience across mechanical engineering, refrigeration science, electrical system design, and industrial project management. Our engineers hold specialized qualifications in HVAC system design and are continuously updated on the latest developments in compressor technology, heat exchanger optimization, and energy-efficient control strategies.
+            </p>
+            <p>
+              Our marketing and sales team operates with deep technical knowledge, enabling them to understand complex client requirements and translate them into precise engineering specifications. This technical sales capability ensures that every project proposal is accurately scoped, competitively priced, and aligned with the client's operational objectives, whether the requirement is for a single compact chiller or a multi-unit industrial cooling plant.
+            </p>
+          </div>
+        </AnimatedSection>
+
+        <AnimatedSection delay={0.1}>
+          <SectionHeading title="Service Excellence & Field Operations" centered={false} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              Our service and maintenance team comprises factory-trained technicians stationed across India's major industrial regions, providing rapid response capabilities for both scheduled maintenance and emergency breakdown situations. Each technician undergoes rigorous training on all chiller types in our product portfolio, including screw, scroll, and reciprocating compressor systems, ensuring competent and efficient service delivery regardless of equipment configuration.
+            </p>
+            <p>
+              The procurement and supply chain team maintains strategic relationships with leading component manufacturers worldwide, ensuring the availability of genuine spare parts and high-quality raw materials essential for maintaining our production schedules and quality standards. Our quality control specialists conduct incoming material inspections, in-process quality checks, and final product verification testing to uphold the zero-defect manufacturing philosophy that defines Drycool Systems.
+            </p>
+          </div>
+        </AnimatedSection>
+
+        <AnimatedSection delay={0.2}>
+          <SectionHeading title="Continuous Learning & Growth Culture" centered={false} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              Drycool Systems fosters a culture of continuous learning and professional development. Regular internal training programs, participation in industry conferences such as ISHRAE and ASHRAE events, and exposure to international best practices keep our workforce at the cutting edge of HVAC technology. Our research team actively explores emerging technologies including IoT-based chiller monitoring, artificial intelligence for predictive maintenance, and advanced refrigerants with lower environmental impact.
+            </p>
+            <p>
+              This commitment to team development directly benefits our clients through higher quality products, more innovative solutions, and more responsive service. By investing in our people, we ensure that every interaction with Drycool Systems reflects our core values of technical excellence, customer commitment, and professional integrity.
+            </p>
+          </div>
+        </AnimatedSection>
+      </div>
+    </section>
   </>
 );
 

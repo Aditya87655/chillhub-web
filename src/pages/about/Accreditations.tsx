@@ -58,6 +58,47 @@ const Accreditations = () => (
       </div>
     </section>
 
+    {/* Enrichment */}
+    <section className="py-20">
+      <div className="container space-y-12">
+        <AnimatedSection>
+          <SectionHeading title="International Standards & Compliance" centered={false} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              Drycool Systems' commitment to international quality standards is demonstrated through comprehensive accreditations that span design, fabrication, testing, and environmental management. Our ISO 9001:2008 certification ensures that every manufacturing process follows documented quality procedures with full traceability from raw material procurement through final product testing and delivery. The ISO 14001:2004 environmental management certification reflects our dedication to minimizing the environmental impact of our manufacturing operations.
+            </p>
+            <p>
+              Our UL listing and CE marking certify that our chiller products meet the rigorous safety and performance requirements of North American and European markets respectively. These certifications involve periodic factory audits, product testing by independent laboratories, and ongoing compliance monitoring to ensure that every unit shipped carries the assurance of internationally recognized quality standards.
+            </p>
+          </div>
+        </AnimatedSection>
+
+        <AnimatedSection delay={0.1}>
+          <SectionHeading title="Engineering Standards in Manufacturing" centered={false} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              Our design and fabrication processes conform to ASME Section VIII for pressure vessel construction and ASME Section IX for welding qualifications, ensuring structural integrity under demanding operating conditions. Heat exchanger designs follow TEMA (Tubular Exchanger Manufacturers Association) standards in C, B, and R classifications to match application severity. HTRI (Heat Transfer Research Inc.) validated thermal designs guarantee that our heat exchangers deliver specified performance across the full operating range.
+            </p>
+            <p>
+              For installations in hazardous environments, our equipment complies with ATEX directives for explosion-proof construction. Shell DEP (Design and Engineering Practice) standards are followed for projects in the oil and gas sector, ensuring compatibility with the stringent requirements of major energy companies. AHRI certification provides independent third-party verification of chiller performance ratings, giving our clients confidence that published specifications accurately reflect real-world performance.
+            </p>
+          </div>
+        </AnimatedSection>
+
+        <AnimatedSection delay={0.2}>
+          <SectionHeading title="Industry Associations & Recognition" centered={false} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              Drycool Systems maintains active membership in leading industry bodies including ISHRAE (Indian Society of Heating, Refrigerating and Air Conditioning Engineers) and follows ASHRAE guidelines for system design and energy performance. Our participation in EUROVENT certification programs ensures that our products meet European market standards for energy efficiency and performance classification.
+            </p>
+            <p>
+              Recognition from MSME (Micro, Small and Medium Enterprises) underscores our contribution to India's industrial manufacturing sector. These accreditations collectively demonstrate that Drycool Systems operates at the highest levels of engineering competence, quality assurance, and environmental responsibility, providing our clients with the confidence to specify our products for critical cooling applications in any regulatory environment worldwide.
+            </p>
+          </div>
+        </AnimatedSection>
+      </div>
+    </section>
+
     <section className="py-16 bg-teal-gradient">
       <div className="container text-center">
         <AnimatedSection>
