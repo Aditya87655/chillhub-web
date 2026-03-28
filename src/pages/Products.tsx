@@ -42,6 +42,38 @@ const Products = () => (
       </div>
     </section>
 
+    {/* Enrichment: Product Depth */}
+    <section className="py-20 bg-section-gradient">
+      <div className="container space-y-12">
+        <AnimatedSection>
+          <SectionHeading title="Why Choose Drycool Chillers?" centered={false} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              Drycool Systems manufactures a comprehensive range of industrial chillers engineered for diverse applications across multiple sectors. Each chiller system is designed from the ground up using advanced thermal engineering principles, incorporating high-efficiency compressors from globally recognized brands such as Bitzer, Frascold, and Copeland. Our in-house R&D team continuously evaluates new refrigerant technologies, heat exchanger configurations, and control strategies to deliver products that set industry benchmarks for performance and reliability.
+            </p>
+            <p>
+              Our air-cooled chillers are engineered for installations where water availability is limited or where simplified maintenance is preferred. These systems feature large-surface-area condenser coils with optimized fin spacing for maximum heat rejection even in high ambient temperature conditions common across the Indian subcontinent, Middle East, and tropical regions. Water-cooled variants deliver superior energy efficiency for facilities with access to cooling tower infrastructure, achieving coefficient of performance values that significantly reduce operating costs over the equipment lifecycle.
+            </p>
+          </div>
+        </AnimatedSection>
+
+        <AnimatedSection delay={0.1}>
+          <SectionHeading title="Advanced Technology & Energy Savings" centered={false} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              Our inverter and VFD chiller range represents the cutting edge of energy-efficient cooling technology. By modulating compressor speed to precisely match the instantaneous cooling load, these systems eliminate the energy waste associated with traditional on-off cycling. Facilities installing Drycool VFD chillers routinely report energy savings of 30 to 50 percent compared to their previous fixed-speed equipment, with payback periods typically under three years.
+            </p>
+            <p>
+              Every chiller leaving our factory undergoes rigorous quality testing including continuous performance evaluation for more than 48 hours, pressure integrity testing, electrical safety verification, and vibration analysis. Our ISO 9001:2008 certified manufacturing processes ensure consistent quality across every unit, whether it is a compact 5 TR scroll chiller for a laboratory or a 1800 TR screw chiller system for a major industrial complex.
+            </p>
+            <p>
+              With comprehensive after-sales support including preventive maintenance contracts, emergency breakdown assistance, and spare parts availability, Drycool Systems ensures that your cooling investment delivers reliable performance throughout its operational life. Our service network spans across India with branch offices in major industrial cities, supported by factory-trained engineers ready to respond to your maintenance needs.
+            </p>
+          </div>
+        </AnimatedSection>
+      </div>
+    </section>
+
     {/* CTA */}
     <section className="py-16 bg-teal-gradient">
       <div className="container text-center">
