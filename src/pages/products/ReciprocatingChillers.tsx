@@ -79,6 +79,34 @@ const ReciprocatingChillers = () => (
       </div>
     </section>
 
+    <section className="py-20">
+      <div className="container space-y-12">
+        <AnimatedSection>
+          <SectionHeading title="Technical Working Principle" centered={false} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              Reciprocating chillers operate on the vapor compression refrigeration cycle, utilizing piston-driven compressors to compress low-pressure refrigerant gas into high-pressure, high-temperature vapor. This vapor then passes through condenser coils where it releases heat and condenses into a high-pressure liquid. The liquid refrigerant flows through a thermostatic expansion valve, reducing its pressure and temperature before entering the evaporator, where it absorbs heat from the process fluid and completes the cycle. Drycool reciprocating chillers employ semi-hermetic and open-type compressors sourced from leading European manufacturers, delivering precise displacement control and consistent cooling performance across demanding industrial duty cycles.
+            </p>
+            <p>
+              The modular multi-cylinder design of reciprocating compressors enables stepped capacity control, typically offering 25 percent, 50 percent, 75 percent, and 100 percent load stages through cylinder unloading mechanisms. This inherent part-load capability makes reciprocating chillers particularly well-suited for applications with variable heat loads, as the system can reduce energy consumption proportionally when full cooling capacity is not required. Advanced microprocessor controllers monitor suction and discharge pressures, oil levels, and motor temperatures in real time, providing automatic safety interlocks and fault diagnostics that protect the equipment and minimize unplanned downtime.
+            </p>
+          </div>
+        </AnimatedSection>
+
+        <AnimatedSection delay={0.1}>
+          <SectionHeading title="Engineering Advantages & Industrial Applications" centered={false} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              Drycool reciprocating chillers are engineered for deep chilling applications reaching temperatures as low as minus 40 degrees Celsius, making them suitable for cold storage facilities, pharmaceutical manufacturing, chemical processing, and food preservation operations. The robust mechanical design tolerates high compression ratios and handles a wide range of refrigerants including R404A, R134A, R407C, and R410A, allowing engineers to select the optimal refrigerant for each specific application. The complete packaged system includes the compressor, condenser, evaporator, expansion valves, electrical control panel with full interlocking, and a stainless steel process tank, all factory-assembled and tested for over 48 hours before dispatch.
+            </p>
+            <p>
+              From a business perspective, reciprocating chillers offer lower initial capital investment compared to screw or centrifugal alternatives in capacities below 100 TR, making them an economically attractive choice for small to medium-scale industrial operations. Their straightforward mechanical construction means maintenance can be performed by standard refrigeration technicians without specialized training, reducing ongoing service costs. Individual cylinder serviceability allows partial maintenance without complete system shutdown, preserving production continuity. Drycool Systems backs every reciprocating chiller with comprehensive after-sales support including preventive maintenance programs, genuine spare parts supply, and emergency breakdown response across India and international markets.
+            </p>
+          </div>
+        </AnimatedSection>
+      </div>
+    </section>
+
     <section className="py-16 bg-teal-gradient">
       <div className="container text-center">
         <AnimatedSection>
