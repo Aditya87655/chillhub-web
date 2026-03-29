@@ -17,6 +17,12 @@ const Enquiry = () => {
 
 const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    // 🛑 SPAM TRAP: Read directly from the DOM with TypeScript casting
+    const formData = new FormData(e.currentTarget as HTMLFormElement);
+    if (formData.get("botcheck")) {
+      toast({ title: "Success!", description: "Thank you for your enquiry." });
+      return; 
+    }
     setSubmitting(true);
 
     try {
@@ -68,6 +74,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                 <input name="city" placeholder="City:" value={form.city} onChange={handleChange} className={inputClass} />
                 <input name="phone" placeholder="Phone:" value={form.phone} onChange={handleChange} className={inputClass} required />
               </div>
+              <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
               <input name="email" type="email" placeholder="Your Email:" value={form.email} onChange={handleChange} className={inputClass} required />
               <input name="subject" placeholder="Subject:" value={form.subject} onChange={handleChange} className={inputClass} />
               <div>

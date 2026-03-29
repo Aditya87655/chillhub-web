@@ -184,39 +184,26 @@ const navItems: NavItem[] = [
 
 /* ─── Desktop Mega Menu ─── */
 const DesktopMegaMenu = ({ sections, onClose }: { sections: NavSection[]; onClose: () => void }) => {
-  const menuRef = useRef<HTMLDivElement>(null);
-  const [maxH, setMaxH] = useState("80vh");
-
-  useEffect(() => {
-    if (menuRef.current) {
-      const rect = menuRef.current.getBoundingClientRect();
-      const available = window.innerHeight - rect.top - 16;
-      setMaxH(`${Math.max(300, available)}px`);
-    }
-  }, []);
-
   return (
     <motion.div
-      ref={menuRef}
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 8 }}
       transition={{ duration: 0.2, ease: "easeOut" }}
-      className="fixed left-0 right-0 top-[var(--navbar-height,auto)] z-50 mx-auto w-full max-w-[1200px] rounded-xl border border-border/50 bg-card/95 backdrop-blur-xl shadow-2xl"
+      className="absolute left-4 right-4 lg:left-8 lg:right-8 xl:left-0 xl:right-0 top-full z-50 mx-auto w-full max-w-[1200px] mt-2 rounded-xl border border-border/50 bg-card/95 backdrop-blur-xl shadow-2xl overflow-hidden"
       role="menu"
-      style={{ maxHeight: maxH }}
     >
-      <div className="overflow-y-auto overscroll-contain p-5" style={{ maxHeight: `calc(${maxH} - 2px)` }}>
-        <div className="grid grid-cols-4 gap-x-6 gap-y-4">
+      <div className="overflow-y-auto overscroll-contain p-6 max-h-[70vh] custom-scrollbar">
+        <div className="columns-1 sm:columns-2 lg:columns-4 gap-8">
           {sections.map((sec) => (
-            <div key={sec.heading ?? sec.items[0]?.label}>
+            <div key={sec.heading ?? sec.items[0]?.label} className="break-inside-avoid inline-block w-full mb-8">
               {sec.heading && (
                 sec.headingLink ? (
-                  <Link to={sec.headingLink} onClick={onClose} className="mb-2 block text-[11px] font-bold uppercase tracking-wider text-industrial-orange hover:underline">
+                  <Link to={sec.headingLink} onClick={onClose} className="mb-3 block text-[11px] font-bold uppercase tracking-wider text-industrial-orange hover:underline">
                     {sec.heading}
                   </Link>
                 ) : (
-                  <h4 className="mb-2 text-[11px] font-bold uppercase tracking-wider text-industrial-orange">
+                  <h4 className="mb-3 text-[11px] font-bold uppercase tracking-wider text-industrial-orange">
                     {sec.heading}
                   </h4>
                 )
@@ -242,7 +229,6 @@ const DesktopMegaMenu = ({ sections, onClose }: { sections: NavSection[]; onClos
     </motion.div>
   );
 };
-
 /* ─── Desktop dropdown item ─── */
 const DesktopNavItem = ({ item }: { item: NavItem }) => {
   const [open, setOpen] = useState(false);
@@ -296,7 +282,7 @@ const DesktopNavItem = ({ item }: { item: NavItem }) => {
             exit={{ opacity: 0, y: 8 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
             /* 🌟 FIX: Changed min-w to a strict w-[280px] so it stops growing horizontally */
-            className={`absolute ${item.label === "Contact Us" || item.label === "Download" ? "right-0" : "left-0"} top-full z-50 mt-2 w-[280px] max-w-[90vw] rounded-xl border border-border/50 bg-card/95 backdrop-blur-xl p-2 shadow-2xl`}
+            className={`absolute ${item.label === "Contact Us" || item.label === "Download" ? "right-0" : "left-0"} top-full z-50 mt-2 w-[280px] max-w-[90vw] rounded-xl border border-border/50 bg-card/95 backdrop-blur-xl p-2 shadow-2xl max-h-[70vh] overflow-y-auto overscroll-contain`}
             role="menu"
           >
             {item.children.map((child) => (
