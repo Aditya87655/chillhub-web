@@ -75,6 +75,34 @@ const Products = () => (
     </section>
 
     {/* CTA */}
+    <section className="py-20">
+      <div className="container space-y-12">
+        <AnimatedSection>
+          <SectionHeading title="Comprehensive Industrial Cooling Solutions" centered={false} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              Drycool Systems has established itself as one of India's premier industrial chiller manufacturers, delivering engineered cooling solutions across a product portfolio that spans screw chillers, scroll chillers, reciprocating chillers, and highly specialized custom-built systems. Each product category is designed to address specific cooling challenges, from high-capacity HVAC comfort cooling in commercial buildings to ultra-low-temperature process cooling in pharmaceutical and chemical manufacturing environments. Our screw chillers, available in air cooled and water cooled configurations from 30 TR to 1800 TR, utilize twin-screw compressor technology from leading European manufacturers including Bitzer and Frascold, delivering exceptional energy efficiency with integrated microprocessor controls for precise temperature regulation.
+            </p>
+            <p>
+              The scroll chiller range offers compact, quiet, and vibration-free cooling for applications where space constraints and noise sensitivity are critical considerations. Featuring hermetic scroll compressors with fewer moving parts than reciprocating alternatives, these units deliver superior reliability with minimal maintenance requirements. Our inverter-driven variants incorporate variable frequency drive technology that modulates compressor speed to match real-time cooling demand, achieving energy savings of 30 to 50 percent compared to fixed-speed alternatives. For deep-chilling applications reaching temperatures as low as minus 40 degrees Celsius, our reciprocating chiller range provides robust, field-serviceable performance with stepped capacity control and multi-refrigerant compatibility.
+            </p>
+          </div>
+        </AnimatedSection>
+
+        <AnimatedSection delay={0.1}>
+          <SectionHeading title="Global Reach & Application Engineering" centered={false} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              Beyond standard product offerings, Drycool Systems excels in application-specific chiller engineering for industries including plastics processing, food and beverage manufacturing, concrete batching, brewery and fermentation, hydrogen refueling infrastructure, and medical device cooling. Our engineering team conducts thorough heat load analysis and process evaluation before recommending solutions, ensuring that every chiller system is optimally sized and configured for maximum efficiency and reliability. Custom configurations include hazardous area chillers with ATEX-certified components, ammonia-based systems for large industrial facilities, and specialized glycol, brine, and methanol chillers for applications requiring secondary coolant circuits.
+            </p>
+            <p>
+              Our manufacturing capabilities are complemented by a global service network spanning across India, the UAE, Africa, Indonesia, Nepal, and Bangladesh, ensuring that customers worldwide receive the same quality of technical support and after-sales service that has defined the Drycool brand for over three decades. Every chiller undergoes rigorous factory testing exceeding 48 hours of continuous operation before dispatch, backed by comprehensive documentation, performance certification, and warranty coverage. With ISO 9001:2008 certified processes, CE marking compliance, and adherence to ASHRAE standards, Drycool Systems delivers cooling solutions that meet the most demanding international quality benchmarks while offering competitive pricing and flexible delivery schedules.
+            </p>
+          </div>
+        </AnimatedSection>
+      </div>
+    </section>
+
     <section className="py-16 bg-teal-gradient">
       <div className="container text-center">
         <AnimatedSection>
