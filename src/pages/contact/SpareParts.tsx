@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import SectionHeading from "@/components/SectionHeading";
 import PageHero from "@/components/PageHero";
 import AnimatedSection from "@/components/AnimatedSection";
 import GlassCard from "@/components/GlassCard";
 import { Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import HCaptcha from "@hcaptcha/react-hcaptcha";
 
 const spareParts = [
   { title: "Shell & Tube Type Condenser", img: "https://www.drycoolchillers.com/wp-content/uploads/2015/10/Shell-Tube-Condenser2-570x321.jpg" },
@@ -33,12 +34,21 @@ const SpareParts = () => {
   const [form, setForm] = useState({ name: "", company: "", city: "", phone: "", email: "", subject: "", message: "" });
   const [submitting, setSubmitting] = useState(false);
 
+  const [captchaToken, setCaptchaToken] = useState("");
+  const captchaRef = useRef<HCaptcha>(null);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
 const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!captchaToken) {
+      toast({ title: "Verification Required", description: "Please check the CAPTCHA box to prove you are human.", variant: "destructive" });
+      return;
+    }
+
     setSubmitting(true);
 
     try {
@@ -52,6 +62,7 @@ const handleSubmit = async (e: React.FormEvent) => {
           access_key: import.meta.env.VITE_WEB3FORMS_KEY, 
           from_name: "Drycool Website Form",
           subject: form.subject ? form.subject : "New Website Enquiry",
+          "h-captcha-response": captchaToken,
           ...form,
         }),
       });
@@ -59,6 +70,8 @@ const handleSubmit = async (e: React.FormEvent) => {
       if (response.status === 200) {
         toast({ title: "Success!", description: "Thank you for your enquiry. We will contact you soon." });
         setForm({ name: "", company: "", city: "", phone: "", email: "", subject: "", message: "" });
+        setCaptchaToken("");
+        captchaRef.current?.resetCaptcha();
       } else {
         toast({ title: "Error", description: "Submission failed. Please try again.", variant: "destructive" });
       }
@@ -115,6 +128,16 @@ const handleSubmit = async (e: React.FormEvent) => {
                 <input name="email" type="email" placeholder="Your Email:" value={form.email} onChange={handleChange} className={inputClass} required />
                 <input name="subject" placeholder="Subject:" value={form.subject} onChange={handleChange} className={inputClass} />
                 <textarea name="message" rows={5} placeholder="Your Message:" value={form.message} onChange={handleChange} className={inputClass} required />
+                
+                <div className="py-2">
+                  <HCaptcha
+                    ref={captchaRef}
+                    sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
+                    onVerify={(token) => setCaptchaToken(token)}
+                    onExpire={() => setCaptchaToken("")}
+                  />
+                </div>
+
                 <button type="submit" disabled={submitting} className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-7 py-3.5 font-semibold text-accent-foreground hover:opacity-90 transition-opacity disabled:opacity-50 shadow-lg">
                   {submitting ? "Sending..." : "Submit Enquiry"} <Send className="h-4 w-4" />
                 </button>

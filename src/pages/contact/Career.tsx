@@ -1,15 +1,19 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import SectionHeading from "@/components/SectionHeading";
 import PageHero from "@/components/PageHero";
 import AnimatedSection from "@/components/AnimatedSection";
 import GlassCard from "@/components/GlassCard";
 import { Send, Upload } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import HCaptcha from "@hcaptcha/react-hcaptcha";
 
 const Career = () => {
   const { toast } = useToast();
   const [form, setForm] = useState({ name: "", email: "", city: "", phone: "", department: "", message: "" });
   const [submitting, setSubmitting] = useState(false);
+
+  const [captchaToken, setCaptchaToken] = useState("");
+  const captchaRef = useRef<HCaptcha>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -17,6 +21,12 @@ const Career = () => {
 
 const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!captchaToken) {
+      toast({ title: "Verification Required", description: "Please check the CAPTCHA box to prove you are human.", variant: "destructive" });
+      return;
+    }
+
     setSubmitting(true);
 
     // Grab the actual form data including the file
@@ -24,6 +34,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     formData.append("access_key", import.meta.env.VITE_WEB3FORMS_KEY);
     formData.append("from_name", "Drycool Career Portal");
     formData.append("subject", `New Job Application for ${form.department || 'Drycool'}`);
+    formData.append("h-captcha-response", captchaToken);
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
@@ -35,6 +46,8 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         toast({ title: "Application Sent!", description: "Thank you. HR will review it soon." });
         setForm({ name: "", email: "", city: "", phone: "", department: "", message: "" });
         (e.target as HTMLFormElement).reset(); // clears the file input
+        setCaptchaToken("");
+        captchaRef.current?.resetCaptcha();
       } else {
         toast({ title: "Error", description: "Failed to send application.", variant: "destructive" });
       }
@@ -85,6 +98,15 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 
                 <textarea name="message" rows={4} placeholder="Your message (optional)" value={form.message} onChange={handleChange} className={inputClass} />
                 
+                <div className="py-2">
+                  <HCaptcha
+                    ref={captchaRef}
+                    sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
+                    onVerify={(token) => setCaptchaToken(token)}
+                    onExpire={() => setCaptchaToken("")}
+                  />
+                </div>
+
                 <button type="submit" disabled={submitting} className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-7 py-3.5 font-semibold text-accent-foreground hover:opacity-90 transition-opacity disabled:opacity-50 shadow-lg">
                   {submitting ? "Sending..." : "Submit Application"} <Send className="h-4 w-4" />
                 </button>

@@ -1,14 +1,15 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import SectionHeading from "@/components/SectionHeading";
 import PageHero from "@/components/PageHero";
 import AnimatedSection from "@/components/AnimatedSection";
 import GlassCard from "@/components/GlassCard";
 import { Phone, Mail, MapPin, Send, Clock } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import HCaptcha from "@hcaptcha/react-hcaptcha";
 
-// 🌟 Corrected Address details
+// 検 Corrected Address details
 const contactInfo = [
-  { icon: MapPin, title: "Address", text: "Works 1: C-34, Sector 63, Noida – 201307, U.P., India" },
+  { icon: MapPin, title: "Address", text: "Works 1: C-34, Sector 63, Noida - 201307, U.P., India" },
   { icon: Phone, title: "Phone", text: "+91-9811134394" },
   { icon: Mail, title: "Email", text: "enquiry@drycoolchillers.com" },
   { icon: Clock, title: "Working Hours", text: "Mon - Sat: 9:00 AM - 6:00 PM" },
@@ -16,9 +17,12 @@ const contactInfo = [
 
 const Contact = () => {
   const { toast } = useToast();
-  // 🌟 Matched state exactly to Enquiry.tsx
+  // 検 Matched state exactly to Enquiry.tsx
   const [form, setForm] = useState({ name: "", company: "", city: "", phone: "", email: "", subject: "", message: "" });
   const [submitting, setSubmitting] = useState(false);
+
+  const [captchaToken, setCaptchaToken] = useState("");
+  const captchaRef = useRef<HCaptcha>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -26,6 +30,12 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!captchaToken) {
+      toast({ title: "Verification Required", description: "Please check the CAPTCHA box to prove you are human.", variant: "destructive" });
+      return;
+    }
+
     setSubmitting(true);
 
     try {
@@ -36,9 +46,10 @@ const Contact = () => {
           Accept: "application/json",
         },
         body: JSON.stringify({
-          access_key: import.meta.env.VITE_WEB3FORMS_KEY, // 🌟 Pulled directly from .env
+          access_key: import.meta.env.VITE_WEB3FORMS_KEY, // 検 Pulled directly from .env
           from_name: "Drycool Contact Page",
           subject: form.subject ? form.subject : "New Contact Enquiry",
+          "h-captcha-response": captchaToken,
           ...form,
         }),
       });
@@ -46,6 +57,8 @@ const Contact = () => {
       if (response.status === 200) {
         toast({ title: "Enquiry Sent!", description: "Thank you for your enquiry. We will contact you soon." });
         setForm({ name: "", company: "", city: "", phone: "", email: "", subject: "", message: "" });
+        setCaptchaToken("");
+        captchaRef.current?.resetCaptcha();
       } else {
         toast({ title: "Error", description: "Submission failed. Please try again.", variant: "destructive" });
       }
@@ -65,7 +78,7 @@ const Contact = () => {
       <section id="enquiry" className="py-20">
         <div className="container grid lg:grid-cols-2 gap-12">
           
-          {/* 🌟 Updated Form: Exact Match to Enquiry.tsx */}
+          {/* 検 Updated Form: Exact Match to Enquiry.tsx */}
           <AnimatedSection>
             <SectionHeading title="Send an Inquiry" centered={false} />
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -82,6 +95,16 @@ const Contact = () => {
               <div>
                 <textarea name="message" rows={5} placeholder="Your Message:" value={form.message} onChange={handleChange} className={inputClass} required />
               </div>
+
+              <div className="py-2">
+                <HCaptcha
+                  ref={captchaRef}
+                  sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
+                  onVerify={(token) => setCaptchaToken(token)}
+                  onExpire={() => setCaptchaToken("")}
+                />
+              </div>
+
               <button type="submit" disabled={submitting} className="inline-flex items-center gap-2 rounded-lg bg-accent px-7 py-3.5 font-semibold text-accent-foreground hover:opacity-90 transition-opacity disabled:opacity-50 shadow-lg">
                 {submitting ? "Sending..." : "Submit Enquiry"} <Send className="h-4 w-4" />
               </button>
@@ -108,7 +131,7 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* 📍 Interactive Google Map Section */}
+      {/* 桃 Interactive Google Map Section */}
       <section className="py-10 pb-20">
         <div className="container">
           <AnimatedSection>

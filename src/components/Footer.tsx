@@ -57,7 +57,7 @@ const Footer = () => {
             transition={{ duration: 0.5 }}
           >
             <h3 className="font-heading text-2xl font-bold mb-4">
-              DRY<span className="text-industrial-orange">COOL</span>
+              DRY<span>COOL</span>
             </h3>
             <p className="text-sm opacity-80 leading-relaxed mb-4">
               One of the oldest and leading chiller manufacturers in India, pioneering energy-efficient industrial cooling solutions worldwide since 1992.
