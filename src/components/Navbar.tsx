@@ -433,7 +433,7 @@ const Navbar = () => {
           {/* 🌟 UPDATED LOGO SECTION 🌟 */}
           <Link to="/" className="flex items-center shrink-0 transition-transform hover:scale-[1.02]">
             <img 
-              src="/images/logo.jpeg" 
+              src="/images/logo.png" 
               alt="Drycool Systems Logo" 
               className="h-12 md:h-16 w-auto object-contain drop-shadow-sm" 
             />
