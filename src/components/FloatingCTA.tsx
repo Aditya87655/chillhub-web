@@ -32,14 +32,13 @@ const actions = [
     external: true,
     color: "bg-primary hover:bg-primary/90",
   },
-  {
-    icon: FileText,
-    label: "Download Brochure",
-    href: "/downloads/company-profile",
-    external: false,
-    color: "bg-accent hover:bg-accent/90",
-  },
 ];
+
+const CHATBOT_ACTION = {
+  icon: Bot,
+  label: "Chat with AI",
+  color: "bg-purple-600 hover:bg-purple-700",
+};
 
 const FloatingCTA = () => {
   const [open, setOpen] = useState(false);
